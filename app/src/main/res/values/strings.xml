@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Damn Vulnerable Mobile ICC</string>
+    <string name="welcome_msg">Welcome to DVM-ICC!</string>
 </resources>
