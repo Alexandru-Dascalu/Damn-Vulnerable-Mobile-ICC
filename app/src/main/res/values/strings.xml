@@ -1,4 +1,43 @@
 <resources>
     <string name="app_name">Damn Vulnerable Mobile ICC</string>
     <string name="welcome_msg">Welcome to DVM-ICC!</string>
+    <string name="introduction">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum \n have an activity with a root tag of
+
+androidx.constraintlayout.widget.ConstraintLayout
+I include 3 layout files in this activity and list them vertically. The following constraints on the middle one does not work
+
+    app:layout_constraintTop_toBottomOf="@+id/lay1"
+    app:layout_constraintBottom_toTopOf="@+id/lay3"
+I don\'t understand why the middle one takes the entire screen instead of starting from the bottom of the top one and ending at top of the bottom one. Can you please help me?
+
+The activity:
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        android:id="@+id/lay1"
+        layout="@layout/empty_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        android:id="@+id/lay2"
+        layout="@layout/empty_linear_layout"
+        app:layout_constraintBottom_toTopOf="@+id/lay3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay1" />
+
+        android:id="@+id/lay3"
+        layout="@layout/empty_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    </string>
 </resources>
