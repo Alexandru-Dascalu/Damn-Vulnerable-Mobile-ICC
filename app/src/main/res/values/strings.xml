@@ -1,43 +1,22 @@
 <resources>
     <string name="app_name">Damn Vulnerable Mobile ICC</string>
     <string name="welcome_msg">Welcome to DVM-ICC!</string>
-    <string name="introduction">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum \n have an activity with a root tag of
+    <string name="introduction">
+        Damn Vulnerable Mobile -  Inter Component Communication is an intentionally insecure
+        Android image, created to be an educational tool to teach people about cyberattacks and
+        vulnerabilities related to Inter Component Communication in Android.
 
-androidx.constraintlayout.widget.ConstraintLayout
-I include 3 layout files in this activity and list them vertically. The following constraints on the middle one does not work
+        \n\nThis educational tool is aimed at penetration testers, app developers and tech savvy
+        people alike. It has four different operation modes that can be used to complete
+        challenges, tailored to users with more or less experience.
 
-    app:layout_constraintTop_toBottomOf="@+id/lay1"
-    app:layout_constraintBottom_toTopOf="@+id/lay3"
-I don\'t understand why the middle one takes the entire screen instead of starting from the bottom of the top one and ending at top of the bottom one. Can you please help me?
+        \n\nIndividual vulnerabilities are explored through individual challenges. Each challenge
+        consists of an authentic scenario of a malware attacking a vulnerable application. The user
+        has to identify the malware and vulnerable apps and then start the apps and use the malware
+        to perform an attack and observe its effects.
 
-The activity:
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-        android:id="@+id/lay1"
-        layout="@layout/empty_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-        android:id="@+id/lay2"
-        layout="@layout/empty_linear_layout"
-        app:layout_constraintBottom_toTopOf="@+id/lay3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lay1" />
-
-        android:id="@+id/lay3"
-        layout="@layout/empty_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        \n\nDepending on the user mode, the user will
+        benefit from an explanation of the vulnerability, how to identify it, various ways to fix
+        it and they will have to answer various questions to complete the challenge.
     </string>
 </resources>
