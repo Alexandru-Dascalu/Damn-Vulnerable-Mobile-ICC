@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">Damn Vulnerable Mobile ICC</string>
+
     <string name="welcome_msg">Welcome to DVM-ICC!</string>
     <string name="introductionHeading">Introduction</string>
     <string name="introduction">
         Damn Vulnerable Mobile -  Inter Component Communication is an intentionally insecure
         Android image, created to be an educational tool to teach people about cyberattacks and
-        vulnerabilities related to Inter Component Communication in Android.
+        vulnerabilities related to Inter Component Communication (ICC) in Android.
 
         \n\nThis educational tool is aimed at penetration testers, app developers and tech savvy
         people alike. It has four different operation modes that can be used to complete
@@ -19,5 +20,33 @@
         \n\nDepending on the user mode, you will benefit from an explanation of the vulnerability,
         how to identify it and of various ways to fix it. You are able to see the attack happen
         and you have to answer various questions to complete the challenge.
+    </string>
+    <string name="whyICCHeading">Importance of ICC</string>
+    <string name="whyICC">
+        We chose to explore Inter Component Communication vulnerabilities on Android in this project
+        due to the current state of mobile application security.
+
+        \n\nFirstly, insecure inter-component communication is a high-risk vulnerability, and it is
+        more dangerous than insecure storage, insecure transmission of data, inadequate brute force
+        protection or other common vulnerabilities, according to this
+        <a href="https://www.ptsecurity.com/upload/corporate/ww-en/analytics/Mobile-Application-Vulnerabilities-and-Threats-2019-eng.pdf">2019 report</a>.
+
+        \n\nSecondly, this type of vulnerability is relatively common. It can be found in 29
+        percent of mobile apps according, and the average Android application has 1.1 ICC
+        vulnerabilities. according the report linked above.
+
+        \n\nThirdly, while the overwhelming majority of vulnerabilities of other types are
+        introduced in apps through the use of third-party libraries and rarely through developer
+        code, ICC vulnerabilities differ. According to <a href ="https://ieeexplore.ieee.org/abstract/document/8936901">this paper</a>
+        , between a third and a half of ICC vulnerabilities come from developer code. Therefore,
+        education about ICC vulnerabilities addressed to developers would lead to less
+        vulnerabilities of this type.
+
+        \n\nFourthly, ICC vulnerabilities are not showcased in detail in real word projects
+        similar to ours. Damn Vulnerable Web Application does not cover any Inter Process
+        vulnerabilities and TryHackMe.com has no dedicated activities on this topic. Damn Insecure
+        and Vulnerable App has 2 activities that exploit badly implemented communication
+        between components. However, they do not show in detail all the possible ICC vulnerabilities
+        and threats.
     </string>
 </resources>
