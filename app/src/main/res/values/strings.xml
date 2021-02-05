@@ -49,4 +49,71 @@
         between components. However, they do not show in detail all the possible ICC vulnerabilities
         and threats.
     </string>
+    <string name="androidFundamentalsHeader">Android Security Fundamentals</string>
+    <string name="androidFundamentals">
+        In Android, each application is assigned a unique user ID known only by the OS. The files
+        of an app can only be accessed by a user with the same ID as that of the app. Moreover,
+        each app runs in its own process by default, and each process runs in its own virtual
+        machine. Therefore, each Android application runs in its own sandbox, which
+        enhances the security of the system, as apps are separated from each other.
+    </string>
+    <string name="apiLevelsHeader">API Levels</string>
+    <string name="apiLevels">
+        Code written by mobile app developers can interact with the Android system through its
+        Application Programming Interface, or API. This API is made up of various packages, classes
+        and XML elements that are used to define UI elements, access system resources, define
+        application security, and much more.
+
+        \n\nThroughout the development of Android,
+        the API is modified to introduce new features and improve security or performance. Therefore,
+        in order to identify each incremental version of the API, a unique integer is assigned to
+        each version or level. This level is independent of the version of the Android release, as
+        the API level is solely concerned with modifications in the API and not backend code.
+
+        \n\nHowever, in practice, each Android release usually comes with a new API level. Over the
+        years, there have been changes to the API that improved software security, and therefore
+        some vulnerabilities are harder or impossible to exploit in current API levels.
+
+        \n\nThe suite of apps developed as part of this project are designed to run on API 25, or
+        Android 7.1. They can still run on newer devices, but some vulnerabilities, particularly
+        broadcast theft and broadcast injection, are limited on Android 8 and newer.
+    </string>
+    <string name="androidComponentsHeader">Android Components</string>
+    <string name="androidComponents">
+        Android mobile applications are made up of logical building blocks called components. In
+        Android, a component is an entity which allows the user or the operating system to access
+        the application. Therefore, a component does not necessarily correlate
+        with other computing concepts such as processes, threads, and classes. When any component
+        of an app needs to be run, the system starts a process for that app.
+
+        \n\nThere are four types of components in Android: activities, services, broadcast receivers
+        and content providers.
+    </string>
+    <string name="activitiesHeading">Activities</string>
+    <string name="activities">
+        Activities represent the individual app UI screens through which you interact with the app.
+        For example, a news aggregator application might have an activity for viewing a list of
+        news articles and another for changing the app’s notification settings.
+
+        \n\nActivities are used by the operating system to keep track of what the you see on screen,
+        of what information you are interested in, and of minimized apps that might be needed later.
+
+        \n\nActivities are independent components and therefore it is possible that activities of
+        different apps collaborate. This is what happens in a browser when you want to share
+        a link and you have to choose between various messaging applications.
+    </string>
+    <string name="servicesHeading">Services</string>
+    <string name="services">
+        Services are components used for running more long-term operations in the background.
+        A service does not represent a separate process or thread, but an interface for the system
+        to let the app work in the background. A service does not have a UI by itself.
+
+        \n\nExamples of the usage of services include VPN apps that maintain a VPN connection in
+        the background or when WhatsApp performs periodical backups of messages.
+
+        \n\nThere are three types of services: foreground services, which perform tasks that are
+        noticeable to the user and must display a notification, background services, which do
+        things that are not noticeable by the user, and bound services, which act as servers
+        responding to requests made by client components.
+    </string>
 </resources>

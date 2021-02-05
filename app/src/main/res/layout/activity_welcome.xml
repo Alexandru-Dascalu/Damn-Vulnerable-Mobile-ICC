@@ -45,7 +45,7 @@
                 android:textSize="24sp"
 
                 android:paddingBottom="12dp"
-                android:paddingTop="16dp"/>
+                android:paddingTop="20dp"/>
 
             <TextView
                 android:id="@+id/introductionText"
@@ -67,7 +67,7 @@
                 android:textSize="24sp"
 
                 android:paddingBottom="12dp"
-                android:paddingTop="16dp"/>
+                android:paddingTop="20dp"/>
 
             <TextView
                 android:id="@+id/whyICCtext"
@@ -76,6 +76,116 @@
 
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/whyICC"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/androidfundamentalsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/androidFundamentalsHeader"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/androidFundamentals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/androidFundamentals"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/apiLevelsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/apiLevelsHeader"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/apiLevels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/apiLevels"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/componentsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/androidComponentsHeader"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/componentsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/androidComponents"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/activitiesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/activitiesHeading"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/activitiesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/activities"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/servicesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/servicesHeading"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/servicesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/services"
                 android:textSize="16sp" />
 
         </LinearLayout>
