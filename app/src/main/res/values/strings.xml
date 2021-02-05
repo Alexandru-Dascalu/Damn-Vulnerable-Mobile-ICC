@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Damn Vulnerable Mobile ICC</string>
     <string name="welcome_msg">Welcome to DVM-ICC!</string>
+    <string name="introductionHeading">Introduction</string>
     <string name="introduction">
         Damn Vulnerable Mobile -  Inter Component Communication is an intentionally insecure
         Android image, created to be an educational tool to teach people about cyberattacks and
@@ -10,13 +11,13 @@
         people alike. It has four different operation modes that can be used to complete
         challenges, tailored to users with more or less experience.
 
-        \n\nIndividual vulnerabilities are explored through individual challenges. Each challenge
-        consists of an authentic scenario of a malware attacking a vulnerable application. The user
-        has to identify the malware and vulnerable apps and then start the apps and use the malware
+        \n\nIndividual vulnerabilities are explored through challenges. Each challenge
+        consists of an authentic scenario of a malware attacking a vulnerable application. You
+        have to identify the malware and vulnerable apps, then start the apps and use the malware
         to perform an attack and observe its effects.
 
-        \n\nDepending on the user mode, the user will
-        benefit from an explanation of the vulnerability, how to identify it, various ways to fix
-        it and they will have to answer various questions to complete the challenge.
+        \n\nDepending on the user mode, you will benefit from an explanation of the vulnerability,
+        how to identify it and of various ways to fix it. You are able to see the attack happen
+        and you have to answer various questions to complete the challenge.
     </string>
 </resources>
