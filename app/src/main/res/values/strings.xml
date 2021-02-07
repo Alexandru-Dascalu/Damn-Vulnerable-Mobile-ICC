@@ -165,4 +165,39 @@
         access to shared data. Content providers can restrict access to the data to apps with
         certain permissions and give temporary access to certain files only.
     </string>
+    <string name="permissionsHeading">Android Permissions</string>
+    <string name="permissionsText">
+        Android follows the principle of least privilege. This means that, by default, each app
+        only has access to the resources that it needs to complete its job, and cannot perform any
+        action that could affect other apps, the OS or the user.
+
+        \n\nThis principle is enforced through a system of permissions, meaning that an application
+        can only access sensitive data, system features or components of other applications if it
+        possesses the necessary requirements. For instance, an application needs the correct
+        permission if it wants to access the user’s contacts or the device’s camera or file system.
+
+        \n\nThe developer can protect the components of an app with permission requirements by
+        adding an android:permission tag in the manifest file. These elements can be added once
+        for the whole application, or for each component.
+
+        \n\nThere are four types of permissions, based on the level of protection they allow:
+            \n\n• Normal permissions – Permissions for access to resources that, if granted, would
+                pose a minimal risk to the user, such as the permission to set the time zone.
+                They are given automatically.
+            \n\n• Dangerous permissions – These permissions are for resources related to private
+                user information, or that can affect the state of the system or of other apps.
+                The user needs to give these permissions explicitly. Examples include permissions
+                to access the camera or the device location.
+            \n\n• Signature permissions – These are special permissions, designed for use among a
+                group of apps created by the same developer, for purposes specific to those apps.
+                An app is automatically granted a signature permission only if it is signed by
+                the same certificate as the app that defined the permission. In this case, a
+                certificate is a unique identification for the developer of the app, like the
+                TLS certificates used to verify the authenticity of websites. The certificate
+                can be self-signed by the developer.
+            \n\n• Signature or System permissions – a deprecated type of permission since API level
+                23. It is automatically granted only if the app is signed by the same certificate
+                as the app that declared the permission, or if the app is in the system folder.
+                Apps in the system folder are pre-installed by the device’s vendor.
+    </string>
 </resources>
