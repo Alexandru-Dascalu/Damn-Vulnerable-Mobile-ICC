@@ -145,6 +145,28 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/manifestHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/androidManifestHeading"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/manifestText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/androidManifestText"
+                android:textSize="16sp" />
+
+            <TextView
                 android:id="@+id/activitiesHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,7 +185,7 @@
                 android:layout_height="wrap_content"
 
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/activities"
+                android:text="@string/activitiesText"
                 android:textSize="16sp" />
 
             <TextView
@@ -185,7 +207,51 @@
                 android:layout_height="wrap_content"
 
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/services"
+                android:text="@string/servicesText"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/receiversHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/receiverHeading"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/receiversText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/receiverText"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/providersHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:text="@string/providerHeading"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+
+                android:paddingBottom="12dp"
+                android:paddingTop="20dp"/>
+
+            <TextView
+                android:id="@+id/providersText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/providerText"
                 android:textSize="16sp" />
 
         </LinearLayout>

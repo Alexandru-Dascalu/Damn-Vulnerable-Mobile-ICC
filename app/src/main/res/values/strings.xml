@@ -37,7 +37,7 @@
 
         \n\nThirdly, while the overwhelming majority of vulnerabilities of other types are
         introduced in apps through the use of third-party libraries and rarely through developer
-        code, ICC vulnerabilities differ. According to <a href ="https://ieeexplore.ieee.org/abstract/document/8936901">this paper</a>
+        code, ICC vulnerabilities are different. According to <a href ="https://ieeexplore.ieee.org/abstract/document/8936901">this paper</a>
         , between a third and a half of ICC vulnerabilities come from developer code. Therefore,
         education about ICC vulnerabilities addressed to developers would lead to less
         vulnerabilities of this type.
@@ -45,7 +45,7 @@
         \n\nFourthly, ICC vulnerabilities are not showcased in detail in real word projects
         similar to ours. Damn Vulnerable Web Application does not cover any Inter Process
         vulnerabilities and TryHackMe.com has no dedicated activities on this topic. Damn Insecure
-        and Vulnerable App has 2 activities that exploit badly implemented communication
+        and Vulnerable App has 2 challenges that exploit badly implemented communication
         between components. However, they do not show in detail all the possible ICC vulnerabilities
         and threats.
     </string>
@@ -54,7 +54,7 @@
         In Android, each application is assigned a unique user ID known only by the OS. The files
         of an app can only be accessed by a user with the same ID as that of the app. Moreover,
         each app runs in its own process by default, and each process runs in its own virtual
-        machine. Therefore, each Android application runs in its own sandbox, which
+        machine. Therefore, each Android app has its own sandbox, which
         enhances the security of the system, as apps are separated from each other.
     </string>
     <string name="apiLevelsHeader">API Levels</string>
@@ -62,7 +62,7 @@
         Code written by mobile app developers can interact with the Android system through its
         Application Programming Interface, or API. This API is made up of various packages, classes
         and XML elements that are used to define UI elements, access system resources, define
-        application security, and much more.
+        application security, and more.
 
         \n\nThroughout the development of Android,
         the API is modified to introduce new features and improve security or performance. Therefore,
@@ -89,21 +89,34 @@
         \n\nThere are four types of components in Android: activities, services, broadcast receivers
         and content providers.
     </string>
+    <string name="androidManifestHeading">Android Manifest</string>
+    <string name="androidManifestText">
+        The manifest of an Android application is an XML file that gives the OS information
+        about the app’s structure, capabilities and needs. All Android app components, except
+        broadcast receivers, need to be declared in the manifest file, and for each component you
+        can define permission requirements and the capabilities of the component.
+
+        \n\nMoreover, the developer must say in the manifest file what hardware or software system
+        features the app uses, whether those features are required, and what is the minimum API
+        level that the app can run on. For example, an app would not be installed on a device if
+        the app’s manifest said it required a microphone and the mobile device did not have
+        a microphone.
+    </string>
     <string name="activitiesHeading">Activities</string>
-    <string name="activities">
+    <string name="activitiesText">
         Activities represent the individual app UI screens through which you interact with the app.
         For example, a news aggregator application might have an activity for viewing a list of
         news articles and another for changing the app’s notification settings.
 
         \n\nActivities are used by the operating system to keep track of what the you see on screen,
-        of what information you are interested in, and of minimized apps that might be needed later.
+        of what information you are interested in, and of minimized apps.
 
         \n\nActivities are independent components and therefore it is possible that activities of
         different apps collaborate. This is what happens in a browser when you want to share
         a link and you have to choose between various messaging applications.
     </string>
     <string name="servicesHeading">Services</string>
-    <string name="services">
+    <string name="servicesText">
         Services are components used for running more long-term operations in the background.
         A service does not represent a separate process or thread, but an interface for the system
         to let the app work in the background. A service does not have a UI by itself.
@@ -115,5 +128,41 @@
         noticeable to the user and must display a notification, background services, which do
         things that are not noticeable by the user, and bound services, which act as servers
         responding to requests made by client components.
+    </string>
+    <string name="receiverHeading">Broadcast Receivers</string>
+    <string name="receiverText">
+        Broadcast receivers are components that an app uses to receive system wide broadcasts.
+        These broadcasts are messages sent by the operating system or by other apps. Using
+        receivers, applications can react to various events. A receiver can
+        listen for an event even when the app is not running.
+
+        \n\nFor example, the system can send a broadcast letting apps know that the device’s
+        battery is low or that airplane mode has been activated, or an application can send a
+        message that the download of a file has finished, and it can be accessed now.
+
+        \n\nUsually, broadcast receivers do a minimal amount of work and simply start other
+        components like activities or services to handle the event. Broadcast receivers do not have
+        a user interface, but can display notifications. In addition, it is worth noting that they
+        do not have to be declared in the manifest file but can be created programmatically as well.
+
+        \n\nThere are three types of broadcasts:
+            \n\n• Normal broadcasts – These are sent to all receivers at the same time, and each receiver can react independently of other receivers.
+            \n\n• Ordered broadcasts – These are sent to receivers one by one. Unlike normal broadcast,
+        the receiver currently processing the broadcast can change what information the broadcast
+        contains, and can even cancel the broadcast. Broadcast receivers can be registered with a
+        certain priority for getting broadcasts. Receivers with the same priority get broadcasts
+        in random order.
+            \n\n• Sticky broadcasts – Broadcasts of this type are persistent, as they remain after
+        they have been broadcast to all receivers and are re-broadcast to any newly created
+        receivers. They have been deprecated since API level 21, because they are very insecure,
+        and will not be covered by this project.
+    </string>
+    <string name="providerHeading">Content Providers</string>
+    <string name="providerText">
+        Content providers are interfaces through which apps can access data stored in persistent
+        storage such as a remote server, an SQLite database or local file storage. A provider can
+        be used by components of other apps. Therefore, they are used by the system to manage
+        access to shared data. Content providers can restrict access to the data to apps with
+        certain permissions and give temporary access to certain files only.
     </string>
 </resources>
