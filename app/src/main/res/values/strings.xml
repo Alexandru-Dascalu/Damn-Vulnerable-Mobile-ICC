@@ -223,5 +223,30 @@
         \n\nIntents can specify what component to start, what action the component that sends the
         intent wants to accomplish, data in the form of a URI, the MIME type of the URI, and perhaps
         key value pairs created by the parent component of the intent.
+
+        \n\nBy default, application components are not accessible to outside applications through
+        intents. However, a component can be exported and thus receive intents from other
+        applications. To export a component, you can set the &lt;exported&gt; tag in a component element
+        in the app’s manifest to true. However, if the component has an intent filter defined in
+        the manifest, the component will be exported by default, unless the exported tag is
+        explicitly set to false. Intent Filters will be fully explained later.
+
+        \n\nFurther complicating things, developers can also configure an application to use the
+        same Android User ID as other applications created by them. This means these apps can run
+        in the same sandbox and in the same process. Therefore, they can access each other’s
+        components regardless of the value of the exported tag or the presence of intent filters.
+    </string>
+    <string name="explicitIntentsHeading">Explicit Intents</string>
+    <string name="explicitIntentsText">
+        Explicit intents directly specify the application that should receive the intent. This is
+        done by setting either the package name of the receiving application, or the full name of
+        a component of said app.
+
+        \n\nMaking an intent to be explicit means that only the targeted app or app component can
+        receive the intent. Explicit intents are usually used for communication between components
+        of the same app.
+
+        \n\nThe most common usage is when you press a button that leads to the a new
+        screen. The activity of the new screen should be started by an explicit intent.
     </string>
 </resources>

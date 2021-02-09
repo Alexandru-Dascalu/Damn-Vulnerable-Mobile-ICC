@@ -1,303 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".WelcomeActivity">
+    tools:context=".WelcomeActivity"
+    
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
 
-    <ScrollView
-        android:layout_width="wrap_content"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:orientation="vertical">
 
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/helloTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/helloTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/welcome_msg"
-                android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/introductionHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:fontFamily="sans-serif-black"
-                android:text="@string/introductionHeading"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/introductionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/introduction"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/whyICCHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/whyICCHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/whyICCtext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/whyICC"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/androidfundamentalsHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/androidFundamentalsHeader"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/androidFundamentals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/androidFundamentals"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/apiLevelsHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/apiLevelsHeader"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/apiLevels"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/apiLevels"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/componentsHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/androidComponentsHeader"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/componentsText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/androidComponents"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/manifestHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/androidManifestHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/manifestText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/androidManifestText"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/activitiesHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/activitiesHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/activitiesText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/activitiesText"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/servicesHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/servicesHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/servicesText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/servicesText"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/receiversHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/receiverHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/receiversText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/receiverText"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/providersHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/providerHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/providersText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/providerText"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/permissionsHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/permissionsHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/permissionsText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/permissionsText"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/iccHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-
-                android:text="@string/iccHeading"
-                android:fontFamily="sans-serif-black"
-                android:textSize="24sp"
-
-                android:paddingBottom="12dp"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:id="@+id/iccText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/iccText"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+            android:gravity="center"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/welcome_msg"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/introductionHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:fontFamily="sans-serif-black"
+            android:text="@string/introductionHeading"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/introductionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/introduction" />
+
+        <TextView
+            android:id="@+id/whyICCHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/whyICCHeading"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/whyICCtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/whyICC" />
+
+        <TextView
+            android:id="@+id/androidfundamentalsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/androidFundamentalsHeader"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/androidFundamentals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/androidFundamentals" />
+
+        <TextView
+            android:id="@+id/apiLevelsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/apiLevelsHeader"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/apiLevels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/apiLevels" />
+
+        <TextView
+            android:id="@+id/componentsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/androidComponentsHeader"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/componentsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/androidComponents" />
+
+        <TextView
+            android:id="@+id/manifestHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/androidManifestHeading"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/manifestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/androidManifestText" />
+
+        <TextView
+            android:id="@+id/activitiesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/activitiesHeading"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/activitiesText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/activitiesText" />
+
+        <TextView
+            android:id="@+id/servicesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/servicesHeading"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/servicesText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/servicesText" />
+
+        <TextView
+            android:id="@+id/receiversHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/receiverHeading"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/receiversText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/receiverText" />
+
+        <TextView
+            android:id="@+id/providersHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/providerHeading"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/providersText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/providerText" />
+
+        <TextView
+            android:id="@+id/permissionsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:textAppearance="@style/textStyle"
+            android:fontFamily="sans-serif-black"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/permissionsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/permissionsText" />
+
+        <TextView
+            android:id="@+id/iccHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/iccHeading"
+            android:fontFamily="sans-serif-black"
+            android:textSize="24sp"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/iccText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/iccText" />
+
+        <TextView
+            android:id="@+id/explicitIntentsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:textAppearance="@style/headerStyle"
+            android:text="@string/explicitIntentsHeading"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/explicitIntentsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/explicitIntentsText" />
+
+    </LinearLayout>
+</ScrollView>
