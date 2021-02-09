@@ -293,5 +293,25 @@
             android:textAppearance="@style/textStyle"
             android:text="@string/explicitIntentsText" />
 
+        <TextView
+            android:id="@+id/implicitIntentsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/implicitIntentsHeading"
+            android:textAppearance="@style/headerStyle"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/implicitIntentsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/implicitIntentsText" />
+
     </LinearLayout>
 </ScrollView>

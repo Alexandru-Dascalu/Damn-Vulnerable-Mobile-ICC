@@ -249,4 +249,43 @@
         \n\nThe most common usage is when you press a button that leads to the a new
         screen. The activity of the new screen should be started by an explicit intent.
     </string>
+    <string name="implicitIntentsHeading">Implicit Intents</string>
+    <string name="implicitIntentsText">
+        Implicit intents do not directly specify what application or component it should be sent to.
+        Instead, the Android system decides who to send it to based on the information in the
+        intent and what other components have declared they can handle.
+
+        \n\nTo this end, implicit intents may specify a combination of the action the
+        recipient should do, some intent categories, a URI data link, or a MIME data type. All
+        of these are optional, and the developer has flexibility in how to define the implicit intent.
+
+        \n\nA component defines what intents it can handle by specifying Intent Filters in the
+        manifest file. A filter defines what intents a component can handle. A filter can say
+        what actions the component can perform, what intent categories it accepts, the MIME data
+        types it accepts or the kind of URI resources it can handle. A component may declare
+        multiple Intent Filters, and it is recommended that this is done for each task the
+        component can do.
+
+        \n\nWhen an implicit intent is sent, the Android System compares its attributes against all
+        intent filters of all components of all apps on the device. For the intent to be matched
+        with a filter, three tests are performed: the Action test, the Category test, and the Data
+        test.
+
+        \n\nIn order to pass the Action test, the Intent’s action must be amongst the actions of
+        the filter. It passes the Category Test if all of its categories are found in the
+        filter’s declaration, and the Data Test is passed if the data URI or MIME type of the intent
+        matches one of the data elements in the filter.
+
+        \n\nIf the component has multiple filters, the intent only needs to match one of them for
+        it to be passed to the component.
+
+        \n\nIf only one intent filter is compatible with the implicit intent, the operating system
+        will start that filter’s component. However, if there are multiple matches, a dialog will
+        be displayed to the user so they can manually select the app to handle the intent.
+
+        \n\nFor example, if there are multiple browsers installed on the mobile device, and within
+        an app the user clicks on a web link, they will then see a dialog letting them
+        choose what browser to use to open that page. This is because the parent app sent an
+        implicit intent, and all browsers had filters that matched with the intent.
+    </string>
 </resources>
