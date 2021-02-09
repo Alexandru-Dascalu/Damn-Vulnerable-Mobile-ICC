@@ -199,5 +199,29 @@
                 23. It is automatically granted only if the app is signed by the same certificate
                 as the app that declared the permission, or if the app is in the system folder.
                 Apps in the system folder are pre-installed by the device’s vendor.
+
+        \n\nApplications have the ability to declare their own permissions. These permissions can
+        be used to restrict access to components of an application. This is done by declaring a
+        permission in the manifest file of the app. This declaration specifies the permission’s
+        full name, a label, a description, and the protection level.
+    </string>
+    <string name="iccHeading">Inter Component Communication</string>
+    <string name="iccText">
+        Each Android application runs in its own sandbox, and by default can not see what other
+        applications are doing. Sometimes, we need the system to communicate with the apps, and
+        applications can enrich the user\'s experience by collaborating.
+
+        \n\nMoreover, an app component can be used by other apps to provide extra
+        functionality. For example, a browser lets you select which social media or messaging app
+        to use for sharing a link.
+
+        \n\nIntents are a class in the Android API that are used as messages for communication
+        between application components. Intents are used to start new activities, start and stop
+        services, bind or unbind a component to a service, and they represent the broadcasts that
+        are sent to receivers. They are also used for sending results to the caller of an activity.
+
+        \n\nIntents can specify what component to start, what action the component that sends the
+        intent wants to accomplish, data in the form of a URI, the MIME type of the URI, and perhaps
+        key value pairs created by the parent component of the intent.
     </string>
 </resources>
