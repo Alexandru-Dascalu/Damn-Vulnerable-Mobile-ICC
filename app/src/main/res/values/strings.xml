@@ -288,4 +288,17 @@
         choose what browser to use to open that page. This is because the parent app sent an
         implicit intent, and all browsers had filters that matched with the intent.
     </string>
+    <string name="implicitIntentCode">
+        val intent : Intent = Intent(Intent.ACTION_VIEW, URI.parse(\"https://www.pexels.com/\"))
+        \nstartActivity(intent)
+    </string>
+    <string name="intentFilterCode">
+        <![CDATA[
+        <intent-filter>
+            \n\t<action android:name="android.intent.action.VIEW" />
+            \n\t<data android:scheme="http"/>
+            \n\t<category android:name="android.intent.category.DEFAULT" />
+            \n\t<category android:name="android.intent.category.BROWSABLE" />
+        \n</intent-filter>]]>
+    </string>
 </resources>
