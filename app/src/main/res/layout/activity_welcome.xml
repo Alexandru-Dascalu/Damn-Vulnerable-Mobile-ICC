@@ -344,5 +344,65 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"/>
 
+        <TextView
+            android:id="@+id/iccVulnerabilitiesIntroHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/iccVulnerabilitiesIntroHeading"
+            android:textAppearance="@style/headerStyle"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/iccVulnerabilitiesIntroText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/iccVulnerabilitiesIntroText" />
+
+        <TextView
+            android:id="@+id/intentHijackHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/intentHijackingHeading"
+            android:textAppearance="@style/headerStyle"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/intentHijackText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/intentHijackingText" />
+
+        <TextView
+            android:id="@+id/intentSpoofingHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:text="@string/intentSpoofingHeading"
+            android:textAppearance="@style/headerStyle"
+
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp"/>
+
+        <TextView
+            android:id="@+id/intentSpoofingText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/intentSpoofingText" />
+
     </LinearLayout>
 </ScrollView>

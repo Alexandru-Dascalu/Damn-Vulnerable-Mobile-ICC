@@ -318,4 +318,65 @@
             \n\t<category android:name="android.intent.category.BROWSABLE" />
         \n</intent-filter>]]>
     </string>
+    <string name="iccVulnerabilitiesIntroHeading">
+        ICC Vulnerabilities and Attacks
+    </string>
+    <string name="iccVulnerabilitiesIntroText">
+        Android ICC can be exploited by attackers and be used to circumvent permission requirements.
+        Most of the vulnerabilities shown in this software happen due to the misuse of implicit
+        intents or intent filters.
+
+        \n\nSince implicit intents do not directly state what component they target, it is possible
+        that an intent is delivered to a malicious app.
+
+        \n\nAdding an intent filter to a component
+        exports it by default, making it accessible to other apps. An attacker can create
+        malicious intents that can launch other components in ways that may compromise the victim app.
+
+        \n\nThis app focuses on attacks on exported components. A component that is not exported
+        can not be accessed by another app, unless that app has the same user ID as component’s app.
+    </string>
+    <string name="intentHijackingHeading">Intent Hijacking</string>
+    <string name="intentHijackingText">
+        The Android documentation recommends that explicit intents are used for intra-app
+        communication, and implicit intents for inter-application communication. However, developers
+        sometimes use implicit intents to start a component within the same app. An attacker can
+        make an application with an intent filter designed to match with those implicit intents,
+        which can direct them to the malicious application.
+
+        \n\nWhen receiving an intent, a component can read all of its data. Therefore, even if the
+        implicit intent is meant for external use, if the developer puts sensitive information in
+        it, that data could be intercepted.
+    </string>
+    <string name="intentSpoofingHeading">Intent Spoofing</string>
+    <string name="intentSpoofingText">
+        Intent Spoofing attacks happen when a victim component is unexpectedly activated by an
+        attacking component using a specially crafted Intent.
+
+        \n\nOften, this attack targets components that are not meant to be accessible outside of
+        their apps, but because they have an intent filter and the &lt;exported> tag is not set,
+        they are exported automatically. The developers are usually unaware of this. Because the
+        component is exported, the attacker can create an explicit intent targeting
+        it and does not need to deal with intent filters.
+
+        \n\nThis attack is dangerous because components often extract information from the intents
+        they receive. An Intent Spoofing attack could insert malicious information into the victim
+        component. The attacker could crash the victim’s app (a DoS attack) or corrupt the user’s
+        data. Often, the launch of an activity, service or broadcast
+        receiver leads a change in the app’s state, even if the victim component takes no input
+        from the intent. And since activities and services can return information to the component
+        that activated them, they could leak sensitive information.
+
+        \n\nThis attack is often done against components that were not meant to accessible by other
+        apps, and these components are thus less likely to check the input data or make sure they
+        do not return private data.
+
+        \n\nDevelopers can secure their application from these attacks in a number of ways. First,
+        they should not declare intent filters for internal components, and they should use explicit
+        intents to launch them. Secondly, if they need to use intent filters for internal components,
+        they should explicitly declare them as not exported in the manifest. Thirdly, they can
+        protect components permissions. Fourthly, state-changing operations should not be done in
+        exported components. And finally, developers should make sure that exported components do
+        not return information that should be private.
+    </string>
 </resources>
