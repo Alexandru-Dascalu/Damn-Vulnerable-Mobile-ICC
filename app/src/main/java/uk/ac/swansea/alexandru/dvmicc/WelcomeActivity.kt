@@ -6,6 +6,7 @@ import android.text.method.LinkMovementMethod
 import android.widget.TextView
 
 import io.github.kbiakov.codeview.CodeView
+import io.github.kbiakov.codeview.adapters.Format
 import io.github.kbiakov.codeview.adapters.Options
 import io.github.kbiakov.codeview.highlight.ColorTheme
 
@@ -32,6 +33,7 @@ class WelcomeActivity : AppCompatActivity() {
                 .withLanguage(language)
                 .withCode(getString(codeStringID))
                 .withTheme(ColorTheme.MONOKAI)
+                .withFormat(Format.Medium)
                 .disableHighlightAnimation())
     }
 }
