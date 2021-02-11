@@ -204,6 +204,17 @@
         be used to restrict access to components of an application. This is done by declaring a
         permission in the manifest file of the app. This declaration specifies the permission’s
         full name, a label, a description, and the protection level.
+
+        \n\nExample of a custom permission declaration:
+    </string>
+    <string name="customPermissionsCode">
+        <![CDATA[
+        <permission
+            \n\tandroid:name=\"uk.swansea.ac.uk.alexandru.
+            \n\t\ticc_education.permission.BANKING_ACTIVITY\"
+            \n\tandroid:label=\"@string/lab _bankingActivity\"
+            \n\tandroid:description=\"@string/desc_bankingActivity\"
+            \n\tandroid:protectionLevel=\"dangerous\" />]]>
     </string>
     <string name="iccHeading">Inter Component Communication</string>
     <string name="iccText">
@@ -287,10 +298,16 @@
         an app the user clicks on a web link, they will then see a dialog letting them
         choose what browser to use to open that page. This is because the parent app sent an
         implicit intent, and all browsers had filters that matched with the intent.
+
+        Below you can see Kotlin code for making an implicit intent for opening a web link.
     </string>
     <string name="implicitIntentCode">
-        val intent : Intent = Intent(Intent.ACTION_VIEW, URI.parse(\"https://www.pexels.com/\"))
+        val intent : Intent = Intent(Intent.ACTION_VIEW,
+                \n\t\tURI.parse(\"https://www.pexels.com/\"))
         \nstartActivity(intent)
+    </string>
+    <string name="intentFilterExplanationText">
+        An example of an intent filter to match for web link intents such as the one above:
     </string>
     <string name="intentFilterCode">
         <![CDATA[

@@ -252,6 +252,14 @@
             android:textAppearance="@style/textStyle"
             android:text="@string/permissionsText" />
 
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/permissionXML"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
         <TextView
             android:id="@+id/iccHeader"
             android:layout_width="match_parent"
@@ -313,14 +321,28 @@
             android:text="@string/implicitIntentsText" />
 
         <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/code_view"
+            android:id="@+id/implicitIntentCode"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/intentFilterText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/textStyle"
+            android:text="@string/intentFilterExplanationText" />
 
         <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/code_viewXML"
+            android:id="@+id/intentFilterXML"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
 
     </LinearLayout>
 </ScrollView>
