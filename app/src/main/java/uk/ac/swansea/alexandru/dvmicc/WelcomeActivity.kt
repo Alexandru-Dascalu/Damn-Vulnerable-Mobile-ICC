@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
+import com.google.android.material.appbar.MaterialToolbar
 
 import io.github.kbiakov.codeview.CodeView
 import io.github.kbiakov.codeview.adapters.Format
@@ -14,6 +15,9 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
+
+        val appBar : MaterialToolbar = findViewById(R.id.mainActivityToolbar)
+        setSupportActionBar(appBar)
 
         val whyICCtext : TextView = findViewById<TextView>(R.id.whyICCtext)
         whyICCtext.movementMethod = LinkMovementMethod.getInstance()
