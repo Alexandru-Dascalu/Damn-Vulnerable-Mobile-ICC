@@ -1,408 +1,417 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".WelcomeActivity"
+
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
+    android:layout_height="wrap_content">
 
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/helloTextView"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="@string/welcome_msg"
-            android:textSize="36sp" />
-
-        <TextView
-            android:id="@+id/introductionHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/introductionHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/introductionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/introduction" />
-
-        <TextView
-            android:id="@+id/whyICCHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/whyICCHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/whyICCtext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/whyICC" />
-
-        <TextView
-            android:id="@+id/androidfundamentalsHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/androidFundamentalsHeader"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/androidFundamentals"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/androidFundamentals" />
-
-        <TextView
-            android:id="@+id/apiLevelsHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/apiLevelsHeader"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/apiLevels"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/apiLevels" />
-
-        <TextView
-            android:id="@+id/componentsHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/androidComponentsHeader"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/componentsText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/androidComponents" />
-
-        <TextView
-            android:id="@+id/manifestHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/androidManifestHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/manifestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/androidManifestText" />
-
-        <TextView
-            android:id="@+id/activitiesHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/helloTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-condensed-medium"
+
+                android:gravity="center"
+                android:text="@string/welcome_msg"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/introductionHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/introductionHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/introductionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/introduction"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/whyICCHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/whyICCHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/whyICCtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/whyICC"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/androidfundamentalsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/androidFundamentalsHeader"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/androidFundamentals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/androidFundamentals"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/apiLevelsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/apiLevelsHeader"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/apiLevels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/apiLevels"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/componentsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/androidComponentsHeader"
+                android:textAppearance="@style/headerStyle" />
 
-            android:text="@string/activitiesHeading"
-            android:textAppearance="@style/headerStyle"
+            <TextView
+                android:id="@+id/componentsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/androidComponents"
+                android:textAppearance="@style/textStyle" />
 
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/activitiesText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/activitiesText" />
-
-        <TextView
-            android:id="@+id/servicesHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+            <TextView
+                android:id="@+id/manifestHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/androidManifestHeading"
+                android:textAppearance="@style/headerStyle" />
 
-            android:text="@string/servicesHeading"
-            android:textAppearance="@style/headerStyle"
+            <TextView
+                android:id="@+id/manifestText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/androidManifestText"
+                android:textAppearance="@style/textStyle" />
 
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/servicesText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/servicesText" />
-
-        <TextView
-            android:id="@+id/receiversHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+            <TextView
+                android:id="@+id/activitiesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
 
-            android:text="@string/receiverHeading"
-            android:textAppearance="@style/headerStyle"
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
 
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/receiversText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/receiverText" />
-
-        <TextView
-            android:id="@+id/providersHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+                android:text="@string/activitiesHeading"
+                android:textAppearance="@style/headerStyle" />
 
-            android:text="@string/providerHeading"
-            android:textAppearance="@style/headerStyle"
+            <TextView
+                android:id="@+id/activitiesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/activitiesText"
+                android:textAppearance="@style/textStyle" />
 
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/providersText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/servicesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
 
-            android:textAppearance="@style/textStyle"
-            android:text="@string/providerText" />
-
-        <TextView
-            android:id="@+id/permissionsHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
 
-            android:text="@string/permissionsHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/permissionsText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/permissionsText" />
-
-        <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/permissionXML"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:text="@string/servicesHeading"
+                android:textAppearance="@style/headerStyle" />
 
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/iccHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+            <TextView
+                android:id="@+id/servicesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/servicesText"
+                android:textAppearance="@style/textStyle" />
 
-            android:text="@string/iccHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/iccText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/receiversHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
 
-            android:textAppearance="@style/textStyle"
-            android:text="@string/iccText" />
-
-        <TextView
-            android:id="@+id/explicitIntentsHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
 
-            android:text="@string/explicitIntentsHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/explicitIntentsText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                android:text="@string/receiverHeading"
+                android:textAppearance="@style/headerStyle" />
 
-            android:textAppearance="@style/textStyle"
-            android:text="@string/explicitIntentsText" />
-
-        <TextView
-            android:id="@+id/implicitIntentsHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
+            <TextView
+                android:id="@+id/receiversText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/receiverText"
+                android:textAppearance="@style/textStyle" />
 
-            android:text="@string/implicitIntentsHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/implicitIntentsText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/implicitIntentsText" />
-
-        <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/implicitIntentCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/intentFilterText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/intentFilterExplanationText" />
-
-        <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/intentFilterXML"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/iccVulnerabilitiesIntroHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/iccVulnerabilitiesIntroHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/iccVulnerabilitiesIntroText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/iccVulnerabilitiesIntroText" />
-
-        <TextView
-            android:id="@+id/intentHijackHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/intentHijackingHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/intentHijackText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/intentHijackingText" />
-
-        <TextView
-            android:id="@+id/intentSpoofingHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-
-            android:text="@string/intentSpoofingHeading"
-            android:textAppearance="@style/headerStyle"
-
-            android:paddingBottom="12dp"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/intentSpoofingText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:textAppearance="@style/textStyle"
-            android:text="@string/intentSpoofingText" />
-
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/providersHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/providerHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/providersText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/providerText"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/permissionsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/permissionsHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/permissionsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/permissionsText"
+                android:textAppearance="@style/textStyle" />
+
+            <io.github.kbiakov.codeview.CodeView
+                android:id="@+id/permissionXML"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/iccHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/iccHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/iccText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/iccText"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/explicitIntentsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/explicitIntentsHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/explicitIntentsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/explicitIntentsText"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/implicitIntentsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/implicitIntentsHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/implicitIntentsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/implicitIntentsText"
+                android:textAppearance="@style/textStyle" />
+
+            <io.github.kbiakov.codeview.CodeView
+                android:id="@+id/implicitIntentCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/intentFilterText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/intentFilterExplanationText"
+                android:textAppearance="@style/textStyle" />
+
+            <io.github.kbiakov.codeview.CodeView
+                android:id="@+id/intentFilterXML"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/iccVulnerabilitiesIntroHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/iccVulnerabilitiesIntroHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/iccVulnerabilitiesIntroText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/iccVulnerabilitiesIntroText"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/intentHijackHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/intentHijackingHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/intentHijackText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/intentHijackingText"
+                android:textAppearance="@style/textStyle" />
+
+            <TextView
+                android:id="@+id/intentSpoofingHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+
+                android:paddingTop="20dp"
+                android:paddingBottom="12dp"
+
+                android:text="@string/intentSpoofingHeading"
+                android:textAppearance="@style/headerStyle" />
+
+            <TextView
+                android:id="@+id/intentSpoofingText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/intentSpoofingText"
+                android:textAppearance="@style/textStyle" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
