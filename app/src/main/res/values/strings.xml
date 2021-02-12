@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Damn Vulnerable Mobile ICC</string>
 
+    <!--Strings for the Information fragment-->
     <string name="welcome_msg">Welcome to DVM-ICC!</string>
     <string name="introductionHeading">Introduction</string>
     <string name="introduction">
@@ -378,5 +379,13 @@
         protect components permissions. Fourthly, state-changing operations should not be done in
         exported components. And finally, developers should make sure that exported components do
         not return information that should be private.
+    </string>
+
+    <!--Strings for bottom navigation view of welcome activity-->
+    <string name="infoButtonText">
+        Info
+    </string>
+    <string name="challengesButtonText">
+        Challenges
     </string>
 </resources>
