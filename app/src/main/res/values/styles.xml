@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-
+        <item name="colorPrimary">@color/lightBlue</item>
+        <item name="colorPrimaryVariant">@color/lightBlueLight</item>
+        <item name="colorPrimaryDark">@color/lightBlueDark</item>
+        <item name="colorSecondary">@color/lime</item>
+        <item name="colorSecondaryVariant">@color/limeDark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnSecondary">@color/black</item>
     </style>
 
     <style name="headerStyle" parent="TextAppearance.MaterialComponents.Headline1">
