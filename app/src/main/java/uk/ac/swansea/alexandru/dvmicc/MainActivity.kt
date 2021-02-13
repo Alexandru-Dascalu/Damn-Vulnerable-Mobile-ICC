@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import uk.ac.swansea.alexandru.dvmicc.fragments.ChallengesFragment
 
 import uk.ac.swansea.alexandru.dvmicc.fragments.InformationFragment
 import uk.ac.swansea.alexandru.dvmicc.fragments.IntroductionFragment
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.informationButton -> {
                 replaceFragment(InformationFragment())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.challengesButton -> {
+                replaceFragment(ChallengesFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }

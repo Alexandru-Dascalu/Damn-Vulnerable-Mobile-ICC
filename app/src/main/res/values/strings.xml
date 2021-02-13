@@ -460,4 +460,19 @@
     <string name="challengesButtonText">
         Challenges
     </string>
+
+    <string-array name="challenges">
+        <item>Broadcast Theft</item>
+        <item>Broadcast Theft - DOS</item>
+        <item>Broadcast Theft - MITM</item>
+        <item>Activity Hijack</item>
+        <item>Activity Hijack with result injection</item>
+        <item>Service Hijack</item>
+        <item>Content Provider URI Hijack</item>
+        <item>Malicious Broadcast Injection</item>
+        <item>Malicious Activity Launch</item>
+        <item>Malicious Service Launch</item>
+        <item>Permission Avoidance</item>
+        <item>App collusion</item>
+    </string-array>
 </resources>
