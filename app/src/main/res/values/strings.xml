@@ -382,6 +382,9 @@
     </string>
 
     <!--Strings for bottom navigation view of welcome activity-->
+    <string name="introButtonText">
+        Introduction
+    </string>
     <string name="infoButtonText">
         Info
     </string>

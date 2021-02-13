@@ -2,10 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/introductionButton"
+        android:title="@string/introButtonText"
+        android:icon="@drawable/ic_baseline_home"/>
+    <item
+        android:id="@+id/informationButton"
         android:title="@string/infoButtonText"
-        android:icon="@drawable/ic_information"/>
+        android:icon="@drawable/ic_baseline_library_books"/>
     <item
         android:id="@+id/challengesButton"
         android:title="@string/challengesButtonText"
         android:icon="@drawable/ic_challenges"/>
+
 </menu>
