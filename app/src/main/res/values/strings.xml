@@ -50,6 +50,8 @@
         between components. However, they do not show in detail all the possible ICC vulnerabilities
         and threats.
     </string>
+
+    <string name="informationTitle">Information</string>
     <string name="androidFundamentalsHeader">Android Security Fundamentals</string>
     <string name="androidFundamentals">
         In Android, each application is assigned a unique user ID known only by the OS. The files
