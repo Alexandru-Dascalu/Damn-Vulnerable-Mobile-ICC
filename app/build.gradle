@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "uk.ac.swansea.alexandru.dvmicc"
-        minSdkVersion 16
+        minSdkVersion 17
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
         versionCode 1
