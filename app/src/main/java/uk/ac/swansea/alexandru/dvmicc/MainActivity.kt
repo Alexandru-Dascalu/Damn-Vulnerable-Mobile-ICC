@@ -11,10 +11,10 @@ import io.github.kbiakov.codeview.adapters.Format
 import io.github.kbiakov.codeview.adapters.Options
 import io.github.kbiakov.codeview.highlight.ColorTheme
 
-class WelcomeActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        setContentView(R.layout.activity_main)
 
         val appBar : MaterialToolbar = findViewById(R.id.mainActivityToolbar)
         setSupportActionBar(appBar)
