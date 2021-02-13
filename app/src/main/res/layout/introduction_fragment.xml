@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="@string/introduction"
+            android:text="@string/introductionText"
             android:textAppearance="@style/textStyle" />
 
         <TextView
@@ -60,7 +60,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="@string/whyICC"
+            android:text="@string/whyICCText"
+            android:textAppearance="@style/textStyle" />
+
+        <TextView
+            android:id="@+id/workflowHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="20dp"
+            android:paddingBottom="12dp"
+
+            android:text="@string/workflowHeading"
+            android:textAppearance="@style/headerStyle" />
+
+        <TextView
+            android:id="@+id/workflowText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/workflowText"
             android:textAppearance="@style/textStyle" />
 
     </LinearLayout>

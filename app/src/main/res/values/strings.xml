@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Damn Vulnerable Mobile ICC</string>
 
-    <!--Strings for the Information fragment-->
+    <!--Strings for the Introduction fragment-->
     <string name="welcome_msg">Welcome to DVM-ICC!</string>
     <string name="introductionHeading">Introduction</string>
-    <string name="introduction">
+    <string name="introductionText">
         Damn Vulnerable Mobile -  Inter Component Communication is an intentionally insecure
         Android image, created to be an educational tool to teach people about cyberattacks and
         vulnerabilities related to Inter Component Communication (ICC) in Android.
@@ -23,7 +23,7 @@
         and you have to answer various questions to complete the challenge.
     </string>
     <string name="whyICCHeading">Importance of ICC</string>
-    <string name="whyICC">
+    <string name="whyICCText">
         We chose to explore Inter Component Communication vulnerabilities on Android in this project
         due to the current state of mobile application security.
 
@@ -44,13 +44,80 @@
         vulnerabilities of this type.
 
         \n\nFourthly, ICC vulnerabilities are not showcased in detail in real word projects
-        similar to ours. Damn Vulnerable Web Application does not cover any Inter Process
+        similar to this one. Damn Vulnerable Web Application does not cover any Inter Process
         vulnerabilities and TryHackMe.com has no dedicated activities on this topic. Damn Insecure
         and Vulnerable App has 2 challenges that exploit badly implemented communication
         between components. However, they do not show in detail all the possible ICC vulnerabilities
         and threats.
     </string>
+    <string name="workflowHeading">Workflow</string>
+    <string name="workflowText">
+        This section explains the intended workflow for this software.
 
+        \n\nIn the Info view, accessed through the bottom bar, you have all of the necessary
+        technical background in order to use this software. It explains Android Security, what
+        Android Components are, how permissions work in Android, how Inter Component Communication
+        is done in Android, and finally the two main categories of ICC related attacks explored by this
+        project.
+
+        \n\nAfter you have understood the necessary information, you can go to the Challenges view,
+        through which you can access the various challenges. Each challenge is an authentic scenario
+        of a variation of the two main types of attacks, involving a malicious app and a
+        vulnerable target app. Different challenges involve attacks that
+        may target different types of components, or that have a different effect. Click on the
+        button of each challenge to start it.
+
+        \n\nThere are four different modes in which you can complete a challenge.
+
+        \n\nFor each challenge, there are various security levels, which change how vulnerable the
+        target app is and how hard it is for the malware to perform the attack. You can change the level
+        from inside each challenge. The number of security levels and what they mean varies depending
+        on the challenge. One security level will be Impossible, for which the attack is no longer
+        possible.
+
+        \n\nThe beginner mode gives you a full explanation of the attack. After you have read it,
+        you then need to look at a list of all the manifests and some code snippets of all
+        apps of this project. Based on the explanation of the attack you were given and the code
+        snippets you see, you then have to
+        identify the malicious app and the vulnerable app. There is another view which displays
+        questions to help guide you through the challenge. Here, you can submit your answers and
+        find out if you have correctly identified the apps. You may be able to access hints if you
+        keep getting the answer wrong.
+
+        \n\nThen, you need to start the vulnerable and malware apps in order to perform the attack
+        or watch it happen in real time. The exact way this happens will vary depending on the
+        challenge. Watching or performing the attack will usually uncover some secret which you can
+        then submit to the Questions view in order to complete the challenge, showing that you have
+        penetrated the vulnerable application. This view may contain other questions to test your
+        knowledge. When completing the challenge, you are given an explanation about how the attack
+        in the challenge worked, why the scenario was authentic and how the different security
+        levels fix the vulnerability.
+
+        \n\nThe expert mode is just like beginner mode, only that it does not offer access to the
+        detailed explanation of the attack.
+
+        \n\nThe beginner and expert modes can be used on a mobile device, you do not need a computer
+        or any developer tools.
+
+        \n\nThe Make your own Malware mode disables the included malware for that challenge, so that
+        you can create your own malware app to attack the challenge\'s vulnerable app. This mode will
+        also let you access the full explanation of the attack and the manifest and relevant code of
+        the victim app. This mode is meant to be completed using a computer and Android Studio. You
+        will need to clone the repository of this project.
+
+        \n\nThe Fix Vulnerable App mode allows you to fix a vulnerable app yourself. For each
+        challenge, there is a second vulnerable application. Since in the Beginner or Expert mode,
+        you are shown code for fixing the first vulnerable app, in this mode you can fix the second
+        vulnerable app without being shown the code. The malware may be able to detect if it has
+        been defeated and let you know. This mode gives you access to the full
+        explanation of the attack and of the various security levels. You will need a computer and
+        Android Studio for this mode, and you need to clone the repository of this project.
+
+        \n\nThe Make your own Malware and Fix Vulnerable App modes are only accessible once you have
+        completed the Beginner or Expert modes.
+    </string>
+
+    <!--Strings for the information fragment-->
     <string name="informationTitle">Information</string>
     <string name="androidFundamentalsHeader">Android Security Fundamentals</string>
     <string name="androidFundamentals">
