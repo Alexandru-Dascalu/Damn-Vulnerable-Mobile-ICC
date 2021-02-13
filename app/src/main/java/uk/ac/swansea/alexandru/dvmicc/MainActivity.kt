@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val navigationBar : BottomNavigationView = findViewById(R.id.mainNavigationBar)
         navigationBar.setOnNavigationItemSelectedListener(navigationBarListener)
+        navigationBar.selectedItemId = R.id.introductionButton
     }
 
 
