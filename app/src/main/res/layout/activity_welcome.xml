@@ -433,7 +433,7 @@
 
         android:layout_alignParentBottom="true"
 
-        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
         app:menu="@menu/home_navigation_bar_layout">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
