@@ -12,5 +12,4 @@
         android:id="@+id/challengesButton"
         android:title="@string/challengesButtonText"
         android:icon="@drawable/ic_maze"/>
-
 </menu>

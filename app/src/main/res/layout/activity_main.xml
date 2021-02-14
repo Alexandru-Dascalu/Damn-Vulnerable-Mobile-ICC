@@ -34,7 +34,7 @@
         android:layout_alignParentBottom="true"
 
         style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
-        app:menu="@menu/home_navigation_bar_layout">
+        app:menu="@menu/main_navigation_bar_layout">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </RelativeLayout>

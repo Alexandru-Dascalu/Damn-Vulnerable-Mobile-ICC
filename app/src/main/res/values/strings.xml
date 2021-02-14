@@ -461,6 +461,10 @@
         Challenges
     </string>
 
+    <!--Strings for bottom navigation view of challenges activity-->
+    <string name="manifestsButtonText">Manifests</string>
+    <string name="questionsButtonText">Questions</string>
+
     <string-array name="challenges">
         <item>Broadcast Theft</item>
         <item>Broadcast Theft - DOS</item>
