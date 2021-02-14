@@ -521,7 +521,7 @@
 
         \n\nBesides intercepting information meant to be public, it could read sensitive data
         mistakenly placed in a public broadcast by an app. Moreover, if an implicit intent is used
-        for a broadcast meant for an app’s internal use, that broadcast will be sent to any receiver
+        for a broadcast meant for an app\’s internal use, that broadcast will be sent to any receiver
         on the device with a matching filter. Sensitive user information could thus be intercepted
         and sent to the attacker.
 
@@ -540,7 +540,7 @@
         \n\nWhen making a broadcast, the developer can specify the permission that a broadcast
         receiver needs to have to receive the intent. This can be used to guard against
         Broadcast Theft. But the malware could still get the permission. Even if the permission is a
-        Signature one, the attacker could get it if they have stolen the developer's certificate.
+        Signature one, the attacker could get it if they have stolen the developer\'s certificate.
         Other ways for a developer to guard against these attacks is to not put sensitive
         information in a broadcast unless necessary, to use explicit broadcasts for intra-app
         use or to send broadcast using LocalBroadcastManager.
