@@ -12,11 +12,12 @@ class ChallengeActivity :  AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge)
 
+        //get challenge enum that contains challenge specific data from intent
         challengeModel = intent.extras!!.get("challenge") as Challenge
 
         val appBar : MaterialToolbar = findViewById<MaterialToolbar>(R.id.challengeActivityToolbar)
         setSupportActionBar(appBar)
-
+        
         title = resources.getStringArray(R.array.challenges)[challengeModel.challengeNameIndex]
     }
 }
