@@ -3,7 +3,7 @@
     <item
         android:id="@+id/challengeInformationButton"
         android:title="@string/infoButtonText"
-        android:icon="@drawable/ic_question_mark"/>
+        android:icon="@drawable/ic_info"/>
     <item
         android:id="@+id/manifestsButton"
         android:title="@string/manifestsButtonText"
