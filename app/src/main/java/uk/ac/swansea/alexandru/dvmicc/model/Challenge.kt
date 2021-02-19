@@ -17,7 +17,7 @@ enum class Challenge(val challengeNameIndex: Int, val malwareName: Int, val vuln
                     R.string.highSecurityLevel to R.string.broadcastTheftHigh,
                     R.string.veryHighSecurityLevel to R.string.broadcastTheftVeryHigh,
                     R.string.impossibleSecurityLevel to R.string.broadcastTheftImpossible),
-            R.string.broadcastTheftExaplanation, BroadcastTheftQuestionsFragment::class,
+            R.string.broadcastTheftExplanation, BroadcastTheftQuestionsFragment::class,
             R.string.broadcastTheftScenarioExplanation, R.array.broadcastTheftFlags,
             R.string.broadcastTheftAPIRequirements)
 

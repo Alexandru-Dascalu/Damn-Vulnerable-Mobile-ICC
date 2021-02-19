@@ -514,7 +514,7 @@
     </string>
 
     <!--attack explanations-->
-    <string name="broadcastTheftExaplanation">
+    <string name="broadcastTheftExplanation">
         When a broadcast is sent, the sender does not receive any indication of what components have
         received that broadcast, and receivers can read all the data inside the broadcast intent.
 
