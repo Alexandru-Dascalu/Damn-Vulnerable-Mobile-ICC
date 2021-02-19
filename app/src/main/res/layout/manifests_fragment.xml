@@ -23,8 +23,8 @@
             android:paddingTop="20dp"
             android:paddingBottom="12dp"
 
-            android:text="@string/broadcastTheftName"
-            android:textAppearance="@style/headerStyle" />
+            android:text="@string/callLogAppName"
+            android:textAppearance="@style/manifestFragmentAppNameStyle" />
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/broadcastTheftManifest"
