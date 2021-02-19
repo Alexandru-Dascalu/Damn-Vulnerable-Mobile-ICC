@@ -465,19 +465,31 @@
     <string name="manifestsButtonText">Manifests</string>
     <string name="questionsButtonText">Questions</string>
 
+    <string name="broadcastTheftName">Broadcast Theft</string>
+    <string name="broadcastTheftDOSName">Broadcast Theft - DOS</string>
+    <string name="broadcastTheftMITMName">Broadcast Theft - MITM</string>
+    <string name="activityHijackName">Activity Hijack</string>
+    <string name="activityHijackResultName">Activity Hijack with result injection</string>
+    <string name="serviceHijackName">Service Hijack</string>
+    <string name="providerHijackName">Content Provider URI Hijack</string>
+    <string name="broadcastInjectionName">Malicious Broadcast Injection</string>
+    <string name="activityLaunchName">Malicious Activity Launch</string>
+    <string name="serviceLaunchName">Malicious Service Launch</string>
+    <string name="permissionAvoidanceName">Permission Avoidance</string>
+    <string name="appCollusionName">App collusion</string>
     <string-array name="challenges">
-        <item>Broadcast Theft</item>
-        <item>Broadcast Theft - DOS</item>
-        <item>Broadcast Theft - MITM</item>
-        <item>Activity Hijack</item>
-        <item>Activity Hijack with result injection</item>
-        <item>Service Hijack</item>
-        <item>Content Provider URI Hijack</item>
-        <item>Malicious Broadcast Injection</item>
-        <item>Malicious Activity Launch</item>
-        <item>Malicious Service Launch</item>
-        <item>Permission Avoidance</item>
-        <item>App collusion</item>
+        <item>@string/broadcastTheftName</item>
+        <item>@string/broadcastTheftDOSName</item>
+        <item>@string/broadcastTheftMITMName</item>
+        <item>@string/activityHijackName</item>
+        <item>@string/activityHijackResultName</item>
+        <item>@string/serviceHijackName</item>
+        <item>@string/providerHijackName</item>
+        <item>@string/broadcastInjectionName</item>
+        <item>@string/activityLaunchName</item>
+        <item>@string/serviceLaunchName</item>
+        <item>@string/permissionAvoidanceName</item>
+        <item>@string/appCollusionName</item>
     </string-array>
 
     <!--security level names-->
