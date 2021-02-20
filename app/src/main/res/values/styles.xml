@@ -31,8 +31,17 @@
     </style>
 
     <style name="manifestFragmentAppNameStyle" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="questionStyle" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="questionsTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">?attr/colorSecondary</item>
     </style>
 </resources>

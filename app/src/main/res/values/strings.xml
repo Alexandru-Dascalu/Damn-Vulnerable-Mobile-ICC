@@ -577,6 +577,34 @@
         Some broadcast have been introduced in recent API versions.
     </string>
 
+    <!-- questions-->
+    <string name="vulnerableAppQuestion">
+        What is the vulnerable app for %1s ?
+    </string>
+    <string name="malwareQuestion">
+        What is the malware for %1s ?
+    </string>
+    <string name="securityLowQuestion">
+        What is the flag when vulnerable app is in security level low ?
+    </string>
+    <string name="securityMediumQuestion">
+        What is the flag when vulnerable app is in security level medium ?
+    </string>
+    <string name="securityHighQuestion">
+        What is the flag when vulnerable app is in security level high ?
+    </string>
+    <string name="securityVeryHighQuestion">
+        What is the flag when vulnerable app is in security level high ?
+    </string>
+    <string name="securityImpossibleQuestion">
+        What is the flag when vulnerable app is in security level impossible ?
+    </string>
+
     <string name="callLogAppName">Call Log</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
+
+    <string name="vulnerableAppHint">Vulnerable app</string>
+    <string name="malwareAppHint">Malware</string>
+    <string name="flagHint">Flag</string>
+    <string name="submitButtonText">Submit</string>
 </resources>

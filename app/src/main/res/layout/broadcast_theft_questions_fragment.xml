@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/vulnerableAppQuestionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/vulnerableAppInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/questionsTextInputStyle"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/vulnerableAppQuestionButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vulnerableAppQuestionTextView">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/vulnerableAppEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:singleLine="true"
+                android:hint="@string/vulnerableAppHint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/vulnerableAppQuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBottom_toBottomOf="@+id/vulnerableAppInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vulnerableAppQuestionTextView" />
+
+        <TextView
+            android:id="@+id/malwareQuestionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vulnerableAppInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/malwareInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/questionsTextInputStyle"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/malwareQuestionButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/malwareQuestionTextView">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/malwareAppEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:singleLine="true"
+                android:hint="@string/malwareAppHint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/malwareQuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBottom_toBottomOf="@+id/malwareInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/malwareQuestionTextView" />
+
+        <TextView
+            android:id="@+id/securityLowQuestionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/malwareInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/securityLowInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/questionsTextInputStyle"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/securityLowButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityLowQuestionTextView">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/securityLowEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:singleLine="true"
+                android:hint="@string/flagHint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/securityLowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBottom_toBottomOf="@+id/securityLowInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityLowQuestionTextView" />
+
+        <TextView
+            android:id="@+id/securityMediumQuestionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityLowInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/securityMediumInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/questionsTextInputStyle"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/securityMediumButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityMediumQuestionTextView">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/securityMediumEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:singleLine="true"
+                android:hint="@string/flagHint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/securityMediumButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBottom_toBottomOf="@+id/securityMediumInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityMediumQuestionTextView" />
+
+        <TextView
+            android:id="@+id/securityHighQuestionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityMediumInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/securityHighInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/questionsTextInputStyle"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/securityHighButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityHighQuestionTextView">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/securityHighEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:singleLine="true"
+                android:hint="@string/flagHint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/securityHighButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBottom_toBottomOf="@+id/securityHighInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityHighQuestionTextView" />
+
+        <TextView
+            android:id="@+id/securityVeryHighQuestionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityHighInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/securityVeryHighInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/questionsTextInputStyle"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/securityVeryHighButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityVeryHighQuestionTextView">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/securityVeryHighEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:singleLine="true"
+                android:hint="@string/flagHint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/securityVeryHighButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBottom_toBottomOf="@+id/securityVeryHighInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityVeryHighQuestionTextView" />
+
+        <TextView
+            android:id="@+id/securityImpossibleQuestionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityVeryHighInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/securityImpossibleInput"
+            style="@style/questionsTextInputStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/securityImpossibleButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityImpossibleQuestionTextView">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/securityImpossibleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="@string/flagHint"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/securityImpossibleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBottom_toBottomOf="@+id/securityImpossibleInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/securityImpossibleQuestionTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
