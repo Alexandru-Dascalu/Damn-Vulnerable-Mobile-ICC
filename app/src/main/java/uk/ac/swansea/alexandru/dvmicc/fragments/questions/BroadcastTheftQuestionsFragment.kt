@@ -6,6 +6,7 @@ import android.widget.TextView
 import uk.ac.swansea.alexandru.dvmicc.R
 
 class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
+    override var securityLowFlag: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val vulnerableAppTextView = view.findViewById<TextView>(R.id.vulnerableAppQuestionTextView)
@@ -15,6 +16,8 @@ class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
         val malwareTextView = view.findViewById<TextView>(R.id.malwareQuestionTextView)
         malwareTextView.text = context!!.resources.getString(R.string.malwareQuestion,
                 context!!.resources.getString(R.string.broadcastTheftName))
+
+        securityLowFlag = context!!.resources.getStringArray(R.array.broadcastTheftFlags)[0]
 
         super.onViewCreated(view, savedInstanceState)
     }

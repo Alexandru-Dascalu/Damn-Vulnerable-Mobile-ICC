@@ -594,7 +594,7 @@
         What is the flag when vulnerable app is in security level high ?
     </string>
     <string name="securityVeryHighQuestion">
-        What is the flag when vulnerable app is in security level high ?
+        What is the flag when vulnerable app is in security level very high ?
     </string>
     <string name="securityImpossibleQuestion">
         What is the flag when vulnerable app is in security level impossible ?
@@ -607,4 +607,6 @@
     <string name="malwareAppHint">Malware</string>
     <string name="flagHint">Flag</string>
     <string name="submitButtonText">Submit</string>
+    <string name="wrongAnswer">Wrong answer!</string>
+    <string name="completed">Completed</string>
 </resources>
