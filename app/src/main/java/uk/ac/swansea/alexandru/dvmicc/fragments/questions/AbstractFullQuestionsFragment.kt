@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 
 import uk.ac.swansea.alexandru.dvmicc.R
 
+/**
+ * Abstract super class for all questions fragments for challenges with all five security levels.
+ */
 abstract class AbstractFullQuestionsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val questionsRootView = inflater.inflate(R.layout.full_questions_fragment, container, false)
@@ -16,6 +19,11 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         return questionsRootView
     }
 
+    /**
+     * Sets the text for the questions for the five security level flags. Subclasses should override
+     * this to set the text for the malware and vulnerable app questions, and they should call the
+     * super class method before returning.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val securityLowTextView = view.findViewById<TextView>(R.id.securityLowQuestionTextView)
         securityLowTextView.text = context!!.resources.getString(R.string.securityLowQuestion)
