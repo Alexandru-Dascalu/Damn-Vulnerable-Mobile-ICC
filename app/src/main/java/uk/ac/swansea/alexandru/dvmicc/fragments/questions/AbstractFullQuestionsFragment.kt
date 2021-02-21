@@ -1,6 +1,5 @@
 package uk.ac.swansea.alexandru.dvmicc.fragments.questions
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +8,17 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.color.MaterialColors
 import com.google.android.material.textfield.TextInputLayout
 
 import uk.ac.swansea.alexandru.dvmicc.R
+import uk.ac.swansea.alexandru.dvmicc.misc.QuestionButtonClickListener
 
 /**
  * Abstract super class for all questions fragments for challenges with all five security levels.
  */
 abstract class AbstractFullQuestionsFragment : Fragment() {
+    protected abstract var vulnerableAppName: String?
+    protected abstract var malwareName: String?
     protected abstract var securityLowFlag: String?
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,34 +45,44 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         val securityVeryHighTextView = view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView)
         securityVeryHighTextView.text = context!!.resources.getString(R.string.securityVeryHighQuestion)
 
-        val securityImpossibleTextView = view.findViewById<TextView>(R.id.securityImpossibleQuestionTextView)
-        securityImpossibleTextView.text = context!!.resources.getString(R.string.securityImpossibleQuestion)
+        setButtonClickListeners(view)
+    }
 
-        val textInputLayout = view.findViewById<TextInputLayout>(R.id.securityLowInput)
+    private fun setButtonClickListeners(view: View) {
+        val vulnerableAppQuestionButton = view.findViewById<MaterialButton>(R.id.vulnerableAppQuestionButton)
+        var editText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
+        var textInputLayout = view.findViewById<TextInputLayout>(R.id.vulnerableAppInput)
+        vulnerableAppQuestionButton.setOnClickListener(QuestionButtonClickListener(vulnerableAppName,
+                view.context, editText, textInputLayout))
+
+        val malwareQuestionButton = view.findViewById<MaterialButton>(R.id.malwareQuestionButton)
+        editText = view.findViewById<EditText>(R.id.malwareAppEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.malwareInput)
+        malwareQuestionButton.setOnClickListener(QuestionButtonClickListener(malwareName,
+                view.context, editText, textInputLayout))
+
         val securityLowButton = view.findViewById<MaterialButton>(R.id.securityLowButton)
+        editText = view.findViewById<EditText>(R.id.securityLowEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.securityLowInput)
+        securityLowButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
+                view.context, editText, textInputLayout))
 
-        val answerButtonListener = View.OnClickListener { buttonView ->
-            val button: MaterialButton = buttonView as MaterialButton
-            val editText = view.findViewById<EditText>(R.id.securityLowEditText)
+        val securityMediumButton = view.findViewById<MaterialButton>(R.id.securityMediumButton)
+        editText = view.findViewById<EditText>(R.id.securityMediumEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.securityMediumInput)
+        securityMediumButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
+                view.context, editText, textInputLayout))
 
-            if(editText.text.toString() != securityLowFlag) {
-                textInputLayout.error = context!!.resources.getString(R.string.wrongAnswer)
-            } else {
-                textInputLayout.error = null
-                button.text = context!!.resources.getString(R.string.completed)
+        val securityHighButton = view.findViewById<MaterialButton>(R.id.securityHighButton)
+        editText = view.findViewById<EditText>(R.id.securityHighEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.securityHighInput)
+        securityHighButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
+                view.context, editText, textInputLayout))
 
-                button.setBackgroundColor(MaterialColors.getColor(context!!,
-                    R.attr.colorBackgroundFloating, Color.BLACK))
-                button.setTextColor(MaterialColors.getColor(context!!,
-                    R.attr.colorSecondary, Color.BLACK))
-                button.strokeWidth = 5
-                button.setStrokeColorResource(R.color.lime)
-
-                button.isEnabled = false
-                editText.isFocusable = false
-            }
-        }
-
-        securityLowButton.setOnClickListener(answerButtonListener)
+        val securityVeryHighButton = view.findViewById<MaterialButton>(R.id.securityVeryHighButton)
+        editText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.securityVeryHighInput)
+        securityVeryHighButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
+                view.context, editText, textInputLayout))
     }
 }

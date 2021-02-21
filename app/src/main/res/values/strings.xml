@@ -596,9 +596,6 @@
     <string name="securityVeryHighQuestion">
         What is the flag when vulnerable app is in security level very high ?
     </string>
-    <string name="securityImpossibleQuestion">
-        What is the flag when vulnerable app is in security level impossible ?
-    </string>
 
     <string name="callLogAppName">Call Log</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
