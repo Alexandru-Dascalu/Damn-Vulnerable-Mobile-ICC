@@ -1,5 +1,6 @@
 package uk.ac.swansea.alexandru.dvmicc
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -16,6 +17,7 @@ import uk.ac.swansea.alexandru.dvmicc.model.Challenge
 
 class ChallengeActivity :  AppCompatActivity() {
     private lateinit var challengeModel : Challenge
+    private val SETTINGS_REQUEST_CODE = 5
 
     private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
@@ -62,10 +64,21 @@ class ChallengeActivity :  AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.settingsButton) {
             val intent = Intent(this, ChallengeSettingsActivity::class.java)
-            startActivity(intent)
+            intent.putExtra("challenge", challengeModel)
+            intent.putExtra("launchedFromChallengeActivity", true)
+
+            startActivityForResult(intent, SETTINGS_REQUEST_CODE)
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK && requestCode == SETTINGS_REQUEST_CODE) {
+
+        }
     }
 
     private fun replaceFragment(newFragment: Fragment) {

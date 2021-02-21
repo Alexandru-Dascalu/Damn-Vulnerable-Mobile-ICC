@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import uk.ac.swansea.alexandru.dvmicc.ChallengeActivity
+import uk.ac.swansea.alexandru.dvmicc.ChallengeSettingsActivity
 
 import uk.ac.swansea.alexandru.dvmicc.R
 import uk.ac.swansea.alexandru.dvmicc.model.Challenge
@@ -37,9 +38,10 @@ class ChallengeButtonAdapter(private val challengeList: Array<String>) : Recycle
 
         init {
             challengeButton.setOnClickListener { item ->
-                val intent = Intent(item.context, ChallengeActivity::class.java)
+                val intent = Intent(item.context, ChallengeSettingsActivity::class.java)
                 intent.putExtra("challenge", challenge)
-
+                intent.putExtra("launchedFromChallengeActivity", false)
+                
                 item.context.startActivity(intent)
             }
         }
