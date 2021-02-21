@@ -597,6 +597,12 @@
         What is the flag when vulnerable app is in security level very high ?
     </string>
 
+    <!--names for challenge operation modes-->
+    <string name="beginnerMode">Beginner Mode</string>
+    <string name="expertMode">Expert Mode</string>
+    <string name="makeOwnMalwareMode">Make your own Malware Mode</string>
+    <string name="fixVulnerableAppMode">Fix Vulnerable App Mode</string>
+
     <string name="callLogAppName">Call Log</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
 
@@ -606,4 +612,11 @@
     <string name="submitButtonText">Submit</string>
     <string name="wrongAnswer">Wrong answer!</string>
     <string name="completed">Completed</string>
+
+    <string name="operationModes">Operation mode for the challenge:</string>
+    <string name="vulnerableAppSecurityLevels">Security Level of vulnerable app:</string>
+    <string name="malwareSecurityLevels">Security Level of malware:</string>
+    <string name="securityLevelWarning">Some security levels may be disabled because the current
+        challenge has fewer security levels.</string>
+    <string name="challengeSettingsActivityTitle">Challenge Settings</string>
 </resources>

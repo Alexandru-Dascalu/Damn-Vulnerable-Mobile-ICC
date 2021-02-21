@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/settingsActivityToolbar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settingsActivityToolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/operationModesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+
+                android:text="@string/operationModes"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/operationModeRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+
+                android:checkedButton="@+id/radio_button_beginner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/operationModesTextView">
+
+                <RadioButton
+                    android:id="@+id/radio_button_beginner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/beginnerMode" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_experienced"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/expertMode" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_make_own_malware"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/makeOwnMalwareMode" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_fix_vulnerable_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/fixVulnerableAppMode" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/securityLevelWarningTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+
+                android:text="@string/securityLevelWarning"
+                android:textColor="#CD3A3A"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/operationModeRadioGroup" />
+
+            <TextView
+                android:id="@+id/vulnerableAppSecurityLevelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+
+                android:layout_marginTop="8dp"
+                android:text="@string/vulnerableAppSecurityLevels"
+                android:textSize="18sp"
+
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/securityLevelWarningTextView" />
+
+            <RadioGroup
+                android:id="@+id/vulnerableAppSecurityLevelRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+
+                android:checkedButton="@+id/radio_button_vulnerable_low"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vulnerableAppSecurityLevelTextView">
+
+                <RadioButton
+                    android:id="@+id/radio_button_vulnerable_low"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/lowSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_vulnerable_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/mediumSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_vulnerable_high"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/highSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_vulnerable_very_high"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/veryHighSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_vulnerable_impossible"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/impossibleSecurityLevel" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/malwareSecurityLevelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+
+                android:text="@string/vulnerableAppSecurityLevels"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vulnerableAppSecurityLevelRadioGroup" />
+
+            <RadioGroup
+                android:id="@+id/malwareSecurityLevelRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+
+                android:checkedButton="@+id/radio_button_malware_low"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/malwareSecurityLevelTextView">
+
+                <RadioButton
+                    android:id="@+id/radio_button_malware_low"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/lowSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_malware_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/mediumSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_malware_high"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/highSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_malware_very_high"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/veryHighSecurityLevel" />
+
+                <RadioButton
+                    android:id="@+id/radio_button_malware_impossible"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/impossibleSecurityLevel" />
+
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
