@@ -450,7 +450,7 @@
         not return information that should be private.
     </string>
 
-    <!--Strings for bottom navigation view of welcome activity-->
+    <!--Strings for bottom navigation view of main activity-->
     <string name="introButtonText">
         Introduction
     </string>
@@ -464,6 +464,9 @@
     <!--Strings for bottom navigation view of challenges activity-->
     <string name="manifestsButtonText">Manifests</string>
     <string name="questionsButtonText">Questions</string>
+
+    <!--Strings for other menu stuff-->
+    <string name="settingsButtonDescription">Settings</string>
 
     <string name="broadcastTheftName">Broadcast Theft</string>
     <string name="broadcastTheftDOSName">Broadcast Theft - DOS</string>
@@ -616,7 +619,10 @@
     <string name="operationModes">Operation mode for the challenge:</string>
     <string name="vulnerableAppSecurityLevels">Security Level of vulnerable app:</string>
     <string name="malwareSecurityLevels">Security Level of malware:</string>
-    <string name="securityLevelWarning">Some security levels may be disabled because the current
-        challenge has fewer security levels.</string>
+    <string name="securityLevelWarning">
+        Some security levels may be disabled because the current
+        challenge has fewer security levels
+    </string>
     <string name="challengeSettingsActivityTitle">Challenge Settings</string>
+    <string name="applyText">Apply</string>
 </resources>

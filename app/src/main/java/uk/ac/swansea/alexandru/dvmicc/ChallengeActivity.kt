@@ -1,6 +1,9 @@
 package uk.ac.swansea.alexandru.dvmicc
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
@@ -49,6 +52,20 @@ class ChallengeActivity :  AppCompatActivity() {
         val bottomBar = findViewById<BottomNavigationView>(R.id.challengeNavigationBar)
         bottomBar.setOnNavigationItemSelectedListener(navigationBarListener)
         bottomBar.selectedItemId = R.id.challengeInformationButton
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.challenge_activity_app_bar_layout, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.settingsButton) {
+            val intent = Intent(this, ChallengeSettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun replaceFragment(newFragment: Fragment) {
