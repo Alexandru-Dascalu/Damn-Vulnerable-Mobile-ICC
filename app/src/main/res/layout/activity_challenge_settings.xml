@@ -165,7 +165,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
 
-                android:text="@string/vulnerableAppSecurityLevels"
+                android:text="@string/malwareSecurityLevels"
                 android:textSize="18sp"
                 android:textStyle="bold"
 
@@ -209,12 +209,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/veryHighSecurityLevel" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_malware_impossible"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/impossibleSecurityLevel" />
 
             </RadioGroup>
 
