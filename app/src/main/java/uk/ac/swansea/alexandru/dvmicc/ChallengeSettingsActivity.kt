@@ -17,16 +17,32 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 
 import java.io.File
+import java.io.FileInputStream
+import java.io.InputStreamReader
 import java.io.FileOutputStream
+import java.io.BufferedReader
 import java.io.OutputStreamWriter
+import java.lang.IllegalStateException
+import java.util.Locale
 
 import uk.ac.swansea.alexandru.dvmicc.model.Challenge
 
 class ChallengeSettingsActivity :  AppCompatActivity() {
-    private val requestStoragePermissionLauncher = registerForActivityResult(
+    private val writeRequestStoragePermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
             applySettings()
+        } else {
+            val rootView = window.decorView.rootView
+            Snackbar.make(rootView, R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG)
+                    .show()
+        }
+    }
+
+    private val readRequestStoragePermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+        if (isGranted) {
+            loadSecuritySettingsFromFile()
         } else {
             val rootView = window.decorView.rootView
             Snackbar.make(rootView, R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG)
@@ -42,6 +58,78 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         setSupportActionBar(materialToolbar)
 
         title = resources.getString(R.string.challengeSettingsActivityTitle)
+
+        loadSecuritySettings()
+    }
+
+    private fun loadSecuritySettings() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.
+                READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            val storageState = Environment.getExternalStorageState()
+
+            if((storageState == Environment.MEDIA_MOUNTED) || (storageState == Environment.
+                    MEDIA_MOUNTED_READ_ONLY)) {
+                loadSecuritySettingsFromFile()
+            }
+        } else {
+            readRequestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+    }
+
+    private fun loadSecuritySettingsFromFile() {
+        val storageState = Environment.getExternalStorageState()
+
+        if((storageState == Environment.MEDIA_MOUNTED)) {
+            val vulnerableSecurityLevelButtonGroup: RadioGroup = findViewById<RadioGroup>(R.id
+                    .vulnerableAppSecurityLevelRadioGroup)
+            val malwareSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
+                    .malwareSecurityLevelRadioGroup)
+
+            val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
+            if (settingsFile.exists()) {
+                val reader = BufferedReader(InputStreamReader(FileInputStream(settingsFile)))
+
+                val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
+                val malwareSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
+
+                when(vulnerableAppSecurityLevel) {
+                    "low" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_low)
+                    }
+                    "medium" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_medium)
+                    }
+                    "high" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_high)
+                    }
+                    "very high" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_very_high)
+                    }
+                    "impossible" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_impossible)
+                    } else -> {
+                    throw IllegalStateException("Security level in file has invalid value!")
+                }
+                }
+
+                when(malwareSecurityLevel) {
+                    "low" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_low)
+                    }
+                    "medium" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_medium)
+                    }
+                    "high" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_high)
+                    }
+                    "very high" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_very_high)
+                    } else -> {
+                        throw IllegalStateException("Security level in file has invalid value!")
+                    }
+                }
+            }
+        }
     }
 
     fun onApplySettings(view: View) {
@@ -73,7 +161,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
                 saveSecurityLevelsToFile()
             }
         } else {
-            requestStoragePermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            writeRequestStoragePermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
     }
 
@@ -87,9 +175,9 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
                     .malwareSecurityLevelRadioGroup)
 
             val vulnerableAppSecurityLevel: String = findViewById<RadioButton>(
-                    vulnerableSecurityLevelButtonGroup.checkedRadioButtonId).text.toString()
+                    vulnerableSecurityLevelButtonGroup.checkedRadioButtonId).text.toString().toLowerCase(Locale.ROOT)
             val malwareSecurityLevel: String = findViewById<RadioButton>(
-                    malwareSecurityLevelButtonGroup.checkedRadioButtonId).text.toString()
+                    malwareSecurityLevelButtonGroup.checkedRadioButtonId).text.toString().toLowerCase(Locale.ROOT)
 
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
             val writer = OutputStreamWriter(FileOutputStream(settingsFile))
