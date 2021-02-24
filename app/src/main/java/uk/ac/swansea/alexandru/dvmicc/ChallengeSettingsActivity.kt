@@ -33,9 +33,8 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         if (isGranted) {
             applySettings()
         } else {
-            val rootView = window.decorView.rootView
-            Snackbar.make(rootView, R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG)
-                    .show()
+            Snackbar.make(findViewById(R.id.malwareSecurityLevelRadioGroup),
+                    R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -44,9 +43,8 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         if (isGranted) {
             loadSecuritySettingsFromFile()
         } else {
-            val rootView = window.decorView.rootView
-            Snackbar.make(rootView, R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG)
-                    .show()
+            Snackbar.make(findViewById(R.id.malwareSecurityLevelRadioGroup),
+                    R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -59,77 +57,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
 
         title = resources.getString(R.string.challengeSettingsActivityTitle)
 
-        loadSecuritySettings()
-    }
-
-    private fun loadSecuritySettings() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.
-                READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            val storageState = Environment.getExternalStorageState()
-
-            if((storageState == Environment.MEDIA_MOUNTED) || (storageState == Environment.
-                    MEDIA_MOUNTED_READ_ONLY)) {
-                loadSecuritySettingsFromFile()
-            }
-        } else {
-            readRequestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-        }
-    }
-
-    private fun loadSecuritySettingsFromFile() {
-        val storageState = Environment.getExternalStorageState()
-
-        if((storageState == Environment.MEDIA_MOUNTED)) {
-            val vulnerableSecurityLevelButtonGroup: RadioGroup = findViewById<RadioGroup>(R.id
-                    .vulnerableAppSecurityLevelRadioGroup)
-            val malwareSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
-                    .malwareSecurityLevelRadioGroup)
-
-            val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
-            if (settingsFile.exists()) {
-                val reader = BufferedReader(InputStreamReader(FileInputStream(settingsFile)))
-
-                val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
-                val malwareSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
-
-                when(vulnerableAppSecurityLevel) {
-                    "low" -> {
-                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_low)
-                    }
-                    "medium" -> {
-                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_medium)
-                    }
-                    "high" -> {
-                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_high)
-                    }
-                    "very high" -> {
-                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_very_high)
-                    }
-                    "impossible" -> {
-                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_impossible)
-                    } else -> {
-                    throw IllegalStateException("Security level in file has invalid value!")
-                }
-                }
-
-                when(malwareSecurityLevel) {
-                    "low" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_low)
-                    }
-                    "medium" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_medium)
-                    }
-                    "high" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_high)
-                    }
-                    "very high" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_very_high)
-                    } else -> {
-                        throw IllegalStateException("Security level in file has invalid value!")
-                    }
-                }
-            }
-        }
+        initialiseSecuritySettings()
     }
 
     fun onApplySettings(view: View) {
@@ -186,6 +114,79 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
             writer.write(settings)
 
             writer.close()
+        }
+    }
+    private fun initialiseSecuritySettings() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.
+                READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            val storageState = Environment.getExternalStorageState()
+
+            if((storageState == Environment.MEDIA_MOUNTED) || (storageState == Environment.
+                    MEDIA_MOUNTED_READ_ONLY)) {
+                loadSecuritySettingsFromFile()
+            }
+        } else {
+            readRequestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+    }
+
+    private fun loadSecuritySettingsFromFile() {
+        val storageState = Environment.getExternalStorageState()
+
+        if((storageState == Environment.MEDIA_MOUNTED)) {
+            val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
+                    .vulnerableAppSecurityLevelRadioGroup)
+            val malwareSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
+                    .malwareSecurityLevelRadioGroup)
+
+            val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
+
+            if (settingsFile.exists()) {
+                val reader = BufferedReader(InputStreamReader(FileInputStream(settingsFile)))
+
+                val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
+                val malwareSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
+
+                when(vulnerableAppSecurityLevel) {
+                    "low" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_low)
+                    }
+                    "medium" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_medium)
+                    }
+                    "high" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_high)
+                    }
+                    "very high" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_very_high)
+                    }
+                    "impossible" -> {
+                        vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_impossible)
+                    } else -> {
+                    throw IllegalStateException("Security level in file has invalid value!")
+                }
+                }
+
+                when(malwareSecurityLevel) {
+                    "low" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_low)
+                    }
+                    "medium" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_medium)
+                    }
+                    "high" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_high)
+                    }
+                    "very high" -> {
+                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_very_high)
+                    } else -> {
+                    throw IllegalStateException("Security level in file has invalid value!")
+                }
+                }
+            }
+        } else {
+            Snackbar.make(findViewById(R.id.malwareSecurityLevelRadioGroup), "External storage is not present!",
+                    Snackbar.LENGTH_LONG).show()
         }
     }
 }
