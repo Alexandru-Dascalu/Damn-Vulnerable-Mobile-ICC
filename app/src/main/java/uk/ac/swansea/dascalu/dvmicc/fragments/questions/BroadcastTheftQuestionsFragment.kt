@@ -1,10 +1,10 @@
-package uk.ac.swansea.alexandru.dvmicc.fragments.questions
+package uk.ac.swansea.dascalu.dvmicc.fragments.questions
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 
-import uk.ac.swansea.alexandru.dvmicc.R
+import uk.ac.swansea.dascalu.dvmicc.R
 
 class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
     override var vulnerableAppName: String? = null

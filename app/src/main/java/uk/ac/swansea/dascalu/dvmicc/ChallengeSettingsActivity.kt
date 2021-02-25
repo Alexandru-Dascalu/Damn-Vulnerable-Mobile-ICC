@@ -1,4 +1,4 @@
-package uk.ac.swansea.alexandru.dvmicc
+package uk.ac.swansea.dascalu.dvmicc
 
 import android.Manifest
 import android.app.Activity
@@ -25,7 +25,7 @@ import java.io.OutputStreamWriter
 import java.lang.IllegalStateException
 import java.util.Locale
 
-import uk.ac.swansea.alexandru.dvmicc.model.Challenge
+import uk.ac.swansea.dascalu.dvmicc.model.Challenge
 
 class ChallengeSettingsActivity :  AppCompatActivity() {
     private val writeRequestStoragePermissionLauncher = registerForActivityResult(

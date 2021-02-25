@@ -1,4 +1,4 @@
-package uk.ac.swansea.alexandru.dvmicc.fragments
+package uk.ac.swansea.dascalu.dvmicc.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,18 +11,26 @@ import io.github.kbiakov.codeview.adapters.Format
 import io.github.kbiakov.codeview.adapters.Options
 import io.github.kbiakov.codeview.highlight.ColorTheme
 
-import uk.ac.swansea.alexandru.dvmicc.R
+import uk.ac.swansea.dascalu.dvmicc.R
 
-class ManifestsFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val manifestsRootView = inflater.inflate(R.layout.manifests_fragment, container, false)
+class InformationFragment : Fragment() {
 
-        return manifestsRootView
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        val informationRootView = inflater.inflate(R.layout.information_fragment, container, false)
+
+        return informationRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val customPermissionXML = view.findViewById<CodeView>(R.id.broadcastTheftManifest)
+        val customPermissionXML = view.findViewById<CodeView>(R.id.permissionXML)
         setCodeViewOptions(customPermissionXML, "xml", R.string.customPermissionsCode)
+
+        val implicitIntentCode : CodeView = view.findViewById(R.id.implicitIntentCode)
+        setCodeViewOptions(implicitIntentCode, "java", R.string.implicitIntentCode)
+
+        val intentFilterXML : CodeView = view.findViewById(R.id.intentFilterXML)
+        setCodeViewOptions(intentFilterXML, "xml", R.string.intentFilterCode)
     }
 
     private fun setCodeViewOptions(codeView: CodeView, language: String, codeStringID: Int) {

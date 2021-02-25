@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "uk.ac.swansea.alexandru.dvmicc"
+        applicationId "uk.ac.swansea.dascalu.dvmicc"
         minSdkVersion 17
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25

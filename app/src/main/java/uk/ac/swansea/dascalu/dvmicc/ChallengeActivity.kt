@@ -1,4 +1,4 @@
-package uk.ac.swansea.alexandru.dvmicc
+package uk.ac.swansea.dascalu.dvmicc
 
 import android.app.Activity
 import android.content.Intent
@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import uk.ac.swansea.alexandru.dvmicc.fragments.ChallengeInformationFragment
-import uk.ac.swansea.alexandru.dvmicc.fragments.ManifestsFragment
-import uk.ac.swansea.alexandru.dvmicc.fragments.questions.BroadcastTheftQuestionsFragment
-import uk.ac.swansea.alexandru.dvmicc.model.Challenge
+import uk.ac.swansea.dascalu.dvmicc.fragments.ChallengeInformationFragment
+import uk.ac.swansea.dascalu.dvmicc.fragments.ManifestsFragment
+import uk.ac.swansea.dascalu.dvmicc.fragments.questions.BroadcastTheftQuestionsFragment
+import uk.ac.swansea.dascalu.dvmicc.model.Challenge
 
 class ChallengeActivity :  AppCompatActivity() {
     private lateinit var challengeModel : Challenge

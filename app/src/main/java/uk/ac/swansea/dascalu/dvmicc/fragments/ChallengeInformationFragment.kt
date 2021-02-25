@@ -1,4 +1,4 @@
-package uk.ac.swansea.alexandru.dvmicc.fragments
+package uk.ac.swansea.dascalu.dvmicc.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-import uk.ac.swansea.alexandru.dvmicc.R
+import uk.ac.swansea.dascalu.dvmicc.R
 
 class ChallengeInformationFragment(private val challengeNameIndex: Int,
                                    private val attackExplanationId: Int) : Fragment() {

@@ -1,14 +1,14 @@
-package uk.ac.swansea.alexandru.dvmicc
+package uk.ac.swansea.dascalu.dvmicc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import uk.ac.swansea.alexandru.dvmicc.fragments.ChallengesFragment
+import uk.ac.swansea.dascalu.dvmicc.fragments.ChallengesFragment
 
-import uk.ac.swansea.alexandru.dvmicc.fragments.InformationFragment
-import uk.ac.swansea.alexandru.dvmicc.fragments.IntroductionFragment
+import uk.ac.swansea.dascalu.dvmicc.fragments.InformationFragment
+import uk.ac.swansea.dascalu.dvmicc.fragments.IntroductionFragment
 
 class MainActivity : AppCompatActivity() {
 

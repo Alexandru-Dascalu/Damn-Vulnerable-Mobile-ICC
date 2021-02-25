@@ -1,4 +1,4 @@
-package uk.ac.swansea.alexandru.dvmicc.fragments.questions
+package uk.ac.swansea.dascalu.dvmicc.fragments.questions
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 
-import uk.ac.swansea.alexandru.dvmicc.R
-import uk.ac.swansea.alexandru.dvmicc.misc.QuestionButtonClickListener
+import uk.ac.swansea.dascalu.dvmicc.R
+import uk.ac.swansea.dascalu.dvmicc.misc.QuestionButtonClickListener
 
 /**
  * Abstract super class for all questions fragments for challenges with all five security levels.
