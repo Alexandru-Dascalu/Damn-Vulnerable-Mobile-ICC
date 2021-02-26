@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">News Aggregator</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="email_input_hint">Email address</string>
+    <string name="password_input_hint">Password</string>
+    <string name="confirm_password_input_hint">Confirm password</string>
+    <string name="wrong_login_msg">The email address or the password are incorrect!</string>
+    <string name="create_account">Create account</string>
+    <string name="log_in_button">Log In</string>
+    <string name="log_out_button">Log Out</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="create_account_button">Create account</string>
+    <string name="invalid_email_msg">You need to type in a valid email address!</string>
+    <string name="weak_password_msg">Your password is too weak!</string>
+    <string name="existing_user_collision_msg">A user account with this email already exists!</string>
+    <string name="password_confirmation_msg">The passwords do not match!</string>
+    <string name="add_stream_dialog_title">Add custom stream</string>
+    <string name="remove_stream_dialog_title">Remove custom stream</string>
+    <string name="add_keyword_dialog_title">Add custom keyword</string>
+    <string name="remove_keyword_dialog_title">Remove custom keyword</string>
+    <string name="add_msg">Add</string>
+    <string name="remove_msg">Remove</string>
+    <string name="cancel_msg">Cancel</string>
+    <string name="stream_name_type_in_message">Type in news stream name!</string>
+    <string name="keyword_type_in_message">Type in a keyword!</string>
+    <string name="remove_keyword_msg">Remove keyword</string>
+    <string name="customise_streams_title">Your news streams</string>
+    <string name="all">All</string>
+    <string name="remove_all_stream_msg">The All news stream can not be removed!</string>
+    <string name="recommended">Recommended</string>
+    <string name="loading">Loading</string>
+    <string name="article_image_content_description">article image</string>
+
+    <string name="article_card_reason_message">"Because you follow %1$s"</string>
+    <string name="log_in_credentials_msg">Type in credentials!</string>
+</resources>
