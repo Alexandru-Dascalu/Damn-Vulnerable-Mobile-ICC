@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc
+package uk.ac.swansea.dascalu.home
 
 import org.junit.Test
 

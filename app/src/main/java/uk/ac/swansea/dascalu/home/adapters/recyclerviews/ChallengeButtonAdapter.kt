@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.adapters.recyclerviews
+package uk.ac.swansea.dascalu.home.adapters.recyclerviews
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
-import uk.ac.swansea.dascalu.dvmicc.ChallengeSettingsActivity
 
-import uk.ac.swansea.dascalu.dvmicc.R
-import uk.ac.swansea.dascalu.dvmicc.model.Challenge
+import uk.ac.swansea.dascalu.home.ChallengeSettingsActivity
+import uk.ac.swansea.dascalu.home.R
+import uk.ac.swansea.dascalu.home.model.Challenge
 
 class ChallengeButtonAdapter(private val challengeList: Array<String>) : RecyclerView.Adapter<ChallengeButtonAdapter.ViewHolder>() {
 

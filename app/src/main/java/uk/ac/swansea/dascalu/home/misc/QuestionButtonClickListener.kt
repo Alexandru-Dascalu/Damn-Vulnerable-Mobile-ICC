@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.misc
+package uk.ac.swansea.dascalu.home.misc
 
 import android.content.Context
 import android.graphics.Color
@@ -7,7 +7,7 @@ import android.widget.EditText
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.textfield.TextInputLayout
-import uk.ac.swansea.dascalu.dvmicc.R
+import uk.ac.swansea.dascalu.home.R
 
 class QuestionButtonClickListener(private val correctAnswer: String?,
                                   private val context: Context, private val editText: EditText,

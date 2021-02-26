@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.fragments
+package uk.ac.swansea.dascalu.home.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import io.github.kbiakov.codeview.adapters.Format
 import io.github.kbiakov.codeview.adapters.Options
 import io.github.kbiakov.codeview.highlight.ColorTheme
 
-import uk.ac.swansea.dascalu.dvmicc.R
+import uk.ac.swansea.dascalu.home.R
 
 class InformationFragment : Fragment() {
 
@@ -34,7 +34,7 @@ class InformationFragment : Fragment() {
     }
 
     private fun setCodeViewOptions(codeView: CodeView, language: String, codeStringID: Int) {
-        codeView.setOptions(Options.Default.get(context!!)
+        codeView.setOptions(Options.Default.get(requireContext())
                 .withLanguage(language)
                 .withCode(getString(codeStringID))
                 .withTheme(ColorTheme.MONOKAI)

@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.fragments
+package uk.ac.swansea.dascalu.home.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-import uk.ac.swansea.dascalu.dvmicc.R
-import uk.ac.swansea.dascalu.dvmicc.adapters.recyclerviews.ChallengeButtonAdapter
+import uk.ac.swansea.dascalu.home.R
+import uk.ac.swansea.dascalu.home.adapters.recyclerviews.ChallengeButtonAdapter
 
 class ChallengesFragment : Fragment() {
 

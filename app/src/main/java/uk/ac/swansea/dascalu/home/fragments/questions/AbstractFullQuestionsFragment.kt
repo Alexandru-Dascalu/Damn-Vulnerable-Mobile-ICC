@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.fragments.questions
+package uk.ac.swansea.dascalu.home.fragments.questions
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 
-import uk.ac.swansea.dascalu.dvmicc.R
-import uk.ac.swansea.dascalu.dvmicc.misc.QuestionButtonClickListener
+import uk.ac.swansea.dascalu.home.R
+import uk.ac.swansea.dascalu.home.misc.QuestionButtonClickListener
 
 /**
  * Abstract super class for all questions fragments for challenges with all five security levels.
@@ -34,16 +34,16 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val securityLowTextView = view.findViewById<TextView>(R.id.securityLowQuestionTextView)
-        securityLowTextView.text = context!!.resources.getString(R.string.securityLowQuestion)
+        securityLowTextView.text = requireContext().resources.getString(R.string.securityLowQuestion)
 
         val securityMediumTextView = view.findViewById<TextView>(R.id.securityMediumQuestionTextView)
-        securityMediumTextView.text = context!!.resources.getString(R.string.securityMediumQuestion)
+        securityMediumTextView.text = requireContext().resources.getString(R.string.securityMediumQuestion)
 
         val securityHighTextView = view.findViewById<TextView>(R.id.securityHighQuestionTextView)
-        securityHighTextView.text = context!!.resources.getString(R.string.securityHighQuestion)
+        securityHighTextView.text = requireContext().resources.getString(R.string.securityHighQuestion)
 
         val securityVeryHighTextView = view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView)
-        securityVeryHighTextView.text = context!!.resources.getString(R.string.securityVeryHighQuestion)
+        securityVeryHighTextView.text = requireContext().resources.getString(R.string.securityVeryHighQuestion)
 
         setButtonClickListeners(view)
     }
