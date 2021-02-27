@@ -112,10 +112,11 @@
             android:id="@+id/securityLowQuestionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
 
+            android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="16dp"
+
             android:textAppearance="@style/questionStyle"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,10 +163,11 @@
             android:id="@+id/securityMediumQuestionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
 
+            android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="16dp"
+
             android:textAppearance="@style/questionStyle"
 
             app:layout_constraintEnd_toEndOf="parent"
