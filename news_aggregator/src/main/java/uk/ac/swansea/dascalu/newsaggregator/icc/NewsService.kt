@@ -36,7 +36,8 @@ class NewsService : Service() {
             newsStreamName = intent.extras!!.getString("news_stream")!!
 
             if(debugMode) {
-                Thread { getdefaultArticles() }
+                val thread = Thread { getdefaultArticles() }
+                thread.start()
             } else {
                 val articles = ArrayList<ArticleDto>()
                 if(newsStreamName != getString(R.string.recommended)) {
