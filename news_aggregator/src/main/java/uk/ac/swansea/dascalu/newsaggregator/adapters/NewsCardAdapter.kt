@@ -1,5 +1,6 @@
 package uk.ac.swansea.dascalu.newsaggregator.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.text.format.DateUtils
 import android.view.LayoutInflater
@@ -38,6 +39,7 @@ class NewsCardAdapter(private var articleList: List<ArticleDto>,
         return ViewHolder(view)
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article = articleList[position]
         val reason = Database.instance.getKeywordForArticle(article)
@@ -106,6 +108,7 @@ class NewsCardAdapter(private var articleList: List<ArticleDto>,
         }
     }
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onGetArticles(articles: List<ArticleDto>) {
         if(newsStreamFragment.activity != null) {
             newsStreamFragment.activity!!.runOnUiThread {

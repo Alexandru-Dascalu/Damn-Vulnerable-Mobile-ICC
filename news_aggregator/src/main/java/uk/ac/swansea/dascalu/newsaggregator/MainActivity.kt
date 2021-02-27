@@ -1,5 +1,6 @@
 package uk.ac.swansea.dascalu.newsaggregator
 
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,10 +15,15 @@ import com.google.firebase.auth.FirebaseAuth
 import uk.ac.swansea.dascalu.newsaggregator.fragments.BookmarksFragment
 import uk.ac.swansea.dascalu.newsaggregator.fragments.CustomiseStreamsFragment
 import uk.ac.swansea.dascalu.newsaggregator.fragments.HomeFragment
+import uk.ac.swansea.dascalu.newsaggregator.icc.NewsBroadcastReceiver
+import uk.ac.swansea.dascalu.newsaggregator.icc.NewsService
 
 class MainActivity : AppCompatActivity() {
     private val authenticator = FirebaseAuth.getInstance()
     private val homeFragment = HomeFragment()
+    private var receiverIntentFilter : IntentFilter? = null
+    var newsBroadcastReceiver : NewsBroadcastReceiver? = null
+        private set
 
     private val navigationBarItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -53,6 +59,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        newsBroadcastReceiver = NewsBroadcastReceiver()
+        receiverIntentFilter = IntentFilter()
+        receiverIntentFilter!!.addAction(NewsService.NEWS_RESULT_BROADCAST_ACTION)
+
         replaceFragment(homeFragment)
     }
 
@@ -68,6 +78,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        registerReceiver(newsBroadcastReceiver, receiverIntentFilter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(newsBroadcastReceiver)
     }
 
     private fun replaceFragment(newFragment: Fragment) {

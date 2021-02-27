@@ -23,6 +23,9 @@
         <activity android:name=".SignUpActivity"/>
         <activity android:name=".LoadingActivity"/>
         <activity android:name=".FullArticleActivity"/>
+        <service android:name=".icc.NewsService"
+            android:exported="false"
+            android:enabled="true"/>
     </application>
 
 </manifest>
