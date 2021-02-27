@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dfl.newsapi.model.ArticleDto
 import com.squareup.picasso.Picasso
 
-import uk.ac.swansea.dascalu.newsaggregator.Database
+import uk.ac.swansea.dascalu.newsaggregator.model.Database
 import uk.ac.swansea.dascalu.newsaggregator.FullArticleActivity
 import uk.ac.swansea.dascalu.newsaggregator.NewsApiCallback
 import uk.ac.swansea.dascalu.newsaggregator.R

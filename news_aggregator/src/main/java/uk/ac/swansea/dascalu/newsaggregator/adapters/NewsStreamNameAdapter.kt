@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-import uk.ac.swansea.dascalu.newsaggregator.Database
+import uk.ac.swansea.dascalu.newsaggregator.model.Database
 import uk.ac.swansea.dascalu.newsaggregator.R
 import uk.ac.swansea.dascalu.newsaggregator.fragments.CustomiseKeywordFragment
 

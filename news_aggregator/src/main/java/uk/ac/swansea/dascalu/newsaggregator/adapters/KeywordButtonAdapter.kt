@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import uk.ac.swansea.dascalu.newsaggregator.Database
+import uk.ac.swansea.dascalu.newsaggregator.model.Database
 import uk.ac.swansea.dascalu.newsaggregator.R
 import java.util.Locale
 

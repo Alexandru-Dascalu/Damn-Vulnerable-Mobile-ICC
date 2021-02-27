@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import uk.ac.swansea.dascalu.newsaggregator.model.Database
 
 class LoadingActivity : AppCompatActivity(), FirebaseLoadedCallback {
     override fun onCreate(savedInstanceState: Bundle?) {

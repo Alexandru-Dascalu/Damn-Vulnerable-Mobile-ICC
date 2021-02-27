@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.newsaggregator
+package uk.ac.swansea.dascalu.newsaggregator.model
 
 import android.util.Log
 import com.dfl.newsapi.model.ArticleDto
@@ -8,8 +8,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
-import uk.ac.swansea.dascalu.newsaggregator.model.NewsStream
-import uk.ac.swansea.dascalu.newsaggregator.model.User
+import uk.ac.swansea.dascalu.newsaggregator.FirebaseLoadedCallback
 import java.lang.IllegalStateException
 
 class Database (private val authenticator: FirebaseAuth, private val callback : FirebaseLoadedCallback) {

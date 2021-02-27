@@ -20,7 +20,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import io.reactivex.schedulers.Schedulers
 
-import uk.ac.swansea.dascalu.newsaggregator.Database
+import uk.ac.swansea.dascalu.newsaggregator.model.Database
 import uk.ac.swansea.dascalu.newsaggregator.adapters.NewsCardAdapter
 import uk.ac.swansea.dascalu.newsaggregator.R
 

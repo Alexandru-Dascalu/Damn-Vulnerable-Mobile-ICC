@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-import uk.ac.swansea.dascalu.newsaggregator.Database
+import uk.ac.swansea.dascalu.newsaggregator.model.Database
 import uk.ac.swansea.dascalu.newsaggregator.R
 import uk.ac.swansea.dascalu.newsaggregator.adapters.NewsStreamTabAdapter
 
@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
         val viewPager = view.findViewById<ViewPager2>(R.id.stream_pager)
 
         val newsStreams = Database.instance.getUserCustomStreamNames()
-        newsStreams.add(context!!.resources.getString(R.string.recommended))
+        newsStreams.add(requireContext().resources.getString(R.string.recommended))
 
         viewPager.adapter = NewsStreamTabAdapter(activity as AppCompatActivity, newsStreams)
         TabLayoutMediator(tabLayout, viewPager,
