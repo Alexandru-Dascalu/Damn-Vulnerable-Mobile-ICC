@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.dfl.newsapi.model.ArticleDto
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import uk.ac.swansea.dascalu.dvmicc.newsaggregator.R
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.adapters.NewsCardAdapter
 
@@ -26,11 +27,11 @@ class NewsBroadcastReceiver : BroadcastReceiver() {
 
                 streamToAdapterMap[newsStreamName]!!.onGetArticles(articles)
             } else {
-                Toast.makeText(context, "broadcast does contain articles or stream name!",
+                Toast.makeText(context, context!!.getString(R.string.broadcastInvalidExtrasError),
                     Toast.LENGTH_LONG).show()
             }
         } else {
-            Toast.makeText(context, "News broadcast received with no extras!",
+            Toast.makeText(context, context!!.getString(R.string.broadcastExtrasError),
                 Toast.LENGTH_LONG).show()
         }
     }

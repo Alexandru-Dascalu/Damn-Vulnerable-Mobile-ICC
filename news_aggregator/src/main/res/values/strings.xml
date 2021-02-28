@@ -37,6 +37,9 @@
     <string name="fileStoragePermissionWarning">
         App needs file storage access to read security level!
     </string>
+    <string name="storagePermissionAcquired">"Storage permission acquired!"</string>
+    <string name="broadcastInvalidExtrasError">"Broadcast does contain articles or stream name!"</string>
+    <string name="broadcastExtrasError">News broadcast received with no extras!</string>
 
     <string name="lowSecurityLevel">Low</string>
     <string name="mediumSecurityLevel">Medium</string>

@@ -25,7 +25,7 @@ class LogInActivity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
             Snackbar.make(findViewById(R.id.log_in_layout),
-                    "Storage permission acquired!", Snackbar.LENGTH_LONG).show()
+                    R.string.storagePermissionAcquired, Snackbar.LENGTH_LONG).show()
         } else {
             Snackbar.make(findViewById(R.id.log_in_layout),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
