@@ -1,3 +1,4 @@
+include ':call_logger'
 include ':news_aggregator'
 include ':app'
 rootProject.name = "Damn Vulnerable Mobile ICC"
