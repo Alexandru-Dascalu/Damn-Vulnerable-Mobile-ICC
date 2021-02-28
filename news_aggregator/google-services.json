@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:155298191834:android:4a4178e1cdc6cb37ec08e3",
+        "android_client_info": {
+          "package_name": "uk.ac.swansea.dascalu.dvmicc.newsaggregator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155298191834-lt56e4sbck96nejr8nhh9miqfn8st01e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnQzWGmpdPIvGo320Eie84nezo7N9ns-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155298191834-lt56e4sbck96nejr8nhh9miqfn8st01e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:155298191834:android:1d294a21a9195c76ec08e3",
         "android_client_info": {
           "package_name": "uk.ac.swansea.dascalu.newsaggregator"

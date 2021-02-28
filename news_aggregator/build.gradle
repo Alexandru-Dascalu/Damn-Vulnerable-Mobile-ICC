@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "uk.ac.swansea.dascalu.newsaggregator"
+        applicationId "uk.ac.swansea.dascalu.dvmicc.newsaggregator"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
