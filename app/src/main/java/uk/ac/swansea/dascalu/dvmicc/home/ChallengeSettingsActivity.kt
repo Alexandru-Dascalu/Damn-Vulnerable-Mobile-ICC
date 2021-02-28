@@ -149,8 +149,6 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
                 val malwareSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
                 reader.close()
 
-                val packageName = packageName
-
                 when(vulnerableAppSecurityLevel) {
                     "low" -> {
                         vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_low)
