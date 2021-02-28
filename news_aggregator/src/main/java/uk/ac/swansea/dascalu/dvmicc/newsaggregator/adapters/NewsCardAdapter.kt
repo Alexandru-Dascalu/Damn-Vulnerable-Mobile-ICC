@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
+@SuppressLint("UseRequireInsteadOfGet")
 class NewsCardAdapter(private var articleList: List<ArticleDto>,
                       private val newsStreamFragment: NewsStreamFragment)
     : RecyclerView.Adapter<NewsCardAdapter.ViewHolder>(), NewsApiCallback {
@@ -39,7 +40,6 @@ class NewsCardAdapter(private var articleList: List<ArticleDto>,
         return ViewHolder(view)
     }
 
-    @SuppressLint("UseRequireInsteadOfGet")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article = articleList[position]
         val reason = Database.instance.getKeywordForArticle(article)
@@ -108,7 +108,6 @@ class NewsCardAdapter(private var articleList: List<ArticleDto>,
         }
     }
 
-    @SuppressLint("UseRequireInsteadOfGet")
     override fun onGetArticles(articles: List<ArticleDto>) {
         if(newsStreamFragment.activity != null) {
             newsStreamFragment.activity!!.runOnUiThread {

@@ -182,8 +182,8 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
                     "very high" -> {
                         malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_very_high)
                     } else -> {
-                    throw IllegalStateException("Security level in file has invalid value!")
-                }
+                        throw IllegalStateException("Security level in file has invalid value!")
+                    }
                 }
             }
         } else {

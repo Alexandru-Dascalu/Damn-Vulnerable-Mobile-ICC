@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
 import uk.ac.swansea.dascalu.dvmicc.call_logger.adapters.view_pager.CallLogViewPagerAdapter
 
 class MainActivity : AppCompatActivity() {
