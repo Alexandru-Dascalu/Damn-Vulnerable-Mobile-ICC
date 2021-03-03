@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 @SuppressLint("UseRequireInsteadOfGet")
-class LogFragment : Fragment() {
+class LogFragment(val position: Int) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -57,8 +57,15 @@ class LogFragment : Fragment() {
 
     private fun getCallLogData() : List<Call> {
         val callList : MutableList<Call> = mutableListOf<Call>()
-        val callLogs: Uri = Uri.parse("content://call_log/calls")
-        val cursorCallLogs: Cursor? = context!!.contentResolver.query(callLogs, null, null, null, null)
+        var cursorCallLogs: Cursor? =  null
+
+        if(position == 0) {
+            cursorCallLogs = getAllCallsCursor()
+        } else if(position == 1) {
+            cursorCallLogs = getMissedCallsCursor()
+        } else {
+            cursorCallLogs = getUnknownCallsCursor()
+        }
 
         if(cursorCallLogs != null) {
 
@@ -66,7 +73,6 @@ class LogFragment : Fragment() {
                 val stringNumber: String = cursorCallLogs.getString(cursorCallLogs.getColumnIndex(CallLog.Calls.NUMBER))
                 val stringName: String? = cursorCallLogs.getString(cursorCallLogs.getColumnIndex(CallLog.Calls.CACHED_NAME))
                 val stringDuration: String = cursorCallLogs.getString(cursorCallLogs.getColumnIndex(CallLog.Calls.DURATION))
-                val stringType: String = cursorCallLogs.getString(cursorCallLogs.getColumnIndex(CallLog.Calls.TYPE))
 
                 val date : Long = cursorCallLogs.getLong(cursorCallLogs.getColumnIndex(CallLog.Calls.DATE))
                 val dateString : String = getDateString(date)
@@ -79,6 +85,32 @@ class LogFragment : Fragment() {
         }
 
         return callList
+    }
+
+    private fun getAllCallsCursor() : Cursor? {
+        val callLogs: Uri = Uri.parse("content://call_log/calls")
+        val cursorCallLogs = context!!.contentResolver.query(callLogs, null, null,
+                null, "${CallLog.Calls.DATE} DESC")
+
+        return cursorCallLogs
+    }
+
+    private fun getMissedCallsCursor() : Cursor? {
+        val callLogs: Uri = Uri.parse("content://call_log/calls")
+        val cursorCallLogs = context!!.contentResolver.query(callLogs, null,
+                "${CallLog.Calls.TYPE}=${CallLog.Calls.MISSED_TYPE}",
+                null, "${CallLog.Calls.DATE} DESC")
+
+        return cursorCallLogs
+    }
+
+    private fun getUnknownCallsCursor() : Cursor? {
+        val callLogs: Uri = Uri.parse("content://call_log/calls")
+        val cursorCallLogs = context!!.contentResolver.query(callLogs, null,
+                "(${CallLog.Calls.CACHED_NAME} IS NULL) or ${CallLog.Calls.CACHED_NAME}=\"\"",
+                null, "${CallLog.Calls.DATE} DESC")
+
+        return cursorCallLogs
     }
 
     private fun getDateString(milliseconds: Long) : String {

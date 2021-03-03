@@ -8,7 +8,7 @@ import uk.ac.swansea.dascalu.dvmicc.call_logger.fragments.LogFragment
 class CallLogViewPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
     override fun createFragment(position: Int): Fragment {
-        return LogFragment()
+        return LogFragment(position)
     }
 
     override fun getItemCount(): Int {
