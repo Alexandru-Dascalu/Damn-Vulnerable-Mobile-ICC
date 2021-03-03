@@ -4,16 +4,23 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 
 import com.dfl.newsapi.model.ArticleDto
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.R
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.adapters.NewsCardAdapter
+import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.loadSecuritySettingsFromFile
 
 class NewsBroadcastReceiver : BroadcastReceiver() {
     private val streamToAdapterMap : HashMap<String, NewsCardAdapter> = HashMap<String, NewsCardAdapter>()
+
+    init {
+
+    }
 
     override fun onReceive(context: Context?, intent: Intent) {
         if(intent.extras != null) {
@@ -42,5 +49,18 @@ class NewsBroadcastReceiver : BroadcastReceiver() {
      deleted a lot of streams while being in the app.*/
     fun setAdapter(newsStreamName: String, adapter: NewsCardAdapter) {
         streamToAdapterMap[newsStreamName] = adapter
+    }
+
+    private fun acquirePermissions(context: Context) {
+        val securityLevel = loadSecuritySettingsFromFile(context)
+
+        if(securityLevel == context.getString(R.string.mediumSecurityLevel).toLowerCase()) {
+            ContextCompat.checkSelfPermission(context,
+                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N")
+        } else if(securityLevel == context.getString(R.string.highSecurityLevel).toLowerCase()) {
+
+        } else if(securityLevel == context.getString(R.string.veryHighSecurityLevel).toLowerCase()) {
+
+        }
     }
 }

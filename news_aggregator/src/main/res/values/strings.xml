@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">News Aggregator</string>
     <string name="account_settings">Account Settings</string>
     <string name="notification_settings">Notification Settings</string>
@@ -40,6 +40,11 @@
     <string name="storagePermissionAcquired">"Storage permission acquired!"</string>
     <string name="broadcastInvalidExtrasError">"Broadcast does contain articles or stream name!"</string>
     <string name="broadcastExtrasError">News broadcast received with no extras!</string>
+
+    <string name="readNewsPermissionLabel">Get news stories</string>
+    <string name="readNewsPermissionDescription">
+        Permission to read news articles received by the News Aggregator app.
+    </string>
 
     <string name="lowSecurityLevel">Low</string>
     <string name="mediumSecurityLevel">Medium</string>

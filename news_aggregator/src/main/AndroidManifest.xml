@@ -3,7 +3,11 @@
     package="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
 
     <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    
+    <permission android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N"
+        android:label="@string/readNewsPermissionLabel"
+        android:description="@string/readNewsPermissionDescription"/>
 
     <application
         android:allowBackup="true"
