@@ -24,12 +24,14 @@ class LogFragmentAdapter(private val callList: List<Call>) : RecyclerView.Adapte
         if(call.name != null) {
             holder.nameTextView.text = call.name
         } else {
-            holder.nameTextView.text = ""
+            holder.nameTextView.text = holder.nameTextView.context.resources.getString(
+                    R.string.unknown_number)
         }
 
         holder.numberTextView.text = call.number
         holder.dateTextView.text = call.date
-        holder.durationTextView.text = call.duration
+        holder.durationTextView.text = holder.nameTextView.context.resources.getString(
+                R.string.duration, call.duration)
     }
 
     override fun getItemCount(): Int {

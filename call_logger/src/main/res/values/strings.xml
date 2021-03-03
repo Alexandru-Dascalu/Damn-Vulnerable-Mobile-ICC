@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Call Logger</string>
+    <string name="unknown_number">Unknown number</string>
+    <string name="duration">Duration: %1$s</string>
 </resources>

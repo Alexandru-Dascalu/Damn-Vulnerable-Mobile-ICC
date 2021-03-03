@@ -83,7 +83,7 @@ class LogFragment : Fragment() {
 
     private fun getDateString(milliseconds: Long) : String {
         val date = Date(milliseconds)
-        val dateFormat = SimpleDateFormat("dd:MM:yy:HH:mm:ss")
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
 
         return dateFormat.format(date)
     }
