@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/stolenDataScrollView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+
+        <TextView
+            android:id="@+id/stolenDataTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+</ScrollView>

@@ -2,4 +2,8 @@
     <string name="app_name">Call Logger</string>
     <string name="unknown_number">Unknown number</string>
     <string name="duration">Duration: %1$s</string>
+    <string name="malware">Malware</string>
+    <string name="clear_data">Clear stolen data</string>
+    <string name="no_data">No data yet!</string>
+    <string name="stolen_data_cleared">Stolen data cleared!</string>
 </resources>

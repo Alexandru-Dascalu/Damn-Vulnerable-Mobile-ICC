@@ -19,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BroadcastTheftActivity"/>
 
         <receiver android:name=".icc.CallsBroadcastReceiver"
             android:enabled="true">

