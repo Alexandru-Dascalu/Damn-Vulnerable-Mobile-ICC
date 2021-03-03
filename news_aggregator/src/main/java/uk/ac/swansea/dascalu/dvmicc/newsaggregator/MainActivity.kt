@@ -1,20 +1,15 @@
 package uk.ac.swansea.dascalu.dvmicc.newsaggregator
 
-import android.Manifest
 import android.content.IntentFilter
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.result.contract.ActivityResultContracts
 
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.fragments.BookmarksFragment

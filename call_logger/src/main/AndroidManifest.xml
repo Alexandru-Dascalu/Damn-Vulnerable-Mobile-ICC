@@ -19,6 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".icc.CallsBroadcastReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="uk.ac.swansea.dascalu.dvmicc.broadcast.NEWS_RESULT"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

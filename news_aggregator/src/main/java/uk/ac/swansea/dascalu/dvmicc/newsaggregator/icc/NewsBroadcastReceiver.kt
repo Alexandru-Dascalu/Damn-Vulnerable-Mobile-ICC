@@ -36,7 +36,7 @@ class NewsBroadcastReceiver : BroadcastReceiver() {
         }
     }
 
-    /*This ios potentially a memory leak, since when you go and delete a news stream, this broadcast
+    /*This is potentially a memory leak, since when you go and delete a news stream, this broadcast
      receiver will still have a reference to the adapter of the fragment of the deleted stream. This
      receiver lives as long as the main activity lives, so this could be a memory leak if you
      deleted a lot of streams while being in the app.*/
