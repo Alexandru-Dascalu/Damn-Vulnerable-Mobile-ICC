@@ -61,7 +61,6 @@ class LogFragment : Fragment() {
         val cursorCallLogs: Cursor? = context!!.contentResolver.query(callLogs, null, null, null, null)
 
         if(cursorCallLogs != null) {
-            cursorCallLogs.moveToFirst()
 
             while(cursorCallLogs.moveToNext()) {
                 val stringNumber: String = cursorCallLogs.getString(cursorCallLogs.getColumnIndex(CallLog.Calls.NUMBER))
