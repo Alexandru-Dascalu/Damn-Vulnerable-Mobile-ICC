@@ -5,12 +5,20 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE" />
     
-    <permission android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N"
-        android:label="@string/readNewsPermissionLabel"
-        android:description="@string/readNewsPermissionDescription"/>
+    <permission android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_A"
+        android:label="@string/readNewsAPermissionLabel"
+        android:description="@string/readNewsAPermissionDescription"/>
+
+    <permission android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B"
+        android:label="@string/readNewsBPermissionLabel"
+        android:description="@string/readNewsBPermissionDescription"
+        android:protectionLevel="dangerous"/>
 
     <uses-permission
-        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N"/>
+        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_A"/>
+
+    <uses-permission
+        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B"/>
 
     <application
         android:allowBackup="true"

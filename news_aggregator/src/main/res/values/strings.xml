@@ -37,14 +37,23 @@
     <string name="fileStoragePermissionWarning">
         App needs file storage access to read security level!
     </string>
-    <string name="storagePermissionAcquired">"Storage permission acquired!"</string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
     <string name="broadcastInvalidExtrasError">"Broadcast does contain articles or stream name!"</string>
     <string name="broadcastExtrasError">News broadcast received with no extras!</string>
 
-    <string name="readNewsPermissionLabel">Get news stories</string>
-    <string name="readNewsPermissionDescription">
-        Permission to read news articles received by the News Aggregator app.
+    <!--Various strings for the various security levels-->
+    <string name="readNewsAPermissionLabel">Get news stories</string>
+    <string name="readNewsAPermissionDescription">
+        Permission to read news articles received by the News Aggregator service
     </string>
+    <string name="readNewsBPermissionLabel">Get news stories</string>
+    <string name="readNewsBPermissionDescription">
+        read news articles received by the News Aggregator service
+    </string>
+    <string name="readNewsPermissionWarning">
+        App needs permission to read news articles it gets!
+    </string>
+    <string name="readNewsPermissionAcquired">Read news permission acquired!</string>
 
     <string name="lowSecurityLevel">Low</string>
     <string name="mediumSecurityLevel">Medium</string>

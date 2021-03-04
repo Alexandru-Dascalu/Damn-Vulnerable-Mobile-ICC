@@ -1,7 +1,6 @@
 package uk.ac.swansea.dascalu.dvmicc.newsaggregator
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -28,9 +27,21 @@ class LogInActivity : AppCompatActivity() {
         if (isGranted) {
             Snackbar.make(findViewById(R.id.log_in_layout),
                     R.string.storagePermissionAcquired, Snackbar.LENGTH_LONG).show()
+            acquirePermissionsForReceiver()
         } else {
             Snackbar.make(findViewById(R.id.log_in_layout),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
+        }
+    }
+
+    private val readNewsPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+        if (isGranted) {
+            Snackbar.make(findViewById(R.id.log_in_layout),
+                    R.string.readNewsPermissionAcquired, Snackbar.LENGTH_LONG).show()
+        } else {
+            Snackbar.make(findViewById(R.id.log_in_layout),
+                    R.string.readNewsPermissionWarning, Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -40,8 +51,7 @@ class LogInActivity : AppCompatActivity() {
 
         authenticator = FirebaseAuth.getInstance()
 
-        checkStoragePermission()
-        //acquirePermissionsForReceiver()
+        checkPermissions()
     }
 
     fun logIn(view: View) {
@@ -83,21 +93,26 @@ class LogInActivity : AppCompatActivity() {
         super.onStop()
     }
 
-    private fun checkStoragePermission() {
+    private fun checkPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.
                 READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             readRequestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+        } else {
+            acquirePermissionsForReceiver()
         }
     }
 
     private fun acquirePermissionsForReceiver() {
         val securityLevel = loadSecuritySettingsFromFile(this)
 
-        if(securityLevel == getString(R.string.mediumSecurityLevel).toLowerCase()) {
-            ContextCompat.checkSelfPermission(this,
-                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N")
-        } else if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
+        if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
+            if(ContextCompat.checkSelfPermission(this,
+                            "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
+                    != PackageManager.PERMISSION_GRANTED) {
 
+                readNewsPermissionLauncher.launch(
+                        "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
+            }
         } else if(securityLevel == getString(R.string.veryHighSecurityLevel).toLowerCase()) {
 
         }

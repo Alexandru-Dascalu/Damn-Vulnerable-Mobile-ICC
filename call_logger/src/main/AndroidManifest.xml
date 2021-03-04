@@ -4,7 +4,13 @@
 
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission
-        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N"/>
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission
+        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_A"/>
+
+    <uses-permission
+        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B"/>
 
     <application
         android:allowBackup="true"

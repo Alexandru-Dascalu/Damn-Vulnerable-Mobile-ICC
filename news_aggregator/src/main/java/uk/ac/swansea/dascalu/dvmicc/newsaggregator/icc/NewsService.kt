@@ -138,9 +138,10 @@ class NewsService : Service() {
             sendBroadcast(broadcast)
         } else if(securityLevel == getString(R.string.mediumSecurityLevel).toLowerCase()) {
             sendBroadcast(broadcast,
-                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N")
+                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_A")
         } else if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
-
+            sendBroadcast(broadcast,
+                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
         } else if(securityLevel == getString(R.string.veryHighSecurityLevel).toLowerCase()) {
 
         } else if(securityLevel == getString(R.string.impossibleSecurityLevel).toLowerCase()) {
