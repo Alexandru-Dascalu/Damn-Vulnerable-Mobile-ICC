@@ -6,4 +6,11 @@
     <string name="clear_data">Clear stolen data</string>
     <string name="no_data">No data yet!</string>
     <string name="stolen_data_cleared">Stolen data cleared!</string>
+
+    <string name="lowSecurityLevel">Low</string>
+    <string name="mediumSecurityLevel">Medium</string>
+    <string name="highSecurityLevel">High</string>
+    <string name="veryHighSecurityLevel">Very High</string>
+    <string name="impossibleSecurityLevel">Impossible</string>
+
 </resources>

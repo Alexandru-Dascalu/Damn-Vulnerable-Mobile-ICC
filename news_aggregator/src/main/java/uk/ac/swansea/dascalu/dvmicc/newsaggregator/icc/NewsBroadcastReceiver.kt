@@ -18,15 +18,10 @@ import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.loadSecuritySettingsFro
 class NewsBroadcastReceiver : BroadcastReceiver() {
     private val streamToAdapterMap : HashMap<String, NewsCardAdapter> = HashMap<String, NewsCardAdapter>()
 
-    init {
-
-    }
-
     override fun onReceive(context: Context?, intent: Intent) {
         if(intent.extras != null) {
             val jsonArticles = intent.getStringExtra("articles")
             val newsStreamName = intent.getStringExtra("news_stream_name")
-            val flag = intent.getStringExtra("flag")
 
             if(jsonArticles != null && newsStreamName != null) {
                 val articlesListType = object : TypeToken<List<ArticleDto>>() { }.type
@@ -49,18 +44,5 @@ class NewsBroadcastReceiver : BroadcastReceiver() {
      deleted a lot of streams while being in the app.*/
     fun setAdapter(newsStreamName: String, adapter: NewsCardAdapter) {
         streamToAdapterMap[newsStreamName] = adapter
-    }
-
-    private fun acquirePermissions(context: Context) {
-        val securityLevel = loadSecuritySettingsFromFile(context)
-
-        if(securityLevel == context.getString(R.string.mediumSecurityLevel).toLowerCase()) {
-            ContextCompat.checkSelfPermission(context,
-                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N")
-        } else if(securityLevel == context.getString(R.string.highSecurityLevel).toLowerCase()) {
-
-        } else if(securityLevel == context.getString(R.string.veryHighSecurityLevel).toLowerCase()) {
-
-        }
     }
 }

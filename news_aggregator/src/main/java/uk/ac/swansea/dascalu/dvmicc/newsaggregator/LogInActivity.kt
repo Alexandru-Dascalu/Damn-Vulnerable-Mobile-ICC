@@ -1,6 +1,7 @@
 package uk.ac.swansea.dascalu.dvmicc.newsaggregator
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.hideKeyboard
+import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.loadSecuritySettingsFromFile
 
 class LogInActivity : AppCompatActivity() {
 
@@ -37,7 +39,9 @@ class LogInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
 
         authenticator = FirebaseAuth.getInstance()
-        initialiseSecuritySettings()
+
+        checkStoragePermission()
+        //acquirePermissionsForReceiver()
     }
 
     fun logIn(view: View) {
@@ -79,10 +83,23 @@ class LogInActivity : AppCompatActivity() {
         super.onStop()
     }
 
-    private fun initialiseSecuritySettings() {
+    private fun checkStoragePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.
                 READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             readRequestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+    }
+
+    private fun acquirePermissionsForReceiver() {
+        val securityLevel = loadSecuritySettingsFromFile(this)
+
+        if(securityLevel == getString(R.string.mediumSecurityLevel).toLowerCase()) {
+            ContextCompat.checkSelfPermission(this,
+                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_N")
+        } else if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
+
+        } else if(securityLevel == getString(R.string.veryHighSecurityLevel).toLowerCase()) {
+
         }
     }
 }

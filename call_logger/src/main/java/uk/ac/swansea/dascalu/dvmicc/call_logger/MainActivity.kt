@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 
 import com.google.android.material.appbar.MaterialToolbar
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val mainAppBar = findViewById<MaterialToolbar>(R.id.mainActivityToolbar)
         setSupportActionBar(mainAppBar)
+        acquirePermissionsForReceiver()
 
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         val viewPager = findViewById<ViewPager2>(R.id.view_pager)
@@ -53,5 +55,15 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, getString(R.string.stolen_data_cleared), Snackbar.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun acquirePermissionsForReceiver() {
+        val securityLevel = loadSecuritySettingsFromFile(this)
+
+        if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
+
+        } else if(securityLevel == getString(R.string.veryHighSecurityLevel).toLowerCase()) {
+
+        }
     }
 }
