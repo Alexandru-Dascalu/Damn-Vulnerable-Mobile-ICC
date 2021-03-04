@@ -50,6 +50,11 @@
     <string name="readNewsBPermissionDescription">
         read news articles received by the News Aggregator service
     </string>
+    <string name="readNewsCPermissionLabel">Get news stories</string>
+    <string name="readNewsCPermissionDescription">
+        read news articles received by the News Aggregator service
+    </string>
+
     <string name="readNewsPermissionWarning">
         App needs permission to read news articles it gets!
     </string>

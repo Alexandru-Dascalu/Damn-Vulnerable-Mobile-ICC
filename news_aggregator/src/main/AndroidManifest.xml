@@ -14,11 +14,19 @@
         android:description="@string/readNewsBPermissionDescription"
         android:protectionLevel="dangerous"/>
 
+    <permission android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_C"
+        android:label="@string/readNewsCPermissionLabel"
+        android:description="@string/readNewsCPermissionDescription"
+        android:protectionLevel="signature"/>
+
     <uses-permission
         android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_A"/>
 
     <uses-permission
         android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B"/>
+
+    <uses-permission
+        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_C"/>
 
     <application
         android:allowBackup="true"

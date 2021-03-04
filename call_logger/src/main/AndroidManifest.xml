@@ -12,6 +12,9 @@
     <uses-permission
         android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B"/>
 
+    <uses-permission
+        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_C"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
