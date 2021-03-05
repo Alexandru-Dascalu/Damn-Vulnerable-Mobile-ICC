@@ -147,7 +147,8 @@ class NewsService : Service() {
                     "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_C")
 
         } else if(securityLevel == getString(R.string.impossibleSecurityLevel).toLowerCase()) {
-
+            broadcast.`package` = packageName
+            sendBroadcast(broadcast)
         } else {
             throw IllegalStateException("Security level has an invalid value!")
         }
