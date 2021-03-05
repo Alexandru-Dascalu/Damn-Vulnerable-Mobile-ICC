@@ -36,22 +36,10 @@ class LogFragment(val position: Int) : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.call_log_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val readCallLogPermissionLauncher = registerForActivityResult(
-            ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-            if (isGranted) {
-                recyclerView.adapter = LogFragmentAdapter(getCallLogData())
-            } else {
-                Toast.makeText(context, "Call Logger needs permission to read contacts",
-                    Toast.LENGTH_LONG).show()
-            }
-        }
-
         if(ContextCompat.checkSelfPermission(context!!, Manifest.permission.READ_CALL_LOG) ==
             PackageManager.PERMISSION_GRANTED) {
 
             recyclerView.adapter = LogFragmentAdapter(getCallLogData())
-        } else {
-            readCallLogPermissionLauncher.launch(Manifest.permission.READ_CALL_LOG)
         }
     }
 

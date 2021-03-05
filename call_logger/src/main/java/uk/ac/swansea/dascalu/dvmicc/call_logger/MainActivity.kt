@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -15,20 +17,35 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import uk.ac.swansea.dascalu.dvmicc.call_logger.adapters.recycler_view.LogFragmentAdapter
 
 import uk.ac.swansea.dascalu.dvmicc.call_logger.adapters.view_pager.CallLogViewPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    private val requestStoragePermissionLauncher = registerForActivityResult(
-            ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-        if (isGranted) {
+    private val requestPermissionsLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+
+        if(permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == true) {
             Snackbar.make(findViewById(R.id.mainActivityToolbar),
                     R.string.storagePermissionAcquired, Snackbar.LENGTH_LONG).show()
             acquirePermissionsForReceiver()
-        } else {
+        } else if(permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == false) {
             Snackbar.make(findViewById(R.id.mainActivityToolbar),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
+        /* the boolean can be null is the app has storage permission before this launcher was
+            called. If it has the storage permission, we want to make sure we get any other permissions
+            for malware purposes.*/
+        } else {
+            acquirePermissionsForReceiver()
+        }
+
+        if(permissions[Manifest.permission.READ_CALL_LOG] == true) {
+            Snackbar.make(findViewById(R.id.mainActivityToolbar),
+                    "Read Call Log permissions obtained!", Snackbar.LENGTH_LONG).show()
+        } else if (permissions[Manifest.permission.READ_CALL_LOG] == false) {
+            Snackbar.make(findViewById(R.id.mainActivityToolbar),
+                    "Call Logger needs permission to read call log", Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -78,11 +95,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.
-                READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-        } else {
+        val hasStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission
+                .READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+
+        val hasCallLogPermission = ContextCompat.checkSelfPermission(this, Manifest.permission
+                .READ_CALL_LOG) == PackageManager.PERMISSION_GRANTED
+
+        if (hasStoragePermission && hasCallLogPermission) {
             acquirePermissionsForReceiver()
+        } else {
+            requestPermissionsLauncher.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_CALL_LOG))
         }
     }
 
