@@ -8,7 +8,7 @@ import java.io.FileNotFoundException
 import java.io.InputStreamReader
 import java.lang.StringBuilder
 
-class BroadcastTheftActivity : AppCompatActivity() {
+class InfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_broadcast_theft)

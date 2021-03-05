@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BroadcastTheftActivity"/>
+        <activity android:name=".InfoActivity"/>
 
         <receiver android:name=".icc.CallsBroadcastReceiver"
             android:enabled="true">

@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.malware_zone_button) {
-            val intent = Intent(this, BroadcastTheftActivity::class.java)
+            val intent = Intent(this, InfoActivity::class.java)
             startActivity(intent)
 
             return true
