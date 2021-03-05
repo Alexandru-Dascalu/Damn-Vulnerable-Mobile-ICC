@@ -467,6 +467,25 @@
 
     <!--Strings for other menu stuff-->
     <string name="settingsButtonDescription">Settings</string>
+    <string name="vulnerableAppHint">Vulnerable app</string>
+    <string name="malwareAppHint">Malware</string>
+    <string name="flagHint">Flag</string>
+    <string name="submitButtonText">Submit</string>
+    <string name="wrongAnswer">Wrong answer!</string>
+    <string name="completed">Completed</string>
+
+    <string name="operationModes">Operation mode for the challenge:</string>
+    <string name="vulnerableAppSecurityLevels">Security Level of vulnerable app:</string>
+    <string name="malwareSecurityLevels">Security Level of malware:</string>
+    <string name="securityLevelWarning">
+        Some security levels may be disabled because the current
+        challenge has fewer security levels
+    </string>
+    <string name="challengeSettingsActivityTitle">Challenge Settings</string>
+    <string name="applyText">Apply</string>
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to make security level setting accessible to other apps!
+    </string>
 
     <string name="broadcastTheftName">Broadcast Theft</string>
     <string name="broadcastTheftDOSName">Broadcast Theft - DOS</string>
@@ -613,23 +632,83 @@
     <string name="callLogAppName">Call Log</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
 
-    <string name="vulnerableAppHint">Vulnerable app</string>
-    <string name="malwareAppHint">Malware</string>
-    <string name="flagHint">Flag</string>
-    <string name="submitButtonText">Submit</string>
-    <string name="wrongAnswer">Wrong answer!</string>
-    <string name="completed">Completed</string>
+    <!--app manifests-->
+    <string name="callLoggerManifest">
+        <![CDATA[
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.call_logger">
 
-    <string name="operationModes">Operation mode for the challenge:</string>
-    <string name="vulnerableAppSecurityLevels">Security Level of vulnerable app:</string>
-    <string name="malwareSecurityLevels">Security Level of malware:</string>
-    <string name="securityLevelWarning">
-        Some security levels may be disabled because the current
-        challenge has fewer security levels
+            \n\n\t<uses-permission android:name=
+                \n\t\t"android.permission.READ_CALL_LOG"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup="true"
+                \n\t\tandroid:icon="@mipmap/ic_launcher"
+                \n\t\tandroid:label="@string/app_name"
+                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+                \n\t\tandroid:supportsRtl="true"
+                \n\t\tandroid:theme="@style/AppTheme">
+
+                \n\n\t\t<activity android:name=".MainActivity">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+
+                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+                \n\n\t\t<activity android:name=".InfoActivity"/>
+
+                \n\n\t\t<receiver android:name=".icc.CallsBroadcastReceiver"
+                    \n\t\t\tandroid:enabled="true">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=
+                        \n\t\t\t\t\t"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</receiver>
+            \n\t</application>
+        \n</manifest>]]>
     </string>
-    <string name="challengeSettingsActivityTitle">Challenge Settings</string>
-    <string name="applyText">Apply</string>
-    <string name="fileStoragePermissionWarning">
-        App needs file storage access to make security level setting accessible to other apps!
+    <string name="newsAggregatorManifest">
+        <![CDATA[
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+            \n\n\t<permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
+                \n\t\tandroid:label="@string/readNewsPermissionLabel"
+                \n\t\tandroid:description="@string/readNewsPermissionDescription"/>
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup="true"
+                \n\t\tandroid:icon="@mipmap/ic_launcher"
+                \n\t\tandroid:label="@string/app_name"
+                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+                \n\t\tandroid:supportsRtl="true"
+                \n\t\tandroid:hardwareAccelerated="false"
+                \n\t\tandroid:theme="@style/AppTheme">
+
+                \n\n\t\t<activity android:name=".LogInActivity">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+
+                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+
+                \n\n\t\t<activity android:name=".MainActivity"/>
+                \n\t\t<activity android:name=".SignUpActivity"/>
+                \n\t\t<activity android:name=".LoadingActivity"/>
+                \n\t\t<activity android:name=".FullArticleActivity"/>
+                \n\n\t\t<service android:name=".icc.NewsService"
+                    \n\t\t\tandroid:exported="false"
+                    \n\t\t\tandroid:enabled="true"/>
+            \n\t</application>
+        \n</manifest>]]>
     </string>
 </resources>

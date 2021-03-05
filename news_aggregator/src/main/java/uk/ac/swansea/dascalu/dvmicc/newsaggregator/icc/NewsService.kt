@@ -31,7 +31,8 @@ import kotlin.collections.ArrayList
 
 class NewsService : Service() {
     companion object {
-        const val NEWS_RESULT_BROADCAST_ACTION : String = "uk.ac.swansea.dascalu.dvmicc.broadcast.NEWS_RESULT"
+        const val NEWS_RESULT_BROADCAST_ACTION : String =
+                "uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"
     }
 
     private val debugMode: Boolean = true

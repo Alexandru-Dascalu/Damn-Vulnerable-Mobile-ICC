@@ -35,9 +35,8 @@
         <receiver android:name=".icc.CallsBroadcastReceiver"
             android:enabled="true">
             <intent-filter>
-                <action android:name="uk.ac.swansea.dascalu.dvmicc.broadcast.NEWS_RESULT"/>
+                <action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
             </intent-filter>
         </receiver>
     </application>
-
 </manifest>

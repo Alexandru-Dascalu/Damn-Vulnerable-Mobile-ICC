@@ -21,8 +21,11 @@ class ManifestsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val customPermissionXML = view.findViewById<CodeView>(R.id.broadcastTheftManifest)
-        setCodeViewOptions(customPermissionXML, "xml", R.string.customPermissionsCode)
+        val callLoggerXML = view.findViewById<CodeView>(R.id.callLogManifest)
+        setCodeViewOptions(callLoggerXML, "xml", R.string.callLoggerManifest)
+
+        val newsAggregatorXML = view.findViewById<CodeView>(R.id.newsAggregatorManifest)
+        setCodeViewOptions(newsAggregatorXML, "xml", R.string.newsAggregatorManifest)
     }
 
     private fun setCodeViewOptions(codeView: CodeView, language: String, codeStringID: Int) {
@@ -30,7 +33,7 @@ class ManifestsFragment : Fragment() {
                 .withLanguage(language)
                 .withCode(getString(codeStringID))
                 .withTheme(ColorTheme.MONOKAI)
-                .withFormat(Format.Medium)
+                .withFormat(Format.ExtraCompact)
                 .disableHighlightAnimation())
     }
 }
