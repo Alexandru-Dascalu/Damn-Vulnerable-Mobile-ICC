@@ -3,6 +3,7 @@ package uk.ac.swansea.dascalu.dvmicc.call_logger
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.MaterialToolbar
 import java.io.BufferedReader
 import java.io.FileNotFoundException
 import java.io.InputStreamReader
@@ -13,6 +14,14 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_broadcast_theft)
 
+        val toolbar = findViewById<MaterialToolbar>(R.id.infoActivityToolbar)
+        title = getString(R.string.malware_zone_title)
+        setSupportActionBar(toolbar)
+
+        populateStolenData()
+    }
+
+    private fun populateStolenData() {
         val dataTextView = findViewById<TextView>(R.id.stolenDataTextView)
 
         try {
