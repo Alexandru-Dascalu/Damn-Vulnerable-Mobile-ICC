@@ -6,8 +6,6 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -17,7 +15,6 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import uk.ac.swansea.dascalu.dvmicc.call_logger.adapters.recycler_view.LogFragmentAdapter
 
 import uk.ac.swansea.dascalu.dvmicc.call_logger.adapters.view_pager.CallLogViewPagerAdapter
 
@@ -42,10 +39,10 @@ class MainActivity : AppCompatActivity() {
 
         if(permissions[Manifest.permission.READ_CALL_LOG] == true) {
             Snackbar.make(findViewById(R.id.mainActivityToolbar),
-                    "Read Call Log permissions obtained!", Snackbar.LENGTH_LONG).show()
+                    R.string.callLogPermissionsAcquired, Snackbar.LENGTH_LONG).show()
         } else if (permissions[Manifest.permission.READ_CALL_LOG] == false) {
             Snackbar.make(findViewById(R.id.mainActivityToolbar),
-                    "Call Logger needs permission to read call log", Snackbar.LENGTH_LONG).show()
+                    R.string.callLogPermissionWarning, Snackbar.LENGTH_LONG).show()
         }
     }
 

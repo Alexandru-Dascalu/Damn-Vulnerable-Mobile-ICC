@@ -17,4 +17,7 @@
         App needs file storage access to read security level!
     </string>
     <string name="storagePermissionAcquired">Storage permission acquired!</string>
+
+    <string name="callLogPermissionWarning">Call Logger needs permission to read call log!</string>
+    <string name="callLogPermissionsAcquired">Read Call Log permissions obtained!</string>
 </resources>
