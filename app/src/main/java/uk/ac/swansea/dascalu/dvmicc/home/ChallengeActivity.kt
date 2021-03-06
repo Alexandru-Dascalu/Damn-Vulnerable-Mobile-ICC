@@ -26,24 +26,32 @@ class ChallengeActivity :  AppCompatActivity() {
     private lateinit var challengeModel : Challenge
     var hasGuessedApps: Boolean = false
 
+    var questionsFragmentState : Fragment.SavedState? = null
+
     private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.challengeInformationButton -> {
                 replaceFragment(ChallengeInformationFragment(challengeModel.challengeNameIndex,
-                        challengeModel.attackExplanation))
+                        challengeModel.attackExplanation), "infoFragment")
 
                 return@OnNavigationItemSelectedListener true
             }
             R.id.manifestsButton -> {
-                replaceFragment(ManifestsFragment())
+                replaceFragment(ManifestsFragment(), "manifestFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.questionsButton -> {
-                replaceFragment(getQuestionsFragment())
+                val fragment : AbstractFullQuestionsFragment = getQuestionsFragment()
+                if(questionsFragmentState != null) {
+                    fragment.setInitialSavedState(questionsFragmentState)
+                }
+
+                replaceFragment(fragment, "questionsFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.instructionsButton -> {
-                replaceFragment(ChallengeInstructionsFragment(hasGuessedApps, challengeModel.scenarioInstructions))
+                replaceFragment(ChallengeInstructionsFragment(hasGuessedApps,
+                        challengeModel.scenarioInstructions), "instructionsFragment")
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -99,10 +107,15 @@ class ChallengeActivity :  AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(newFragment: Fragment) {
+    private fun replaceFragment(newFragment: Fragment, tag: String) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
-        fragmentTransaction.replace(R.id.challengeContentFrame, newFragment)
+        if(supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
+            questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
+                    supportFragmentManager.findFragmentByTag("questionsFragment")!!)
+        }
+
+        fragmentTransaction.replace(R.id.challengeContentFrame, newFragment, tag)
         fragmentTransaction.commit()
     }
 }

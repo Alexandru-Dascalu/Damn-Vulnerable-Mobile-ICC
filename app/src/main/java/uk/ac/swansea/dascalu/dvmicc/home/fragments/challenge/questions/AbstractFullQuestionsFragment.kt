@@ -1,5 +1,7 @@
 package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,15 +9,18 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.textfield.TextInputLayout
 
+import uk.ac.swansea.dascalu.dvmicc.home.ChallengeActivity
 import uk.ac.swansea.dascalu.dvmicc.home.R
-import uk.ac.swansea.dascalu.dvmicc.home.misc.QuestionButtonClickListener
 
 /**
  * Abstract super class for all questions fragments for challenges with all five security levels.
  */
+@SuppressLint("UseRequireInsteadOfGet")
 abstract class AbstractFullQuestionsFragment : Fragment() {
     protected abstract var vulnerableAppName: String?
     protected abstract var malwareName: String?
@@ -23,6 +28,26 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
     protected abstract var securityMediumFlag: String?
     protected abstract var securityHighFlag: String?
     protected abstract var securityVeryHighFlag: String?
+
+    private var answeredVulnerable: Boolean = false
+    private var answeredMalware: Boolean = false
+    private var answeredLow: Boolean = false
+    private var answeredMedium: Boolean = false
+    private var answeredHigh: Boolean = false
+    private var answeredVeryHigh: Boolean = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            answeredVulnerable = savedInstanceState.getBoolean("answeredVulnerable")
+            answeredMalware = savedInstanceState.getBoolean("answeredMalware")
+            answeredLow = savedInstanceState.getBoolean("answeredLow")
+            answeredMedium = savedInstanceState.getBoolean("answeredMedium")
+            answeredHigh = savedInstanceState.getBoolean("answeredHigh")
+            answeredVeryHigh = savedInstanceState.getBoolean("answeredVeryHigh")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val questionsRootView = inflater.inflate(R.layout.full_questions_fragment, container, false)
@@ -49,6 +74,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         securityVeryHighTextView.text = requireContext().resources.getString(R.string.securityVeryHighQuestion)
 
         setButtonClickListeners(view)
+        restoreAnswers(view)
     }
 
     private fun setButtonClickListeners(view: View) {
@@ -87,5 +113,122 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityVeryHighInput)
         securityVeryHighButton.setOnClickListener(QuestionButtonClickListener(securityVeryHighFlag,
                 view, editText, textInputLayout))
+    }
+
+    private fun restoreAnswers(view: View) {
+        val completedString = view.context.resources.getString(R.string.completed)
+        if(answeredVulnerable) {
+            val vulnerableAppQuestionButton = view.findViewById<MaterialButton>(R.id.vulnerableAppQuestionButton)
+            vulnerableAppQuestionButton.text = completedString
+            changeButtonColors(vulnerableAppQuestionButton)
+            vulnerableAppQuestionButton.isEnabled = false
+
+            val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
+            vulnerableEditText.isFocusable = false
+        }
+
+        if(answeredMalware) {
+            val malwareQuestionButton = view.findViewById<MaterialButton>(R.id.malwareQuestionButton)
+            malwareQuestionButton.text = completedString
+            changeButtonColors(malwareQuestionButton)
+            malwareQuestionButton.isEnabled = false
+
+            val editText = view.findViewById<EditText>(R.id.malwareAppEditText)
+            editText.isFocusable = false
+        }
+
+        if(answeredLow) {
+            val securityLowButton = view.findViewById<MaterialButton>(R.id.securityLowButton)
+            securityLowButton.text = completedString
+            changeButtonColors(securityLowButton)
+            securityLowButton.isEnabled = false
+
+            val editText = view.findViewById<EditText>(R.id.securityLowEditText)
+            editText.isFocusable = false
+        }
+
+        if(answeredMedium) {
+            val securityMediumButton = view.findViewById<MaterialButton>(R.id.securityMediumButton)
+            securityMediumButton.text = completedString
+            changeButtonColors(securityMediumButton)
+            securityMediumButton.isEnabled = false
+
+            val editText = view.findViewById<EditText>(R.id.securityMediumEditText)
+            editText.isFocusable = false
+        }
+
+        if(answeredHigh) {
+            val securityHighButton = view.findViewById<MaterialButton>(R.id.securityHighButton)
+            securityHighButton.text = completedString
+            changeButtonColors(securityHighButton)
+            securityHighButton.isEnabled = false
+
+            val editText = view.findViewById<EditText>(R.id.securityHighEditText)
+            editText.isFocusable = false
+        }
+
+        if(answeredVeryHigh) {
+            val securityVeryHighButton = view.findViewById<MaterialButton>(R.id.securityVeryHighButton)
+            securityVeryHighButton.text = completedString
+            changeButtonColors(securityVeryHighButton)
+            securityVeryHighButton.isEnabled = false
+
+            val editText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
+            editText.isFocusable = false
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("answeredVulnerable", !(view!!.findViewById<MaterialButton>(
+                R.id.vulnerableAppQuestionButton).isEnabled))
+        outState.putBoolean("answeredMalware", !(view!!.findViewById<MaterialButton>(
+                R.id.malwareQuestionButton).isEnabled))
+
+        outState.putBoolean("answeredLow", !(view!!.findViewById<MaterialButton>(
+                R.id.securityLowButton).isEnabled))
+        outState.putBoolean("answeredMedium", !(view!!.findViewById<MaterialButton>(
+                R.id.securityMediumButton).isEnabled))
+        outState.putBoolean("answeredHigh", !(view!!.findViewById<MaterialButton>(
+                R.id.securityHighButton).isEnabled))
+        outState.putBoolean("answeredVeryHigh", !(view!!.findViewById<MaterialButton>(
+                R.id.securityVeryHighButton).isEnabled))
+    }
+
+    private fun changeButtonColors(button: MaterialButton) {
+        button.setBackgroundColor(MaterialColors.getColor(button.context, R.attr.colorBackgroundFloating,
+                Color.BLACK))
+        button.setTextColor(MaterialColors.getColor(button.context, R.attr.colorSecondary,
+                Color.BLACK))
+        button.strokeWidth = 5
+        button.setStrokeColorResource(R.color.limeDark)
+    }
+
+    inner class QuestionButtonClickListener(private val correctAnswer: String?,
+                                      private val view: View, private val editText: EditText,
+                                      private val textInputLayout: TextInputLayout) : View.OnClickListener {
+
+        override fun onClick(buttonView: View?) {
+            val button: MaterialButton = buttonView as MaterialButton
+
+            if(editText.text.toString() != correctAnswer) {
+                textInputLayout.error = view.context.resources.getString(R.string.wrongAnswer)
+            } else {
+                textInputLayout.error = null
+                editText.isFocusable = false
+
+                button.text = view.context.resources.getString(R.string.completed)
+                changeButtonColors(button)
+                button.isEnabled = false
+            }
+
+            val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
+            val malwareEditText = view.findViewById<EditText>(R.id.malwareAppEditText)
+
+            if(!malwareEditText.isFocusable && !vulnerableEditText.isFocusable) {
+                val challengeActivity = view.context as ChallengeActivity
+                challengeActivity.hasGuessedApps = true
+            }
+        }
     }
 }
