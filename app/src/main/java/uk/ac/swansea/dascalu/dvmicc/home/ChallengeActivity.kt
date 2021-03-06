@@ -13,12 +13,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInformationFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInstructionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ManifestsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.AbstractFullQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
+import java.lang.IllegalStateException
 
 class ChallengeActivity :  AppCompatActivity() {
+    companion object {
+        private val SETTINGS_REQUEST_CODE = 5
+    }
+
     private lateinit var challengeModel : Challenge
-    private val SETTINGS_REQUEST_CODE = 5
     var hasGuessedApps: Boolean = false
 
     private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -34,7 +39,7 @@ class ChallengeActivity :  AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.questionsButton -> {
-                replaceFragment(BroadcastTheftQuestionsFragment())
+                replaceFragment(getQuestionsFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.instructionsButton -> {
@@ -84,6 +89,13 @@ class ChallengeActivity :  AppCompatActivity() {
 
         if(resultCode == Activity.RESULT_OK && requestCode == SETTINGS_REQUEST_CODE) {
 
+        }
+    }
+
+    private fun getQuestionsFragment() : AbstractFullQuestionsFragment {
+        return when(challengeModel.questionsFragment) {
+            BroadcastTheftQuestionsFragment::class -> BroadcastTheftQuestionsFragment()
+            else -> throw IllegalStateException("Questions fragment type unknown!")
         }
     }
 

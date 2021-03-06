@@ -598,7 +598,8 @@
         Go to the News Aggregator app and log in with email test@gmail.com and password Test1234,
         or make your own account. Look at some of the news streams (You will only have All and
         Recommended if you made your own account). If you have looked at them before, swipe down to
-        refresh to get the latest articles.
+        refresh to get the latest articles. The app has a bug where sometimes articles do not
+        appear, so you need to swip down to refresh in that case.
 
         \n\nThen, go and start the Call Logger app.
         Have a look at the your call history in the three tabs. Then click on the overflow menu on
