@@ -10,6 +10,9 @@ class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
     override var vulnerableAppName: String? = null
     override var malwareName: String? = null
     override var securityLowFlag: String? = null
+    override var securityMediumFlag: String? = null
+    override var securityHighFlag: String? = null
+    override var securityVeryHighFlag: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val vulnerableAppTextView = view.findViewById<TextView>(R.id.vulnerableAppQuestionTextView)
@@ -22,7 +25,12 @@ class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
 
         vulnerableAppName = requireContext().resources.getString(R.string.newsAggregatorAppName)
         malwareName = requireContext().resources.getString(R.string.callLogAppName)
-        securityLowFlag = requireContext().resources.getStringArray(R.array.broadcastTheftFlags)[0]
+
+        val flags = requireContext().resources.getStringArray(R.array.broadcastTheftFlags)
+        securityLowFlag = flags[0]
+        securityMediumFlag = flags[1]
+        securityHighFlag = flags[2]
+        securityVeryHighFlag = flags[3]
 
         super.onViewCreated(view, savedInstanceState)
     }

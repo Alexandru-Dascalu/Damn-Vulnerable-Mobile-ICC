@@ -20,6 +20,9 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
     protected abstract var vulnerableAppName: String?
     protected abstract var malwareName: String?
     protected abstract var securityLowFlag: String?
+    protected abstract var securityMediumFlag: String?
+    protected abstract var securityHighFlag: String?
+    protected abstract var securityVeryHighFlag: String?
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val questionsRootView = inflater.inflate(R.layout.full_questions_fragment, container, false)
@@ -70,19 +73,19 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         val securityMediumButton = view.findViewById<MaterialButton>(R.id.securityMediumButton)
         editText = view.findViewById<EditText>(R.id.securityMediumEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityMediumInput)
-        securityMediumButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
+        securityMediumButton.setOnClickListener(QuestionButtonClickListener(securityMediumFlag,
                 view, editText, textInputLayout))
 
         val securityHighButton = view.findViewById<MaterialButton>(R.id.securityHighButton)
         editText = view.findViewById<EditText>(R.id.securityHighEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityHighInput)
-        securityHighButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
+        securityHighButton.setOnClickListener(QuestionButtonClickListener(securityHighFlag,
                 view, editText, textInputLayout))
 
         val securityVeryHighButton = view.findViewById<MaterialButton>(R.id.securityVeryHighButton)
         editText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityVeryHighInput)
-        securityVeryHighButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
+        securityVeryHighButton.setOnClickListener(QuestionButtonClickListener(securityVeryHighFlag,
                 view, editText, textInputLayout))
     }
 }
