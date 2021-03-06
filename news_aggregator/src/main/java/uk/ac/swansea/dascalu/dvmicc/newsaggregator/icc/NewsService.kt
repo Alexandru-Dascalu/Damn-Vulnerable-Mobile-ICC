@@ -1,12 +1,9 @@
 package uk.ac.swansea.dascalu.dvmicc.newsaggregator.icc
 
 import android.app.Service
-import android.content.Context
 import android.content.Intent
-import android.os.Environment
 import android.os.IBinder
 import android.util.Log
-import android.widget.Toast
 
 import com.dfl.newsapi.NewsApiRepository
 import com.dfl.newsapi.enums.Language
@@ -19,14 +16,8 @@ import uk.ac.swansea.dascalu.dvmicc.newsaggregator.R
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.model.Database
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.loadSecuritySettingsFromFile
 
-import java.io.BufferedReader
-import java.io.File
-import java.io.FileInputStream
-import java.io.InputStreamReader
-
 import java.lang.IllegalStateException
 import java.lang.StringBuilder
-import java.util.*
 import kotlin.collections.ArrayList
 
 class NewsService : Service() {
@@ -35,7 +26,7 @@ class NewsService : Service() {
                 "uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"
     }
 
-    private val debugMode: Boolean = true
+    private val debugMode: Boolean = false
     private lateinit var newsApi: NewsApiRepository
     private lateinit var newsStreamName: String
     private var securityLevel: String = ""

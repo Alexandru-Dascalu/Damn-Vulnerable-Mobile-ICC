@@ -10,14 +10,16 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import uk.ac.swansea.dascalu.dvmicc.home.fragments.ChallengeInformationFragment
-import uk.ac.swansea.dascalu.dvmicc.home.fragments.ManifestsFragment
-import uk.ac.swansea.dascalu.dvmicc.home.fragments.questions.BroadcastTheftQuestionsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInformationFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInstructionsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ManifestsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
 
 class ChallengeActivity :  AppCompatActivity() {
     private lateinit var challengeModel : Challenge
     private val SETTINGS_REQUEST_CODE = 5
+    var hasGuessedApps: Boolean = false
 
     private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
@@ -33,6 +35,10 @@ class ChallengeActivity :  AppCompatActivity() {
             }
             R.id.questionsButton -> {
                 replaceFragment(BroadcastTheftQuestionsFragment())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.instructionsButton -> {
+                replaceFragment(ChallengeInstructionsFragment(hasGuessedApps))
                 return@OnNavigationItemSelectedListener true
             }
         }

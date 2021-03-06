@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.home.fragments.questions
+package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 
 import android.os.Bundle
 import android.view.View

@@ -36,6 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/challenge_navigation_bar_layout"
         style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
 

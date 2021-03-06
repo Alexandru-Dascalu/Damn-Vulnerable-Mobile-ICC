@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import kotlin.reflect.KClass
 
 import uk.ac.swansea.dascalu.dvmicc.home.R
-import uk.ac.swansea.dascalu.dvmicc.home.fragments.questions.BroadcastTheftQuestionsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftQuestionsFragment
 
 enum class Challenge(val challengeNameIndex: Int, val malwareName: Int, val vulnerableAppName: Int,
                      val securityLevels: Map<Int, Int>, val attackExplanation: Int,

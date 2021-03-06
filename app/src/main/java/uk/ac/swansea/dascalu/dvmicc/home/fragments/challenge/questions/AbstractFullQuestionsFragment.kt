@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.home.fragments.questions
+package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -53,36 +53,36 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         var editText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
         var textInputLayout = view.findViewById<TextInputLayout>(R.id.vulnerableAppInput)
         vulnerableAppQuestionButton.setOnClickListener(QuestionButtonClickListener(vulnerableAppName,
-                view.context, editText, textInputLayout))
+                view, editText, textInputLayout))
 
         val malwareQuestionButton = view.findViewById<MaterialButton>(R.id.malwareQuestionButton)
         editText = view.findViewById<EditText>(R.id.malwareAppEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.malwareInput)
         malwareQuestionButton.setOnClickListener(QuestionButtonClickListener(malwareName,
-                view.context, editText, textInputLayout))
+                view, editText, textInputLayout))
 
         val securityLowButton = view.findViewById<MaterialButton>(R.id.securityLowButton)
         editText = view.findViewById<EditText>(R.id.securityLowEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityLowInput)
         securityLowButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
-                view.context, editText, textInputLayout))
+                view, editText, textInputLayout))
 
         val securityMediumButton = view.findViewById<MaterialButton>(R.id.securityMediumButton)
         editText = view.findViewById<EditText>(R.id.securityMediumEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityMediumInput)
         securityMediumButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
-                view.context, editText, textInputLayout))
+                view, editText, textInputLayout))
 
         val securityHighButton = view.findViewById<MaterialButton>(R.id.securityHighButton)
         editText = view.findViewById<EditText>(R.id.securityHighEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityHighInput)
         securityHighButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
-                view.context, editText, textInputLayout))
+                view, editText, textInputLayout))
 
         val securityVeryHighButton = view.findViewById<MaterialButton>(R.id.securityVeryHighButton)
         editText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityVeryHighInput)
         securityVeryHighButton.setOnClickListener(QuestionButtonClickListener(securityLowFlag,
-                view.context, editText, textInputLayout))
+                view, editText, textInputLayout))
     }
 }

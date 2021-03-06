@@ -464,6 +464,7 @@
     <!--Strings for bottom navigation view of challenges activity-->
     <string name="manifestsButtonText">Manifests</string>
     <string name="questionsButtonText">Questions</string>
+    <string name="instructions_button">Instructions</string>
 
     <!--Strings for other menu stuff-->
     <string name="settingsButtonDescription">Settings</string>
@@ -589,6 +590,24 @@
         sdkjhfhsjfwjefpwfkl
     </string>
 
+    <!--Challenge instructions-->
+    <string name="instructionsHidden">
+        You need to find the malware and the vulnerable app first in order to see further instructions.
+    </string>
+    <string name="broadcastTheftInstructions">
+        Go to the News Aggregator app and log in with email test@gmail.com and password Test1234,
+        or make your own account. Look at some of the news streams (You will only have All and
+        Recommended if you made your own account). If you have looked at them before, swipe down to
+        refresh to get the latest articles.
+
+        \n\nThen, go and start the Call Logger app.
+        Have a look at the your call history in the three tabs. Then click on the overflow menu on
+        the app bar and click on Malware. Do this for all security levels to find the flags.
+
+        \n\nWhen the malware is in security level High, you need to first start the Call Logger app
+        before going into the News Aggregator to get news stories.
+    </string>
+
     <!--flags to be found by the user-->
     <string name="impossibleFlag">Can\'t touch this!</string>
     <string-array name="broadcastTheftFlags">
@@ -629,7 +648,7 @@
     <string name="makeOwnMalwareMode">Make your own Malware Mode</string>
     <string name="fixVulnerableAppMode">Fix Vulnerable App Mode</string>
 
-    <string name="callLogAppName">Call Log</string>
+    <string name="callLogAppName">Call Logger</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
 
     <!--app manifests-->

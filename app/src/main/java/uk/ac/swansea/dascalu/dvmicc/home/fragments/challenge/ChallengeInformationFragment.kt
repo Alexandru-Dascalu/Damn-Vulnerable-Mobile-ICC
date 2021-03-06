@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.home.fragments
+package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge
 
 import android.os.Bundle
 import android.view.LayoutInflater
