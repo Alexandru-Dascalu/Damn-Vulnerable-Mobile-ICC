@@ -38,7 +38,7 @@ class ChallengeActivity :  AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.instructionsButton -> {
-                replaceFragment(ChallengeInstructionsFragment(hasGuessedApps))
+                replaceFragment(ChallengeInstructionsFragment(hasGuessedApps, challengeModel.scenarioInstructions))
                 return@OnNavigationItemSelectedListener true
             }
         }
