@@ -66,8 +66,8 @@
     </string>
     <string name="broadcastTheftMediumDescription">
         Broadcast for intra-app use is protected by a custom permission and sent using
-        Context.sendBroadcast(). However, the permission has not protection level set and is thus
-        normal. The OS thus grants it automatically,
+        Context.sendBroadcast(). However, the permission has no protection level set and is thus
+        normal by default. The OS thus grants it automatically,
     </string>
     <string name="broadcastTheftHighDescription">
         Broadcast for intr-app use is protected by a custom permission and is sent using
@@ -83,6 +83,7 @@
         Broadcasts are sent using LocalBroadcastManager, or an equivalent, since
         LocalBroadcastManager is deprecated. Alternatively, address the broadcast to the receiver
         inside your app explicitly. Or restrict broadcast to receivers of a certain package.
+        The latter is what the News Aggregator does.
     </string>
 
     <!--Security level code-->
