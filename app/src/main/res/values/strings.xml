@@ -748,6 +748,36 @@
         \n</manifest>]]>
     </string>
 
+    <string name="broadcastTheftLowIntentCode">
+        <![CDATA[
+        val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
+        \nbroadcast.putExtra(\"articles\", articles)
+        \nbroadcast.putExtra(\"news_stream_name\", newsStreamName)
+
+        \n\nsendBroadcast(broadcast)]]>
+    </string>
+    <string name="broadcastTheftMediumIntentCode">
+        <![CDATA[
+       val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
+        \nbroadcast.putExtra(\"articles\", articles)
+        \nbroadcast.putExtra(\"news_stream_name\", newsStreamName)
+
+        \n\nsendBroadcast(broadcast,\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.permissions.READ_NEWS\")]]>
+    </string>
+    <string name="broadcastTheftImpossibleIntentCode">
+        <![CDATA[
+        val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
+        \nbroadcast.putExtra(\"articles\", articles)
+        \nbroadcast.putExtra(\"news_stream_name\", newsStreamName)
+
+        \n\nbroadcast.setPackage(this.getPackageName())
+        \nsendBroadcast(broadcast)]]>
+    </string>
+
     <!--attack explanations-->
     <string name="broadcastTheftExplanation">
         When a broadcast is sent, the sender does not receive any indication of what components have

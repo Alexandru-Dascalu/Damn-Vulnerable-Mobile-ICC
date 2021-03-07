@@ -1,3 +1,3 @@
 package uk.ac.swansea.dascalu.dvmicc.home.model
 
-data class SecurityLevel(val explanationID: Int, val manifestID: Int)
+data class SecurityLevel(val explanationID: Int, val manifestID: Int, val intentCodeID: Int)

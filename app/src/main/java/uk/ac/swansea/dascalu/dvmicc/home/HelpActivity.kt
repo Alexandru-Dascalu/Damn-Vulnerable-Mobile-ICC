@@ -16,7 +16,8 @@ class HelpActivity : AppCompatActivity() {
             val challenge: Challenge? = intent.extras!!.getSerializable("challenge") as Challenge?
 
             if(challenge != null) {
-                setCode(challenge)
+                setManifestCode(challenge)
+                setIntentCode(challenge)
                 setLevelDescriptions(challenge)
             } else {
                 throw IllegalStateException("No challenge in intent for help activity!")
@@ -43,7 +44,7 @@ class HelpActivity : AppCompatActivity() {
         securityImpossibleTextView.text = getString(challenge.securityLevels["impossible"]!!.explanationID)
     }
 
-    private fun setCode(challenge: Challenge) {
+    private fun setManifestCode(challenge: Challenge) {
         val securityLowManifest = findViewById<CodeView>(R.id.securityLowManifest)
         setCodeViewOptions(this, securityLowManifest, "xml", challenge.securityLevels["low"]!!.manifestID)
 
@@ -58,5 +59,22 @@ class HelpActivity : AppCompatActivity() {
 
         val securityImpossibleManifest = findViewById<CodeView>(R.id.securityImpossibleManifest)
         setCodeViewOptions(this, securityImpossibleManifest, "xml", challenge.securityLevels["impossible"]!!.manifestID)
+    }
+
+    private fun setIntentCode(challenge: Challenge) {
+        val securityLowIntentCode = findViewById<CodeView>(R.id.securityLowIntentCode)
+        setCodeViewOptions(this, securityLowIntentCode, "java", challenge.securityLevels["low"]!!.intentCodeID)
+
+        val securityMediumIntentCode = findViewById<CodeView>(R.id.securityMediumIntentCode)
+        setCodeViewOptions(this, securityMediumIntentCode, "java", challenge.securityLevels["medium"]!!.intentCodeID)
+
+        val securityHighIntentCode = findViewById<CodeView>(R.id.securityHighIntentCode)
+        setCodeViewOptions(this, securityHighIntentCode, "java", challenge.securityLevels["high"]!!.intentCodeID)
+
+        val securityVeryHighIntentCode = findViewById<CodeView>(R.id.securityVeryHighIntentCode)
+        setCodeViewOptions(this, securityVeryHighIntentCode, "java", challenge.securityLevels["very high"]!!.intentCodeID)
+
+        val securityImpossibleIntentCode = findViewById<CodeView>(R.id.securityImpossibleIntentCode)
+        setCodeViewOptions(this, securityImpossibleIntentCode, "java", challenge.securityLevels["impossible"]!!.intentCodeID)
     }
 }

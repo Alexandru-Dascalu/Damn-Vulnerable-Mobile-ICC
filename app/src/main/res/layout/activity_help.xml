@@ -47,6 +47,16 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"/>
 
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/securityLowIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
         <TextView
             android:id="@+id/securityMediumHeader"
             android:layout_width="match_parent"
@@ -72,6 +82,16 @@
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/securityMediumManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/securityMediumIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -113,6 +133,16 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"/>
 
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/securityHighIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
         <TextView
             android:id="@+id/securityVeryHighHeader"
             android:layout_width="match_parent"
@@ -146,6 +176,16 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"/>
 
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/securityVeryHighIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
         <TextView
             android:id="@+id/securityImpossibleHeader"
             android:layout_width="match_parent"
@@ -171,6 +211,16 @@
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/securityImpossibleManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/securityImpossibleIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
