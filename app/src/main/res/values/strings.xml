@@ -468,6 +468,7 @@
 
     <!--Strings for other menu stuff-->
     <string name="settingsButtonDescription">Settings</string>
+    <string name="helpButtonDescription">Help</string>
     <string name="vulnerableAppHint">Vulnerable app</string>
     <string name="malwareAppHint">Malware</string>
     <string name="flagHint">Flag</string>

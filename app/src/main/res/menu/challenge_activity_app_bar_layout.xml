@@ -7,4 +7,9 @@
         android:title="@string/settingsButtonDescription"
         android:icon="@drawable/ic_baseline_settings"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/helpButton"
+        android:title="@string/helpButtonDescription"
+        android:icon="@drawable/ic_help"
+        app:showAsAction="ifRoom"/>
 </menu>
