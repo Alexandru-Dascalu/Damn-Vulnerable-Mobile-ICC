@@ -538,6 +538,9 @@
     <string name="instructionsHidden">
         You need to find the malware and the vulnerable app first in order to see further instructions.
     </string>
+    <string name="securityLevelInfoHidden">
+        You need to find the malware and the vulnerable app first in order to see descriptions of the security levels.
+    </string>
 
     <!--flags to be found by the user-->
     <string name="impossibleFlag">Can\'t touch this!</string>

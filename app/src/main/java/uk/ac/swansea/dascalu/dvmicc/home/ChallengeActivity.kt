@@ -90,6 +90,7 @@ class ChallengeActivity :  AppCompatActivity() {
         } else if(item.itemId == R.id.helpButton) {
             val intent = Intent(this, HelpActivity::class.java)
             intent.putExtra("challenge", challengeModel)
+            intent.putExtra("hasGuessedApps", hasGuessedApps)
             startActivity(intent)
         }
 

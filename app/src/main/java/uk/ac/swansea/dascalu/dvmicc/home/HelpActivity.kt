@@ -10,17 +10,19 @@ import java.lang.IllegalStateException
 class HelpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_help)
 
         if(intent.extras != null) {
-            val challenge: Challenge? = intent.extras!!.getSerializable("challenge") as Challenge?
+            val hasGuessedApps: Boolean = intent.extras!!.getBoolean("hasGuessedApps")
 
-            if(challenge != null) {
+            if(hasGuessedApps) {
+                val challenge: Challenge = intent.extras!!.getSerializable("challenge") as Challenge
+                setContentView(R.layout.activity_help)
+
                 setManifestCode(challenge)
                 setIntentCode(challenge)
                 setLevelDescriptions(challenge)
             } else {
-                throw IllegalStateException("No challenge in intent for help activity!")
+                setContentView(R.layout.activity_help_locked)
             }
         } else {
             throw IllegalStateException("No extras in intent that started help activity!")
