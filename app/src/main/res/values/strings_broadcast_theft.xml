@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--attack explanations-->
+    <string name="broadcastTheftExplanation">
+        When a broadcast is sent, the sender does not receive any indication of what components have
+        received that broadcast, and receivers can read all the data inside the broadcast intent.
+
+        \n\nTherefore, a malicious app could register a broadcast receiver with as many intent
+        filters as possible to receive the maximum number of broadcasts. The malware would be able
+        to read the data in the broadcast without the user knowing it. If the app has the permission
+        to access the internet, it could be used as spyware.
+
+        \n\nBesides intercepting information meant to be public, it could read sensitive data
+        mistakenly placed in a public broadcast by an app. Moreover, if an implicit intent is used
+        for a broadcast meant for an app\’s internal use, that broadcast will be sent to any receiver
+        on the device with a matching filter. Sensitive user information could thus be intercepted
+        and sent to the attacker.
+
+        \n\nThe use of ordered implicit broadcasts can not only enable eavesdropping, but denial of
+        service and man in the middle attacks as well.
+
+        \n\nOrdered broadcasts are sent to receivers one at a time. A malicious app could register a
+        broadcast receiver with a very high priority to
+        ensure it is the first to receive it. It could extract the data from the broadcast, and
+        then abort the broadcast, ensuring the intended receivers do not get it and thus perform a
+        Denial of Service attack.
+
+        \n\nOtherwise, the malicious receiver could propagate the broadcast with malicious data
+        replacing the original one. This could be used to corrupt data or crash other applications.
+
+        \n\nWhen making a broadcast, the developer can specify the permission that a broadcast
+        receiver needs to have to receive the intent. This can be used to guard against
+        Broadcast Theft. But the malware could still get the permission. Even if the permission is a
+        Signature one, the attacker could get it if they have stolen the developer\'s certificate.
+        Other ways for a developer to guard against these attacks is to not put sensitive
+        information in a broadcast unless necessary, to use explicit broadcasts for intra-app
+        use or to send broadcast using LocalBroadcastManager.
+    </string>
+
+    <string name="broadcastTheftInstructions">
+        Go to the News Aggregator app and log in with email test@gmail.com and password Test1234,
+        or make your own account. Look at some of the news streams (You will only have All and
+        Recommended if you made your own account). If you have looked at them before, swipe down to
+        refresh to get the latest articles. The app has a bug where sometimes articles do not
+        appear, so you need to swip down to refresh in that case.
+
+        \n\nThen, go and start the Call Logger app.
+        Have a look at the your call history in the three tabs. Then click on the overflow menu on
+        the app bar and click on Malware. Do this for all security levels to find the flags.
+
+        \n\nWhen the malware is in security level High, you need to first start the Call Logger app
+        before going into the News Aggregator to get news stories.
+    </string>
+
+    <string-array name="broadcastTheftFlags">
+        <item>Alea iacta est</item>
+        <item>Veni, vidi, vici</item>
+        <item>Et tu, Brute?</item>
+        <item>Galia est omnis divisa in partes tres</item>
+    </string-array>
+
+    <!--security level descriptions-->
+    <string name="broadcastTheftLowDescription">
+        Broadcasts meant for intra-app use are sent without permission protection and by using
+        Context.sendBroadcast().
+    </string>
+    <string name="broadcastTheftMediumDescription">
+        Broadcast for intra-app use is protected by a custom permission and sent using
+        Context.sendBroadcast(). However, the permission has not protection level set and is thus
+        normal. The OS thus grants it automatically,
+    </string>
+    <string name="broadcastTheftHighDescription">
+        Broadcast for intr-app use is protected by a custom permission and is sent using
+        Context.sendBroadcast. This permission\'s protection level is dangerous, but a careless user
+        might still grant it.
+    </string>
+    <string name="broadcastTheftVeryHighDescription">
+        Broadcast for intr-app use is protected by a signature permission is sent using
+        Context.sendBroadcast. If the attacker gets the certificate of the developer, they can get
+        this permission.
+    </string>
+    <string name="broadcastTheftImpossibleDescription">
+        Broadcasts are sent using LocalBroadcastManager, or an equivalent, since
+        LocalBroadcastManager is deprecated. Alternatively, address the broadcast to the receiver
+        inside your app explicitly. Or restrict broadcast to receivers of a certain package.
+    </string>
+
+    <!--Security level code-->
+    <string name="broadcastTheftLowManifest">
+        <![CDATA[
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup="true"
+                \n\t\tandroid:icon="@mipmap/ic_launcher"
+                \n\t\tandroid:label="@string/app_name"
+                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+                \n\t\tandroid:supportsRtl="true"
+                \n\t\tandroid:hardwareAccelerated="false"
+                \n\t\tandroid:theme="@style/AppTheme">
+
+                \n\n\t\t<activity android:name=".LogInActivity">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+
+                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+
+                \n\n\t\t<activity android:name=".MainActivity"/>
+                \n\t\t<activity android:name=".SignUpActivity"/>
+                \n\t\t<activity android:name=".LoadingActivity"/>
+                \n\t\t<activity android:name=".FullArticleActivity"/>
+                \n\n\t\t<service android:name=".icc.NewsService"
+                    \n\t\t\tandroid:exported="false"
+                    \n\t\t\tandroid:enabled="true"/>
+                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
+                    \n\t\t\tandroid:enabled="true">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</receiver>
+            \n\n\t</application>
+        \n</manifest>]]>
+    </string>
+    <string name="broadcastTheftMediumManifest">
+        <![CDATA[
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+            \n\n\t<permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
+                \n\t\tandroid:label="@string/readNewsPermissionLabel"
+                \n\t\tandroid:description="@string/readNewsPermissionDescription"/>
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup="true"
+                \n\t\tandroid:icon="@mipmap/ic_launcher"
+                \n\t\tandroid:label="@string/app_name"
+                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+                \n\t\tandroid:supportsRtl="true"
+                \n\t\tandroid:hardwareAccelerated="false"
+                \n\t\tandroid:theme="@style/AppTheme">
+
+                \n\n\t\t<activity android:name=".LogInActivity">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+
+                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+
+                \n\n\t\t<activity android:name=".MainActivity"/>
+                \n\t\t<activity android:name=".SignUpActivity"/>
+                \n\t\t<activity android:name=".LoadingActivity"/>
+                \n\t\t<activity android:name=".FullArticleActivity"/>
+                \n\n\t\t<service android:name=".icc.NewsService"
+                    \n\t\t\tandroid:exported="false"
+                    \n\t\t\tandroid:enabled="true"/>
+                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
+                    \n\t\t\tandroid:enabled="true">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</receiver>
+            \n\n\t</application>
+        \n</manifest>]]>
+    </string>
+
+    <string name="broadcastTheftHighManifest">
+        <![CDATA[
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+            \n\n\t<permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
+                \n\t\tandroid:label="@string/readNewsPermissionLabel"
+                \n\t\tandroid:description="@string/readNewsPermissionDescription"
+                \n\t\tandroid:protectionLevel="dangerous"/>
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup="true"
+                \n\t\tandroid:icon="@mipmap/ic_launcher"
+                \n\t\tandroid:label="@string/app_name"
+                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+                \n\t\tandroid:supportsRtl="true"
+                \n\t\tandroid:hardwareAccelerated="false"
+                \n\t\tandroid:theme="@style/AppTheme">
+
+                \n\n\t\t<activity android:name=".LogInActivity">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+
+                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+
+                \n\n\t\t<activity android:name=".MainActivity"/>
+                \n\t\t<activity android:name=".SignUpActivity"/>
+                \n\t\t<activity android:name=".LoadingActivity"/>
+                \n\t\t<activity android:name=".FullArticleActivity"/>
+                \n\n\t\t<service android:name=".icc.NewsService"
+                    \n\t\t\tandroid:exported="false"
+                    \n\t\t\tandroid:enabled="true"/>
+                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
+                    \n\t\t\tandroid:enabled="true">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</receiver>
+            \n\n\t</application>
+        \n</manifest>]]>
+    </string>
+    <string name="broadcastTheftVeryHighManifest">
+        <![CDATA[
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+            \n\n\t<permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
+                \n\t\tandroid:label="@string/readNewsPermissionLabel"
+                \n\t\tandroid:description="@string/readNewsPermissionDescription"
+                \n\t\tandroid:protectionLevel="signature"/>
+
+            \n\n\t<uses-permission
+                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup="true"
+                \n\t\tandroid:icon="@mipmap/ic_launcher"
+                \n\t\tandroid:label="@string/app_name"
+                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+                \n\t\tandroid:supportsRtl="true"
+                \n\t\tandroid:hardwareAccelerated="false"
+                \n\t\tandroid:theme="@style/AppTheme">
+
+                \n\n\t\t<activity android:name=".LogInActivity">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+
+                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+
+                \n\n\t\t<activity android:name=".MainActivity"/>
+                \n\t\t<activity android:name=".SignUpActivity"/>
+                \n\t\t<activity android:name=".LoadingActivity"/>
+                \n\t\t<activity android:name=".FullArticleActivity"/>
+                \n\n\t\t<service android:name=".icc.NewsService"
+                    \n\t\t\tandroid:exported="false"
+                    \n\t\t\tandroid:enabled="true"/>
+                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
+                    \n\t\t\tandroid:enabled="true">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</receiver>
+            \n\n\t</application>
+        \n</manifest>]]>
+    </string>
+
+    <string name="broadcastTheftLowIntentCode">
+        <![CDATA[
+        val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
+        \nbroadcast.putExtra(\"articles\", articles)
+        \nbroadcast.putExtra(\"news_stream_name\", newsStreamName)
+
+        \n\nsendBroadcast(broadcast)]]>
+    </string>
+    <string name="broadcastTheftMediumIntentCode">
+        <![CDATA[
+       val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
+        \nbroadcast.putExtra(\"articles\", articles)
+        \nbroadcast.putExtra(\"news_stream_name\", newsStreamName)
+
+        \n\nsendBroadcast(broadcast,\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.permissions.READ_NEWS\")]]>
+    </string>
+    <string name="broadcastTheftImpossibleIntentCode">
+        <![CDATA[
+        val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
+            \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
+        \nbroadcast.putExtra(\"articles\", articles)
+        \nbroadcast.putExtra(\"news_stream_name\", newsStreamName)
+
+        \n\nbroadcast.setPackage(this.getPackageName())
+        \nsendBroadcast(broadcast)]]>
+    </string>
+</resources>
