@@ -87,6 +87,10 @@ class ChallengeActivity :  AppCompatActivity() {
             intent.putExtra("launchedFromChallengeActivity", true)
 
             startActivityForResult(intent, SETTINGS_REQUEST_CODE)
+        } else if(item.itemId == R.id.helpButton) {
+            val intent = Intent(this, HelpActivity::class.java)
+            intent.putExtra("challenge", challengeModel)
+            startActivity(intent)
         }
 
         return super.onOptionsItemSelected(item)
