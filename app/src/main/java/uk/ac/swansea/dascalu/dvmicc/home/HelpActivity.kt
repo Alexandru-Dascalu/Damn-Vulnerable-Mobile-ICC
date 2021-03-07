@@ -3,6 +3,7 @@ package uk.ac.swansea.dascalu.dvmicc.home
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.MaterialToolbar
 import io.github.kbiakov.codeview.CodeView
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
 import java.lang.IllegalStateException
@@ -16,14 +17,19 @@ class HelpActivity : AppCompatActivity() {
 
             if(hasGuessedApps) {
                 val challenge: Challenge = intent.extras!!.getSerializable("challenge") as Challenge
+
                 setContentView(R.layout.activity_help)
+                setSupportActionBar(findViewById<MaterialToolbar>(R.id.helpActivityToolbar))
 
                 setManifestCode(challenge)
                 setIntentCode(challenge)
                 setLevelDescriptions(challenge)
             } else {
                 setContentView(R.layout.activity_help_locked)
+                setSupportActionBar(findViewById<MaterialToolbar>(R.id.lockedHelpActivityToolbar))
             }
+
+            title = getString(R.string.helpActivityTitle)
         } else {
             throw IllegalStateException("No extras in intent that started help activity!")
         }

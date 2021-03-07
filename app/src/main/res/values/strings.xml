@@ -475,6 +475,7 @@
     <string name="submitButtonText">Submit</string>
     <string name="wrongAnswer">Wrong answer!</string>
     <string name="completed">Completed</string>
+    <string name="helpActivityTitle">Security levels info</string>
 
     <string name="operationModes">Operation mode for the challenge:</string>
     <string name="vulnerableAppSecurityLevels">Security Level of vulnerable app:</string>
