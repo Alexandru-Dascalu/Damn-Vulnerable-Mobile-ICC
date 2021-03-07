@@ -26,6 +26,17 @@
             android:text="@string/lowLevelSentence"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
 
+        <TextView
+            android:id="@+id/securityLowDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+
+            android:textAppearance="@style/textStyle" />
+
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/securityLowManifest"
             android:layout_width="wrap_content"
@@ -47,6 +58,17 @@
 
             android:text="@string/mediumLevelSentence"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
+
+        <TextView
+            android:id="@+id/securityMediumDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+
+            android:textAppearance="@style/textStyle" />
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/securityMediumManifest"
@@ -70,6 +92,17 @@
             android:text="@string/highLevelSentence"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
 
+        <TextView
+            android:id="@+id/securityHighDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+
+            android:textAppearance="@style/textStyle" />
+
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/securityHighManifest"
             android:layout_width="wrap_content"
@@ -92,6 +125,17 @@
             android:text="@string/veryHighLevelSentence"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
 
+        <TextView
+            android:id="@+id/securityVeryHighDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+
+            android:textAppearance="@style/textStyle" />
+
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/securityVeryHighManifest"
             android:layout_width="wrap_content"
@@ -113,6 +157,17 @@
 
             android:text="@string/impossibleLevelSentence"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
+
+        <TextView
+            android:id="@+id/securityImpossibleDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+
+            android:textAppearance="@style/textStyle" />
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/securityImpossibleManifest"
