@@ -11,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 
 import com.google.android.material.appbar.MaterialToolbar
@@ -33,7 +34,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         if (isGranted) {
             applySettings()
         } else {
-            Snackbar.make(findViewById(R.id.malwareSecurityLevelRadioGroup),
+            Snackbar.make(findViewById(R.id.vulnerableAppSecurityLevelRadioGroup),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
         }
     }
@@ -43,7 +44,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         if (isGranted) {
             loadSecuritySettingsFromFile()
         } else {
-            Snackbar.make(findViewById(R.id.malwareSecurityLevelRadioGroup),
+            Snackbar.make(findViewById(R.id.vulnerableAppSecurityLevelRadioGroup),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
         }
     }
@@ -99,18 +100,16 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         if((storageState == Environment.MEDIA_MOUNTED)) {
             val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
                     .vulnerableAppSecurityLevelRadioGroup)
-            val malwareSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
-                    .malwareSecurityLevelRadioGroup)
+            val malwareSecuritySwitch = findViewById<SwitchCompat>(R.id.malwareSecuritySwitch)
 
             val vulnerableAppSecurityLevel: String = findViewById<RadioButton>(
                     vulnerableSecurityLevelButtonGroup.checkedRadioButtonId).text.toString().toLowerCase(Locale.ROOT)
-            val malwareSecurityLevel: String = findViewById<RadioButton>(
-                    malwareSecurityLevelButtonGroup.checkedRadioButtonId).text.toString().toLowerCase(Locale.ROOT)
+            val malwareSecurityOvercome: Boolean = malwareSecuritySwitch.isChecked
 
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
             val writer = OutputStreamWriter(FileOutputStream(settingsFile))
 
-            val settings : String = "%s\n%s".format(vulnerableAppSecurityLevel, malwareSecurityLevel)
+            val settings : String = "%s\n%b".format(vulnerableAppSecurityLevel, malwareSecurityOvercome)
             writer.write(settings)
 
             writer.close()
@@ -137,8 +136,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         if((storageState == Environment.MEDIA_MOUNTED)) {
             val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
                     .vulnerableAppSecurityLevelRadioGroup)
-            val malwareSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
-                    .malwareSecurityLevelRadioGroup)
+            val malwareSecuritySwitch = findViewById<SwitchCompat>(R.id.malwareSecuritySwitch)
 
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
 
@@ -166,28 +164,13 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
                         vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_impossible)
                     } else -> {
                     throw IllegalStateException("Security level in file has invalid value!")
-                }
+                    }
                 }
 
-                when(malwareSecurityLevel) {
-                    "low" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_low)
-                    }
-                    "medium" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_medium)
-                    }
-                    "high" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_high)
-                    }
-                    "very high" -> {
-                        malwareSecurityLevelButtonGroup.check(R.id.radio_button_malware_very_high)
-                    } else -> {
-                        throw IllegalStateException("Security level in file has invalid value!")
-                    }
-                }
+                malwareSecuritySwitch.isChecked = malwareSecurityLevel.toBoolean()
             }
         } else {
-            Snackbar.make(findViewById(R.id.malwareSecurityLevelRadioGroup), "External storage is not present!",
+            Snackbar.make(findViewById(R.id.vulnerableAppSecurityLevelRadioGroup), "External storage is not present!",
                     Snackbar.LENGTH_LONG).show()
         }
     }

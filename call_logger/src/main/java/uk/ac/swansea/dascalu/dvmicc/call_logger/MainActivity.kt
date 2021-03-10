@@ -107,9 +107,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun acquirePermissionsForReceiver() {
-        val securityLevel = loadSecuritySettingsFromFile(this)
+        val securityLevelSettings = loadSecuritySettingsFromFile(this)
 
-        if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
+        if(securityLevelSettings != null) {
+            if(securityLevelSettings.vulnerableAppSecuritySetting == "high" &&
+                    securityLevelSettings.malwareOvercome) {
                 if(ContextCompat.checkSelfPermission(this,
                                 "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
                         != PackageManager.PERMISSION_GRANTED) {
@@ -117,6 +119,7 @@ class MainActivity : AppCompatActivity() {
                     readNewsPermissionLauncher.launch(
                             "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
                 }
+            }
         }
     }
 }

@@ -108,8 +108,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/vulnerableAppSecurityLevels"
                 android:textSize="18sp"
-
                 android:textStyle="bold"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/securityLevelWarningTextView" />
 
@@ -159,58 +159,46 @@
             </RadioGroup>
 
             <TextView
-                android:id="@+id/malwareSecurityLevelTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-
-                android:text="@string/malwareSecurityLevels"
-                android:textSize="18sp"
-                android:textStyle="bold"
-
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vulnerableAppSecurityLevelRadioGroup" />
-
-            <RadioGroup
-                android:id="@+id/malwareSecurityLevelRadioGroup"
-                android:layout_width="match_parent"
+                android:id="@+id/malwareSecuritySettingsHeading"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
 
-                android:checkedButton="@+id/radio_button_malware_low"
+                android:text="@string/malwareOvercomeModeTitle"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/malwareSecurityLevelTextView">
+                app:layout_constraintTop_toBottomOf="@+id/vulnerableAppSecurityLevelRadioGroup" />
 
-                <RadioButton
-                    android:id="@+id/radio_button_malware_low"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/lowSecurityLevel" />
+            <TextView
+                android:id="@+id/malwareSecuritySettingsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
 
-                <RadioButton
-                    android:id="@+id/radio_button_malware_medium"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/mediumSecurityLevel" />
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
 
-                <RadioButton
-                    android:id="@+id/radio_button_malware_high"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/highSecurityLevel" />
+                android:text="@string/malware_overcome_explanation"
+                android:textAppearance="@style/textStyle"
 
-                <RadioButton
-                    android:id="@+id/radio_button_malware_very_high"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/veryHighSecurityLevel" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/malwareSecuritySettingsHeading" />
 
-            </RadioGroup>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/malwareSecuritySwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+
+                android:text="@string/malware_overcome_switch_msg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/malwareSecuritySettingsTextView" />
 
             <Button
                 android:id="@+id/settingsApplyButton"
@@ -226,7 +214,7 @@
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/malwareSecurityLevelRadioGroup" />
+                app:layout_constraintTop_toBottomOf="@id/malwareSecuritySwitch" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
