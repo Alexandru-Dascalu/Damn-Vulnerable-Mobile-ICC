@@ -71,24 +71,38 @@
 
         \n\nFor each challenge, there are various security levels, which change how vulnerable the
         target app is and how hard it is for the malware to perform the attack. You can change the level
-        from inside each challenge. The number of security levels and what they mean varies depending
+        from inside each challenge. The number of security levels and their meaning varies depending
         on the challenge. One security level will be Impossible, for which the attack is no longer
-        possible.
+        possible and the malware can not gain access to the vulnerable app.
 
         \n\nThe beginner mode gives you a full explanation of the attack. After you have read it,
-        you then need to look at a list of all the manifests and some code snippets of all
+        you then need to look at a list of all the manifests and some intent sending code snippets of all
         apps of this project. Based on the explanation of the attack you were given and the code
         snippets you see, you then have to
         identify the malicious app and the vulnerable app. There is another view which displays
         questions to help guide you through the challenge. Here, you can submit your answers and
-        find out if you have correctly identified the apps. You may be able to access hints if you
-        keep getting the answer wrong.
+        find out if you have correctly identified the apps.
 
-        \n\nThen, you need to start the vulnerable and malware apps in order to perform the attack
-        or watch it happen in real time. The exact way this happens will vary depending on the
-        challenge. Watching or performing the attack will usually uncover some secret which you can
-        then submit to the Questions view in order to complete the challenge, showing that you have
-        penetrated the vulnerable application. This view may contain other questions to test your
+        \n\nOnce you have found out both the malware and the vulnerable app, new information
+        becomes available. You can see in the Instructions page specific instructions for each
+        challenge. On the app bar there is a help button which displays explanations and relevant
+        code of the vulnerable app for all security levels. This page is not available until you
+        find out the malware and vulnerable apps.
+
+        \n\nIn general, you need to go and start the vulnerable app and play around with it. Then
+        you should head over to the malware app and play around with its functionality. It will have
+        a menu in its app bar where you can open a Log page. This will contain information the
+        malware stole from the vulnerable app. Here you can find the flag for the current security
+        level, which you can then submit to the questions in the DVM-ICC app. You should then clear
+        the log of the malware, and disable the Malware Overcome mode from challenge settings. Go to
+        the vulnerable app and use it again, then go to the malware and look in the log. You should
+        see that the malware could not steal the information again. Repeat this process for all
+        security levels, which you can select from the Challenge Settings page.
+
+        \n\nThe above may change depending on the challenge, and the Instructions page will tell you
+        exactly what you should do for that challenge.
+
+        \n\nThe Questions view may contain other questions to test your
         knowledge. When completing the challenge, you are given an explanation about how the attack
         in the challenge worked, why the scenario was authentic and how the different security
         levels fix the vulnerability.
