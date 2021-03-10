@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
     <!--attack explanations-->
     <string name="broadcastTheftExplanation">
         When a broadcast is sent, the sender does not receive any indication of what components have
@@ -86,8 +86,8 @@
         The latter is what the News Aggregator does.
     </string>
 
-    <!--Security level code-->
-    <string name="broadcastTheftLowManifest">
+    <!--News aggregator manifests-->
+    <string name="newsAggregatorLowManifest">
         <![CDATA[
         <manifest xmlns:android="http://schemas.android.com/apk/res/android"
             \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
@@ -128,7 +128,7 @@
             \n\n\t</application>
         \n</manifest>]]>
     </string>
-    <string name="broadcastTheftMediumManifest">
+    <string name="newsAggregatorMediumManifest">
         <![CDATA[
         <manifest xmlns:android="http://schemas.android.com/apk/res/android"
             \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
@@ -178,7 +178,7 @@
         \n</manifest>]]>
     </string>
 
-    <string name="broadcastTheftHighManifest">
+    <string name="newsAggregatorHighManifest">
         <![CDATA[
         <manifest xmlns:android="http://schemas.android.com/apk/res/android"
             \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
@@ -228,7 +228,7 @@
             \n\n\t</application>
         \n</manifest>]]>
     </string>
-    <string name="broadcastTheftVeryHighManifest">
+    <string name="newsAggregatorVeryHighManifest">
         <![CDATA[
         <manifest xmlns:android="http://schemas.android.com/apk/res/android"
             \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
@@ -279,16 +279,19 @@
         \n</manifest>]]>
     </string>
 
-    <string name="broadcastTheftLowIntentCode">
+    <string name="newsAggregatorLowIntentCode">
         <![CDATA[
-        val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
+        class NewsService : Service() {
+            \n\t...
+            \n\tval broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
             \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
-        \nbroadcast.putExtra(\"articles\", articles)
-        \nbroadcast.putExtra(\"news_stream_name\", newsStreamName)
+            \n\tbroadcast.putExtra(\"articles\", articles)
+            \n\tbroadcast.putExtra(\"news_stream_name\", newsStreamName)
 
-        \n\nsendBroadcast(broadcast)]]>
+            \n\n\tsendBroadcast(broadcast)
+        \n}]]>
     </string>
-    <string name="broadcastTheftMediumIntentCode">
+    <string name="newsAggregatorMediumIntentCode">
         <![CDATA[
        val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
             \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
@@ -298,7 +301,7 @@
         \n\nsendBroadcast(broadcast,\"uk.ac.swansea.dascalu.\" +
             \n\t\"dvmicc.newsaggregator.permissions.READ_NEWS\")]]>
     </string>
-    <string name="broadcastTheftImpossibleIntentCode">
+    <string name="newsAggregatorImpossibleIntentCode">
         <![CDATA[
         val broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
             \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
@@ -307,5 +310,121 @@
 
         \n\nbroadcast.setPackage(this.getPackageName())
         \nsendBroadcast(broadcast)]]>
+    </string>
+
+    <string name="newsAggregatorLoginIntentCode" >
+        <![CDATA[
+        class LogInActivity : AppCompatActivity() {
+            \n\t...
+            \n\tfun signUp(view: View) {
+                \n\t\tval signUpIntent = Intent(this, SignUpActivity::class.java)
+                \n\t\tstartActivity(signUpIntent)
+            \n\t}
+
+            \n\n\tprivate fun checkLogIn(task: Task<AuthResult>, view: View) {
+                \n\t\tif (task.isSuccessful) {
+                \n\t\t\tval mainActivityIntent = Intent(this, LoadingActivity::class.java)
+                \n\t\t\tstartActivity(mainActivityIntent)
+            \n\t\t} else {
+            \n\t\t\t…
+            \n\t\t}
+            \n\t}
+            \n...
+        \n}]]>
+    </string>
+    <string name="newsAggregatorSignUpCode">
+        <![CDATA[
+        class SignUpActivity : AppCompatActivity() {
+            \n\t...
+            \n\tprivate fun onLogInAfterSignUp(task: Task<AuthResult>) {
+                \n\t\tif (task.isSuccessful) {
+                \n\t\tval intent: Intent = Intent(this, LoadingActivity::class.java)
+                \n\t\tstartActivity(intent)
+                \n\t\tthis.finish()
+            \n\t}
+            \n\t...
+        \n}]]>
+    </string>
+    <string name="newsAggregatorLoadingCode">
+        <![CDATA[
+        class LoadingActivity: AppCompatActivity(), FirebaseLoadedCallback {
+            \n\t...
+
+            \n\toverride fun onLoaded() {
+                \n\t\tval intent = Intent(this, MainActivity::class.java)
+                \n\t\tstartActivity(intent)
+                \n\t\tthis.finish()
+            \n\t}
+            \n\t...
+        \n}]]>
+    </string>
+    <string name="newsAggregatorArticleIntentCode">
+        <![CDATA[
+        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        \n\n\tinit {
+            \n\t\tcardView.setOnClickListener { _ ->
+                \n\t\t\tif(article != null) {
+                    \n\t\t\t\tval displayArticleIntent = Intent(bookmarksFragment.context,
+                        \n\t\t\t\t\tFullArticleActivity::class.java)
+                    \n\t\t\t\tdisplayArticleIntent.putExtra("LINK", article!!.url)
+
+                    \n\t\t\t\tbookmarksFragment.requireContext().startActivity(displayArticleIntent)
+                \n\t\t\t}
+            \n\t\t}
+        \n\t}
+        \n}]]>
+    </string>
+
+    <string name="callLoggerManifest">
+        <![CDATA[
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.call_logger">
+
+            \n\n\t<uses-permission android:name=
+                \n\t\t"android.permission.READ_CALL_LOG"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup="true"
+                \n\t\tandroid:icon="@mipmap/ic_launcher"
+                \n\t\tandroid:label="@string/app_name"
+                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+                \n\t\tandroid:supportsRtl="true"
+                \n\t\tandroid:theme="@style/AppTheme">
+
+                \n\n\t\t<activity android:name=".MainActivity">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+
+                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+                \n\n\t\t<activity android:name=".InfoActivity"/>
+
+                \n\n\t\t<receiver android:name=".icc.CallsBroadcastReceiver"
+                    \n\t\t\tandroid:enabled="true">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=
+                        \n\t\t\t\t\t"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</receiver>
+            \n\n\t</application>
+        \n</manifest>]]>
+    </string>
+
+    <string name="callLoggerIntentCode">
+        <![CDATA[
+        class MainActivity : AppCompatActivity() {
+            \n\t...
+            \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
+                \n\t\tif(item.itemId == R.id.malware_zone_button) {
+                \n\n\t\t\tval intent = Intent(this, InfoActivity::class.java)
+                \n\t\t\tstartActivity(intent)
+
+                \n\n\t\t\treturn true
+                \n\t\t}
+                \n\t\treturn super.onOptionsItemSelected(item)
+            \n\t}
+        \n}]]>
     </string>
 </resources>

@@ -36,6 +36,16 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"/>
 
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/callLoggerIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
         <TextView
             android:id="@+id/newsAggregatorHeader"
             android:layout_width="match_parent"
@@ -50,6 +60,56 @@
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/newsAggregatorManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/newsAggregatorLoginIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/newsAggregatorSignUpIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/newsAggregatorBroadcastCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/newsAggregatorLoadingCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/newsAggregatorArticleIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 

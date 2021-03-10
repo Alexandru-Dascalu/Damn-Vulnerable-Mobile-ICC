@@ -25,6 +25,24 @@ class ManifestsFragment : Fragment() {
         setCodeViewOptions(context!!, callLoggerXML, "xml", R.string.callLoggerManifest)
 
         val newsAggregatorXML = view.findViewById<CodeView>(R.id.newsAggregatorManifest)
-        setCodeViewOptions(context!!, newsAggregatorXML, "xml", R.string.newsAggregatorManifest)
+        setCodeViewOptions(context!!, newsAggregatorXML, "xml", R.string.newsAggregatorLowManifest)
+
+        val newsAggregatorBroadcastCode = view.findViewById<CodeView>(R.id.newsAggregatorBroadcastCode)
+        setCodeViewOptions(context!!, newsAggregatorBroadcastCode, "java", R.string.newsAggregatorLowIntentCode)
+
+        val newsAggregatorLoginCode = view.findViewById<CodeView>(R.id.newsAggregatorLoginIntentCode)
+        setCodeViewOptions(context!!, newsAggregatorLoginCode, "java", R.string.newsAggregatorLoginIntentCode)
+
+        val newsAggregatorSignUpIntentCode = view.findViewById<CodeView>(R.id.newsAggregatorSignUpIntentCode)
+        setCodeViewOptions(context!!, newsAggregatorSignUpIntentCode, "java", R.string.newsAggregatorSignUpCode)
+
+        val newsAggregatorLoadingCode = view.findViewById<CodeView>(R.id.newsAggregatorLoadingCode)
+        setCodeViewOptions(context!!, newsAggregatorLoadingCode, "java", R.string.newsAggregatorLoadingCode)
+
+        val newsAggregatorArticleIntentCode = view.findViewById<CodeView>(R.id.newsAggregatorArticleIntentCode)
+        setCodeViewOptions(context!!, newsAggregatorArticleIntentCode, "java", R.string.newsAggregatorArticleIntentCode)
+
+        val callLoggerIntentCode = view.findViewById<CodeView>(R.id.callLoggerIntentCode)
+        setCodeViewOptions(context!!, callLoggerIntentCode, "java", R.string.callLoggerIntentCode)
     }
 }

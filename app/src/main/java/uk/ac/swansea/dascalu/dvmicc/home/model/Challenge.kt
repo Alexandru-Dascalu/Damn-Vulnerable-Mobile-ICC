@@ -12,11 +12,11 @@ enum class Challenge(val challengeNameIndex: Int, val securityLevels: Map<String
                      val apiRequirements: Int) {
 
     BROADCAST_THEFT(0,
-            mapOf("low" to SecurityLevel(R.string.broadcastTheftLowDescription, R.string.broadcastTheftLowManifest, R.string.broadcastTheftLowIntentCode),
-                    "medium" to SecurityLevel(R.string.broadcastTheftMediumDescription, R.string.broadcastTheftMediumManifest, R.string.broadcastTheftMediumIntentCode),
-                    "high" to SecurityLevel(R.string.broadcastTheftHighDescription, R.string.broadcastTheftHighManifest, R.string.broadcastTheftMediumIntentCode),
-                    "very high" to SecurityLevel(R.string.broadcastTheftVeryHighDescription, R.string.broadcastTheftVeryHighManifest, R.string.broadcastTheftMediumIntentCode),
-                    "impossible" to SecurityLevel(R.string.broadcastTheftImpossibleDescription, R.string.broadcastTheftLowManifest, R.string.broadcastTheftImpossibleIntentCode)),
+            mapOf("low" to SecurityLevel(R.string.broadcastTheftLowDescription, R.string.newsAggregatorLowManifest, R.string.newsAggregatorLowIntentCode),
+                    "medium" to SecurityLevel(R.string.broadcastTheftMediumDescription, R.string.newsAggregatorMediumManifest, R.string.newsAggregatorMediumIntentCode),
+                    "high" to SecurityLevel(R.string.broadcastTheftHighDescription, R.string.newsAggregatorHighManifest, R.string.newsAggregatorMediumIntentCode),
+                    "very high" to SecurityLevel(R.string.broadcastTheftVeryHighDescription, R.string.newsAggregatorVeryHighManifest, R.string.newsAggregatorMediumIntentCode),
+                    "impossible" to SecurityLevel(R.string.broadcastTheftImpossibleDescription, R.string.newsAggregatorLowManifest, R.string.newsAggregatorImpossibleIntentCode)),
             R.string.broadcastTheftExplanation, BroadcastTheftQuestionsFragment::class,
             R.string.broadcastTheftScenarioExplanation, R.string.broadcastTheftInstructions,
             R.string.broadcastTheftAPIRequirements)
