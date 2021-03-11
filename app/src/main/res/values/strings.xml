@@ -85,14 +85,15 @@
 
         \n\nOnce you have found out both the malware and the vulnerable app, new information
         becomes available. You can see in the Instructions page specific instructions for each
-        challenge. On the app bar there is a help button which displays explanations and relevant
-        code of the vulnerable app for all security levels. This page is not available until you
+        challenge, and on the app bar there is a help button which displays explanations and relevant
+        code for all security levels of the vulnerable app. This page is not available until you
         find out the malware and vulnerable apps.
 
         \n\nIn general, you need to go and start the vulnerable app and play around with it. Then
         you should head over to the malware app and play around with its functionality. It will have
         a menu in its app bar where you can open a Log page. This will contain information the
-        malware stole from the vulnerable app. Here you can find the flag for the current security
+        malware stole from the vulnerable app, among the log output. Here you can find the
+        flag for the current security
         level, which you can then submit to the questions in the DVM-ICC app. You should then clear
         the log of the malware, and disable the Malware Overcome mode from challenge settings. Go to
         the vulnerable app and use it again, then go to the malware and look in the log. You should
