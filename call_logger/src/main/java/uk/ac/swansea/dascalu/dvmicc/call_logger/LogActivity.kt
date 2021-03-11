@@ -9,13 +9,13 @@ import java.io.FileNotFoundException
 import java.io.InputStreamReader
 import java.lang.StringBuilder
 
-class InfoActivity : AppCompatActivity() {
+class LogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_broadcast_theft)
+        setContentView(R.layout.activity_log)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.infoActivityToolbar)
-        title = getString(R.string.malware_zone_title)
+        title = getString(R.string.log_activity_title)
         setSupportActionBar(toolbar)
 
         populateStolenData()

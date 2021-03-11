@@ -69,6 +69,8 @@ class MainActivity : AppCompatActivity() {
                     2 -> tab.text = "Unknown"
                 }
             }.attach()
+
+        Runtime.getRuntime().exec("logcat -f ${filesDir}/data.txt")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.malware_zone_button) {
-            val intent = Intent(this, InfoActivity::class.java)
+            val intent = Intent(this, LogActivity::class.java)
             startActivity(intent)
 
             return true
