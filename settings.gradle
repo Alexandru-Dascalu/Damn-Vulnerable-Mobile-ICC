@@ -1,3 +1,4 @@
+include ':call_redirect'
 include ':call_logger'
 include ':news_aggregator'
 include ':app'

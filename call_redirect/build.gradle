@@ -8,8 +8,8 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "uk.ac.swansea.dascalu.dvmicc.call_logger"
-        minSdkVersion 21
+        applicationId "uk.ac.swansea.dascalu.dvmicc.callredirect"
+        minSdkVersion 17
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -37,15 +37,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.30"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.activity:activity-ktx:1.2.1'
-    implementation 'androidx.fragment:fragment-ktx:1.3.1'
-    implementation 'androidx.viewpager2:viewpager2'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
-    implementation 'com.google.android.material:material:1.3.0'
-
-    implementation 'com.github.dfloureiro:news-api-kotlin:v2.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
