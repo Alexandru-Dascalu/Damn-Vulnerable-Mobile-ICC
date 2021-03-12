@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Call Redirect</string>
     <string name="country_code_text">Country code:</string>
     <string name="country_code_hint">Country Code</string>
