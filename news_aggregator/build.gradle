@@ -11,7 +11,8 @@ android {
     defaultConfig {
         applicationId "uk.ac.swansea.dascalu.dvmicc.newsaggregator"
         minSdkVersion 21
-        targetSdkVersion 27
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 

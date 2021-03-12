@@ -10,7 +10,8 @@ android {
     defaultConfig {
         applicationId "uk.ac.swansea.dascalu.dvmicc.call_logger"
         minSdkVersion 21
-        targetSdkVersion 30
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 
