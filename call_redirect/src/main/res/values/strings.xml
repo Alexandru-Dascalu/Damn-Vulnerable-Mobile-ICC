@@ -13,6 +13,8 @@
         the app is not running. It should not do it if the number already has a country code, but if you
         see that it happens, set the country code in the app to an empty string.
 
+        \n\nThe currently saved country code appears in the text input when you start the app.
+
         \n\nThe app will
         perform some validation on your input, but it is not perfect and does not guarantee that
         what you type is a valid country code. Do not to type in + before the code, as it is added
