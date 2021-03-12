@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
                 != PackageManager.PERMISSION_GRANTED) {
             processCallsPermissionLauncher.launch(Manifest.permission.PROCESS_OUTGOING_CALLS)
         }
+
+        setCountryCodeToEditText()
     }
 
     fun saveValidCountryCode(view: View) {
@@ -55,5 +57,15 @@ class MainActivity : AppCompatActivity() {
 
         editor.putString("country_code", countryCode)
         editor.apply()
+    }
+
+    private fun setCountryCodeToEditText() {
+        val sharedPreferences = getSharedPreferences("country_code", Context.MODE_PRIVATE)
+        val countryCode =  sharedPreferences.getString("country_code", null)
+
+        if(countryCode != null) {
+            val countryCodeEditText = findViewById<EditText>(R.id.countryCodeEditText)
+            countryCodeEditText.setText(countryCode)
+        }
     }
 }
