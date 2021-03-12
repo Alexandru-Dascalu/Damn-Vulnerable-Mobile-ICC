@@ -15,7 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        val COUNTRY_CODE_REGEX = Regex("^\\d{0,3}[-\\s]\\d{0,3}|\\d{1,3}\$")
+        val COUNTRY_CODE_REGEX = Regex("^\$|^\\d{0,3}[-\\s]\\d{0,3}|\\d{1,3}\$")
     }
 
     private val processCallsPermissionLauncher = registerForActivityResult(

@@ -5,22 +5,28 @@ import android.content.Context
 import android.content.Intent
 
 class CallRedirectionReceiver : BroadcastReceiver() {
+
     override fun onReceive(context: Context?, intent: Intent?) {
-        var phoneNumber : String? = resultData
+        //check intent action is the one the receiver listens for
+        if(intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
+            var phoneNumber : String? = resultData
 
-        if(phoneNumber == null) {
-            phoneNumber = intent!!.getStringExtra(Intent.EXTRA_PHONE_NUMBER)
+            if(phoneNumber == null) {
+                phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER)
+            }
+
+            //check if number does not already have country code
+            if(phoneNumber!![0] != '+') {
+                resultData = addCountryCode(phoneNumber, getCountryCode(context))
+            }
         }
-
-        val f = addCountryCode(phoneNumber!!, getCountryCode(context))
-        resultData = f
     }
 
     private fun addCountryCode(phoneNumber: String, countryCode: String?) : String {
         var formattedPhoneNumber : String = phoneNumber
 
         //check if we need to add a country code
-        if(countryCode != null) {
+        if(countryCode != null || countryCode != "") {
             //check if we should strip initial 0 from number
             if(phoneNumber.get(0) == '0') {
                 formattedPhoneNumber = phoneNumber.drop(1)
