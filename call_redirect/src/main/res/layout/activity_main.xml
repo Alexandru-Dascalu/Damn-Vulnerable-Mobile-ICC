@@ -7,12 +7,53 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/countryCodeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/country_code_text"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/applyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+
+        android:text="@string/applyButtonText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countryCodeInput" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/countryCodeInput"
+        style="@style/questionsTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+
+        app:layout_constraintBaseline_toBaselineOf="@id/countryCodeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/countryCodeTextView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/countryCodeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/country_code_hint"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
