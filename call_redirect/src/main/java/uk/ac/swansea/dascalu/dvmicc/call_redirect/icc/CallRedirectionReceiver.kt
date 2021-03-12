@@ -26,7 +26,7 @@ class CallRedirectionReceiver : BroadcastReceiver() {
                 formattedPhoneNumber = phoneNumber.drop(1)
             }
 
-            formattedPhoneNumber = countryCode + formattedPhoneNumber
+            formattedPhoneNumber = "+$countryCode$formattedPhoneNumber"
         }
         return formattedPhoneNumber
     }

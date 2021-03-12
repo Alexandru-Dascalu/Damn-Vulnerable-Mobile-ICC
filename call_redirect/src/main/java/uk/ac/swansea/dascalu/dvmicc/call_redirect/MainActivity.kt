@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.PROCESS_OUTGOING_CALLS)
-            != PackageManager.PERMISSION_GRANTED) {
+                != PackageManager.PERMISSION_GRANTED) {
             processCallsPermissionLauncher.launch(Manifest.permission.PROCESS_OUTGOING_CALLS)
         }
     }
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("country_code", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-        editor.putString("country_code", "+$countryCode")
+        editor.putString("country_code", countryCode)
         editor.apply()
     }
 }
