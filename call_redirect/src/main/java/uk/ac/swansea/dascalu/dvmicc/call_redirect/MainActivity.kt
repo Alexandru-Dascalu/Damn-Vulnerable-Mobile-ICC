@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.callredirect
+package uk.ac.swansea.dascalu.dvmicc.call_redirect
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

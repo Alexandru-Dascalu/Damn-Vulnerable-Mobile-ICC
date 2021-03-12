@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.callredirect
+package uk.ac.swansea.dascalu.dvmicc.call_redirect
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("uk.ac.swansea.dascalu.dvmicc.callredirect", appContext.packageName)
+        assertEquals("uk.ac.swansea.dascalu.dvmicc.call_redirect", appContext.packageName)
     }
 }
