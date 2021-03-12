@@ -1,6 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Call Redirect</string>
     <string name="country_code_text">Country code:</string>
     <string name="country_code_hint">Country Code</string>
     <string name="applyButtonText">Apply</string>
+    <string name="invalidCodeWarning">You must type in a valid country code!</string>
 </resources>
