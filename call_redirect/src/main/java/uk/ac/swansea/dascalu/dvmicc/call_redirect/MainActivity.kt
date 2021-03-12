@@ -21,9 +21,11 @@ class MainActivity : AppCompatActivity() {
     private val processCallsPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
-            Snackbar.make(findViewById(R.id.applyButton), "Process calls permission acquired!", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(findViewById(R.id.applyButton), R.string.processCallsPermissionAcquired,
+                    Snackbar.LENGTH_LONG).show()
         } else {
-            Snackbar.make(findViewById(R.id.applyButton), "This app needs permission to process phone calls in order to work!", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(findViewById(R.id.applyButton), R.string.processCallsPermissionDenied,
+                    Snackbar.LENGTH_LONG).show()
         }
     }
 

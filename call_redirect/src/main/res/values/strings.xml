@@ -4,4 +4,7 @@
     <string name="country_code_hint">Country Code</string>
     <string name="applyButtonText">Apply</string>
     <string name="invalidCodeWarning">You must type in a valid country code!</string>
+
+    <string name="processCallsPermissionAcquired">Process calls permission acquired!</string>
+    <string name="processCallsPermissionDenied">This app needs permission to process phone calls in order to work!</string>
 </resources>
