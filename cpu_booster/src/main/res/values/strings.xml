@@ -7,4 +7,11 @@
     <string name="log">Log</string>
     <string name="rate">Rate</string>
     <string name="share">Share</string>
+
+    <string name="boostButtonText">Boost</string>
+    <string name="advancedButtonText">Advanced functionality</string>
+
+    <string name="usageAccessButtonText">Enable app to monitor device usage</string>
+    <string name="overlayPermButtonText">Enable app to display over other apps</string>
+    <string name="writeSystemSettings">Enable app to access OS settings</string>
 </resources>
