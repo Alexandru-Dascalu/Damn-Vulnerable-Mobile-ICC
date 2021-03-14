@@ -5,8 +5,6 @@
     <string name="applyButtonText">Apply</string>
 
     <string name="invalidCodeWarning">You must type in a valid country code!</string>
-    <string name="processCallsPermissionAcquired">Process calls permission acquired!</string>
-    <string name="processCallsPermissionDenied">This app needs permission to process phone calls in order to work!</string>
 
     <string name="appExplanation">
         This app adds a country code to a dialed in number automatically. It will do it even when
@@ -20,4 +18,13 @@
         what you type is a valid country code. Do not to type in + before the code, as it is added
         automatically.
     </string>
+
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to read security level!
+    </string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
+    <string name="processCallsPermissionAcquired">Process calls permission acquired!</string>
+    <string name="processCallsPermissionDenied">This app needs permission to process phone calls in order to work!</string>
+    <string name="readPhoneStatePermissionAcquired">Read Phone State permission acquired!</string>
+    <string name="readPhoneStatePermissionDenied">App needs phone state permissione to read phone numbers in calls!</string>
 </resources>
