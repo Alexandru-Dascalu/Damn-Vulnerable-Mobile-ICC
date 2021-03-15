@@ -31,6 +31,22 @@ class CallRedirectionReceiver : BroadcastReceiver() {
                     resultData = addCountryCode(phoneNumber, getCountryCode(context))
                 }
             }
+        } else if(securityLevel == "medium") {
+            //it will also get a broadcast for action PHONE_STATE, which it ignores for level low
+            //check intent action is the one the receiver listens for
+            if (intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
+                var phoneNumber: String? = resultData
+
+                if (phoneNumber == null) {
+                    phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER)
+                }
+
+                //check if number does not already have country code
+                if (phoneNumber!![0] != '+') {
+                    resultData = addCountryCode(phoneNumber, getCountryCode(context))
+                    abortBroadcast()
+                }
+            }
         } else if(securityLevel == "impossible") {
             if(intent!!.action == "android.intent.action.PHONE_STATE") {
                 var phoneNumber : String? = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)

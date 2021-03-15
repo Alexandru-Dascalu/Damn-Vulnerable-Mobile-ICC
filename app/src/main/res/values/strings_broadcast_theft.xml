@@ -16,18 +16,6 @@
         on the device with a matching filter. Sensitive user information could thus be intercepted
         and sent to the attacker.
 
-        \n\nThe use of ordered implicit broadcasts can not only enable eavesdropping, but denial of
-        service and man in the middle attacks as well.
-
-        \n\nOrdered broadcasts are sent to receivers one at a time. A malicious app could register a
-        broadcast receiver with a very high priority to
-        ensure it is the first to receive it. It could extract the data from the broadcast, and
-        then abort the broadcast, ensuring the intended receivers do not get it and thus perform a
-        Denial of Service attack.
-
-        \n\nOtherwise, the malicious receiver could propagate the broadcast with malicious data
-        replacing the original one. This could be used to corrupt data or crash other applications.
-
         \n\nWhen making a broadcast, the developer can specify the permission that a broadcast
         receiver needs to have to receive the intent. This can be used to guard against
         Broadcast Theft. But the malware could still get the permission. Even if the permission is a

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="broadcastTheftDOSExplanation">
+        When a broadcast is sent, the sender does not receive any indication of what components have
+        received that broadcast, and receivers can read all the data inside the broadcast intent.
+
+        \n\nTherefore, a malicious app could register a broadcast receiver with as many intent
+        filters as possible to receive the maximum number of broadcasts. The malware would be able
+        to read the data in the broadcast without the user knowing it. If the app has the permission
+        to access the internet, it could be used as spyware.
+
+        \n\nThe use of ordered implicit broadcasts can not only enable eavesdropping, but denial of
+        service and man in the middle attacks as well.
+
+        \n\nOrdered broadcasts are sent to receivers one at a time. A malicious app could register a
+        broadcast receiver with a very high priority to
+        ensure it is the first to receive it. It could extract the data from the broadcast, and
+        then abort the broadcast, ensuring the intended receivers do not get it and thus perform a
+        Denial of Service attack.
+
+        \n\nWhen making a broadcast, the developer can specify the permission that a broadcast
+        receiver needs to have to receive the intent. This can be used to guard against
+        Broadcast Theft. But the malware could still get the permission. Even if the permission is a
+        Signature one, the attacker could get it if they have stolen the developer\'s certificate.
+        Other ways for a developer to guard against these attacks is to not put sensitive
+        information in a broadcast unless necessary, to use explicit broadcasts for intra-app
+        use, to send broadcast using LocalBroadcastManager. Alternatively, they could not rely on
+        public broadcast and use one of the newer Android APIs to achieve their goal.
+    </string>
+
+    <!--security level descriptions-->
+    <string name="broadcastTheftDOSLowDescription">
+        The app listens for public broadcasts sent by the system. Since this app re-writes phone
+        numbers before they are called, it should have a positive low priority, as per the
+        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">documenation</a>.
+        This is because it should retain any changes made by other receivers.
+
+        \n\nHowever, any other app can listen to this broadcast if it has the
+        PROCESS_OUTGOING_CALLS permission. And other receivers can register with a very high
+        priority, and thus cancel the broadcast before legitimate receivers can even see it.
+    </string>
+    <string name="broadcastTheftImpossibleDescription">
+       Since the broadcast is sent by the system and not by us, we can not protect it with a permission. To fix the vulnerability, we therefore do not rely on
+    </string>
+</resources>

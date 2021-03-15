@@ -106,8 +106,8 @@ class ChallengeActivity :  AppCompatActivity() {
     }
 
     private fun getQuestionsFragment() : AbstractFullQuestionsFragment {
-        return when(challengeModel.questionsFragment) {
-            BroadcastTheftQuestionsFragment::class -> BroadcastTheftQuestionsFragment()
+        return when(challengeModel.challengeNameIndex) {
+            0 -> BroadcastTheftQuestionsFragment()
             else -> throw IllegalStateException("Questions fragment type unknown!")
         }
     }
