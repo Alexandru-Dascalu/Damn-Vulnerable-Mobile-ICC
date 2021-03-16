@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -24,13 +22,24 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".icc.CallRedirectionReceiver" android:enabled="true">
+        <receiver android:name=".icc.CallRedirectionReceiver"
+            android:enabled="true">
+
             <intent-filter android:priority="10">
                 <action android:name=
                     "android.intent.action.NEW_OUTGOING_CALL"/>
-                <action android:name=
-                    "android.intent.action.PHONE_STATE"/>
             </intent-filter>
+
+        </receiver>
+
+        <receiver android:name=".icc.HighPriorityRedirectionReceiver"
+            android:enabled="true">
+
+            <intent-filter android:priority="2147483647">
+                <action android:name=
+                    "android.intent.action.NEW_OUTGOING_CALL"/>
+            </intent-filter>
+
         </receiver>
 
     </application>

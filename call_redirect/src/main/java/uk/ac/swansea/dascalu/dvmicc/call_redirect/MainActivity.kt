@@ -18,47 +18,22 @@ class MainActivity : AppCompatActivity() {
         val COUNTRY_CODE_REGEX = Regex("^\$|^\\d{0,3}[-\\s]\\d{0,3}|\\d{1,3}\$")
     }
 
-    private val requestStoragePermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()) { granted : Boolean ->
+    private val requestPermissionsLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
 
-        if(granted) {
-            Snackbar.make(findViewById(R.id.applyButton), R.string.storagePermissionAcquired,
-                Snackbar.LENGTH_LONG).show()
-            acquirePermissions()
-        } else {
-            Snackbar.make(findViewById(R.id.applyButton), R.string.fileStoragePermissionWarning,
-                Snackbar.LENGTH_LONG).show()
-        }
-    }
-
-    private val requestLowPermissionsLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()) { granted: Boolean ->
-
-        if(granted) {
+        if(permissions[Manifest.permission.PROCESS_OUTGOING_CALLS] == true) {
             Snackbar.make(findViewById(R.id.applyButton), R.string.processCallsPermissionAcquired,
                 Snackbar.LENGTH_LONG).show()
-        } else {
+        } else if(permissions[Manifest.permission.PROCESS_OUTGOING_CALLS] == false) {
             Snackbar.make(findViewById(R.id.applyButton), R.string.processCallsPermissionDenied,
                 Snackbar.LENGTH_LONG).show()
         }
-    }
 
-    private val requestImpossiblePermissionsLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-
-        if(permissions[Manifest.permission.READ_PHONE_STATE] == true) {
-            Snackbar.make(findViewById(R.id.applyButton),
-                R.string.readPhoneStatePermissionAcquired, Snackbar.LENGTH_LONG).show()
-        } else if (permissions[Manifest.permission.READ_PHONE_STATE] == false) {
-            Snackbar.make(findViewById(R.id.applyButton), R.string.readPhoneStatePermissionDenied,
+        if(permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == true) {
+            Snackbar.make(findViewById(R.id.applyButton), R.string.storagePermissionAcquired,
                 Snackbar.LENGTH_LONG).show()
-        }
-
-        if(permissions[Manifest.permission.CALL_PHONE] == true) {
-            Snackbar.make(findViewById(R.id.applyButton), "Make phone calls permission granted!",
-                Snackbar.LENGTH_LONG).show()
-        } else if(permissions[Manifest.permission.CALL_PHONE] == false) {
-            Snackbar.make(findViewById(R.id.applyButton), "App needs permission to make phone call!",
+        } else if(permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == false) {
+            Snackbar.make(findViewById(R.id.applyButton), R.string.fileStoragePermissionWarning,
                 Snackbar.LENGTH_LONG).show()
         }
     }
@@ -67,13 +42,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-           == PackageManager.PERMISSION_GRANTED) {
-           acquirePermissions()
-       } else {
-           requestStoragePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-       }
-
+        acquirePermissions()
         setCountryCodeToEditText()
     }
 
@@ -110,19 +79,12 @@ class MainActivity : AppCompatActivity() {
     private fun acquirePermissions() {
         val hasProcessCallsPermission = ContextCompat.checkSelfPermission(this,
             Manifest.permission.PROCESS_OUTGOING_CALLS) == PackageManager.PERMISSION_GRANTED
-        val hasPhoneStatePermission = ContextCompat.checkSelfPermission(this,
-            Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
-        val hasMakeCallPermission = ContextCompat.checkSelfPermission(this,
-            Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
-        val securityLevel = loadSecuritySettingsFromFile(this)
+        val hasStoragePermission = ContextCompat.checkSelfPermission(this,
+            Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
 
-        if(!hasProcessCallsPermission && securityLevel == "low" ) {
-            requestLowPermissionsLauncher.launch(Manifest.permission.PROCESS_OUTGOING_CALLS)
-        } else if((!hasPhoneStatePermission || !hasMakeCallPermission) &&
-            securityLevel == "impossible") {
-
-            requestImpossiblePermissionsLauncher.launch(arrayOf(Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE))
+        if(!hasProcessCallsPermission || !hasStoragePermission) {
+            requestPermissionsLauncher.launch(arrayOf(Manifest.permission.PROCESS_OUTGOING_CALLS,
+                Manifest.permission.READ_EXTERNAL_STORAGE))
         }
     }
 }
