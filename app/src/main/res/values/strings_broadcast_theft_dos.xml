@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
     <string name="broadcastTheftDOSExplanation">
         When a broadcast is sent, the sender does not receive any indication of what components have
         received that broadcast, and receivers can read all the data inside the broadcast intent.
@@ -28,6 +28,27 @@
         public broadcast and use one of the newer Android APIs to achieve their goal.
     </string>
 
+    <string name="broadcastTheftDOSInstructions">
+        Go to the Call Redirect app and look around. Type in a country code to be added to phone
+        numbers you dial.
+
+        \n\nThen go to the CPU Booster and play around with it. Go to the advanced activity and
+        grant the app the permission it asks for.
+
+        \n\nFollowing that, dial a phone number. This number must not include a country code at the
+        beginning! You might then see the call being cancelled, or not.
+
+        \n\nIf the malware intercepts the broadcast, it will place a flag in its log.
+    </string>
+
+    <string name="broadcastTheftDOSScenarioExplanation">
+
+    </string>
+
+    <string name="broadcastTheftDOSAPIRequirements">
+
+    </string>
+
     <!--security level descriptions-->
     <string name="broadcastTheftDOSLowDescription">
         The app listens for public broadcasts sent by the system. Since this app re-writes phone
@@ -39,7 +60,140 @@
         PROCESS_OUTGOING_CALLS permission. And other receivers can register with a very high
         priority, and thus cancel the broadcast before legitimate receivers can even see it.
     </string>
-    <string name="broadcastTheftImpossibleDescription">
-       Since the broadcast is sent by the system and not by us, we can not protect it with a permission. To fix the vulnerability, we therefore do not rely on
+    <string name="broadcastTheftDOSHighDescription">
+        Since the broadcast is sent by the system and not by us, we can not protect it with a
+        permission. One way to increase security is to set the priority level of the broadcast
+        receiver to the maximum possible value, just like the malware does. This way, the receiver of this app will hopefully
+        be called before the malware\'s receiver. The vulnerable app can then change the number in
+        the broadcast, and then cancel it. The number will still be called because when the
+        broadcast was sent, a final receiver was specified, which gets the broadcast even if
+        another receiver in the chain cancels it.
+
+        \nAccording to the
+        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">documentation</a>,
+        receivers with the same priority are executed in a random order. From our experience, on devices
+        on Android 7.1 or 8 (API 25 or 26, respectively), we have seen that the receiver of the
+        vulnerable app gets called first. This is not guaranteed to be true on other devices.
+    </string>
+    <string name="broadcastTheftDOSImpossibleDescription">
+        Relying on the broadcast receiver with a high priority being called before the receiver of
+        the malware is not a reliable solution, as it depends on the perhaps random order the OS calls
+        the receivers. Moreover, in the high security level, the broadcast was canceled and thus
+        would not be received any other genuine receiver that needed to process the call.
+
+        Therefore, the best solution to fix this vulnerability rests on the user uninstalling the malware.
+        The CPU Booster app asks for a phone permissions, when this kind of app should not need this permission.
+        This is a good indicator it is a malicious app.
+
+        Uninstall the CPU Booster app to make the call redirection work properly.
+    </string>
+
+    <string name="callRedirectLowManifest">
+        <![CDATA[
+            <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+                \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.call_redirect\">
+
+                \n\n\t<uses-permission android:name=\"android.permission.PROCESS_OUTGOING_CALLS\"/>
+                \n\t<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\"/>
+
+                \n\n\t<application
+                    \n\t\tandroid:allowBackup=\"true\"
+                    \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                    \n\t\tandroid:label=\"@string/app_name\"
+                    \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                    \n\t\tandroid:supportsRtl=\"true\"
+                    android:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                    \n\n\t\t<activity android:name=\".MainActivity\">
+                        \n\t\t\t<intent-filter>
+                            \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+
+                            \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</activity>
+
+                    \n\t\t<receiver android:name=\".icc.CallRedirectionReceiver\"
+                        \n\\tt\tandroid:enabled=\"true\">
+
+                        \n\t\\tt<intent-filter android:priority=\"10\">
+                            \n\t\t\t\t<action android:name=
+                                \n\t\t\t\t\t\"android.intent.action.NEW_OUTGOING_CALL\"/>
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</receiver>
+                \n\t</application>
+            \n</manifest>]]>
+    </string>
+    <string name="callRedirectHighManifest">
+        <![CDATA[
+            <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+                \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.call_redirect\">
+
+                \n\n\t<uses-permission android:name=\"android.permission.PROCESS_OUTGOING_CALLS\"/>
+                \n\t<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\"/>
+
+                \n\n\t<application
+                    \n\t\tandroid:allowBackup=\"true\"
+                    \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                    \n\t\tandroid:label=\"@string/app_name\"
+                    \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                    \n\t\tandroid:supportsRtl=\"true\"
+                    android:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                    \n\n\t\t<activity android:name=\".MainActivity\">
+                        \n\t\t\t<intent-filter>
+                            \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+
+                            \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</activity>
+
+                    \n\t\t<receiver android:name=\".icc.CallRedirectionReceiver\"
+                        \n\\tt\tandroid:enabled=\"true\">
+
+                        \n\t\\tt<intent-filter android:priority=\"2147483647\">
+                            \n\t\t\t\t<action android:name=
+                                \n\t\t\t\t\t\"android.intent.action.NEW_OUTGOING_CALL\"/>
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</receiver>
+                \n\t</application>
+            \n</manifest>]]>
+    </string>
+
+    <string name="callRedirectLowIntentCode">
+        <![CDATA[
+            class CallRedirectionReceiver() {
+                \n\toverride fun onReceive(context: Context?, intent: Intent?) {
+
+                    \n\n\t\t//check intent action is the one the receiver listens for
+                    \n\t\tif(intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
+                        \n\t\t\tvar phoneNumber : String? = resultData
+
+                        \n\n\t\t\t//check if number does not already have country code
+                        \n\t\t\tif(phoneNumber!![0] != '+') {
+                            \n\t\t\t\tresultData = addCountryCode(phoneNumber, getCountryCode(context))
+                        \n\t\t\t}
+                    \n\t\t}
+                \n\t}
+                \n\t...
+            \n}]]>
+    </string>
+    <string name="callRedirectHighIntentCode">
+        <![CDATA[
+            class CallRedirectionReceiver() {
+                \n\toverride fun onReceive(context: Context?, intent: Intent?) {
+
+                    \n\n\t\t//check intent action is the one the receiver listens for
+                    \n\t\tif(intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
+                        \n\t\t\tvar phoneNumber : String? = resultData
+
+                        \n\n\t\t\t//check if number does not already have country code
+                        \n\t\t\tif(phoneNumber!![0] != '+') {
+                            \n\t\t\t\tresultData = addCountryCode(phoneNumber, getCountryCode(context))
+                            \n\t\t\t\tabortBroadcast()
+                        \n\t\t\t}
+                    \n\t\t}
+                \n\t}
+                \n\t...
+            \n}]]>
     </string>
 </resources>

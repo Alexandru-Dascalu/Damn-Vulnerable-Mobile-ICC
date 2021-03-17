@@ -12,7 +12,7 @@ class CallRedirectionReceiver : AbstractCallRedirectionReceiver() {
         val securityLevel = loadSecuritySettingsFromFile(context!!)
 
         //this receiver is only for the low level
-        if(securityLevel == "low") {
+        if(securityLevel == "low" || securityLevel == "impossible") {
             //check intent action is the one the receiver listens for
             if(intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
                 var phoneNumber : String? = resultData

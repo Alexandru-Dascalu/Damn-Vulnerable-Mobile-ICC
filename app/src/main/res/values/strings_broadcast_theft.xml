@@ -30,11 +30,17 @@
         or make your own account. Look at some of the news streams (You will only have All and
         Recommended if you made your own account). If you have looked at them before, swipe down to
         refresh to get the latest articles. The app has a bug where sometimes articles do not
-        appear, so you need to swip down to refresh in that case.
+        appear, so you need to swipe down to refresh in that case.
 
         \n\nThen, go and start the Call Logger app.
         Have a look at the your call history in the three tabs. Then click on the overflow menu on
-        the app bar and click on Malware. Do this for all security levels to find the flags.
+        the app bar and click on Log, where you can look for flags and the stolen data.
+        Do this for all security levels to find the flags.
+
+        \n\nFor security Levels Medium and Very High, you will need to use a different malware app.
+        It will be the same app, but with a slightly different icon and it will the appropriate
+        permission for those security levels (it is done like this because normal and signature
+        level permissions are granted when app is installed and can not be changed after).
 
         \n\nWhen the malware is in security level High, you need to first start the Call Logger app
         before going into the News Aggregator to get news stories.
