@@ -1,12 +1,15 @@
 package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 
 import uk.ac.swansea.dascalu.dvmicc.home.R
 
+@SuppressLint("UseRequireInsteadOfGet")
 class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
+    override var challengeName: String? = null
     override var vulnerableAppName: String? = null
     override var malwareName: String? = null
     override var securityLowFlag: String? = null
@@ -15,16 +18,9 @@ class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
     override var securityVeryHighFlag: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val vulnerableAppTextView = view.findViewById<TextView>(R.id.vulnerableAppQuestionTextView)
-        vulnerableAppTextView.text = requireContext().resources.getString(R.string.vulnerableAppQuestion,
-                requireContext().resources.getString(R.string.broadcastTheftName))
-
-        val malwareTextView = view.findViewById<TextView>(R.id.malwareQuestionTextView)
-        malwareTextView.text = requireContext().resources.getString(R.string.malwareQuestion,
-                requireContext().resources.getString(R.string.broadcastTheftName))
-
-        vulnerableAppName = requireContext().resources.getString(R.string.newsAggregatorAppName)
-        malwareName = requireContext().resources.getString(R.string.callLogAppName)
+        challengeName = context!!.resources.getString(R.string.broadcastTheftName)
+        vulnerableAppName = context!!.resources.getString(R.string.callRedirectAppName)
+        malwareName = context!!.resources.getString(R.string.cpuBoosterAppName)
 
         val flags = requireContext().resources.getStringArray(R.array.broadcastTheftFlags)
         securityLowFlag = flags[0]

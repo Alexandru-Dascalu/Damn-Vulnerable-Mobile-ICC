@@ -22,6 +22,7 @@ import uk.ac.swansea.dascalu.dvmicc.home.R
  */
 @SuppressLint("UseRequireInsteadOfGet")
 abstract class AbstractFullQuestionsFragment : Fragment() {
+    protected abstract var challengeName : String?
     protected abstract var vulnerableAppName: String?
     protected abstract var malwareName: String?
     protected abstract var securityLowFlag: String?
@@ -72,6 +73,14 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
 
         val securityVeryHighTextView = view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView)
         securityVeryHighTextView.text = requireContext().resources.getString(R.string.securityVeryHighQuestion)
+
+        val vulnerableAppTextView = view.findViewById<TextView>(R.id.vulnerableAppQuestionTextView)
+        vulnerableAppTextView.text = requireContext().resources.getString(
+                R.string.vulnerableAppQuestion, challengeName)
+
+        val malwareTextView = view.findViewById<TextView>(R.id.malwareQuestionTextView)
+        malwareTextView.text = requireContext().resources.getString(
+                R.string.malwareQuestion, challengeName)
 
         setButtonClickListeners(view)
         restoreAnswers(view)
