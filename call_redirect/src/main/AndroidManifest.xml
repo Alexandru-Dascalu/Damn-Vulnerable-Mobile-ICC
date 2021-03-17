@@ -13,8 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DamnVulnerableMobileICC">
 
-        <activity android:name=
-            "uk.ac.swansea.dascalu.dvmicc.call_redirect.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
