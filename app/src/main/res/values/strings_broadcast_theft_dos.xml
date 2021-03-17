@@ -169,7 +169,7 @@
                         \n\t\t\tvar phoneNumber : String? = resultData
 
                         \n\n\t\t\t//check if number does not already have country code
-                        \n\t\t\tif(phoneNumber!![0] != '+') {
+                        \n\t\t\tif(phoneNumber!![0] != \'+\') {
                             \n\t\t\t\tresultData = addCountryCode(phoneNumber, getCountryCode(context))
                         \n\t\t\t}
                     \n\t\t}
@@ -187,7 +187,7 @@
                         \n\t\t\tvar phoneNumber : String? = resultData
 
                         \n\n\t\t\t//check if number does not already have country code
-                        \n\t\t\tif(phoneNumber!![0] != '+') {
+                        \n\t\t\tif(phoneNumber!![0] != \'+\') {
                             \n\t\t\t\tresultData = addCountryCode(phoneNumber, getCountryCode(context))
                             \n\t\t\t\tabortBroadcast()
                         \n\t\t\t}
