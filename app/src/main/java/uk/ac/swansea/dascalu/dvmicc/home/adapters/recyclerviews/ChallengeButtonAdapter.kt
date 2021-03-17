@@ -23,6 +23,7 @@ class ChallengeButtonAdapter(private val challengeList: Array<String>) : Recycle
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         when(position) {
             0 -> holder.challenge = Challenge.BROADCAST_THEFT
+            1 -> holder.challenge = Challenge.BROADCAST_THEFT_DOS
         }
         holder.challengeButton.text = challengeList[position]
     }

@@ -14,6 +14,7 @@ import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInformatio
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInstructionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ManifestsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.AbstractFullQuestionsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftDOSQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
 import java.lang.IllegalStateException
@@ -108,6 +109,7 @@ class ChallengeActivity :  AppCompatActivity() {
     private fun getQuestionsFragment() : AbstractFullQuestionsFragment {
         return when(challengeModel.challengeNameIndex) {
             0 -> BroadcastTheftQuestionsFragment()
+            1 -> BroadcastTheftDOSQuestionsFragment()
             else -> throw IllegalStateException("Questions fragment type unknown!")
         }
     }
