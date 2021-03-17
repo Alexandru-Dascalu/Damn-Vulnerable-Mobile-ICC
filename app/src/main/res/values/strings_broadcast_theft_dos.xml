@@ -4,11 +4,6 @@
         When a broadcast is sent, the sender does not receive any indication of what components have
         received that broadcast, and receivers can read all the data inside the broadcast intent.
 
-        \n\nTherefore, a malicious app could register a broadcast receiver with as many intent
-        filters as possible to receive the maximum number of broadcasts. The malware would be able
-        to read the data in the broadcast without the user knowing it. If the app has the permission
-        to access the internet, it could be used as spyware.
-
         \n\nThe use of ordered implicit broadcasts can not only enable eavesdropping, but denial of
         service and man in the middle attacks as well.
 
@@ -88,6 +83,14 @@
         Uninstall the CPU Booster app to make the call redirection work properly.
     </string>
 
+    <string name="callRedirectAppName">Call Redirect</string>
+    <string name="cpuBoosterAppName">CPU Booster</string>
+
+    <string-array name="broadcastTheftDOSFlags">
+        <item>Do not go gentle into that good night!</item>
+        <item>And death shall have no dominion</item>
+    </string-array>
+
     <string name="callRedirectLowManifest">
         <![CDATA[
             <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
@@ -102,7 +105,7 @@
                     \n\t\tandroid:label=\"@string/app_name\"
                     \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
                     \n\t\tandroid:supportsRtl=\"true\"
-                    android:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+                    \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
 
                     \n\n\t\t<activity android:name=\".MainActivity\">
                         \n\t\t\t<intent-filter>
@@ -137,7 +140,7 @@
                     \n\t\tandroid:label=\"@string/app_name\"
                     \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
                     \n\t\tandroid:supportsRtl=\"true\"
-                    android:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+                    \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
 
                     \n\n\t\t<activity android:name=\".MainActivity\">
                         \n\t\t\t<intent-filter>
