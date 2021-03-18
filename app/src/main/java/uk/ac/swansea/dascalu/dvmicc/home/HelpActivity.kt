@@ -1,12 +1,16 @@
 package uk.ac.swansea.dascalu.dvmicc.home
 
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+
 import com.google.android.material.appbar.MaterialToolbar
 import io.github.kbiakov.codeview.CodeView
+
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
+import uk.ac.swansea.dascalu.dvmicc.home.model.SecurityLevel
+
 import java.lang.IllegalStateException
 
 class HelpActivity : AppCompatActivity() {
@@ -39,76 +43,48 @@ class HelpActivity : AppCompatActivity() {
     }
 
     private fun setupLowLevel(challenge: Challenge) {
-        if(challenge.securityLevels["low"] != null) {
-            val securityLowTextView = findViewById<TextView>(R.id.securityLowDescription)
-            securityLowTextView.movementMethod = LinkMovementMethod.getInstance()
-            securityLowTextView.text = resources.getString(challenge.securityLevels["low"]!!.explanationID)
-
-            val securityLowManifest = findViewById<CodeView>(R.id.securityLowManifest)
-            setCodeViewOptions(this, securityLowManifest, "xml", challenge.securityLevels["low"]!!.manifestID)
-
-            val securityLowIntentCode = findViewById<CodeView>(R.id.securityLowIntentCode)
-            setCodeViewOptions(this, securityLowIntentCode, "java", challenge.securityLevels["low"]!!.intentCodeID)
-        }
+        setupSecurityLevel(R.id.securityLowDescription, R.id.securityLowManifest,
+                R.id.securityLowIntentCode, R.id.securityLowHeader, challenge.securityLevels["low"])
     }
 
     private fun setupMediumLevel(challenge: Challenge) {
-        if(challenge.securityLevels["medium"] != null) {
-            val securityMediumTextView = findViewById<TextView>(R.id.securityMediumDescription)
-            securityMediumTextView.text = getString(challenge.securityLevels["medium"]!!.explanationID)
-
-            val securityMediumManifest = findViewById<CodeView>(R.id.securityMediumManifest)
-            setCodeViewOptions(this, securityMediumManifest, "xml",
-                    challenge.securityLevels["medium"]!!.manifestID)
-
-            val securityMediumIntentCode = findViewById<CodeView>(R.id.securityMediumIntentCode)
-            setCodeViewOptions(this, securityMediumIntentCode, "java",
-                    challenge.securityLevels["medium"]!!.intentCodeID)
-        }
+        setupSecurityLevel(R.id.securityMediumDescription, R.id.securityMediumManifest,
+                R.id.securityMediumIntentCode, R.id.securityMediumHeader, challenge.securityLevels["medium"])
     }
 
     private fun setupHighLevel(challenge: Challenge) {
-        if(challenge.securityLevels["high"] != null) {
-            val securityHighTextView = findViewById<TextView>(R.id.securityHighDescription)
-            securityHighTextView.text = getString(challenge.securityLevels["high"]!!.explanationID)
-
-            val securityHighManifest = findViewById<CodeView>(R.id.securityHighManifest)
-            setCodeViewOptions(this, securityHighManifest, "xml",
-                    challenge.securityLevels["high"]!!.manifestID)
-
-            val securityHighIntentCode = findViewById<CodeView>(R.id.securityHighIntentCode)
-            setCodeViewOptions(this, securityHighIntentCode, "java",
-                    challenge.securityLevels["high"]!!.intentCodeID)
-        }
+        setupSecurityLevel(R.id.securityHighDescription, R.id.securityHighManifest,
+                R.id.securityHighIntentCode, R.id.securityHighHeader, challenge.securityLevels["high"])
     }
 
     private fun setupVeryHighLevel(challenge: Challenge) {
-        if(challenge.securityLevels["very high"] != null) {
-            val securityVeryHighTextView = findViewById<TextView>(R.id.securityVeryHighDescription)
-            securityVeryHighTextView.text = getString(challenge.securityLevels["very high"]!!.explanationID)
-
-            val securityVeryHighManifest = findViewById<CodeView>(R.id.securityVeryHighManifest)
-            setCodeViewOptions(this, securityVeryHighManifest, "xml",
-                    challenge.securityLevels["very high"]!!.manifestID)
-
-            val securityVeryHighIntentCode = findViewById<CodeView>(R.id.securityVeryHighIntentCode)
-            setCodeViewOptions(this, securityVeryHighIntentCode, "java",
-                    challenge.securityLevels["very high"]!!.intentCodeID)
-        }
+        setupSecurityLevel(R.id.securityVeryHighDescription, R.id.securityVeryHighManifest,
+                R.id.securityVeryHighIntentCode, R.id.securityVeryHighHeader, challenge.securityLevels["high"])
     }
 
     private fun setupImpossibleLevel(challenge: Challenge) {
-        if(challenge.securityLevels["impossible"] != null) {
-            val securityImpossibleTextView = findViewById<TextView>(R.id.securityImpossibleDescription)
-            securityImpossibleTextView.text = getString(challenge.securityLevels["impossible"]!!.explanationID)
+        setupSecurityLevel(R.id.securityImpossibleDescription, R.id.securityImpossibleManifest,
+                R.id.securityImpossibleIntentCode, R.id.securityImpossibleHeader, challenge.securityLevels["impossible"])
+    }
 
-            val securityImpossibleManifest = findViewById<CodeView>(R.id.securityImpossibleManifest)
+    private fun setupSecurityLevel(textViewID: Int, manifestID: Int, intentCodeID: Int,
+                                   headerTextViewID: Int, securityLevel: SecurityLevel?) {
+        if(securityLevel != null) {
+            val levelDescriptionTextView = findViewById<TextView>(textViewID)
+            levelDescriptionTextView.text = resources.getString(securityLevel.explanationID)
+
+            val securityImpossibleManifest = findViewById<CodeView>(manifestID)
             setCodeViewOptions(this, securityImpossibleManifest, "xml",
-                    challenge.securityLevels["impossible"]!!.manifestID)
+                    securityLevel.manifestID)
 
-            val securityImpossibleIntentCode = findViewById<CodeView>(R.id.securityImpossibleIntentCode)
+            val securityImpossibleIntentCode = findViewById<CodeView>(intentCodeID)
             setCodeViewOptions(this, securityImpossibleIntentCode, "java",
-                    challenge.securityLevels["impossible"]!!.intentCodeID)
+                    securityLevel.intentCodeID)
+        } else {
+            findViewById<TextView>(headerTextViewID).visibility = View.GONE
+            findViewById<TextView>(textViewID).visibility = View.GONE
+            findViewById<CodeView>(manifestID).visibility = View.GONE
+            findViewById<CodeView>(intentCodeID).visibility = View.GONE
         }
     }
 }
