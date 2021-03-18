@@ -19,6 +19,6 @@ enum class Challenge(val challengeNameIndex: Int, val securityLevels: Map<String
             mapOf("low" to SecurityLevel(R.string.broadcastTheftDOSLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
                     "high" to SecurityLevel(R.string.broadcastTheftDOSHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftDOSImpossibleDescription)),
-            R.string.broadcastTheftDOSExplanation, 0, 0, 0)
+            R.string.broadcastTheftDOSExplanation, R.string.broadcastTheftDOSInstructions, 0, 0)
 
 }

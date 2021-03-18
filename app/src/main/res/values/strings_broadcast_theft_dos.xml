@@ -27,11 +27,11 @@
         Go to the Call Redirect app and look around. Type in a country code to be added to phone
         numbers you dial.
 
-        \n\nThen go to the CPU Booster and play around with it. Go to the advanced activity and
+        \n\nThen go to the CPU Booster and play around with it. Go to the Advanced Functionality activity and
         grant the app the permission it asks for.
 
         \n\nFollowing that, dial a phone number. This number must not include a country code at the
-        beginning! You might then see the call being cancelled, or not.
+        beginning! You might then see the call being cancelled automatically, or not.
 
         \n\nIf the malware intercepts the broadcast, it will place a flag in its log.
     </string>
@@ -47,8 +47,9 @@
     <!--security level descriptions-->
     <string name="broadcastTheftDOSLowDescription">
         The app listens for public broadcasts sent by the system. Since this app re-writes phone
-        numbers before they are called, it should have a positive low priority, as per the
-        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">documenation</a>.
+        numbers before they are called, it should have a positive low priority, as the
+        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">documentation</a>
+        for the ACTION_NEW_OUTGOING_CALL intent action says.
         This is because it should retain any changes made by other receivers.
 
         \n\nHowever, any other app can listen to this broadcast if it has the
@@ -65,7 +66,7 @@
         another receiver in the chain cancels it.
 
         \nAccording to the
-        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">documentation</a>,
+        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">Android documentation</a>,
         receivers with the same priority are executed in a random order. From our experience, on devices
         on Android 7.1 or 8 (API 25 or 26, respectively), we have seen that the receiver of the
         vulnerable app gets called first. This is not guaranteed to be true on other devices.
