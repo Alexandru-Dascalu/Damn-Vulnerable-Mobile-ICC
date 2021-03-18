@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 import uk.ac.swansea.dascalu.dvmicc.home.ChallengeActivity
 import uk.ac.swansea.dascalu.dvmicc.home.R
+import uk.ac.swansea.dascalu.dvmicc.home.hideKeyboard
 
 /**
  * Abstract super class for all questions fragments for challenges with all five security levels.
@@ -229,6 +230,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
                 button.text = view.context.resources.getString(R.string.completed)
                 changeButtonColors(button)
                 button.isEnabled = false
+                hideKeyboard(buttonView, context!!)
             }
 
             val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)

@@ -20,7 +20,7 @@ class HelpActivity : AppCompatActivity() {
         if(intent.extras != null) {
             val hasGuessedApps: Boolean = intent.extras!!.getBoolean("hasGuessedApps")
 
-            if(true) {
+            if(hasGuessedApps) {
                 val challenge: Challenge = intent.extras!!.getSerializable("challenge") as Challenge
 
                 setContentView(R.layout.activity_help)
@@ -59,7 +59,7 @@ class HelpActivity : AppCompatActivity() {
 
     private fun setupVeryHighLevel(challenge: Challenge) {
         setupSecurityLevel(R.id.securityVeryHighDescription, R.id.securityVeryHighManifest,
-                R.id.securityVeryHighIntentCode, R.id.securityVeryHighHeader, challenge.securityLevels["high"])
+                R.id.securityVeryHighIntentCode, R.id.securityVeryHighHeader, challenge.securityLevels["very high"])
     }
 
     private fun setupImpossibleLevel(challenge: Challenge) {

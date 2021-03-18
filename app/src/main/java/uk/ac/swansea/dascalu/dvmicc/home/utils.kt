@@ -1,6 +1,9 @@
 package uk.ac.swansea.dascalu.dvmicc.home
 
 import android.content.Context
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+
 import io.github.kbiakov.codeview.CodeView
 import io.github.kbiakov.codeview.adapters.Format
 import io.github.kbiakov.codeview.adapters.Options
@@ -16,4 +19,10 @@ fun setCodeViewOptions(context: Context, codeView: CodeView, language: String, c
                 .withFormat(Format.ExtraCompact)
                 .disableHighlightAnimation())
     }
+}
+
+fun hideKeyboard(currentView: View, context: Context) {
+    val keyboardManager = context.getSystemService(Context.INPUT_METHOD_SERVICE)
+            as InputMethodManager
+    keyboardManager.hideSoftInputFromWindow(currentView.windowToken, 0)
 }
