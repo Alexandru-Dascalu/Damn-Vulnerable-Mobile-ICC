@@ -20,7 +20,7 @@ class HelpActivity : AppCompatActivity() {
         if(intent.extras != null) {
             val hasGuessedApps: Boolean = intent.extras!!.getBoolean("hasGuessedApps")
 
-            if(hasGuessedApps) {
+            if(true) {
                 val challenge: Challenge = intent.extras!!.getSerializable("challenge") as Challenge
 
                 setContentView(R.layout.activity_help)
