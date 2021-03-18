@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout
 import uk.ac.swansea.dascalu.dvmicc.home.ChallengeActivity
 import uk.ac.swansea.dascalu.dvmicc.home.R
 import uk.ac.swansea.dascalu.dvmicc.home.hideKeyboard
+import java.util.*
 
 /**
  * Abstract super class for all questions fragments for challenges with all five security levels.
@@ -221,7 +222,8 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         override fun onClick(buttonView: View?) {
             val button: MaterialButton = buttonView as MaterialButton
 
-            if(editText.text.toString() != correctAnswer) {
+            if(editText.text.toString().toLowerCase(Locale.ROOT) !=
+                    correctAnswer!!.toLowerCase(Locale.ROOT)) {
                 textInputLayout.error = view.context.resources.getString(R.string.wrongAnswer)
             } else {
                 textInputLayout.error = null
