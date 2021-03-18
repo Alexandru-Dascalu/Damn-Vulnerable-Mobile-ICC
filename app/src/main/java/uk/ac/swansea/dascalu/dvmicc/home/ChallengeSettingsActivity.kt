@@ -58,12 +58,44 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
 
         title = resources.getString(R.string.challengeSettingsActivityTitle)
 
+        if(intent.extras != null && intent.extras!!.get("challenge") != null) {
+            disableNecessaryLevelRadioButtons(intent.extras!!.get("challenge")
+                    as Challenge)
+        }
         initialiseSecuritySettings()
     }
 
+    private fun disableNecessaryLevelRadioButtons(challenge: Challenge) {
+        if(!challenge.securityLevels.containsKey("low")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_low).isEnabled = false
+        }
+
+        if(!challenge.securityLevels.containsKey("medium")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_medium).isEnabled = false
+        }
+
+        if(!challenge.securityLevels.containsKey("high")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_high).isEnabled = false
+        }
+
+        if(!challenge.securityLevels.containsKey("very high")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_very_high).isEnabled = false
+        }
+
+        if(!challenge.securityLevels.containsKey("impossible")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_impossible).isEnabled = false
+        }
+    }
+
     fun onApplySettings(view: View) {
+        applySettings()
         if(intent.extras != null) {
-            val challenge : Challenge = intent.extras!!.get("challenge") as Challenge
+            val challenge = if(intent.extras!!.get("challenge") != null) {
+                intent.extras!!.get("challenge") as Challenge?
+            } else {
+                Challenge.BROADCAST_THEFT
+            }
+
             val launchedFromChallengeActivity : Boolean = intent.extras!!.get(
                     "launchedFromChallengeActivity") as Boolean
 
@@ -77,7 +109,6 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
             }
         }
 
-        applySettings()
         finish()
     }
 
@@ -134,8 +165,8 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         val storageState = Environment.getExternalStorageState()
 
         if((storageState == Environment.MEDIA_MOUNTED)) {
-            val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
-                    .vulnerableAppSecurityLevelRadioGroup)
+            val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(
+                    R.id.vulnerableAppSecurityLevelRadioGroup)
             val malwareSecuritySwitch = findViewById<SwitchCompat>(R.id.malwareSecuritySwitch)
 
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")

@@ -64,7 +64,11 @@ class ChallengeActivity :  AppCompatActivity() {
         setContentView(R.layout.activity_challenge)
 
         //get challenge enum that contains challenge specific data from intent
-        challengeModel = intent.extras!!.get("challenge") as Challenge
+        challengeModel = if(intent.extras != null && intent.extras!!.get("challenge") != null) {
+            intent.extras!!.get("challenge") as Challenge
+        } else {
+            Challenge.BROADCAST_THEFT
+        }
 
         val appBar : MaterialToolbar = findViewById<MaterialToolbar>(R.id.challengeActivityToolbar)
         setSupportActionBar(appBar)
