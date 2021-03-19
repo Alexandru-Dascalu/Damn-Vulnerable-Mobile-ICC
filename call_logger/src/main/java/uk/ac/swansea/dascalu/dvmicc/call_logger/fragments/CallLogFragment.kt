@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 @SuppressLint("UseRequireInsteadOfGet")
-class LogFragment(val position: Int) : Fragment() {
+class CallLogFragment(val position: Int) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
