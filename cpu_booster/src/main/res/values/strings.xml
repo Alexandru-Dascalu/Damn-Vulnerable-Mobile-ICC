@@ -14,4 +14,15 @@
     <string name="usageAccessButtonText">Enable app to monitor device usage</string>
     <string name="overlayPermButtonText">Enable app to display over other apps</string>
     <string name="writeSystemSettings">Enable app to access OS settings</string>
+    <string name="no_data">No data yet!</string>
+
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to read security level!
+    </string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
+
+    <string-array name="broadcastTheftDOSFlags">
+        <item>Do not go gentle into that good night!</item>
+        <item>And death shall have no dominion</item>
+    </string-array>
 </resources>

@@ -1,9 +1,8 @@
-package uk.ac.swansea.dascalu.dvmicc.call_logger
+package uk.ac.swansea.dascalu.dvmicc.cpu_booster
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.MaterialToolbar
 
 import java.io.BufferedReader
 import java.io.FileNotFoundException
@@ -14,10 +13,6 @@ class LogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log)
-
-        val toolbar = findViewById<MaterialToolbar>(R.id.infoActivityToolbar)
-        title = getString(R.string.log_activity_title)
-        setSupportActionBar(toolbar)
 
         readStolenData()
     }

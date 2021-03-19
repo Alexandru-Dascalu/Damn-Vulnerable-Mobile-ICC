@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
@@ -29,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AdvancedActivity"/>
+        <activity android:name=".LogActivity"/>
 
         <receiver android:name=".icc.AppActivityReceiver">
             <intent-filter android:priority="2147483647">

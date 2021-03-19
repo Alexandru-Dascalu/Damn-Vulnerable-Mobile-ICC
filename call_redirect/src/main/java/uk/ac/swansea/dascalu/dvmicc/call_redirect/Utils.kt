@@ -12,7 +12,7 @@ import java.util.Locale
 fun loadSecuritySettingsFromFile(context: Context) : String {
     val storageState = Environment.getExternalStorageState()
 
-    if((storageState == Environment.MEDIA_MOUNTED) || storageState == Environment.MEDIA_MOUNTED_READ_ONLY) {
+    if(storageState == Environment.MEDIA_MOUNTED || storageState == Environment.MEDIA_MOUNTED_READ_ONLY) {
         val homeAppContext = context.createPackageContext("uk.ac.swansea.dascalu.dvmicc.home",
             Context.CONTEXT_IGNORE_SECURITY)
         val settingsFile = File(homeAppContext.getExternalFilesDir(null), "dvmicc.txt")
