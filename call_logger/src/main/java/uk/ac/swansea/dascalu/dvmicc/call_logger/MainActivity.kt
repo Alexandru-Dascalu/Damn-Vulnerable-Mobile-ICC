@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.malware_zone_button) {
+        if(item.itemId == R.id.log_button) {
             val intent = Intent(this, LogActivity::class.java)
             startActivity(intent)
 

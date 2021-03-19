@@ -393,7 +393,7 @@
                         \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
-                \n\n\t\t<activity android:name=".InfoActivity"/>
+                \n\n\t\t<activity android:name=".LogActivity"/>
 
                 \n\n\t\t<receiver android:name=".icc.CallsBroadcastReceiver"
                     \n\t\t\tandroid:enabled="true">
@@ -411,8 +411,8 @@
         class MainActivity : AppCompatActivity() {
             \n\t...
             \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
-                \n\t\tif(item.itemId == R.id.malware_zone_button) {
-                \n\n\t\t\tval intent = Intent(this, InfoActivity::class.java)
+                \n\t\tif(item.itemId == R.id.log_button) {
+                \n\n\t\t\tval intent = Intent(this, LogActivity::class.java)
                 \n\t\t\tstartActivity(intent)
 
                 \n\n\t\t\treturn true
