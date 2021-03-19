@@ -27,11 +27,12 @@
         Go to the Call Redirect app and look around. Type in a country code to be added to phone
         numbers you dial.
 
-        \n\nThen go to the CPU Booster and play around with it. Go to the Advanced Functionality activity and
-        grant the app the permission it asks for.
+        \n\nThen go to the CPU Booster and play around with it. Grant the storage permission it asks\
+        for. Go to the Advanced Functionality activity and grant the app the permission it asks for.
 
         \n\nFollowing that, dial a phone number. This number must not include a country code at the
-        beginning! You might then see the call being cancelled automatically, or not.
+        beginning! You might then see the call being cancelled automatically, or not, depending on
+        the security level.
 
         \n\nIf the malware intercepts the broadcast, it will place a flag in its log.
     </string>
@@ -70,6 +71,9 @@
         receivers with the same priority are executed in a random order. From our experience, on devices
         on Android 7.1 or 8 (API 25 or 26, respectively), we have seen that the receiver of the
         vulnerable app gets called first. This is not guaranteed to be true on other devices.
+
+        \n\nTherefore, you might not be able to see the flag for the high activity level, depending
+        on your device, as the ordered broadcast will be cancelled before it gets to the malware\'s receiver.
     </string>
     <string name="broadcastTheftDOSImpossibleDescription">
         Relying on the broadcast receiver with a high priority being called before the receiver of
