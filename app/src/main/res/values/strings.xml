@@ -531,7 +531,6 @@
         <item>@string/broadcastTheftDOSName</item>
         <item>@string/broadcastTheftMITMName</item>
         <item>@string/activityHijackName</item>
-        <item>@string/activityHijackResultName</item>
         <item>@string/serviceHijackName</item>
         <item>@string/providerHijackName</item>
         <item>@string/broadcastInjectionName</item>
