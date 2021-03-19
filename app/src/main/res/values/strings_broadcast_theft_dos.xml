@@ -214,4 +214,111 @@
                 \n\t...
             \n}]]>
     </string>
+
+    <string name="cpuBoosterManifest">
+        <![CDATA[
+            <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+                \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.cpu_booster\">
+
+                \n\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.KILL_BACKGROUND_PROCESSES\" />
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.REORDER_TASKS\"/>
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.SYSTEM_ALERT_WINDOW\"/>
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.PROCESS_OUTGOING_CALLS\"/>
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.WRITE_SETTINGS\" />
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.PACKAGE_USAGE_STATS\" />
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.PROCESS_OUTGOING_CALLS\"/>
+
+                \n\n\t<application
+                    \n\t\tandroid:allowBackup=\"true\"
+                    \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                    \n\t\tandroid:label=\"@string/app_name\"
+                    \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                    \n\t\tandroid:supportsRtl=\"true\"
+                    \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                    \n\n\t\t<activity android:name=\".MainActivity\">
+                        \n\t\t\t<intent-filter>
+                            \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+
+                            \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</activity>
+                    \n\t\t<activity android:name=\".AdvancedActivity\"/>
+                    \n\t\t<activity android:name=\".LogActivity\"/>
+
+                    \n\n\t\t<receiver android:name=\".icc.AppActivityReceiver\">
+                        \n\t\t\t<intent-filter android:priority=\"2147483647\">
+                            \n\t\t\t\t<action android:name=
+                                \n\t\t\t\t\t\"android.intent.action.NEW_OUTGOING_CALL\"/>
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</receiver>
+
+                \n\n\t</application>
+            \n</manifest>]]>
+    </string>
+    <string name="cpuBoosterMainActivityIntentCode">
+        <![CDATA[
+            class MainActivity : AppCompatActivity() {
+                \n\t...
+                \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
+                    \n\t\twhen(item.itemId) {
+                        \n\t\t\tR.id.log_button -> {
+                            \n\t\t\t\tval intent = Intent(this, LogActivity::class.java)
+                            \n\t\t\t\tstartActivity(intent)
+                            \n\t\t\t\treturn true
+                        \n\t\t\t}
+                        \n\t\t\t...
+                        \n\t\t\telse -> return super.onOptionsItemSelected(item)
+                    \n\t\t}
+                \n\t}
+                \n\t...
+                \n\tfun startAdvancedActivity(view: View) {
+                    \n\t\tval intent = Intent(this, AdvancedActivity::class.java)
+                    \n\t\tstartActivity(intent)
+                \n\t}
+            \n}]]>
+    </string>
+    <string name="cpuBoosterAdvancedActivityIntentCode">
+        <![CDATA[
+            class AdvancedActivity :  AppCompatActivity() {
+                \n\t...
+                \n\tfun openWriteSettings(view: View) {
+                    \n\t\tif (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        \n\t\t\tval intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
+                        \n\t\t\tstartActivity(intent)
+                    \n\t\t} else {
+                        \n\t\t\tSnackbar.make(view, \"Only supported on Android 6 and up!\",
+                            \n\t\t\t\tSnackbar.LENGTH_LONG).show()
+                    \n\t\t}
+                \n\t}
+
+                \n\n\tfun openOverlaySettings(view: View) {
+                    \n\t\tif(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        \n\t\t\tval intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                            \n\t\t\t\tUri.parse("package:$packageName"))
+                        \n\t\t\tstartActivityForResult(intent, 0)
+                    \n\t\t} else {
+                        \n\t\t\tSnackbar.make(view, \"Only supported on Android 6 and up!\",
+                            \n\t\t\t\tSnackbar.LENGTH_LONG).show()
+                    \n\t\t}
+                \n\t}
+
+                \n\n\tfun openUsageAccessSettings(view: View) {
+                    \n\t\tif(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        \n\t\t\tval intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+                        \n\t\t\tstartActivity(intent)
+                    \n\t\t} else {
+                        \n\t\t\tSnackbar.make(view, \"Only supported on Android 6 and up!\",
+                            \n\t\t\t\tSnackbar.LENGTH_LONG).show()
+                    \n\t\t}
+                \n\t}
+            \n}]]>
+    </string>
 </resources>
