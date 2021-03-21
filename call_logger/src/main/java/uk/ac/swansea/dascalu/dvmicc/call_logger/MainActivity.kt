@@ -111,16 +111,13 @@ class MainActivity : AppCompatActivity() {
     private fun acquirePermissionsForReceiver() {
         val securityLevelSettings = loadSecuritySettingsFromFile(this)
 
-        if(securityLevelSettings != null) {
-            if(securityLevelSettings.vulnerableAppSecuritySetting == "high" &&
-                    securityLevelSettings.malwareOvercome) {
-                if(ContextCompat.checkSelfPermission(this,
-                                "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
-                        != PackageManager.PERMISSION_GRANTED) {
-
-                    readNewsPermissionLauncher.launch(
+        if(securityLevelSettings.vulnerableAppSecuritySetting == "high") {
+            if(ContextCompat.checkSelfPermission(this,
                             "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
-                }
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                readNewsPermissionLauncher.launch(
+                        "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
             }
         }
     }

@@ -3,18 +3,21 @@ package uk.ac.swansea.dascalu.dvmicc.call_logger.icc
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import uk.ac.swansea.dascalu.dvmicc.call_logger.loadSecuritySettingsFromFile
 import java.io.OutputStreamWriter
 
 class CallsBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent) {
-        if (intent.extras != null) {
-            val jsonArticles = intent.getStringExtra("articles")
-            val newsStreamName: String? = intent.getStringExtra("news_stream_name")
-            val flag: String? = intent.getStringExtra("flag")
+        if (context != null && intent.extras != null) {
+            val securitySettings = loadSecuritySettingsFromFile(context)
 
-            if (jsonArticles != null) {
-                if(context != null) {
+            if(securitySettings.malwareSecurityLevel) {
+                val jsonArticles = intent.getStringExtra("articles")
+                val newsStreamName: String? = intent.getStringExtra("news_stream_name")
+                val flag: String? = intent.getStringExtra("flag")
+
+                if (jsonArticles != null) {
                     writeDataToFile(context, jsonArticles, flag, newsStreamName)
                 }
             }
