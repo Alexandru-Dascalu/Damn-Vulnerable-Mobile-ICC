@@ -1,3 +1,4 @@
+include ':battery_booster'
 include ':cpu_booster'
 include ':call_redirect'
 include ':call_logger'
