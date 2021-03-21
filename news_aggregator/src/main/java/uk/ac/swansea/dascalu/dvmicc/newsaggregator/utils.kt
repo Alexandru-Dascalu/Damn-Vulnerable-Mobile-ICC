@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils
+package uk.ac.swansea.dascalu.dvmicc.newsaggregator
 
 import android.content.Context
 import android.os.Environment
@@ -6,7 +6,7 @@ import android.text.format.DateUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import uk.ac.swansea.dascalu.dvmicc.newsaggregator.R
+
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
@@ -53,6 +53,7 @@ fun loadSecuritySettingsFromFile(context: Context) : String {
         if (settingsFile.exists()) {
             val reader = BufferedReader(InputStreamReader(FileInputStream(settingsFile)))
 
+            val currentChallengeIndex : Int? = reader.readLine().toIntOrNull()
             val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
 
             reader.close()
@@ -61,12 +62,12 @@ fun loadSecuritySettingsFromFile(context: Context) : String {
             Toast.makeText(context, "Security level settings file is not present!",
                     Toast.LENGTH_LONG).show()
 
-            return context.getString(R.string.lowSecurityLevel)
+            return "low"
         }
     } else {
         Toast.makeText(context, "External storage is not present!",
                 Toast.LENGTH_LONG).show()
 
-        return context.getString(R.string.lowSecurityLevel)
+        return "low"
     }
 }

@@ -15,9 +15,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
-import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.hideKeyboard
-import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.loadSecuritySettingsFromFile
-
 class LogInActivity : AppCompatActivity() {
 
     private lateinit var authenticator : FirebaseAuth

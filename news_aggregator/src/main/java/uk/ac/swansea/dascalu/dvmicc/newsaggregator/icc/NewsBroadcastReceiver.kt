@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 
 import com.dfl.newsapi.model.ArticleDto
 import com.google.gson.Gson
@@ -13,7 +12,6 @@ import com.google.gson.reflect.TypeToken
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.R
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.adapters.NewsCardAdapter
-import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.loadSecuritySettingsFromFile
 
 class NewsBroadcastReceiver : BroadcastReceiver() {
     private val streamToAdapterMap : HashMap<String, NewsCardAdapter> = HashMap<String, NewsCardAdapter>()

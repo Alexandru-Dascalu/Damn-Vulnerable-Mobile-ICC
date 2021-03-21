@@ -19,7 +19,7 @@ import uk.ac.swansea.dascalu.dvmicc.newsaggregator.model.Database
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.FullArticleActivity
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.R
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.fragments.BookmarksFragment
-import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.getPublishTimeAgo
+import uk.ac.swansea.dascalu.dvmicc.newsaggregator.getPublishTimeAgo
 
 class BookmarkCardAdapter(private var articleList: List<ArticleDto>,
                           private val bookmarksFragment: BookmarksFragment

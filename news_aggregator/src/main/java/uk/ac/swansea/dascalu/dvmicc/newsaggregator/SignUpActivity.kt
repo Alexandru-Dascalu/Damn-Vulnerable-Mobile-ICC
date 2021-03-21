@@ -15,7 +15,6 @@ import com.google.firebase.ktx.Firebase
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.model.NewsStream
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.model.User
-import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.hideKeyboard
 
 class SignUpActivity : AppCompatActivity() {
 

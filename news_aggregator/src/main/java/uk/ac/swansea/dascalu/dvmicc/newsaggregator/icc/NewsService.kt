@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.R
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.model.Database
-import uk.ac.swansea.dascalu.dvmicc.newsaggregator.utils.loadSecuritySettingsFromFile
+import uk.ac.swansea.dascalu.dvmicc.newsaggregator.loadSecuritySettingsFromFile
 
 import java.lang.IllegalStateException
 import java.lang.StringBuilder
