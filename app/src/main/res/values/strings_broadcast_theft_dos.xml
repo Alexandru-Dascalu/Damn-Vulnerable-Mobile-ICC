@@ -81,11 +81,14 @@
         the receivers. Moreover, in the high security level, the broadcast was canceled and thus
         would not be received any other genuine receiver that needed to process the call.
 
-        Therefore, the best solution to fix this vulnerability rests on the user uninstalling the malware.
+        \n\nTherefore, the best solution to fix this vulnerability rests on the user uninstalling the malware.
         The CPU Booster app asks for a phone permissions, when this kind of app should not need this permission.
         This is a good indicator it is a malicious app.
 
-        Uninstall the CPU Booster app to make the call redirection work properly.
+        \n\nUninstall the CPU Booster app to make the call redirection work properly.
+
+        \n\nSetting the security level to Impossible for this challenge has no effect, it is the same as setting it
+        to low, as the DVM-ICC can not uninstall the malware for you.
     </string>
 
     <string name="callRedirectAppName">Call Redirect</string>
