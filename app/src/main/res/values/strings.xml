@@ -600,6 +600,6 @@
     <string name="makeOwnMalwareMode">Make your own Malware Mode</string>
     <string name="fixVulnerableAppMode">Fix Vulnerable App Mode</string>
 
-    <string name="callLogAppName">Call Logger</string>
+    <string name="callLoggerAppName">Call Logger</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
 </resources>

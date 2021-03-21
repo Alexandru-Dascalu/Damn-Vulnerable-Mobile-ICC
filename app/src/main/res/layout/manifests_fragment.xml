@@ -55,7 +55,7 @@
             android:paddingTop="20dp"
             android:paddingBottom="12dp"
 
-            android:text="@string/callLogAppName"
+            android:text="@string/callLoggerAppName"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
 
         <io.github.kbiakov.codeview.CodeView

@@ -3,7 +3,6 @@ package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 
 import uk.ac.swansea.dascalu.dvmicc.home.R
 
@@ -19,8 +18,8 @@ class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         challengeName = context!!.resources.getString(R.string.broadcastTheftName)
-        vulnerableAppName = context!!.resources.getString(R.string.callRedirectAppName)
-        malwareName = context!!.resources.getString(R.string.cpuBoosterAppName)
+        vulnerableAppName = context!!.resources.getString(R.string.newsAggregatorAppName)
+        malwareName = context!!.resources.getString(R.string.callLoggerAppName)
 
         val flags = requireContext().resources.getStringArray(R.array.broadcastTheftFlags)
         securityLowFlag = flags[0]
