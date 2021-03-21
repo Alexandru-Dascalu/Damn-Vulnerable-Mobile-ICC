@@ -9,7 +9,11 @@ import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.util.Locale
 
-fun loadSecuritySettingsFromFile(context: Context) : String {
+data class SecuritySettings(val currentChallengeIndex: Int?, val securityLevel: String)
+
+const val BROADCAST_THEFT_DOS_ID : Int = 1
+
+fun loadSecuritySettingsFromFile(context: Context) : SecuritySettings {
     val storageState = Environment.getExternalStorageState()
 
     if(storageState == Environment.MEDIA_MOUNTED || storageState == Environment.MEDIA_MOUNTED_READ_ONLY) {
@@ -19,21 +23,22 @@ fun loadSecuritySettingsFromFile(context: Context) : String {
 
         if (settingsFile.exists()) {
             val reader = BufferedReader(InputStreamReader(FileInputStream(settingsFile)))
+            reader.use {
+                val currentChallengeIndex : Int? = reader.readLine().toIntOrNull()
+                val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
 
-            val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
-
-            reader.close()
-            return vulnerableAppSecurityLevel
+                return SecuritySettings(currentChallengeIndex, vulnerableAppSecurityLevel)
+            }
         } else {
             Toast.makeText(context, "Security level settings file is not present!",
                 Toast.LENGTH_LONG).show()
 
-            return "low"
+            return SecuritySettings(null, "low")
         }
     } else {
         Toast.makeText(context, "External storage is not present!",
             Toast.LENGTH_LONG).show()
 
-        return "low"
+        return SecuritySettings(null, "low")
     }
 }

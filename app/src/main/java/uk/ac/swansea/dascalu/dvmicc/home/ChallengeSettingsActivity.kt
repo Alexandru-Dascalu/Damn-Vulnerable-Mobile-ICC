@@ -29,6 +29,8 @@ import java.util.Locale
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
 
 class ChallengeSettingsActivity :  AppCompatActivity() {
+    private var challenge: Challenge? = null
+
     private val writeRequestStoragePermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
@@ -58,32 +60,34 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
 
         title = resources.getString(R.string.challengeSettingsActivityTitle)
 
-        if(intent.extras != null && intent.extras!!.get("challenge") != null) {
-            disableNecessaryLevelRadioButtons(intent.extras!!.get("challenge")
-                    as Challenge)
+        if(intent.extras != null) {
+            challenge = intent.extras!!.get("challenge") as Challenge?
+            disableNecessaryLevelRadioButtons()
         }
         initialiseSecuritySettings()
     }
 
-    private fun disableNecessaryLevelRadioButtons(challenge: Challenge) {
-        if(!challenge.securityLevels.containsKey("low")) {
-            findViewById<RadioButton>(R.id.radio_button_vulnerable_low).isEnabled = false
-        }
+    private fun disableNecessaryLevelRadioButtons() {
+        if(challenge != null) {
+            if (!challenge!!.securityLevels.containsKey("low")) {
+                findViewById<RadioButton>(R.id.radio_button_vulnerable_low).isEnabled = false
+            }
 
-        if(!challenge.securityLevels.containsKey("medium")) {
-            findViewById<RadioButton>(R.id.radio_button_vulnerable_medium).isEnabled = false
-        }
+            if (!challenge!!.securityLevels.containsKey("medium")) {
+                findViewById<RadioButton>(R.id.radio_button_vulnerable_medium).isEnabled = false
+            }
 
-        if(!challenge.securityLevels.containsKey("high")) {
-            findViewById<RadioButton>(R.id.radio_button_vulnerable_high).isEnabled = false
-        }
+            if (!challenge!!.securityLevels.containsKey("high")) {
+                findViewById<RadioButton>(R.id.radio_button_vulnerable_high).isEnabled = false
+            }
 
-        if(!challenge.securityLevels.containsKey("very high")) {
-            findViewById<RadioButton>(R.id.radio_button_vulnerable_very_high).isEnabled = false
-        }
+            if (!challenge!!.securityLevels.containsKey("very high")) {
+                findViewById<RadioButton>(R.id.radio_button_vulnerable_very_high).isEnabled = false
+            }
 
-        if(!challenge.securityLevels.containsKey("impossible")) {
-            findViewById<RadioButton>(R.id.radio_button_vulnerable_impossible).isEnabled = false
+            if (!challenge!!.securityLevels.containsKey("impossible")) {
+                findViewById<RadioButton>(R.id.radio_button_vulnerable_impossible).isEnabled = false
+            }
         }
     }
 
@@ -140,7 +144,14 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
             val writer = OutputStreamWriter(FileOutputStream(settingsFile))
 
-            val settings : String = "%s\n%b".format(vulnerableAppSecurityLevel, malwareSecurityOvercome)
+            val challengeIndex : Int = if (challenge != null) {
+                challenge!!.challengeNameIndex
+            } else {
+                -1
+            }
+
+            val settings : String = "%d\n%s\n%b".format(challengeIndex, vulnerableAppSecurityLevel,
+                    malwareSecurityOvercome)
             writer.write(settings)
 
             writer.close()
@@ -174,6 +185,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
             if (settingsFile.exists()) {
                 val reader = BufferedReader(InputStreamReader(FileInputStream(settingsFile)))
 
+                reader.readLine()
                 val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
                 val malwareSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
                 reader.close()
@@ -194,7 +206,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
                     "impossible" -> {
                         vulnerableSecurityLevelButtonGroup.check(R.id.radio_button_vulnerable_impossible)
                     } else -> {
-                    throw IllegalStateException("Security level in file has invalid value!")
+                        throw IllegalStateException("Security level in file has invalid value!")
                     }
                 }
 
