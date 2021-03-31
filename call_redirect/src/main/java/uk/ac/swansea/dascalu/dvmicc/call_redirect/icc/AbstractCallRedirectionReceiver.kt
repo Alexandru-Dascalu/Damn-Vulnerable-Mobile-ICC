@@ -2,6 +2,8 @@ package uk.ac.swansea.dascalu.dvmicc.call_redirect.icc
 
 import android.content.BroadcastReceiver
 import android.content.Context
+import uk.ac.swansea.dascalu.dvmicc.call_redirect.BROADCAST_THEFT_DOS_ID
+import uk.ac.swansea.dascalu.dvmicc.call_redirect.BROADCAST_THEFT_MITM_ID
 
 abstract class AbstractCallRedirectionReceiver : BroadcastReceiver() {
     protected fun addCountryCode(phoneNumber: String, countryCode: String?) : String {
@@ -27,5 +29,10 @@ abstract class AbstractCallRedirectionReceiver : BroadcastReceiver() {
         } else {
             return null
         }
+    }
+
+    protected fun isCurrentChallengeCorrect(currentChallengeIndex : Int?) : Boolean {
+        return currentChallengeIndex == BROADCAST_THEFT_DOS_ID ||
+                currentChallengeIndex == BROADCAST_THEFT_MITM_ID
     }
 }

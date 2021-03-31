@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="broadcastTheftMITMExplanation">
+        When a broadcast is sent, the sender does not receive any indication of what components have
+        received that broadcast, and receivers can read all the data inside the broadcast intent.
+        Moreover, if an implicit intent is used for a broadcast meant for an app’s internal use,
+        that broadcast will be sent to any receiver on the device with a matching filter. Sensitive
+        user information could thus be intercepted and sent to the attacker.
+
+        \n\nThe use of ordered implicit broadcasts can not only enabled eavesdropping as described
+        above, but man in the middle attacks as well.
+
+        \n\nOrdered broadcasts
+        are sent to receivers one at a time. A malicious app could register a broadcast receiver
+        with a very high priority to ensure it is the first to receive it. It
+        could propagate the broadcast with malicious data replacing the original one, thus performing
+        a Man In the Middle attack. This could be
+        used to corrupt data or crash other applications.
+
+        \n\nWhen making a broadcast, the developer can specify the permission that a broadcast
+        receiver needs to have to receive the intent. This can be used to guard against
+        Broadcast Theft. But the malware could still get the permission. Even if the permission is a
+        Signature one, the attacker could get it if they have stolen the developer\'s certificate.
+        Other ways for a developer to guard against these attacks is to not put sensitive
+        information in a broadcast unless necessary, to use explicit broadcasts for intra-app
+        use, or to send broadcast using LocalBroadcastManager. Alternatively, they could not rely on
+        public broadcast and use one of the newer Android APIs to achieve their goal.
+    </string>
+
+    <string name="broadcastTheftMITMInstructions">
+        Go to the Call Redirect app and look around. Type in a country code to be added to phone
+        numbers you dial.
+
+        \n\nThen go to Battery Booster and play around with it. Grant the storage permission it asks
+        for. Go to the Advanced activity and grant the app the permission it asks for.
+
+        \n\nFollowing that, dial a phone number. This number must not include a country code at the
+        beginning! You might then see that dialed number is not the one you typed in, depending on
+        the security level.
+
+        \n\nIf the malware intercepts the broadcast, it will place a flag in its log.
+    </string>
+
+    <string name="batteryBoosterName">Battery Booster</string>
+
+    <string-array name="broadcastTheftMITMFlags">
+        <item>What an artist dies in me!</item>
+        <item>Woe is me! I think I\'m turning into a god!</item>
+    </string-array>
+
+    <!--security level descriptions-->
+    <string name="broadcastTheftMITMLowDescription">
+        The app listens for public broadcasts sent by the system. Since this app re-writes phone
+        numbers before they are called, it should have a positive low priority, as the
+        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">documentation</a>
+        for the ACTION_NEW_OUTGOING_CALL intent action says.
+        This is because it should retain any changes made by other receivers.
+
+        \n\nHowever, any other app can listen to this broadcast if it has the
+        PROCESS_OUTGOING_CALLS permission. And other receivers can register with a very high
+        priority, receive the broadcast before the targeted app does and read and change the data
+        in the broadcast.
+    </string>
+    <string name="broadcastTheftMITMHighDescription">
+        Since the broadcast is sent by the system and not by us, we can not protect it with a
+        permission. One way to increase security is to set the priority level of the broadcast
+        receiver to the maximum possible value, just like the malware does. This way, the receiver of this app will hopefully
+        be called before the malware\'s receiver. The vulnerable app can then change the number in
+        the broadcast, and then cancel it. The number will still be called because when the
+        broadcast was sent, a final receiver was specified, which gets the broadcast even if
+        another receiver in the chain cancels it.
+
+        \n\nAccording to the
+        <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">Android documentation</a>,
+        receivers with the same priority are executed in a random order. From our experience, on devices
+        on Android 7.1 or 8 (API 25 or 26, respectively), we have seen that the receiver of the
+        vulnerable app gets called first. This is not guaranteed to be true on other devices.
+
+        \n\nTherefore, you might not be able to see the flag for the high activity level, depending
+        on your device, as the ordered broadcast will be cancelled before it gets to the malware\'s receiver.
+    </string>
+    <string name="broadcastTheftMITMImpossibleDescription">
+        Relying on the broadcast receiver with a high priority being called before the receiver of
+        the malware is not a reliable solution, as it depends on the perhaps random order the OS calls
+        the receivers. Moreover, in the high security level, the broadcast was canceled and thus
+        would not be received any other genuine receiver that needed to process the call.
+
+        \n\nTherefore, the best solution to fix this vulnerability rests on the user uninstalling the malware.
+        The Battery Booster app asks for a phone permissions, when this kind of app should not need
+        this permission. This is a good indicator it is a malicious app.
+
+        \n\nUninstall the Battery Booster app to make the call redirection work properly.
+
+        \n\nSetting the security level to Impossible for this challenge has no effect, it is the
+        same as setting it to low, as the DVM-ICC app can not uninstall the malware for you.
+    </string>
+
+</resources>

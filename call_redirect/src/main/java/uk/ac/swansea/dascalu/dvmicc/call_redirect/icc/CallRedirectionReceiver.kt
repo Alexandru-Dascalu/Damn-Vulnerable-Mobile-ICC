@@ -2,7 +2,6 @@ package uk.ac.swansea.dascalu.dvmicc.call_redirect.icc
 
 import android.content.Context
 import android.content.Intent
-import uk.ac.swansea.dascalu.dvmicc.call_redirect.BROADCAST_THEFT_DOS_ID
 
 import uk.ac.swansea.dascalu.dvmicc.call_redirect.SecuritySettings
 import uk.ac.swansea.dascalu.dvmicc.call_redirect.loadSecuritySettingsFromFile
@@ -13,10 +12,10 @@ class CallRedirectionReceiver : AbstractCallRedirectionReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         val securityLevelSettings : SecuritySettings = loadSecuritySettingsFromFile(context!!)
 
-        /*Only do sth if the broadcast theft dos challenge is active and if level is not high.*/
-        if(securityLevelSettings.currentChallengeIndex == BROADCAST_THEFT_DOS_ID &&
-                (securityLevelSettings.securityLevel == "low" || securityLevelSettings.securityLevel
-                        == "impossible")) {
+        /*Only do sth if the current challenge is correct and if level is not high.*/
+        if(isCurrentChallengeCorrect(securityLevelSettings.currentChallengeIndex) &&
+            isSecurityLevelNotHigh(securityLevelSettings.securityLevel)) {
+
             //check intent action is the one the receiver listens for
             if(intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
                 var phoneNumber : String? = resultData
@@ -31,5 +30,12 @@ class CallRedirectionReceiver : AbstractCallRedirectionReceiver() {
                 }
             }
         }
+    }
+
+    /*If the broadcast theft DOS or MITM challenges are active, then the only possible security
+     * levels are low, high and impossible. If the level is either low or impossible, then it is
+     * not high.*/
+    private fun isSecurityLevelNotHigh(securityLevel: String) : Boolean {
+        return securityLevel == "low" || securityLevel == "impossible"
     }
  }

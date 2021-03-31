@@ -11,7 +11,9 @@ class HighPriorityRedirectionReceiver : AbstractCallRedirectionReceiver() {
         val securityLevelSettings : SecuritySettings = loadSecuritySettingsFromFile(context!!)
 
         /*Only do sth if the broadcast theft dos challenge is active and if level is high.*/
-        if(securityLevelSettings.currentChallengeIndex == 1 && securityLevelSettings.securityLevel == "high") {
+        if(isCurrentChallengeCorrect(securityLevelSettings.currentChallengeIndex) &&
+            securityLevelSettings.securityLevel == "high") {
+
             //check intent action is the one the receiver listens for
             if (intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
                 var phoneNumber: String? = resultData

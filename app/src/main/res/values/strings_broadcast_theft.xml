@@ -22,7 +22,8 @@
         Signature one, the attacker could get it if they have stolen the developer\'s certificate.
         Other ways for a developer to guard against these attacks is to not put sensitive
         information in a broadcast unless necessary, to use explicit broadcasts for intra-app
-        use or to send broadcast using LocalBroadcastManager.
+        use or to send broadcast using LocalBroadcastManager. Alternatively, they could not rely on
+        public broadcast and use one of the newer Android APIs to achieve their goal.
     </string>
 
     <string name="broadcastTheftInstructions">

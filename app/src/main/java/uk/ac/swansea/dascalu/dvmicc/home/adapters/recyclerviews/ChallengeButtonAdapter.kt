@@ -24,6 +24,7 @@ class ChallengeButtonAdapter(private val challengeList: Array<String>) : Recycle
         when(position) {
             0 -> holder.challenge = Challenge.BROADCAST_THEFT
             1 -> holder.challenge = Challenge.BROADCAST_THEFT_DOS
+            2 -> holder.challenge = Challenge.BROADCAST_THEFT_MITM
         }
         holder.challengeButton.text = challengeList[position]
     }

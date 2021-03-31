@@ -18,7 +18,12 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
             mapOf("low" to SecurityLevel(R.string.broadcastTheftDOSLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
                     "high" to SecurityLevel(R.string.broadcastTheftDOSHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftDOSImpossibleDescription)),
-            R.string.broadcastTheftDOSInstructions, 0, 0)
+            R.string.broadcastTheftDOSInstructions, 0, 0),
+    BROADCAST_THEFT_MITM(2, R.string.broadcastTheftMITMExplanation,
+            mapOf("low" to SecurityLevel(R.string.broadcastTheftMITMLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
+                    "high" to SecurityLevel(R.string.broadcastTheftMITMHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
+                    "impossible" to SecurityLevel(R.string.broadcastTheftMITMImpossibleDescription)),
+            R.string.broadcastTheftMITMInstructions, 0, 0)
 
 }
 

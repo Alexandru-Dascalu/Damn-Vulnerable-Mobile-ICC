@@ -12,6 +12,7 @@ import java.util.Locale
 data class SecuritySettings(val currentChallengeIndex: Int?, val securityLevel: String)
 
 const val BROADCAST_THEFT_DOS_ID : Int = 1
+const val BROADCAST_THEFT_MITM_ID : Int = 2
 
 fun loadSecuritySettingsFromFile(context: Context) : SecuritySettings {
     val storageState = Environment.getExternalStorageState()

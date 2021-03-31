@@ -3,6 +3,9 @@
     <string name="broadcastTheftDOSExplanation">
         When a broadcast is sent, the sender does not receive any indication of what components have
         received that broadcast, and receivers can read all the data inside the broadcast intent.
+        Moreover, if an implicit intent is used for a broadcast meant for an app’s internal use,
+        that broadcast will be sent to any receiver on the device with a matching filter. Sensitive
+        user information could thus be intercepted and sent to the attacker.
 
         \n\nThe use of ordered implicit broadcasts can not only enable eavesdropping, but denial of
         service and man in the middle attacks as well.
@@ -27,7 +30,7 @@
         Go to the Call Redirect app and look around. Type in a country code to be added to phone
         numbers you dial.
 
-        \n\nThen go to the CPU Booster and play around with it. Grant the storage permission it asks\
+        \n\nThen go to CPU Booster and play around with it. Grant the storage permission it asks
         for. Go to the Advanced Functionality activity and grant the app the permission it asks for.
 
         \n\nFollowing that, dial a phone number. This number must not include a country code at the
@@ -88,7 +91,7 @@
         \n\nUninstall the CPU Booster app to make the call redirection work properly.
 
         \n\nSetting the security level to Impossible for this challenge has no effect, it is the same as setting it
-        to low, as the DVM-ICC can not uninstall the malware for you.
+        to low, as the DVM-ICC app can not uninstall the malware for you.
     </string>
 
     <string name="callRedirectAppName">Call Redirect</string>
