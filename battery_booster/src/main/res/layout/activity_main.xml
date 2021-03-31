@@ -7,27 +7,29 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/progressLevelTextView"
+        android:id="@+id/optimiseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginTop="60dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@id/progressBar"
-        app:layout_constraintLeft_toLeftOf="@id/progressBar"
-        app:layout_constraintRight_toRightOf="@id/progressBar"
-        app:layout_constraintTop_toTopOf="@id/progressBar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:indeterminate="true"
 
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="64dp"
         android:layout_marginStart="64dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/optimiseTextView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/optimiseButton"
@@ -55,6 +57,7 @@
         android:layout_marginEnd="16dp"
 
         android:text="Advanced"
+        android:onClick="startAdvancedActivity"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
