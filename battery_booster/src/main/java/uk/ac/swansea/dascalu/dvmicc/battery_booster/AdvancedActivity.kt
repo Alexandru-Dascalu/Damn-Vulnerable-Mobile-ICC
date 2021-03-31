@@ -27,16 +27,6 @@ class AdvancedActivity :  AppCompatActivity() {
         }
     }
 
-    fun openWriteSettings(view: View) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
-            startActivity(intent)
-        } else {
-            Snackbar.make(view, "Only supported on Android 6 and up!",
-                    Snackbar.LENGTH_LONG).show()
-        }
-    }
-
     fun openOverlaySettings(view: View) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,

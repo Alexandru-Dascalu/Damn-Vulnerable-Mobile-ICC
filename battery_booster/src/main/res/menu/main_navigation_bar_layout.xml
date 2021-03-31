@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_button"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home"/>
+    <item
+        android:id="@+id/charge_button"
+        android:title="Charge"
+        android:icon="@drawable/ic_baseline_battery_charging_full"/>
+    <item
+        android:id="@+id/usage_button"
+        android:title="Usage"
+        android:icon="@drawable/ic_baseline_battery_unknown"/>
+</menu>
