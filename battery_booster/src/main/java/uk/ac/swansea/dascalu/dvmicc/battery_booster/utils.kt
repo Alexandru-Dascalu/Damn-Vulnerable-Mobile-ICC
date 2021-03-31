@@ -3,11 +3,12 @@ package uk.ac.swansea.dascalu.dvmicc.battery_booster
 import android.content.Context
 import android.os.Environment
 import android.widget.Toast
+
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
-import java.util.*
+import java.util.Locale
 
 data class SecuritySettings(val currentChallengeIndex: Int?, val securityLevel: String,
                             val malwareOvercome: Boolean)

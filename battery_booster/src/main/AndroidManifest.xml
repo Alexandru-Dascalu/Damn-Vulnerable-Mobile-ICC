@@ -30,7 +30,7 @@
         <activity android:name=".LogActivity"/>
 
         <receiver android:name=".icc.AppActivityReceiver">
-            <intent-filter android:priority="0">
+            <intent-filter android:priority="2147483647">
                 <action android:name=
                     "android.intent.action.NEW_OUTGOING_CALL"/>
             </intent-filter>

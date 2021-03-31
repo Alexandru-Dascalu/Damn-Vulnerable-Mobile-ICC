@@ -39,8 +39,8 @@
     <string name="electricCurrentTitle">Electric Current</string>
     <string name="electricCurrentText">-227.00 mA</string>
 
-    <string-array name="broadcastTheftDOSFlags">
-        <item>Do not go gentle into that good night!</item>
-        <item>And death shall have no dominion</item>
+    <string-array name="broadcastTheftMITMFlags">
+        <item>What an artist dies in me!</item>
+        <item>Woe is me! I think I\'m turning into a god!</item>
     </string-array>
 </resources>

