@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools"  tools:ignore="TypographyEllipsis">
     <string name="broadcastTheftMITMExplanation">
         When a broadcast is sent, the sender does not receive any indication of what components have
         received that broadcast, and receivers can read all the data inside the broadcast intent.
@@ -43,7 +43,7 @@
         \n\nIf the malware intercepts the broadcast, it will place a flag in its log.
     </string>
 
-    <string name="batteryBoosterName">Battery Booster</string>
+    <string name="batteryBoosterAppName">Battery Booster</string>
 
     <string-array name="broadcastTheftMITMFlags">
         <item>What an artist dies in me!</item>
@@ -95,6 +95,120 @@
 
         \n\nSetting the security level to Impossible for this challenge has no effect, it is the
         same as setting it to low, as the DVM-ICC app can not uninstall the malware for you.
+    </string>
+
+    <string name="batteryBoosterManifest">
+        <![CDATA[
+            <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+                \n\tpackage="uk.ac.swansea.dascalu.dvmicc.battery_booster">
+
+                \n\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.KILL_BACKGROUND_PROCESSES\" />
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.SYSTEM_ALERT_WINDOW\"/>
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.PROCESS_OUTGOING_CALLS\"/>
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.PACKAGE_USAGE_STATS\" />
+                \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\"/>
+
+                \n\n\t<application
+                    \n\t\tandroid:allowBackup=\"true\"
+                    \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                    \n\t\tandroid:label=\"@string/app_name\"
+                    \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                    \n\t\tandroid:supportsRtl=\"true\"
+                    \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                    \n\n\t\t<activity android:name=\".MainActivity\">
+                        \n\t\t\t<intent-filter>
+                            \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+
+                            \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</activity>
+                    \n\t\t<activity android:name=\".AdvancedActivity\"/>
+                    \n\t\t<activity android:name=\".LogActivity\"/>
+
+                    \n\n\t\t<receiver android:name=\".icc.AppActivityReceiver\">
+                        \n\t\t\t<intent-filter android:priority=\"2147483647\">
+                            \n\t\t\t\t<action android:name=
+                                \n\t\t\t\t\t\"android.intent.action.NEW_OUTGOING_CALL\"/>
+                        \n\t\t\t</intent-filter>
+                    \n\t\t</receiver>
+
+                \n\n\t</application>
+            \n</manifest>]]>
+    </string>
+    <string name="batteryBoosterMainActivityIntentCode">
+        <![CDATA[
+            class MainActivity : AppCompatActivity() {
+                \n\t...
+                \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
+                    \n\t\twhen(item.itemId) {
+                        \n\t\t\tR.id.log_button -> {
+                            \n\t\t\t\tval intent = Intent(this, LogActivity::class.java)
+                            \n\t\t\t\tstartActivity(intent)
+                            \n\t\t\t\treturn true
+                        \n\t\t\t}
+                        \n\t\t\tR.id.clear_log_button -> {
+                            \n\t\t\t\tdeleteFile("data.txt")
+
+                            \n\n\t\t\t\tval view = findViewById<MaterialButton>(R.id.optimiseButton)
+                            \n\t\t\t\tSnackbar.make(view, getString(R.string.log_cleared),
+                                \n\t\t\t\tSnackbar.LENGTH_LONG).show()
+                            \n\t\t\t\treturn true
+                        \n\t\t\t}
+                        \n\t\t\t...
+                        \n\t\t\telse -> return super.onOptionsItemSelected(item)
+                    \n\t\t}
+                \n\t}
+                \n\t...
+            \n}]]>
+    </string>
+    <string name="batteryBoosterHomeFragmentIntentCode">
+        <![CDATA[
+            class HomeFragment : Fragment() {
+                \n\t...
+
+                \n\n\toverride fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+                    \n\t\t...
+                    \n\t\tview.findViewById<MaterialButton>(R.id.advancedButton).
+                        \n\t\t\tsetOnClickListener { it ->
+                        \n\n\t\t\tval intent = Intent(view.context,
+                            \n\t\t\t\tAdvancedActivity::class.java)
+                        \n\t\t\tstartActivity(intent)
+                    \n\t\t}
+                \n\t}
+                \n\t...
+            \n}]]>
+    </string>
+    <string name="batteryBoosterAdvancedActivityIntentCode">
+        <![CDATA[
+            class AdvancedActivity : AppCompatActivity() {
+                \n\t...
+                \n\n\tfun openOverlaySettings(view: View) {
+                    \n\t\tif(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        \n\t\t\tval intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                            \n\t\t\t\tUri.parse("package:$packageName"))
+                        \n\t\t\tstartActivityForResult(intent, 0)
+                    \n\t\t} else {
+                        \n\t\t\tSnackbar.make(view, \"Only supported on Android 6 and up!\",
+                            \n\t\t\t\tSnackbar.LENGTH_LONG).show()
+                    \n\t\t}
+                \n\t}
+
+                \n\n\tfun openUsageAccessSettings(view: View) {
+                    \n\t\tif(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        \n\t\t\tval intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+                        \n\t\t\tstartActivity(intent)
+                    \n\t\t} else {
+                        \n\t\t\tSnackbar.make(view, \"Only supported on Android 6 and up!\",
+                            \n\t\t\t\tSnackbar.LENGTH_LONG).show()
+                    \n\t\t}
+                \n\t}
+            \n}]]>
     </string>
 
 </resources>

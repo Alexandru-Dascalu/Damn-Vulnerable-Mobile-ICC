@@ -56,6 +56,18 @@ class ManifestsFragment : Fragment() {
         val cpuBoosterAdvancedActivityIntentCode = view.findViewById<CodeView>(R.id.cpuBoosterAdvancedActivityIntentCode)
         setCodeViewOptions(context!!, cpuBoosterAdvancedActivityIntentCode, "java", R.string.cpuBoosterAdvancedActivityIntentCode)
 
+        val batteryBoosterManifest = view.findViewById<CodeView>(R.id.batteryBoosterManifest)
+        setCodeViewOptions(context!!, batteryBoosterManifest, "xml", R.string.batteryBoosterManifest)
+
+        val batteryBoosterMainActivityIntentCode = view.findViewById<CodeView>(R.id.batteryBoosterMainActivityIntentCode)
+        setCodeViewOptions(context!!, batteryBoosterMainActivityIntentCode, "java", R.string.batteryBoosterMainActivityIntentCode)
+
+        val batteryBoosterHomeFragmentIntentCode = view.findViewById<CodeView>(R.id.batteryBoosterHomeFragmentIntentCode)
+        setCodeViewOptions(context!!, batteryBoosterHomeFragmentIntentCode, "java", R.string.batteryBoosterHomeFragmentIntentCode)
+
+        val batteryBoosterAdvancedActivityIntentCode = view.findViewById<CodeView>(R.id.batteryBoosterAdvancedActivityIntentCode)
+        setCodeViewOptions(context!!, batteryBoosterAdvancedActivityIntentCode, "java", R.string.batteryBoosterAdvancedActivityIntentCode)
+
         val callLoggerIntentCode = view.findViewById<CodeView>(R.id.callLoggerIntentCode)
         setCodeViewOptions(context!!, callLoggerIntentCode, "java", R.string.callLoggerIntentCode)
 

@@ -21,7 +21,7 @@ class BroadcastTheftMITMQuestionsFragment : AbstractFullQuestionsFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         challengeName = view.context.resources.getString(R.string.broadcastTheftMITMName)
         vulnerableAppName = view.context.resources.getString(R.string.callRedirectAppName)
-        malwareName = view.context.resources.getString(R.string.batteryBoosterName)
+        malwareName = view.context.resources.getString(R.string.batteryBoosterAppName)
 
         val flags = view.context.resources.getStringArray(R.array.broadcastTheftMITMFlags)
         securityLowFlag = flags[0]

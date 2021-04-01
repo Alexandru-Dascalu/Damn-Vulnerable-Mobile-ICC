@@ -11,9 +11,10 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+
 import com.google.android.material.snackbar.Snackbar
 
-class AdvancedActivity :  AppCompatActivity() {
+class AdvancedActivity : AppCompatActivity() {
     private val processCallsPermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) { isGranted: Boolean -> }
 

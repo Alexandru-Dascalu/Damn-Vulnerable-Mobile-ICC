@@ -47,6 +47,58 @@
             android:paddingEnd="8dp"/>
 
         <TextView
+            android:id="@+id/batteryBoosterHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="20dp"
+            android:paddingBottom="12dp"
+
+            android:text="@string/batteryBoosterAppName"
+            android:textAppearance="@style/manifestFragmentAppNameStyle" />
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/batteryBoosterManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/batteryBoosterMainActivityIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/batteryBoosterHomeFragmentIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/batteryBoosterAdvancedActivityIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <TextView
             android:id="@+id/callLogHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
