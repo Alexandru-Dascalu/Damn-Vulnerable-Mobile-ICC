@@ -32,7 +32,9 @@
         numbers you dial.
 
         \n\nThen go to Battery Booster and play around with it. Grant the storage permission it asks
-        for. Go to the Advanced activity and grant the app the permission it asks for.
+        for.
+
+        \n\nGo to the Advanced activity and grant the app the permission it asks for.
 
         \n\nFollowing that, dial a phone number. This number must not include a country code at the
         beginning! You might then see that dialed number is not the one you typed in, depending on
