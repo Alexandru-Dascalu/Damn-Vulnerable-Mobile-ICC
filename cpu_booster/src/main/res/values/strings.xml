@@ -21,6 +21,9 @@
     </string>
     <string name="storagePermissionAcquired">Storage permission acquired!</string>
 
+    <string name="clearLog">Clear Log</string>
+    <string name="log_cleared">Log cleared!</string>
+
     <string-array name="broadcastTheftDOSFlags">
         <item>Do not go gentle into that good night!</item>
         <item>And death shall have no dominion</item>

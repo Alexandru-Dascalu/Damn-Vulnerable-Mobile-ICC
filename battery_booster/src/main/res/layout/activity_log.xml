@@ -7,7 +7,7 @@
     tools:context=".LogActivity">
 
     <ScrollView
-        android:id="@+id/stolenDataScrollView"
+        android:id="@+id/logScrollView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
 
@@ -19,10 +19,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/stolenDataTextView"
+            android:id="@+id/logTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"/>
+            android:layout_height="wrap_content" />
 
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

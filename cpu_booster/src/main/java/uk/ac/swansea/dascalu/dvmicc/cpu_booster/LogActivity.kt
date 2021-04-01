@@ -18,7 +18,7 @@ class LogActivity : AppCompatActivity() {
     }
 
     private fun readStolenData() {
-        val dataTextView = findViewById<TextView>(R.id.stolenDataTextView)
+        val dataTextView = findViewById<TextView>(R.id.logTextView)
 
         try {
             openFileInput("data.txt").use {

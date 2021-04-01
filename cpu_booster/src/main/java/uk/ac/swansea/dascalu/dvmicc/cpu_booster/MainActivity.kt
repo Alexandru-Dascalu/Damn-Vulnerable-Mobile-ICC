@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.button.MaterialButton
 
 import com.google.android.material.snackbar.Snackbar
 
@@ -55,6 +56,13 @@ class MainActivity : AppCompatActivity() {
             R.id.log_button -> {
                 val intent = Intent(this, LogActivity::class.java)
                 startActivity(intent)
+                return true
+            }
+            R.id.clear_log_button -> {
+                deleteFile("data.txt")
+
+                val view = findViewById<MaterialButton>(R.id.boostButton)
+                Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

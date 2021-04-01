@@ -10,6 +10,7 @@
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="log">Log</string>
+    <string name="clearLog">Clear Log</string>
     <string name="rate">Rate</string>
     <string name="share">Share</string>
 
@@ -22,6 +23,7 @@
         App needs file storage access to read security level!
     </string>
     <string name="storagePermissionAcquired">Storage permission acquired!</string>
+    <string name="log_cleared">Log cleared!</string>
 
     <string name="chargeLevelTitle">Charge Level:</string>
     <string name="chargeLevelText">58.68%</string>
