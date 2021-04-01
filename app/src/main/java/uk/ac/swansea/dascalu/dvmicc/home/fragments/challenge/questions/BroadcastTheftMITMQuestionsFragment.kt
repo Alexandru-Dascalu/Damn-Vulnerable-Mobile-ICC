@@ -3,6 +3,9 @@ package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputLayout
 import uk.ac.swansea.dascalu.dvmicc.home.R
 
 @SuppressLint("UseRequireInsteadOfGet")
@@ -24,6 +27,17 @@ class BroadcastTheftMITMQuestionsFragment : AbstractFullQuestionsFragment() {
         securityLowFlag = flags[0]
         securityHighFlag = flags[1]
 
+        hideElementsForUnusedSecurityLevels(view)
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun hideElementsForUnusedSecurityLevels(view: View) {
+        view.findViewById<TextView>(R.id.securityMediumQuestionTextView).visibility = View.GONE
+        view.findViewById<TextInputLayout>(R.id.securityMediumInput).visibility = View.GONE
+        view.findViewById<MaterialButton>(R.id.securityMediumButton).visibility = View.GONE
+
+        view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView).visibility = View.GONE
+        view.findViewById<TextInputLayout>(R.id.securityVeryHighInput).visibility = View.GONE
+        view.findViewById<MaterialButton>(R.id.securityVeryHighButton).visibility = View.GONE
     }
 }
