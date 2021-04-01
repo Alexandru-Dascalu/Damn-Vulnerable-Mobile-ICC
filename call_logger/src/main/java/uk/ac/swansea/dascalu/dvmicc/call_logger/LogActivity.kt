@@ -18,12 +18,13 @@ class LogActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.infoActivityToolbar)
         title = getString(R.string.log_activity_title)
         setSupportActionBar(toolbar)
+        findViewById<TextView>(R.id.logTextView).setTextIsSelectable(true)
 
         readStolenData()
     }
 
     private fun readStolenData() {
-        val dataTextView = findViewById<TextView>(R.id.stolenDataTextView)
+        val dataTextView = findViewById<TextView>(R.id.logTextView)
 
         try {
             openFileInput("data.txt").use {

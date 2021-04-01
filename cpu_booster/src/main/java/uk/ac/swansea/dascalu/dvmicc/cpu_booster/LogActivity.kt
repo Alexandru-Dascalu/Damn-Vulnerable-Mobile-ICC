@@ -15,6 +15,7 @@ class LogActivity : AppCompatActivity() {
         setContentView(R.layout.activity_log)
 
         readStolenData()
+        findViewById<TextView>(R.id.logTextView).setTextIsSelectable(true)
     }
 
     private fun readStolenData() {
