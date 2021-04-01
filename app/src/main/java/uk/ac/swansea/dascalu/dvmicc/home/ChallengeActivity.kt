@@ -15,8 +15,10 @@ import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInstructio
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ManifestsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.AbstractFullQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftDOSQuestionsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftMITMQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
+
 import java.lang.IllegalStateException
 
 class ChallengeActivity :  AppCompatActivity() {
@@ -114,6 +116,7 @@ class ChallengeActivity :  AppCompatActivity() {
         return when(challengeModel.challengeNameIndex) {
             0 -> BroadcastTheftQuestionsFragment()
             1 -> BroadcastTheftDOSQuestionsFragment()
+            2 -> BroadcastTheftMITMQuestionsFragment()
             else -> throw IllegalStateException("Questions fragment type unknown!")
         }
     }

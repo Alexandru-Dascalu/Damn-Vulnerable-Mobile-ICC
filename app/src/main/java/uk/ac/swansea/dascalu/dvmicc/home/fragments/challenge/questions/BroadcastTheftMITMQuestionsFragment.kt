@@ -3,12 +3,11 @@ package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-
 import uk.ac.swansea.dascalu.dvmicc.home.R
 
 @SuppressLint("UseRequireInsteadOfGet")
-class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
-    override var challengeName: String? = null
+class BroadcastTheftMITMQuestionsFragment : AbstractFullQuestionsFragment() {
+    override var challengeName : String? = null
     override var vulnerableAppName: String? = null
     override var malwareName: String? = null
     override var securityLowFlag: String? = null
@@ -17,15 +16,13 @@ class BroadcastTheftQuestionsFragment() : AbstractFullQuestionsFragment() {
     override var securityVeryHighFlag: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        challengeName = view.context.resources.getString(R.string.broadcastTheftName)
-        vulnerableAppName = view.context.resources.getString(R.string.newsAggregatorAppName)
-        malwareName = view.context.resources.getString(R.string.callLoggerAppName)
+        challengeName = view.context.resources.getString(R.string.broadcastTheftMITMName)
+        vulnerableAppName = view.context.resources.getString(R.string.callRedirectAppName)
+        malwareName = view.context.resources.getString(R.string.batteryBoosterName)
 
-        val flags = view.context.resources.getStringArray(R.array.broadcastTheftFlags)
+        val flags = view.context.resources.getStringArray(R.array.broadcastTheftMITMFlags)
         securityLowFlag = flags[0]
-        securityMediumFlag = flags[1]
-        securityHighFlag = flags[2]
-        securityVeryHighFlag = flags[3]
+        securityHighFlag = flags[1]
 
         super.onViewCreated(view, savedInstanceState)
     }
