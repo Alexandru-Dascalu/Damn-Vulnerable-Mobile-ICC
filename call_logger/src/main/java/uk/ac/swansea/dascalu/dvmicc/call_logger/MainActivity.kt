@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             deleteFile("data.txt")
 
             val view = findViewById<MaterialToolbar>(R.id.mainActivityToolbar)
-            Snackbar.make(view, getString(R.string.stolen_data_cleared), Snackbar.LENGTH_LONG).show()
+            Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
     }
