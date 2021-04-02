@@ -79,9 +79,8 @@
         you then need to look at a list of all the manifests and some intent sending code snippets of all
         apps of this project. Based on the explanation of the attack you were given and the code
         snippets you see, you then have to
-        identify the malicious app and the vulnerable app. There is another view which displays
-        questions to help guide you through the challenge. Here, you can submit your answers and
-        find out if you have correctly identified the apps.
+        identify the malicious app and the vulnerable app. There is another view where you can
+        submit your answers and find out if you have correctly identified the apps.
 
         \n\nOnce you have found out both the malware and the vulnerable app, new information
         becomes available. You can see in the Instructions page specific instructions for each
@@ -94,14 +93,19 @@
         a menu in its app bar where you can open a Log page. This will contain information the
         malware stole from the vulnerable app, among the log output. Here you can find the
         flag for the current security
-        level, which you can then submit to the questions in the DVM-ICC app. You should then clear
-        the log of the malware, and disable the Malware Overcome mode from challenge settings. Go to
-        the vulnerable app and use it again, then go to the malware and look in the log. You should
-        see that the malware could not steal the information again. Repeat this process for all
-        security levels, which you can select from the Challenge Settings page.
+        level, which you can then submit to the questions in the DVM-ICC app.
+
+        \n\nTo complete the challenge, you should find the flags for each security level. You should
+        set the security level to each possible value and follow the instructions for that challenge
+        to observse the cyber attack take place. If the attack is successful, you will be able to
+        find the flag. You can also set the Malware Overcome mode, which enables or disables the
+        malware, in order to see how the vulnerable app normally runs.
 
         \n\nThe above may change depending on the challenge, and the Instructions page will tell you
         exactly what you should do for that challenge.
+
+        \n\nThe help page contains detailed explanations of how each security level does to try to
+        fix the vulnerability, and how the malware can still overcome it.
 
         \n\nThe Questions view may contain other questions to test your
         knowledge. When completing the challenge, you are given an explanation about how the attack
