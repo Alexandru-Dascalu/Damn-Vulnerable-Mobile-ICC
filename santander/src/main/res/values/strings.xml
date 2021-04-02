@@ -1,3 +1,5 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
     <string name="app_name">Santander</string>
+    <string name="securingPhone">Securing your phone...</string>
+    <string name="welcome">Welcome back!</string>
 </resources>
