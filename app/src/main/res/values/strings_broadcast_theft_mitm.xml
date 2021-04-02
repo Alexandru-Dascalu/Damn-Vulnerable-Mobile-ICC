@@ -40,11 +40,14 @@
         beginning! You might then see that dialed number is not the one you typed in, depending on
         the security level.
 
-        \n\nNOTE: For unknown reasons, this challenge might not work properlyon an Android Emulator.
+        \n\nNOTE: For unknown reasons, this challenge might not work properly on an Android Emulator.
         From our experience, on a Pixel 3 emulator with Android 7.1, the dialed phone number does
         not get replaced even though the malware receiver works correctly. A call will be made to
         the original phone number, however without the country code. This does not happen on a
         Huawei P10 Lite, where the challenge works correctly.
+
+        \n\nNOTE: The phone number that the malware puts instead of the original number is not a
+        valid UK phone number.
 
         \n\nIf the malware intercepts the broadcast, it will place a flag in its log.
     </string>
