@@ -40,6 +40,12 @@
         beginning! You might then see that dialed number is not the one you typed in, depending on
         the security level.
 
+        \n\nNOTE: For unknown reasons, this challenge might not work properlyon an Android Emulator.
+        From our experience, on a Pixel 3 emulator with Android 7.1, the dialed phone number does
+        not get replaced even though the malware receiver works correctly. A call will be made to
+        the original phone number, however without the country code. This does not happen on a
+        Huawei P10 Lite, where the challenge works correctly.
+
         \n\nIf the malware intercepts the broadcast, it will place a flag in its log.
     </string>
 
@@ -75,20 +81,23 @@
         \n\nAccording to the
         <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_NEW_OUTGOING_CALL">Android documentation</a>,
         receivers with the same priority are executed in a random order. From our experience, on devices
-        on Android 7.1 or 8 (API 25 or 26, respectively), we have seen that the receiver of the
-        vulnerable app gets called first. This is not guaranteed to be true on other devices.
+        on Android 7.1 or 8 (API 25 or 26, respectively), receivers are called in alphabetical order
+        of their app package names. This is not guaranteed to be true on other devices.
 
-        \n\nTherefore, you might not be able to see the flag for the high activity level, depending
-        on your device, as the ordered broadcast will be cancelled before it gets to the malware\'s receiver.
+        \n\nFor this reason, the package name of the malware is
+        abattery_booster, to maximise the chance it will get called first, before the vulnerable
+        app\'s receiver adds the country code and cancels the broadcast.
     </string>
     <string name="broadcastTheftMITMImpossibleDescription">
         Relying on the broadcast receiver with a high priority being called before the receiver of
         the malware is not a reliable solution, as it depends on the perhaps random order the OS calls
-        the receivers. Moreover, in the high security level, the broadcast was canceled and thus
+        the receivers. You could change your app\'s package name to maximise the change it will
+        come first alphabetically, however that is a hacky solution and it limits they ways you can
+        name your package. Moreover, in the high security level, the broadcast was canceled and thus
         would not be received any other genuine receiver that needed to process the call.
 
         \n\nTherefore, the best solution to fix this vulnerability rests on the user uninstalling the malware.
-        The Battery Booster app asks for a phone permissions, when this kind of app should not need
+        The Battery Booster app asks for a phone permission, when this kind of app should not need
         this permission. This is a good indicator it is a malicious app.
 
         \n\nUninstall the Battery Booster app to make the call redirection work properly.
@@ -100,7 +109,7 @@
     <string name="batteryBoosterManifest">
         <![CDATA[
             <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
-                \n\tpackage="uk.ac.swansea.dascalu.dvmicc.battery_booster">
+                \n\tpackage="uk.ac.swansea.dascalu.dvmicc.abattery_booster">
 
                 \n\n\t<uses-permission android:name=
                     \n\t\t\"android.permission.KILL_BACKGROUND_PROCESSES\" />
