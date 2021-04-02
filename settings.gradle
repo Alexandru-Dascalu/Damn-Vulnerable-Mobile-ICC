@@ -1,3 +1,4 @@
+include ':santander'
 include ':battery_booster'
 include ':cpu_booster'
 include ':call_redirect'
