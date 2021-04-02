@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.battery_booster
+package uk.ac.swansea.dascalu.dvmicc.abattery_booster
 
 import android.os.Bundle
 import android.widget.TextView

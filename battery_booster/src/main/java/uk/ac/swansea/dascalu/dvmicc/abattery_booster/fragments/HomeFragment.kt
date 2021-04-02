@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.battery_booster.fragments
+package uk.ac.swansea.dascalu.dvmicc.abattery_booster.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
-import uk.ac.swansea.dascalu.dvmicc.battery_booster.AdvancedActivity
-import uk.ac.swansea.dascalu.dvmicc.battery_booster.R
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.AdvancedActivity
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.R
 
 import java.util.Random
 import java.util.Timer

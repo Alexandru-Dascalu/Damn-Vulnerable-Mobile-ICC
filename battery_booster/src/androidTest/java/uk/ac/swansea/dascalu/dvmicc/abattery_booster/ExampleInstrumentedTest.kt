@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.battery_booster
+package uk.ac.swansea.dascalu.dvmicc.abattery_booster
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,48 +1,64 @@
-package uk.ac.swansea.dascalu.dvmicc.cpu_booster
+package uk.ac.swansea.dascalu.dvmicc.abattery_booster
 
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 
 import com.google.android.material.snackbar.Snackbar
-
-import java.util.Random
-import java.util.Timer
-import java.util.TimerTask
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.fragments.ChargeFragment
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.fragments.HomeFragment
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.fragments.UsageFragment
 
 class MainActivity : AppCompatActivity() {
-    private val random = Random()
-    private var boostProgress : Int = random.nextInt(15)
-    private var timer : Timer? = null
 
     private val requestPermissionsLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) { granted: Boolean ->
 
         if(granted) {
-            Snackbar.make(findViewById(R.id.progressLevelTextView),
+            Snackbar.make(findViewById(R.id.optimiseTextView),
                     R.string.storagePermissionAcquired, Snackbar.LENGTH_LONG).show()
         } else {
-            Snackbar.make(findViewById(R.id.progressLevelTextView),
+            Snackbar.make(findViewById(R.id.optimiseTextView),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
         }
+    }
+
+    private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when(item.itemId) {
+            R.id.home_button -> {
+                replaceFragment(HomeFragment())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.charge_button -> {
+                replaceFragment(ChargeFragment())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.usage_button -> {
+                replaceFragment(UsageFragment())
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        return@OnNavigationItemSelectedListener false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        updateProgressBar()
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.mainNavigationBar)
+        bottomNavigationView.setOnNavigationItemSelectedListener(navigationBarListener)
+        bottomNavigationView.selectedItemId = R.id.home_button
+
         getStoragePermission()
     }
 
@@ -61,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             R.id.clear_log_button -> {
                 deleteFile("data.txt")
 
-                val view = findViewById<MaterialButton>(R.id.boostButton)
+                val view = findViewById<MaterialButton>(R.id.optimiseButton)
                 Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()
                 return true
             }
@@ -76,48 +92,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun startProgress(view: View) {
-        timer = Timer()
+    private fun replaceFragment(newFragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
 
-        val task = object : TimerTask() {
-            override fun run() {
-                if(boostProgress != 100) {
-                    val inc = random.nextInt(10)
-                    boostProgress += inc
-
-                    if(boostProgress > 100) {
-                        boostProgress = 100
-                    }
-
-                    runOnUiThread {
-                        updateProgressBar()
-                    }
-                } else {
-                    timer!!.cancel()
-                    timer!!.purge()
-                    timer = null
-                }
-            }
-        }
-
-        timer!!.schedule(task, 300, 300)
-    }
-
-    fun startAdvancedActivity(view: View) {
-        val intent = Intent(this, AdvancedActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun updateProgressBar() {
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        progressBar.progress = boostProgress
-
-        val progressTextView = findViewById<TextView>(R.id.progressLevelTextView)
-
-        if(boostProgress == 100) {
-            progressTextView.text = "$boostProgress%\nPhone optimised"
-        } else {
-            progressTextView.text = "$boostProgress%"
-        }
+        fragmentTransaction.replace(R.id.mainContentFrame, newFragment)
+        fragmentTransaction.commit()
     }
 }

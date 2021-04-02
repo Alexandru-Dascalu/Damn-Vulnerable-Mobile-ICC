@@ -1,13 +1,13 @@
-package uk.ac.swansea.dascalu.dvmicc.battery_booster.icc
+package uk.ac.swansea.dascalu.dvmicc.abattery_booster.icc
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 
-import uk.ac.swansea.dascalu.dvmicc.battery_booster.BROADCAST_THEFT_MITM_ID
-import uk.ac.swansea.dascalu.dvmicc.battery_booster.R
-import uk.ac.swansea.dascalu.dvmicc.battery_booster.SecuritySettings
-import uk.ac.swansea.dascalu.dvmicc.battery_booster.loadSecuritySettingsFromFile
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.BROADCAST_THEFT_MITM_ID
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.R
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.SecuritySettings
+import uk.ac.swansea.dascalu.dvmicc.abattery_booster.loadSecuritySettingsFromFile
 
 import java.io.OutputStreamWriter
 

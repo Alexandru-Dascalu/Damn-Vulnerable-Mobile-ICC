@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.cpu_booster
+package uk.ac.swansea.dascalu.dvmicc.acpu_booster
 
 import android.content.Context
 import android.os.Environment

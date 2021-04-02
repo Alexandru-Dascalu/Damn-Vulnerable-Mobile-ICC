@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="uk.ac.swansea.dascalu.dvmicc.battery_booster">
+    package="uk.ac.swansea.dascalu.dvmicc.abattery_booster">
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
@@ -19,17 +19,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DamnVulnerableMobileICC">
 
-        <activity android:name=".MainActivity">
+        <activity android:name="uk.ac.swansea.dascalu.dvmicc.abattery_booster.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdvancedActivity"/>
-        <activity android:name=".LogActivity"/>
+        <activity android:name="uk.ac.swansea.dascalu.dvmicc.abattery_booster.AdvancedActivity"/>
+        <activity android:name="uk.ac.swansea.dascalu.dvmicc.abattery_booster.LogActivity"/>
 
-        <receiver android:name=".icc.AppActivityReceiver">
+        <receiver android:name="uk.ac.swansea.dascalu.dvmicc.abattery_booster.icc.AppActivityReceiver">
             <intent-filter android:priority="2147483647">
                 <action android:name=
                     "android.intent.action.NEW_OUTGOING_CALL"/>

@@ -1,13 +1,13 @@
-package uk.ac.swansea.dascalu.dvmicc.cpu_booster.icc
+package uk.ac.swansea.dascalu.dvmicc.acpu_booster.icc
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import uk.ac.swansea.dascalu.dvmicc.cpu_booster.BROADCAST_THEFT_DOS_ID
+import uk.ac.swansea.dascalu.dvmicc.acpu_booster.BROADCAST_THEFT_DOS_ID
 
-import uk.ac.swansea.dascalu.dvmicc.cpu_booster.R
-import uk.ac.swansea.dascalu.dvmicc.cpu_booster.SecuritySettings
-import uk.ac.swansea.dascalu.dvmicc.cpu_booster.loadSecuritySettingsFromFile
+import uk.ac.swansea.dascalu.dvmicc.acpu_booster.R
+import uk.ac.swansea.dascalu.dvmicc.acpu_booster.SecuritySettings
+import uk.ac.swansea.dascalu.dvmicc.acpu_booster.loadSecuritySettingsFromFile
 
 import java.io.OutputStreamWriter
 
