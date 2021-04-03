@@ -18,7 +18,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN" />
+                <category android:name="android.intent.category.HOME" />
+                <data android:mimeType="text/plain" android:scheme="santander_pay"/>
+            </intent-filter>
+        </activity>
+
         <activity android:name=".LogInActivity"/>
     </application>
 
