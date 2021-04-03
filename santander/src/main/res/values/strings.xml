@@ -2,4 +2,6 @@
     <string name="app_name">Santander</string>
     <string name="securingPhone">Securing your phone...</string>
     <string name="welcome">Welcome back!</string>
+    <string name="customerIDHint">Customer ID</string>
+    <string name="securityNumberHint">Security Number</string>
 </resources>

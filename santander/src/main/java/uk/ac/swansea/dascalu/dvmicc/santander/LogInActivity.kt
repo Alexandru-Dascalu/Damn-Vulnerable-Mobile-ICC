@@ -1,7 +1,11 @@
 package uk.ac.swansea.dascalu.dvmicc.santander
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+
 import com.google.android.material.appbar.MaterialToolbar
 
 class LogInActivity : AppCompatActivity() {
@@ -11,5 +15,36 @@ class LogInActivity : AppCompatActivity() {
 
         val toolbar = findViewById<MaterialToolbar>(R.id.loginActivityToolbar)
         setSupportActionBar(toolbar)
+
+        val customerIDEditText = findViewById<EditText>(R.id.customerIDInput)
+        customerIDEditText.setOnEditorActionListener { _, actionId, _ ->
+            return@setOnEditorActionListener checkLogin(actionId)
+        }
+
+        findViewById<EditText>(R.id.passwordInput).setOnEditorActionListener { _, actionId, _ ->
+            return@setOnEditorActionListener checkLogin(actionId)
+        }
+    }
+
+    private fun checkLogin(actionID: Int) : Boolean {
+        if(actionID == EditorInfo.IME_ACTION_DONE) {
+            val customerIDInput = findViewById<EditText>(R.id.customerIDInput)
+            val passwordInput = findViewById<EditText>(R.id.passwordInput)
+
+            val customerID = customerIDInput.text.toString()
+            val password = passwordInput.text.toString()
+
+            if(customerID == "4621989436" && password == "98421") {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+                customerIDInput.text.clear()
+                passwordInput.text.clear()
+
+                return true
+            }
+        }
+
+        return false
     }
 }
