@@ -15,7 +15,7 @@
 
     <string name="everydayAccountName">Everyday current account</string>
     <string name="everydaryAccountDetails">26-14-89 31892495</string>
-    <string name="everydayAccountBalance">£4628</string>
+    <string name="poundSign">£</string>
     <string name="sacingsAccountName">Savings account</string>
     <string name="savingsAccountDetails">26-14-89 94236241</string>
     <string name="savingsAccountBalance">£89246</string>
