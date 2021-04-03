@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_button"
+        android:title="@string/home"
+        android:icon="@drawable/ic_baseline_home"/>
+    <item
+        android:id="@+id/pay_button"
+        android:title="@string/pay"
+        android:icon="@drawable/ic_baseline_payments"/>
+    <item
+        android:id="@+id/transfer_button"
+        android:title="@string/transfer"
+        android:icon="@drawable/ic_transfer"/>
+    <item
+        android:id="@+id/more_button"
+        android:title="@string/more"
+        android:icon="@drawable/ic_baseline_more_horiz"/>
+</menu>

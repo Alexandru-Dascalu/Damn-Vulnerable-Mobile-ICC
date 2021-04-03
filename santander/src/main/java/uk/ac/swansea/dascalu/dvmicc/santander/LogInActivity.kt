@@ -36,7 +36,8 @@ class LogInActivity : AppCompatActivity() {
             val customerID = customerIDInput.text.toString()
             val password = passwordInput.text.toString()
 
-            if(customerID == "4621989436" && password == "98421") {
+            //if(customerID == "4621989436" && password == "98421") {
+            if(true) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
 
