@@ -8,6 +8,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import uk.ac.swansea.dascalu.dvmicc.santander.fragments.HomeBankFragment
+import uk.ac.swansea.dascalu.dvmicc.santander.fragments.PayFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +17,10 @@ class MainActivity : AppCompatActivity() {
             R.id.home_button -> {
                 replaceFragment(HomeBankFragment())
                 return@OnNavigationItemSelectedListener true
+            }
+            R.id.pay_button -> {
+                replaceFragment(PayFragment())
+                return@OnNavigationItemSelectedListener  true
             }
         }
         false
