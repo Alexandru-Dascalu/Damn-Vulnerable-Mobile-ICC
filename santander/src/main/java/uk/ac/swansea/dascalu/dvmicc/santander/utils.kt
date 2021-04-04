@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 
+const val LOGIN_ACTION = "uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN"
 var EVERYDAY_ACCOUNT_BALANCE : Int = 4628
 
 fun hideKeyboard(currentView: View, context: Context) {

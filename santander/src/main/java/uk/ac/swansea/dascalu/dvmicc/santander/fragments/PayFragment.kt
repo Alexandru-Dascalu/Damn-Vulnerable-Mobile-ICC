@@ -1,5 +1,6 @@
 package uk.ac.swansea.dascalu.dvmicc.santander.fragments
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +15,32 @@ import uk.ac.swansea.dascalu.dvmicc.santander.EVERYDAY_ACCOUNT_BALANCE
 import uk.ac.swansea.dascalu.dvmicc.santander.R
 import uk.ac.swansea.dascalu.dvmicc.santander.hideKeyboard
 
-class PayFragment : Fragment() {
+class PayFragment(private val paymentUri : Uri?) : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.payment_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if(paymentUri != null) {
+            val accountNumberInput = view.findViewById<EditText>(R.id.accountNumberInput)
+            val accountNumString = paymentUri.getQueryParameter("accountNum")
+            if(accountNumString != null && accountNumString.toIntOrNull() != null) {
+                accountNumberInput.setText(accountNumString.toCharArray(), 0, accountNumString.length)
+            }
+
+            val sortCodeInput = view.findViewById<EditText>(R.id.sortCodeInput)
+            val sortCodeString = paymentUri.getQueryParameter("sortCode")
+            if(sortCodeString != null) {
+                sortCodeInput.setText(sortCodeString.toCharArray(), 0, sortCodeString.length)
+            }
+
+            val amountInput = view.findViewById<EditText>(R.id.amountInput)
+            val amountString = paymentUri.getQueryParameter("amount")
+            if(amountString != null && amountString.toIntOrNull() != null) {
+                amountInput.setText(amountString.toCharArray(), 0, amountString.length)
+            }
+        }
+
         val payButton = view.findViewById<MaterialButton>(R.id.paymentbutton)
         payButton.setOnClickListener { it ->
             makePayment(view)

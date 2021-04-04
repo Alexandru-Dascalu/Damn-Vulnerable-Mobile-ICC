@@ -37,13 +37,11 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     private fun makeLogInIntent() : Intent {
-        val noPaymentUri : Uri = Uri.parse("santander_pay://pay")
+        val noPaymentUri : Uri = Uri.parse("santander_pay://uk.ac.swansea.dascalu.dvmicc.santander/pay")
 
-        val intent = Intent()
-        intent.action = "uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN"
-        intent.addCategory("android.intent.category.HOME")
-        intent.type = "text/plain"
-        intent.data = noPaymentUri
+        val intent = Intent(LOGIN_ACTION)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.setDataAndType(noPaymentUri, "text/plain")
 
         return intent
     }

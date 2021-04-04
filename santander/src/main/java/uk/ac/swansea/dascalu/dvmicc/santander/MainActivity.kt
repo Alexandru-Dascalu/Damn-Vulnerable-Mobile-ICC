@@ -1,5 +1,6 @@
 package uk.ac.swansea.dascalu.dvmicc.santander
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import uk.ac.swansea.dascalu.dvmicc.santander.fragments.HomeBankFragment
 import uk.ac.swansea.dascalu.dvmicc.santander.fragments.PayFragment
 
 class MainActivity : AppCompatActivity() {
+    private var paymentURI : Uri? = null
 
     private val navigationBarItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -18,8 +20,8 @@ class MainActivity : AppCompatActivity() {
                 replaceFragment(HomeBankFragment())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.pay_button -> {
-                replaceFragment(PayFragment())
+            R.id.pay_fragment_button -> {
+                replaceFragment(PayFragment(paymentURI))
                 return@OnNavigationItemSelectedListener  true
             }
         }
@@ -33,9 +35,19 @@ class MainActivity : AppCompatActivity() {
         val appBar = findViewById<MaterialToolbar>(R.id.mainActivityToolbar)
         setSupportActionBar(appBar)
 
+        paymentURI = intent.data
+
         val bottomBar = findViewById<BottomNavigationView>(R.id.mainBottomNavBar)
         bottomBar.setOnNavigationItemSelectedListener(navigationBarItemSelectedListener)
         bottomBar.selectedItemId = R.id.home_button
+
+        if(paymentURI != null) {
+            if(paymentURI!!.getQueryParameter("amount") != null ||
+                    paymentURI!!.getQueryParameter("sortCode") != null ||
+                    paymentURI!!.getQueryParameter("accountNum") != null) {
+                bottomBar.selectedItemId = R.id.pay_fragment_button
+            }
+        }
     }
 
     private fun replaceFragment(newFragment: Fragment) {

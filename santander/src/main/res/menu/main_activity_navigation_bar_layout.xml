@@ -5,7 +5,7 @@
         android:title="@string/home"
         android:icon="@drawable/ic_baseline_home"/>
     <item
-        android:id="@+id/pay_button"
+        android:id="@+id/pay_fragment_button"
         android:title="@string/pay"
         android:icon="@drawable/ic_baseline_payments"/>
     <item

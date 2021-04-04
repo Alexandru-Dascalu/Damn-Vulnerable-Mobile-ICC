@@ -1,6 +1,7 @@
 package uk.ac.swansea.dascalu.dvmicc.santander
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -11,12 +12,16 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 
 class LogInActivity : AppCompatActivity() {
+    private var paymentURI : Uri? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.loginActivityToolbar)
         setSupportActionBar(toolbar)
+
+        paymentURI = intent.data
 
         val customerIDEditText = findViewById<EditText>(R.id.customerIDInput)
         customerIDEditText.setOnEditorActionListener { view , actionId, _ ->
@@ -39,6 +44,7 @@ class LogInActivity : AppCompatActivity() {
             //if(customerID == "4621989436" && password == "98421") {
             if(true) {
                 val intent = Intent(this, MainActivity::class.java)
+                intent.setDataAndType(paymentURI, "text/plain")
                 startActivity(intent)
 
                 customerIDInput.text.clear()
