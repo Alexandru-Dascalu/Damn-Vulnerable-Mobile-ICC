@@ -1,3 +1,4 @@
+include ':money_manager'
 include ':santander'
 include ':battery_booster'
 include ':cpu_booster'

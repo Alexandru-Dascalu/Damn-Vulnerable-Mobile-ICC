@@ -22,7 +22,6 @@ class PayFragment(private val paymentUri : Uri?) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         if(paymentUri != null) {
-
             val accountNumberInput = view.findViewById<EditText>(R.id.accountNumberInput)
             val accountNumString = paymentUri.getQueryParameter("accountNum")
             if(accountNumString != null && accountNumString.toIntOrNull() != null) {
