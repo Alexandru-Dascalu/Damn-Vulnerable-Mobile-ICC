@@ -18,10 +18,17 @@ class CategoriesActivity : AppCompatActivity() {
         title = resources.getString(R.string.categories)
         setSupportActionBar(appBar)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        appBar.setNavigationOnClickListener { navigationButton ->
+            this.finish()
+        }
+
         val viewPager = findViewById<ViewPager2>(R.id.categories_view_pager)
         val tabLayout = findViewById<TabLayout>(R.id.categories_tab_layout)
-        tabLayout.tabGravity = TabLayout.GRAVITY_FILL;
-        tabLayout.tabMode = TabLayout.MODE_FIXED;
+        tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+        tabLayout.tabMode = TabLayout.MODE_FIXED
 
         viewPager.adapter = CategoriesTapAdapter(this)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
