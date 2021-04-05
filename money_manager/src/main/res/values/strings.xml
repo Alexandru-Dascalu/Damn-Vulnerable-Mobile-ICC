@@ -4,6 +4,31 @@
     <string name="expenses">Expenses</string>
     <string name="incomes">Incomes</string>
 
+    <string-array name="expenseCategories">
+        <item>Food</item>
+        <item>Bills</item>
+        <item>Home</item>
+        <item>Transport</item>
+        <item>Car</item>
+        <item>Clothing</item>
+        <item>Insurance</item>
+        <item>Tax</item>
+        <item>Health</item>
+        <item>Childcare</item>
+        <item>Sport</item>
+        <item>Travel</item>
+        <item>Entertainment</item>
+    </string-array>
+
+    <string-array name="incomeCategories">
+        <item>Salary</item>
+        <item>Rental</item>
+        <item>Sale</item>
+        <item>Grants</item>
+        <item>Investments</item>
+        <item>Awards</item>
+    </string-array>
+
     <string name="charts">Charts</string>
     <string name="categories">Categories</string>
     <string name="stats">Stats</string>
