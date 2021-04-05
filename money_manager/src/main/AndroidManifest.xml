@@ -19,5 +19,16 @@
         </activity>
         <activity android:name=".CategoriesActivity"/>
 
+        <activity android:name=".LogInActivity">
+            <intent-filter>
+                <action android:name="uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.HOME"/>
+                <data android:mimeType="text/plain"
+                    android:scheme="santander_pay"
+                    android:host="uk.ac.swansea.dascalu.dvmicc.santander"/>
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>

@@ -15,4 +15,12 @@
     <color name="text_grey">#212121</color>
     <color name="white">#FFFFFFFF</color>
     <color name="divider">#bdbdbd</color>
+
+    <color name="santander_red">#d81516</color>
+    <color name="santander_dark_red">#9e0000</color>
+    <color name="dantander_light_red">#ff5841</color>
+
+    <color name="blue_grey">#78909c</color>
+    <color name="dark_blue_grey">#4b636e</color>
+    <color name="light_blue_grey">#a7c0cd</color>
 </resources>

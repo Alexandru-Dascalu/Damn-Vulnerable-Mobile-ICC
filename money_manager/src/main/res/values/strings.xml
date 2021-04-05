@@ -4,6 +4,10 @@
     <string name="expenses">Expenses</string>
     <string name="income">Income</string>
 
+    <string name="customerIDHint">Customer ID</string>
+    <string name="securityNumberHint">Security Number</string>
+    <string name="forgottenDetails"><u>Forgotten details?</u></string>
+
     <string-array name="expenseCategories">
         <item>Food</item>
         <item>Bills</item>
