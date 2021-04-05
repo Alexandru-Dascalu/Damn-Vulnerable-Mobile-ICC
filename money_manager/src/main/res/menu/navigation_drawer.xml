@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/important_features_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/chart_button"
+            android:icon="@drawable/ic_baseline_pie_chart"
+            android:title="@string/charts"/>
+        <item
+            android:id="@+id/catefories_button"
+            android:icon="@drawable/ic_baseline_category"
+            android:title="@string/categories"/>
+        <item
+            android:id="@+id/statistics_button"
+            android:icon="@drawable/ic_stats"
+            android:title="@string/stats"/>
+        <item
+            android:id="@+id/accounts_button"
+            android:icon="@drawable/ic_accounts"
+            android:title="@string/accounts"/>
+    </group>
+    <group
+        android:id="@+id/secondary_features_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/settings_button"
+            android:icon="@drawable/ic_baseline_settings"
+            android:title="@string/settings"/>
+        <item
+            android:id="@+id/export_button"
+            android:icon="@drawable/ic_baseline_export"
+            android:title="@string/export"/>
+    </group>
+</menu>

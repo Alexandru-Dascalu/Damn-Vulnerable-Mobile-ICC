@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Money Manager</string>
+
+    <string name="charts">Charts</string>
+    <string name="categories">Categories</string>
+    <string name="stats">Stats</string>
+    <string name="accounts">Accounts</string>
+    <string name="settings">Settings</string>
+    <string name="export">Export</string>
 </resources>
