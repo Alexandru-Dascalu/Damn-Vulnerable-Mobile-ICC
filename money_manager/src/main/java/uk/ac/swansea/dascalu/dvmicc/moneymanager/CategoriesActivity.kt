@@ -34,7 +34,7 @@ class CategoriesActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = resources.getString(R.string.expenses)
-                1 -> tab.text = resources.getString(R.string.incomes)
+                1 -> tab.text = resources.getString(R.string.income)
             }
         }.attach()
     }
