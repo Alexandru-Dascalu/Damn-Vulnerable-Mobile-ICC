@@ -8,7 +8,7 @@
             android:icon="@drawable/ic_baseline_pie_chart"
             android:title="@string/charts"/>
         <item
-            android:id="@+id/catefories_button"
+            android:id="@+id/categories_button"
             android:icon="@drawable/ic_baseline_category"
             android:title="@string/categories"/>
         <item
