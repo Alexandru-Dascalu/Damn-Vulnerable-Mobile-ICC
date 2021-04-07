@@ -48,10 +48,20 @@ class PayFragment(private val paymentUri : Uri?) : Fragment() {
     }
 
     private fun makePayment(rootView: View) {
-        val amount: Int = rootView.findViewById<EditText>(R.id.amountInput).text.toString().toInt()
-        EVERYDAY_ACCOUNT_BALANCE -= amount
+        val accountNumber = rootView.findViewById<EditText>(R.id.accountNumberInput).text.toString()
+        val sortCode = rootView.findViewById<EditText>(R.id.sortCodeInput).text.toString()
 
-        Snackbar.make(rootView, "Payment made succesfully!", Snackbar.LENGTH_LONG).show()
-        hideKeyboard(rootView, rootView.context)
+        if(accountNumber != "" && sortCode != "") {
+            val amount: Int = rootView.findViewById<EditText>(R.id.amountInput).text.toString().toInt()
+            EVERYDAY_ACCOUNT_BALANCE -= amount
+
+            Snackbar.make(rootView, rootView.context.resources.getString(R.string.paymentMade),
+                    Snackbar.LENGTH_LONG).show()
+            hideKeyboard(rootView, rootView.context)
+        } else {
+            Snackbar.make(rootView, rootView.context.resources.getString(R.string.noPaymentDetails),
+                    Snackbar.LENGTH_LONG).show()
+            hideKeyboard(rootView, rootView.context)
+        }
     }
 }

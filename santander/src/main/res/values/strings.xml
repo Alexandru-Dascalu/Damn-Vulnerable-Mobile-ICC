@@ -13,6 +13,9 @@
     <string name="accountNumberHint">Account Number</string>
     <string name="amountHint">Amount</string>
 
+    <string name="paymentMade">Payment made succesfully!</string>
+    <string name="noPaymentDetails">You must provide details for the receiver of the payment!</string>
+
     <string name="everydayAccountName">Everyday current account</string>
     <string name="everydaryAccountDetails">26-14-89 31892495</string>
     <string name="poundSign">£</string>

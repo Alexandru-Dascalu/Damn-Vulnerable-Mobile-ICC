@@ -40,18 +40,31 @@ class LogInActivity : AppCompatActivity() {
             val password = findViewById<EditText>(R.id.passwordInput).text.toString()
 
             if (customerID != "" && password != "") {
-                val intent = Intent()
-                intent.component = ComponentName("uk.ac.swansea.dascalu.dvmicc.santander",
-                    "uk.ac.swansea.dascalu.dvmicc.santander.LogInActivity")
-                startActivity(intent)
+                val snackbar = Snackbar.make(view, view.context.resources.getString(
+                        R.string.incorrectLogin), Snackbar.LENGTH_LONG)
 
-                finish()
+                snackbar.addCallback(object : Snackbar.Callback() {
+                    override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                        sendIntent()
+                    }
+                })
+
+                snackbar.show()
             } else {
-                Snackbar.make(view, "Log In details incorrect!", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(view, "Log In details are incorrect!", Snackbar.LENGTH_LONG).show()
                 return false
             }
         }
 
         return false
+    }
+
+    private fun sendIntent() {
+        val intent = Intent()
+        intent.component = ComponentName("uk.ac.swansea.dascalu.dvmicc.santander",
+                "uk.ac.swansea.dascalu.dvmicc.santander.LogInActivity")
+        startActivity(intent)
+
+        finish()
     }
 }
