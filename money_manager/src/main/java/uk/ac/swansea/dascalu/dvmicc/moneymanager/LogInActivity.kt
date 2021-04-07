@@ -17,20 +17,30 @@ class LogInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_in)
 
-        val toolbar = findViewById<MaterialToolbar>(R.id.loginActivityToolbar)
-        setSupportActionBar(toolbar)
+        val securitySettings = loadSecuritySettingsFromFile(this)
 
-        paymentURI = intent.data
+        /*Check if the security settings allow the malware to perform its activities.*/
+        if (securitySettings.currentChallengeIndex == ACTIVITY_INTENT_HIJACK &&
+                securitySettings.malwareOvercome) {
+            setContentView(R.layout.activity_log_in)
 
-        val customerIDEditText = findViewById<EditText>(R.id.customerIDInput)
-        customerIDEditText.setOnEditorActionListener { view , actionId, _ ->
-            return@setOnEditorActionListener checkLogin(view, actionId)
-        }
+            val toolbar = findViewById<MaterialToolbar>(R.id.loginActivityToolbar)
+            setSupportActionBar(toolbar)
 
-        findViewById<EditText>(R.id.passwordInput).setOnEditorActionListener { view, actionId, _ ->
-            return@setOnEditorActionListener checkLogin(view, actionId)
+            paymentURI = intent.data
+
+            val customerIDEditText = findViewById<EditText>(R.id.customerIDInput)
+            customerIDEditText.setOnEditorActionListener { view , actionId, _ ->
+                return@setOnEditorActionListener checkLogin(view, actionId)
+            }
+
+            findViewById<EditText>(R.id.passwordInput).setOnEditorActionListener { view, actionId, _ ->
+                return@setOnEditorActionListener checkLogin(view, actionId)
+            }
+        //If this malware should not do anything, terminate this activity and launch the genuine one
+        } else {
+            sendIntent()
         }
     }
 

@@ -9,6 +9,11 @@
     <string name="forgottenDetails"><u>Forgotten details?</u></string>
     <string name="incorrectLogin">Incorrect log in details!</string>
 
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to read security level!
+    </string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
+
     <string-array name="expenseCategories">
         <item>Food</item>
         <item>Bills</item>

@@ -13,6 +13,11 @@
     <string name="accountNumberHint">Account Number</string>
     <string name="amountHint">Amount</string>
 
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to read security level!
+    </string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
+
     <string name="paymentMade">Payment made succesfully!</string>
     <string name="noPaymentDetails">You must provide details for the receiver of the payment!</string>
 
