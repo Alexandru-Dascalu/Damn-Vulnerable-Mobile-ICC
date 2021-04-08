@@ -72,6 +72,7 @@ class HelpActivity : AppCompatActivity() {
         if(securityLevel != null) {
             val levelDescriptionTextView = findViewById<TextView>(textViewID)
             levelDescriptionTextView.text = resources.getString(securityLevel.explanationID)
+            levelDescriptionTextView.setTextIsSelectable(true)
 
             val securityImpossibleManifest = findViewById<CodeView>(manifestID)
             setCodeViewOptions(this, securityImpossibleManifest, "xml",

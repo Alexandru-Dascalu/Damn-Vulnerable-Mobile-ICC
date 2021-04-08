@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
+    <string name="santanderAppName">Santander</string>
+    <string name="moneyManagerAppName">Money Manager</string>
+
+    <string name="activityHijackExplanation">
+        In this type of attack, a hacker takes advantage of the use of implicit intents so that a
+        malicious activity is launched instead of the intended one, by registering the right intent
+        filters for their malicious activity.
+
+        \n\nIn its most basic form, the hijacking activity could
+        just read data from the intent, then re-send the intent to a legitimate activity without
+        inflating a UI.
+
+        \n\nIn a more sophisticated attack, the attacker could use phishing to steal even more data.
+        For example, consider an application with a log in screen. A hacker could create an
+        identical looking Log In activity in their app. If the vulnerable app uses an
+        implicit intent to start the Log In activity, the attacker can then use
+        an identical intent filter for their fake activity. This means that the implicit intent
+        will match both the fake Log In activity and the legitimate one as well, and thus prompt
+        the user to choose between them. The attacker can give a confusing or identical name to
+        their malware to make the user choose theirs. The unaware user would then type in
+        their credentials on the fake Log In screen, which could then be sent to the hacker.
+
+        \n\nThis attack could be used to mislead the victim, crash the
+        attacked app, inject malicious commands, or corrupt the victim app\'s data source.
+
+        \n\nTo avoid this vulnerability, a developer should not use implicit intents to start
+        activities within the same app, and they should only be used for starting activities of
+        other apps. Implicit intents should not contain sensitive information.
+    </string>
+
+    <string name="activityHijackLowDescription">
+        Intent for opening the Log In activity when the Loading activity finishes is sent as an
+        implicit intent. Any other app on the mobile device could have an activity with an intent
+        filter to match this implicit intent. Therefore, a malicious activity could show up in the
+        App Chooser dialog, and a careless user could select it.
+    </string>
+    <string name="activityHijackImpossibleDescription">
+        When sending intents to start an activity, service or content provider, you cannot protect
+        them with a permission like you can when you send a broadcast.
+
+        \n\nTherefore, the solution to fix this vulnerability is to not send the intent as implicit,
+        and use an explicit intent. Explicit intents should be used for communication between
+        components of the same app.
+
+        \n\nNOTE: manifest of the Santander app for this level is identical as the one for the low
+        security level.
+
+        \n\nIf you still need to use an implicit intent for ICC within the same app, another
+        solution would be to use App Links
+        such that when a user clicks on a web link, they are either taken to a web page in a
+        browser or they are taken to an activity in your app.
+
+        \n\nhttps://developer.android.com/training/app-links#app-links-vs-deep-links
+    </string>
+
+    <string name="santanderManifest">
+        <![CDATA[
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.santander\">
+
+            \n\t<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\"/>
+
+            \n\t<application
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                \n\n\t\t<activity android:name=\".LoadingActivity\">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+                \n\t\t<activity android:name=\".MainActivity\"/>
+
+                \n\n\t\t<activity android:name=\".LogInActivity\">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.HOME\"/>
+                        \n\t\t\t\t<data android:mimeType=\"text/plain\"
+                            \n\t\t\t\t\tandroid:scheme=\"santander_pay\"
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.santander\"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+            \n\t</application>
+        \n</manifest>]]>
+    </string>
+
+    <string name="santanderLowIntentCode" >
+        <![CDATA[
+        class LoadingActivity : AppCompatActivity() {
+            \n\t...
+            \n\tprivate fun sendLogInIntent() : Intent {
+                \n\t\tval noPaymentUri : Uri = Uri.parse(
+                    \n\t\t\t\"santander_pay://uk.ac.swansea.dascalu.dvmicc.santander/pay\")
+
+                \n\n\t\tval intent = Intent(LOGIN_ACTION)
+                \n\t\tintent.addCategory(Intent.CATEGORY_HOME)
+                \n\t\tintent.setDataAndType(noPaymentUri, "text/plain")
+
+                \n\n\t\tstartActivity(intent)
+            \n\t}
+        \n}]]>
+    </string>
+
+    <string name="santanderImpossibleIntentCode" >
+        <![CDATA[
+        class LoadingActivity : AppCompatActivity() {
+            \n\t...
+            \n\tprivate fun sendLogInIntent() : Intent {
+                \n\t\tval intent = Intent(this, LogInActivity::class.java)
+                \n\t\tstartActivity(intent)
+            \n\t}
+        \n}]]>
+    </string>
+
+    <string name="activityHijackInstructions">
+        Go to the Santander app and log in. The customer ID is 4621989436 and the security code is
+        98421. If the malware app is already installed at this point, when the Santander app is on
+        the loading screen, you will see an app chooser dialog. Choose Santander and not Money Manager.
+
+        \n\nHave a look around at Santander\'s functionality. One feature of this app is that you
+        can press on special links on say a web page that will launch the santander app with the
+        details for a payment already filled in. Of course, the app first brings up the log in
+        activity first.
+
+        \n\nStart the Money Manager and look around a bit. After that, make sure the Malware
+        Overcome mode is enabled, then close and start the Santander app again. This time, choose
+        Money Manager when the app chooser appears. Then try to log in.
+
+        \n\nOnce you manage to log in, go to the malware and look in its log.
+    </string>
+
+    <string-array name="activityHijackflags">
+        <item>If you must break the law, do it to seize power: in all other cases observe it.</item>
+        <item>Can\'t touch this!</item>
+    </string-array>
+</resources>

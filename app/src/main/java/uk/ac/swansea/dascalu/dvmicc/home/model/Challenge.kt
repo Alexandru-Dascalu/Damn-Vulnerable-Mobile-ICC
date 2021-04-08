@@ -19,12 +19,17 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
                     "high" to SecurityLevel(R.string.broadcastTheftDOSHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftDOSImpossibleDescription)),
             R.string.broadcastTheftDOSInstructions, 0, 0),
+
     BROADCAST_THEFT_MITM(2, R.string.broadcastTheftMITMExplanation,
             mapOf("low" to SecurityLevel(R.string.broadcastTheftMITMLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
                     "high" to SecurityLevel(R.string.broadcastTheftMITMHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftMITMImpossibleDescription)),
-            R.string.broadcastTheftMITMInstructions, 0, 0)
+            R.string.broadcastTheftMITMInstructions, 0, 0),
 
+    ACTIVITY_INTENT_HIJACK(3, R.string.activityHijackExplanation,
+            mapOf("low" to SecurityLevel(R.string.activityHijackLowDescription, R.string.santanderManifest, R.string.santanderLowIntentCode),
+                    "impossible" to SecurityLevel(R.string.activityHijackImpossibleDescription, R.string.santanderImpossibleIntentCode)),
+            R.string.activityHijackInstructions, 0, 0)
 }
 
 data class SecurityLevel(val explanationID: Int, val manifestID: Int? = null, val intentCodeID: Int? = null)

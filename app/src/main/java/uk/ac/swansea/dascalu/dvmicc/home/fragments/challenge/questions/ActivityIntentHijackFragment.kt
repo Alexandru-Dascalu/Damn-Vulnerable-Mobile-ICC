@@ -1,15 +1,15 @@
 package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
+
 import uk.ac.swansea.dascalu.dvmicc.home.R
 
-@SuppressLint("UseRequireInsteadOfGet")
-class BroadcastTheftMITMQuestionsFragment : AbstractFullQuestionsFragment() {
+class ActivityIntentHijackFragment : AbstractFullQuestionsFragment() {
     override var challengeName : String? = null
     override var vulnerableAppName: String? = null
     override var malwareName: String? = null
@@ -19,13 +19,11 @@ class BroadcastTheftMITMQuestionsFragment : AbstractFullQuestionsFragment() {
     override var securityVeryHighFlag: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        challengeName = view.context.resources.getString(R.string.broadcastTheftMITMName)
-        vulnerableAppName = view.context.resources.getString(R.string.callRedirectAppName)
-        malwareName = view.context.resources.getString(R.string.batteryBoosterAppName)
+        challengeName = view.context.resources.getString(R.string.activityHijackName)
+        vulnerableAppName = view.context.resources.getString(R.string.santanderAppName)
+        malwareName = view.context.resources.getString(R.string.moneyManagerAppName)
 
-        val flags = view.context.resources.getStringArray(R.array.broadcastTheftMITMFlags)
-        securityLowFlag = flags[0]
-        securityHighFlag = flags[1]
+        securityLowFlag = view.context.resources.getStringArray(R.array.activityHijackflags)[0]
 
         super.onViewCreated(view, savedInstanceState)
         hideElementsForUnusedSecurityLevels(view)
@@ -35,6 +33,10 @@ class BroadcastTheftMITMQuestionsFragment : AbstractFullQuestionsFragment() {
         view.findViewById<TextView>(R.id.securityMediumQuestionTextView).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityMediumInput).visibility = View.GONE
         view.findViewById<MaterialButton>(R.id.securityMediumButton).visibility = View.GONE
+
+        view.findViewById<TextView>(R.id.securityHighQuestionTextView).visibility = View.GONE
+        view.findViewById<TextInputLayout>(R.id.securityHighInput).visibility = View.GONE
+        view.findViewById<MaterialButton>(R.id.securityHighButton).visibility = View.GONE
 
         view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityVeryHighInput).visibility = View.GONE

@@ -521,7 +521,7 @@
     <string name="broadcastTheftName">Broadcast Theft</string>
     <string name="broadcastTheftDOSName">Broadcast Theft - DOS</string>
     <string name="broadcastTheftMITMName">Broadcast Theft - MITM</string>
-    <string name="activityHijackName">Activity Hijack</string>
+    <string name="activityHijackName">Activity Intent Hijack</string>
     <string name="activityHijackResultName">Activity Hijack with result injection</string>
     <string name="serviceHijackName">Service Hijack</string>
     <string name="providerHijackName">Content Provider URI Hijack</string>
