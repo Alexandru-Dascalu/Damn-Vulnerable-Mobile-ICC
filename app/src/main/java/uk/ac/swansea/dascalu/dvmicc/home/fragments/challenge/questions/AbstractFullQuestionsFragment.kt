@@ -237,11 +237,28 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
 
             val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
             val malwareEditText = view.findViewById<EditText>(R.id.malwareAppEditText)
+            val challengeActivity = view.context as ChallengeActivity
 
             if(!malwareEditText.isFocusable && !vulnerableEditText.isFocusable) {
-                val challengeActivity = view.context as ChallengeActivity
                 challengeActivity.hasGuessedApps = true
             }
+
+            if(checkHasCompletedChallenge()) {
+                challengeActivity.hasCompletedChallenge = true
+            }
+        }
+
+        private fun checkHasCompletedChallenge() : Boolean {
+            val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
+            val malwareEditText = view.findViewById<EditText>(R.id.malwareAppEditText)
+            val lowEditText = view.findViewById<EditText>(R.id.securityLowEditText)
+            val mediumEditText = view.findViewById<EditText>(R.id.securityMediumEditText)
+            val highEditText = view.findViewById<EditText>(R.id.securityHighEditText)
+            val veryHighEditText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
+
+            return !vulnerableEditText.isFocusable && !malwareEditText.isFocusable &&
+                    !lowEditText.isFocusable && !mediumEditText.isFocusable &&
+                    !highEditText.isFocusable && !veryHighEditText.isFocusable
         }
     }
 }

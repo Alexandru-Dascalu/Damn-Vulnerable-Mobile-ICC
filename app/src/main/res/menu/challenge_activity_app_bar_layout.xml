@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/trophyButton"
+        android:title="@string/challenge_prize"
+        android:icon="@drawable/ic_trophy"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/settingsButton"
         android:title="@string/settingsButtonDescription"
         android:icon="@drawable/ic_baseline_settings"

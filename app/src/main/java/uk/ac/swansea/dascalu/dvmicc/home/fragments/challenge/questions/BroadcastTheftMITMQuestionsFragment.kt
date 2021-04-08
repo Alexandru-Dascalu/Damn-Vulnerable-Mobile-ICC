@@ -3,6 +3,7 @@ package uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
@@ -34,10 +35,12 @@ class BroadcastTheftMITMQuestionsFragment : AbstractFullQuestionsFragment() {
     private fun hideElementsForUnusedSecurityLevels(view: View) {
         view.findViewById<TextView>(R.id.securityMediumQuestionTextView).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityMediumInput).visibility = View.GONE
+        view.findViewById<EditText>(R.id.securityMediumEditText).isFocusable = false
         view.findViewById<MaterialButton>(R.id.securityMediumButton).visibility = View.GONE
 
         view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityVeryHighInput).visibility = View.GONE
+        view.findViewById<EditText>(R.id.securityVeryHighEditText).isFocusable = false
         view.findViewById<MaterialButton>(R.id.securityVeryHighButton).visibility = View.GONE
     }
 }

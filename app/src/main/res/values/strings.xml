@@ -490,7 +490,8 @@
     <string name="helpButtonDescription">Help</string>
     <string name="vulnerableAppHint">Vulnerable app</string>
     <string name="malwareAppHint">Malware</string>
-    <string name="flagHint">Flag</string>
+    <string name="flagHint">Flag</string><string name="challenge_prize">Challenge Prize</string>
+
     <string name="submitButtonText">Submit</string>
     <string name="wrongAnswer">Wrong answer!</string>
     <string name="completed">Completed</string>
@@ -568,6 +569,10 @@
     </string>
     <string name="securityLevelInfoHidden">
         You need to find the malware and the vulnerable app first in order to see descriptions of the security levels.
+    </string>
+    <string name="prizeHidden">
+        You need to complete the challenge and correctly answer all questions in order to unlock
+        the explanation of the scenario for this challenge.
     </string>
 
     <!--flags to be found by the user-->

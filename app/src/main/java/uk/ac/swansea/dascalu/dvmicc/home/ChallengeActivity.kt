@@ -29,7 +29,7 @@ class ChallengeActivity :  AppCompatActivity() {
 
     private lateinit var challengeModel : Challenge
     var hasGuessedApps: Boolean = false
-
+    var hasCompletedChallenge : Boolean = false
     var questionsFragmentState : Fragment.SavedState? = null
 
     private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -95,14 +95,24 @@ class ChallengeActivity :  AppCompatActivity() {
             intent.putExtra("launchedFromChallengeActivity", true)
 
             startActivityForResult(intent, SETTINGS_REQUEST_CODE)
+            return true
         } else if(item.itemId == R.id.helpButton) {
             val intent = Intent(this, HelpActivity::class.java)
             intent.putExtra("challenge", challengeModel)
             intent.putExtra("hasGuessedApps", hasGuessedApps)
             startActivity(intent)
-        }
 
-        return super.onOptionsItemSelected(item)
+            return true
+        } else if (item.itemId == R.id.trophyButton) {
+            val intent = Intent(this, ChallengePrizeActivity::class.java)
+            intent.putExtra("explanationID", challengeModel.scenarioExplanation)
+            intent.putExtra("hasCompletedChallenge", hasCompletedChallenge)
+
+            startActivity(intent)
+            return true
+        } else {
+            return super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

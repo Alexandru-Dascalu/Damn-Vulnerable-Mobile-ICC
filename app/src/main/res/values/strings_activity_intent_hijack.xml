@@ -250,6 +250,36 @@
         see the log in credentials you thought you were typing into the Santander app in there.
     </string>
 
+    <string name="activityHijackScenarioExplanation">
+        The Santander app has its login screen exported so that the user can click on a special
+        link that starts the bank app to make a payment. The link contains details of the recipient
+        of the payment, such that these details are already filled in when the app launches and
+        therefore making the payment easier. It starts the log in activity first to authenticate
+        the user before trying to make a payment. This is an authentic reason a banking app might
+        have its Login activity exported.
+
+        \n\nThe reason a real world app might use implicit intents for launching an activity within
+        the same app instead of explicit intents, as recommended by the Android documentation, is
+        to make the application more loosely coupled, and therefore more modular.
+
+        \n\nAn attacker can decompile and reverse engineer the Santander app to see the code for
+        the Login activity and its intent filter. The attacker can create an activity in the malware
+        that looks identical to the one in the genuine app, and add an intent filter to it,
+        identical to the one in the login activity of the Santander app. The attacker can make the
+        name and icon of the malware to be similar to that of the targeted app, in order to make
+        the user more confused.
+
+        \n\nTherefore, the implicit intent sent by the Loading activity of the Santander app will
+        match both the Login activity in the vulnerable app and the one in the malware. A careless
+        user might click on the malware activity. Since it looks identical to the genuine activity,
+        the user types in their credentials, which the activity records and can send to the attacker.
+        Thus, the attacker can gain access to the victim\'s bank account.
+
+        \n\nThe malicious activity wants to hide its presence, and therefore it displays a message
+        that the credentials are incorrect, then it closes itself and sends an explicit intent to
+        the legitimate Login activity. A clueless user thus might not realise what had just happened.
+    </string>
+
     <string-array name="activityHijackflags">
         <item>If you must break the law, do it to seize power: in all other cases observe it.</item>
         <item>Can\'t touch this!</item>
