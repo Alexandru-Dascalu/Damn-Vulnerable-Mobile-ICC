@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CategoriesActivity"/>
+        <activity android:name=".LogActivity"/>
 
         <activity android:name=".LogInActivity">
             <intent-filter>

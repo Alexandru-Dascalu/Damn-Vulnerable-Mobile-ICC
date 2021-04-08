@@ -246,7 +246,8 @@
         Overcome mode is enabled, then close and start the Santander app again. This time, choose
         Money Manager when the app chooser appears. Then try to log in.
 
-        \n\nOnce you manage to log in, go to the malware and look in its log.
+        \n\nOnce you manage to log in, go to the malware and look in its log. You should be able to
+        see the log in credentials you thought you were typing into the Santander app in there.
     </string>
 
     <string-array name="activityHijackflags">

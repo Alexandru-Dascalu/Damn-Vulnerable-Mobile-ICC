@@ -8,6 +8,13 @@
     <string name="securityNumberHint">Security Number</string>
     <string name="forgottenDetails"><u>Forgotten details?</u></string>
     <string name="incorrectLogin">Incorrect log in details!</string>
+    <string name="no_data">No data yet!</string>
+    <string name="log_cleared">Log cleared!</string>
+
+    <string-array name="activityHijackflags">
+        <item>If you must break the law, do it to seize power: in all other cases observe it.</item>
+        <item>Can\'t touch this!</item>
+    </string-array>
 
     <string name="fileStoragePermissionWarning">
         App needs file storage access to read security level!
@@ -53,4 +60,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="balance">Balance</string>
+    <string name="log">Log</string>
+    <string name="clear_log">Clear Log</string>
 </resources>
