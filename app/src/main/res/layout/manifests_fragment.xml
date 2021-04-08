@@ -99,6 +99,48 @@
             android:paddingEnd="8dp"/>
 
         <TextView
+            android:id="@+id/santanderHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="20dp"
+            android:paddingBottom="12dp"
+
+            android:text="@string/santanderAppName"
+            android:textAppearance="@style/manifestFragmentAppNameStyle" />
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/santanderManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/santanderLoadingActivityIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/santanderLoginActivityIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <TextView
             android:id="@+id/callLogHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -236,6 +278,48 @@
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/newsAggregatorArticleIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/moneyManagerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="20dp"
+            android:paddingBottom="12dp"
+
+            android:text="@string/moneyManagerAppName"
+            android:textAppearance="@style/manifestFragmentAppNameStyle" />
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/moneyManagerManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/moneyManagerMainActivityIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/moneyManagerLoginActivityIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 

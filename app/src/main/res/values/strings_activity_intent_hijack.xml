@@ -60,9 +60,10 @@
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
             \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.santander\">
 
-            \n\t<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\"/>
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\"/>
 
-            \n\t<application
+            \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
                 \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
                 \n\t\tandroid:label=\"@string/app_name\"
@@ -101,22 +102,132 @@
                 \n\t\tval noPaymentUri : Uri = Uri.parse(
                     \n\t\t\t\"santander_pay://uk.ac.swansea.dascalu.dvmicc.santander/pay\")
 
-                \n\n\t\tval intent = Intent(LOGIN_ACTION)
+                \n\n\t\tval intent = Intent(
+                    \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN\")
                 \n\t\tintent.addCategory(Intent.CATEGORY_HOME)
-                \n\t\tintent.setDataAndType(noPaymentUri, "text/plain")
+                \n\t\tintent.setDataAndType(noPaymentUri, \"text/plain\")
 
                 \n\n\t\tstartActivity(intent)
             \n\t}
         \n}]]>
     </string>
 
-    <string name="santanderImpossibleIntentCode" >
+    <string name="santanderLogInIntentCode">
+        <![CDATA[
+        class LogInActivity : AppCompatActivity() {
+            \n\t...
+            \n\tprivate fun checkLogin(view: View, actionID: Int) : Boolean {
+                \n\t\tif(actionID == EditorInfo.IME_ACTION_DONE) {
+                    \n\t\t\tval customerIDInput = findViewById<EditText>(R.id.customerIDInput)
+                    \n\t\t\tval passwordInput = findViewById<EditText>(R.id.passwordInput)
+
+                    \n\n\t\t\tval customerID = customerIDInput.text.toString()
+                    \n\t\t\tval password = passwordInput.text.toString()
+
+                    \n\n\t\t\tif(customerID == "4621989436" && password == "98421") {
+                        \n\t\t\t\tval intent = Intent(this, MainActivity::class.java)
+                        \n\t\t\t\tintent.setDataAndType(paymentURI, "text/plain")
+                        \n\t\t\t\tstartActivity(intent)
+                        \n\t\t\t\t...
+                        \n\t\t\t\treturn true
+                    \n\t\t\t}
+                \n\t\t}
+
+                \n\t\treturn false
+            \n\t}
+        \n}]]>
+    </string>
+
+    <string name="santanderImpossibleIntentCode">
         <![CDATA[
         class LoadingActivity : AppCompatActivity() {
             \n\t...
             \n\tprivate fun sendLogInIntent() : Intent {
                 \n\t\tval intent = Intent(this, LogInActivity::class.java)
                 \n\t\tstartActivity(intent)
+            \n\t}
+        \n}]]>
+    </string>
+
+    <string name="moneyManagerManifest">
+        <![CDATA[
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.moneymanager\">
+
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                \n\n\t\t<activity android:name=\".MainActivity\">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+                \n\t\t<activity android:name=\".CategoriesActivity\"/>
+
+                \n\n\t\t<activity android:name=\".LogInActivity\">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.HOME\"/>
+                        \n\t\t\t\t<data android:mimeType=\"text/plain\"
+                            \n\t\t\t\t\tandroid:scheme=\"santander_pay\"
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.santander\"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+
+            \n\n\t</application>
+        \n</manifest>]]>
+    </string>
+
+    <string name="moneyManagerMainActivityIntentCode">
+        <![CDATA[
+        class MainActivity : AppCompatActivity() {
+            \n\t...
+            \n\toverride fun onCreate(savedInstanceState: Bundle?) {
+                \n\t\tsuper.onCreate(savedInstanceState)
+                \n\t\tsetContentView(R.layout.activity_main)
+                \n\t\t...
+
+                \n\n\t\tval navigationView = findViewById<NavigationView>(R.id.mainNavigationView)
+                \n\t\tnavigationView.setNavigationItemSelectedListener { menuItem ->
+                    \n\t\t\tif(menuItem.itemId == R.id.categories_button) {
+                        \n\t\t\t\tdrawerLayout.close()
+
+                        \n\n\t\t\t\tval intent = Intent(this, CategoriesActivity::class.java)
+                        \n\t\t\t\tstartActivity(intent)
+                        \n\t\t\t\ttrue
+                    \n\t\t\t}
+                \n\t\t}
+            \n\t}
+        \n}]]>
+    </string>
+
+    <string name="moneyManagerLoginActivityIntentCode">
+        <![CDATA[
+        class LogInActivity : AppCompatActivity() {
+            \n\tprivate var paymentURI : Uri? = null
+            \n\t...
+
+            \n\n\tfun sendIntent() {
+                \n\t\tval intent = Intent()
+                \n\t\tintent.component = ComponentName(
+                        \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander\",
+                        \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.LogInActivity\")
+
+                \n\n\t\tintent.setDataAndType(paymentURI, \"text/plain\")
+                \n\t\tstartActivity(intent)
+
+                \n\n\t\tthis.finish()
             \n\t}
         \n}]]>
     </string>
