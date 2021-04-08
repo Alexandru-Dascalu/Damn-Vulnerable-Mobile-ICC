@@ -2,8 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/log_button"
-        android:title="@string/log_activity_title"
-        app:showAsAction="never">
-    </item>
+        android:id="@+id/clear_data_button"
+        android:title="@string/clear_data"
+        app:showAsAction="never"/>
 </menu>

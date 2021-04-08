@@ -36,9 +36,7 @@ class LogActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.clear_log_button -> {
                 deleteFile("data.txt")
-
-                val dataTextView = findViewById<TextView>(R.id.logTextView)
-                dataTextView.text = getString(R.string.no_data)
+                readStolenData()
 
                 val view = findViewById<ScrollView>(R.id.logScrollView)
                 Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()

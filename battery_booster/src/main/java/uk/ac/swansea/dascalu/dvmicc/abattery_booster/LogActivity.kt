@@ -1,8 +1,13 @@
 package uk.ac.swansea.dascalu.dvmicc.abattery_booster
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+
 import java.io.BufferedReader
 import java.io.FileNotFoundException
 import java.io.InputStreamReader
@@ -15,6 +20,24 @@ class LogActivity : AppCompatActivity() {
 
         readStolenData()
         findViewById<TextView>(R.id.logTextView).setTextIsSelectable(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.log_appbar_layout, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.clear_log_button) {
+            deleteFile("data.txt")
+            readStolenData()
+
+            val view = findViewById<ScrollView>(R.id.logScrollView)
+            Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()
+            return true
+        } else {
+            return super.onOptionsItemSelected(item)
+        }
     }
 
     private fun readStolenData() {

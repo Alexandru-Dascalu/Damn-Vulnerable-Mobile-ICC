@@ -84,11 +84,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
             return true
-        } else if(item.itemId == R.id.clear_data_button) {
-            deleteFile("data.txt")
-
-            val view = findViewById<MaterialToolbar>(R.id.mainActivityToolbar)
-            Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
     }

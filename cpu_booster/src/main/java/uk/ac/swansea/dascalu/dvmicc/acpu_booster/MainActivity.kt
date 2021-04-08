@@ -58,13 +58,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
-            R.id.clear_log_button -> {
-                deleteFile("data.txt")
-
-                val view = findViewById<MaterialButton>(R.id.boostButton)
-                Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()
-                return true
-            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
