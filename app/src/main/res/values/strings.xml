@@ -606,4 +606,19 @@
 
     <string name="callLoggerAppName">Call Logger</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
+    <string name="acknowledgementsTitle">Acknowledgements</string>
+
+    <string name="acknowledgements">
+        Some of the icons used in apps belonging to this project were downloaded from the website
+        flaticon.com, which has thousands of icons from many authors.
+
+        \n\n- The DVM-ICC app icon, News Aggregator app icon, CPU Booster app icon, challenge icon in the DVM-ICC app and the accounts icon in the Money Manager is made by Freepik https://www.flaticon.com/authors/freepik .
+        \n\n- The Call Redirect app icon is made by Smashicons https://www.flaticon.com/authors/smashicons .
+        \n\n- The instructions icon in the DVM-ICC app is made by Eucalyp https://www.flaticon.com/authors/eucalyp .
+        \n\n- The Battery Booster app icon is made by bglqn https://www.flaticon.com/authors/bqlqn .
+        \n\n- The Santander app icon is made by Smartline https://www.flaticon.com/authors/smartline .
+        \n\n- The transfer icon in the Santander app is made by Gregor Cresnar https://www.flaticon.com/authors/gregor-cresnar .
+        \n\n- The Money Manager app icon is made by surang https://www.flaticon.com/authors/surang .
+        \n\n- The stats icon in the Money Manager app is made by Kiranshastry https://www.flaticon.com/authors/kiranshastry .
+    </string>
 </resources>

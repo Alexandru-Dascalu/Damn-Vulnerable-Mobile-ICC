@@ -22,6 +22,7 @@
         <activity android:name=".ChallengeActivity"/>
         <activity android:name=".ChallengeSettingsActivity"/>
         <activity android:name=".HelpActivity"/>
+        <activity android:name=".AcknowledgementsActivity"/>
     </application>
 
 </manifest>
