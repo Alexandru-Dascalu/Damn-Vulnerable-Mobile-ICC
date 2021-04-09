@@ -422,4 +422,27 @@
             \n\t}
         \n}]]>
     </string>
+
+    <string name="broadcastTheftScenarioExplanation">
+        The News Aggregator app uses a broadcast to signal that it has downloaded the news data.
+        In a real world application, one might want to do this using an implicit broadcast in order
+        to make the application more loosely coupled, and thus make it more modular and flexible.
+        Another reason might be that you want other apps made by you to know when the news
+        aggregator has gotten some articles.
+
+        \n\nAttackers can take the APK for the News Aggregator and reverse engineer it to be able
+        to see the source code. Thus, they can see the intent filter for the legitimate broadcast
+        receiver and they can hide a broadcast receiver with the same intent filter inside their
+        own malicious app. If the user has both the news aggregator and the malware installed, the
+        malware can listen to broadcast that should be private and can see what news articles a
+        user is looking into.
+
+        \n\nThe developer needs to reconsider wether the broadcast should be accessible to other
+        apps. Developers can protect their broadcasts with permissions. Dangerous level permissions
+        provide good security, but they can still be granted by careless users. Signature level
+        permissions offer excellent security, but that security is only as good as how well the
+        developer stores their private certificate key. If that gets stolen, the hacker can gain
+        access to the broadcast. Setting the package for components that should get the broadcast
+        guarantees that only components in the same app will be able to get the broadcast.
+    </string>
 </resources>

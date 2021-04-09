@@ -28,7 +28,6 @@ class BroadcastTheftDOSQuestionsFragment : AbstractFullQuestionsFragment() {
 
         val flags = context!!.resources.getStringArray(R.array.broadcastTheftDOSFlags)
         securityLowFlag = flags[0]
-        securityHighFlag = flags[1]
 
         super.onViewCreated(view, savedInstanceState)
         hideElementsForUnusedSecurityLevels(view)
@@ -39,6 +38,11 @@ class BroadcastTheftDOSQuestionsFragment : AbstractFullQuestionsFragment() {
         view.findViewById<TextInputLayout>(R.id.securityMediumInput).visibility = View.GONE
         view.findViewById<EditText>(R.id.securityMediumEditText).isFocusable = false
         view.findViewById<MaterialButton>(R.id.securityMediumButton).visibility = View.GONE
+
+        view.findViewById<TextView>(R.id.securityHighQuestionTextView).visibility = View.GONE
+        view.findViewById<TextInputLayout>(R.id.securityHighInput).visibility = View.GONE
+        view.findViewById<EditText>(R.id.securityHighEditText).isFocusable = false
+        view.findViewById<MaterialButton>(R.id.securityHighButton).visibility = View.GONE
 
         view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityVeryHighInput).visibility = View.GONE

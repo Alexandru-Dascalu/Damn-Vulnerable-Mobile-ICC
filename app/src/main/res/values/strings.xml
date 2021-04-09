@@ -558,11 +558,6 @@
     <string name="veryHighLevelSentence">Very high security level</string>
     <string name="impossibleLevelSentence">Impossible security level</string>
 
-    <!--scenario explanations-->
-    <string name="broadcastTheftScenarioExplanation">
-        sdkjhfhsjfwjefpwfkl
-    </string>
-
     <!--Challenge instructions-->
     <string name="instructionsHidden">
         You need to find the malware and the vulnerable app first in order to see further instructions.
@@ -577,11 +572,6 @@
 
     <!--flags to be found by the user-->
     <string name="impossibleFlag">Can\'t touch this!</string>
-
-    <!--api requirements-->
-    <string name="broadcastTheftAPIRequirements">
-        Some broadcast have been introduced in recent API versions.
-    </string>
 
     <!-- questions-->
     <string name="vulnerableAppQuestion">

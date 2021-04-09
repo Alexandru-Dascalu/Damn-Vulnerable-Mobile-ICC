@@ -56,7 +56,6 @@
 
     <string-array name="broadcastTheftMITMFlags">
         <item>What an artist dies in me!</item>
-        <item>Woe is me! I think I\'m turning into a god!</item>
     </string-array>
 
     <!--security level descriptions-->
@@ -221,6 +220,34 @@
                     \n\t\t}
                 \n\t}
             \n}]]>
+    </string>
+
+    <string name="broadcastTheftMITMScenarioExplanation">
+        Ordered broadcasts are delivered to and processed by each matching receiver one at a time.
+        Each receiver can change the result data of the broadcast, or cancel it outright. Receivers
+        can set a priority, and receivers with a higher priority get called first.
+
+        \n\nApplications that automatically redirect phone calls must listen to a public broadcast
+        that is ordered. Any other application can register to listen to the same broadcast.
+        Therefore, a malicious receiver can register with a very high priority, such that it gets
+        called first, and change the result data.
+
+        \n\nOrdered
+        broadcasts can be sent with a default receiver, which will always get the broadcast even if
+        it is cancelled by another receiver. That default receiver in this case is the Phone app.
+
+        \n\nThe developer of the Redirect app could set their receiver\'s priority to the maximum
+        possible value, to get the broadcast before the malware and cancel it so the malware cannot
+        get it. However, that means other legitimate receivers can not get it as well. Moreover,
+        because the malware also has the maximum possible priority, and when two receivers have the
+        same priority, they are called in alphabetical order of their package name, the attacker
+        could set their package name to aaa.aaaaa.aaaa.aa.acpu_booster to make sure the malware
+        receiver always gets called first and replaces the original phone number.
+
+        \n\nTherefore, the best way to fix this vulnerability rests with the user. In this
+        challenge, the malware can not work if it does not have permission to access phone calls
+        from the user, and the Battery booster app has no obvious reason it would need it. The user
+        should see that the app is suspicious and they should uninstall it.
     </string>
 
 </resources>

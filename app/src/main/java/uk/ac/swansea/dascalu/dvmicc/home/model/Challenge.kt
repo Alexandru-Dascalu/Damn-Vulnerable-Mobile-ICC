@@ -11,20 +11,19 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
                     "high" to SecurityLevel(R.string.broadcastTheftHighDescription, R.string.newsAggregatorHighManifest, R.string.newsAggregatorMediumIntentCode),
                     "very high" to SecurityLevel(R.string.broadcastTheftVeryHighDescription, R.string.newsAggregatorVeryHighManifest, R.string.newsAggregatorMediumIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftImpossibleDescription, R.string.newsAggregatorLowManifest, R.string.newsAggregatorImpossibleIntentCode)),
-            R.string.broadcastTheftInstructions, R.string.broadcastTheftScenarioExplanation,
-            R.string.broadcastTheftAPIRequirements),
+            R.string.broadcastTheftInstructions, R.string.broadcastTheftScenarioExplanation, 0),
 
     BROADCAST_THEFT_DOS(1, R.string.broadcastTheftDOSExplanation,
             mapOf("low" to SecurityLevel(R.string.broadcastTheftDOSLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
                     "high" to SecurityLevel(R.string.broadcastTheftDOSHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftDOSImpossibleDescription)),
-            R.string.broadcastTheftDOSInstructions, 0, 0),
+            R.string.broadcastTheftDOSInstructions, R.string.broadcastTheftDOSScenarioExplanation, 0),
 
     BROADCAST_THEFT_MITM(2, R.string.broadcastTheftMITMExplanation,
             mapOf("low" to SecurityLevel(R.string.broadcastTheftMITMLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
                     "high" to SecurityLevel(R.string.broadcastTheftMITMHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftMITMImpossibleDescription)),
-            R.string.broadcastTheftMITMInstructions, 0, 0),
+            R.string.broadcastTheftMITMInstructions, R.string.broadcastTheftMITMScenarioExplanation, 0),
 
     ACTIVITY_INTENT_HIJACK(3, R.string.activityHijackExplanation,
             mapOf("low" to SecurityLevel(R.string.activityHijackLowDescription, R.string.santanderManifest, R.string.santanderLowIntentCode),
