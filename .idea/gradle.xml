@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/money_manager" />
             <option value="$PROJECT_DIR$/news_aggregator" />
             <option value="$PROJECT_DIR$/santander" />
+            <option value="$PROJECT_DIR$/whatsapp" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
