@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DamnVulnerableMobileICC">
+        
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <provider
+            android:authorities="uk.ac.swansea.dascalu.dvmicc.whatsapp.provider"
+            android:name=".icc.MessagesProvider"
+            android:grantUriPermissions="true"
+            android:enabled="true"
+            android:exported="false"
+            android:label="Whatsapp messages content provider"/>
     </application>
 
 </manifest>
