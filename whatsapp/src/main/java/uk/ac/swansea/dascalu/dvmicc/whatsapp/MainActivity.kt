@@ -5,9 +5,9 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,8 +28,7 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(findViewById(R.id.mainActivityToolbar),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
             /* the boolean can be null is the app has storage permission before this launcher was
-                called. If it has the storage permission, we want to make sure we get any other permissions
-                for malware purposes.*/
+                called.*/
         }
     }
 

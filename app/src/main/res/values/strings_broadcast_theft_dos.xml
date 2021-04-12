@@ -265,6 +265,8 @@
                 \n\t<uses-permission android:name=
                     \n\t\t\"android.permission.PROCESS_OUTGOING_CALLS\"/>
                 \n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.INTERNET\"/>
+                \n\t<uses-permission android:name=
                     \n\t\t\"android.permission.WRITE_SETTINGS\" />
                 \n\t<uses-permission android:name=
                     \n\t\t\"android.permission.PACKAGE_USAGE_STATS\" />

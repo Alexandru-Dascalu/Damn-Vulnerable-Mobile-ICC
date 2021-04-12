@@ -84,40 +84,42 @@
     <!--News aggregator manifests-->
     <string name="newsAggregatorLowManifest">
         <![CDATA[
-        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
             \n\n\t<uses-permission
-                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\t\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<application
-                \n\t\tandroid:allowBackup="true"
-                \n\t\tandroid:icon="@mipmap/ic_launcher"
-                \n\t\tandroid:label="@string/app_name"
-                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
-                \n\t\tandroid:supportsRtl="true"
-                \n\t\tandroid:hardwareAccelerated="false"
-                \n\t\tandroid:theme="@style/AppTheme">
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:hardwareAccelerated=\"false\"
+                \n\t\tandroid:theme=\"@style/AppTheme\">
 
-                \n\n\t\t<activity android:name=".LogInActivity">
+                \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
 
-                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
 
-                \n\n\t\t<activity android:name=".MainActivity"/>
-                \n\t\t<activity android:name=".SignUpActivity"/>
-                \n\t\t<activity android:name=".LoadingActivity"/>
-                \n\t\t<activity android:name=".FullArticleActivity"/>
-                \n\n\t\t<service android:name=".icc.NewsService"
-                    \n\t\t\tandroid:exported="false"
-                    \n\t\t\tandroid:enabled="true"/>
-                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
-                    \n\t\t\tandroid:enabled="true">
+                \n\n\t\t<activity android:name=\".MainActivity\"/>
+                \n\t\t<activity android:name=\".SignUpActivity\"/>
+                \n\t\t<activity android:name=\".LoadingActivity\"/>
+                \n\t\t<activity android:name=\".FullArticleActivity\"/>
+                \n\n\t\t<service android:name=\".icc.NewsService\"
+                    \n\t\t\tandroid:exported=\"false\"
+                    \n\t\t\tandroid:enabled=\"true\"/>
+                \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
+                    \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -125,11 +127,13 @@
     </string>
     <string name="newsAggregatorMediumManifest">
         <![CDATA[
-        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
             \n\n\t<uses-permission
-                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\t\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<permission
                 \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
@@ -140,33 +144,33 @@
                 \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
 
             \n\n\t<application
-                \n\t\tandroid:allowBackup="true"
-                \n\t\tandroid:icon="@mipmap/ic_launcher"
-                \n\t\tandroid:label="@string/app_name"
-                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
-                \n\t\tandroid:supportsRtl="true"
-                \n\t\tandroid:hardwareAccelerated="false"
-                \n\t\tandroid:theme="@style/AppTheme">
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:hardwareAccelerated=\"false\"
+                \n\t\tandroid:theme=\"@style/AppTheme\">
 
-                \n\n\t\t<activity android:name=".LogInActivity">
+                \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
 
-                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
 
-                \n\n\t\t<activity android:name=".MainActivity"/>
-                \n\t\t<activity android:name=".SignUpActivity"/>
-                \n\t\t<activity android:name=".LoadingActivity"/>
-                \n\t\t<activity android:name=".FullArticleActivity"/>
-                \n\n\t\t<service android:name=".icc.NewsService"
-                    \n\t\t\tandroid:exported="false"
-                    \n\t\t\tandroid:enabled="true"/>
-                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
-                    \n\t\t\tandroid:enabled="true">
+                \n\n\t\t<activity android:name=\".MainActivity\"/>
+                \n\t\t<activity android:name=\".SignUpActivity\"/>
+                \n\t\t<activity android:name=\".LoadingActivity\"/>
+                \n\t\t<activity android:name=\".FullArticleActivity\"/>
+                \n\n\t\t<service android:name=\".icc.NewsService\"
+                    \n\t\t\tandroid:exported=\"false\"
+                    \n\t\t\tandroid:enabled=\"true\"/>
+                \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
+                    \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -175,11 +179,13 @@
 
     <string name="newsAggregatorHighManifest">
         <![CDATA[
-        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
             \n\n\t<uses-permission
-                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\t\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<permission
                 \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
@@ -191,33 +197,33 @@
                 \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
 
             \n\n\t<application
-                \n\t\tandroid:allowBackup="true"
-                \n\t\tandroid:icon="@mipmap/ic_launcher"
-                \n\t\tandroid:label="@string/app_name"
-                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
-                \n\t\tandroid:supportsRtl="true"
-                \n\t\tandroid:hardwareAccelerated="false"
-                \n\t\tandroid:theme="@style/AppTheme">
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:hardwareAccelerated=\"false\"
+                \n\t\tandroid:theme=\"@style/AppTheme\">
 
-                \n\n\t\t<activity android:name=".LogInActivity">
+                \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
 
-                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
 
-                \n\n\t\t<activity android:name=".MainActivity"/>
-                \n\t\t<activity android:name=".SignUpActivity"/>
-                \n\t\t<activity android:name=".LoadingActivity"/>
-                \n\t\t<activity android:name=".FullArticleActivity"/>
-                \n\n\t\t<service android:name=".icc.NewsService"
-                    \n\t\t\tandroid:exported="false"
-                    \n\t\t\tandroid:enabled="true"/>
-                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
-                    \n\t\t\tandroid:enabled="true">
+                \n\n\t\t<activity android:name=\".MainActivity\"/>
+                \n\t\t<activity android:name=\".SignUpActivity\"/>
+                \n\t\t<activity android:name=\".LoadingActivity\"/>
+                \n\t\t<activity android:name=\".FullArticleActivity\"/>
+                \n\n\t\t<service android:name=\".icc.NewsService\"
+                    \n\t\t\tandroid:exported=\"false\"
+                    \n\t\t\tandroid:enabled=\"true\"/>
+                \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
+                    \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -225,11 +231,13 @@
     </string>
     <string name="newsAggregatorVeryHighManifest">
         <![CDATA[
-        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.newsaggregator">
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
             \n\n\t<uses-permission
-                \n\t\tandroid:name="android.permission.READ_EXTERNAL_STORAGE" />
+                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\t\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<permission
                 \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
@@ -241,33 +249,33 @@
                 \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
 
             \n\n\t<application
-                \n\t\tandroid:allowBackup="true"
-                \n\t\tandroid:icon="@mipmap/ic_launcher"
-                \n\t\tandroid:label="@string/app_name"
-                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
-                \n\t\tandroid:supportsRtl="true"
-                \n\t\tandroid:hardwareAccelerated="false"
-                \n\t\tandroid:theme="@style/AppTheme">
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:hardwareAccelerated=\"false\"
+                \n\t\tandroid:theme=\"@style/AppTheme\">
 
-                \n\n\t\t<activity android:name=".LogInActivity">
+                \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
 
-                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
 
-                \n\n\t\t<activity android:name=".MainActivity"/>
-                \n\t\t<activity android:name=".SignUpActivity"/>
-                \n\t\t<activity android:name=".LoadingActivity"/>
-                \n\t\t<activity android:name=".FullArticleActivity"/>
-                \n\n\t\t<service android:name=".icc.NewsService"
-                    \n\t\t\tandroid:exported="false"
-                    \n\t\t\tandroid:enabled="true"/>
-                \n\n\t\t<receiver android:name=".icc.NewsBroadcastReceiver"
-                    \n\t\t\tandroid:enabled="true">
+                \n\n\t\t<activity android:name=\".MainActivity\"/>
+                \n\t\t<activity android:name=\".SignUpActivity\"/>
+                \n\t\t<activity android:name=\".LoadingActivity\"/>
+                \n\t\t<activity android:name=\".FullArticleActivity\"/>
+                \n\n\t\t<service android:name=\".icc.NewsService\"
+                    \n\t\t\tandroid:exported=\"false\"
+                    \n\t\t\tandroid:enabled=\"true\"/>
+                \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
+                    \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -373,34 +381,36 @@
 
     <string name="callLoggerManifest">
         <![CDATA[
-        <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-            \n\tpackage="uk.ac.swansea.dascalu.dvmicc.call_logger">
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.call_logger\">
 
             \n\n\t<uses-permission android:name=
-                \n\t\t"android.permission.READ_CALL_LOG"/>
+                \n\t\t\"android.permission.READ_CALL_LOG\"/>
+            \n\t\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<application
-                \n\t\tandroid:allowBackup="true"
-                \n\t\tandroid:icon="@mipmap/ic_launcher"
-                \n\t\tandroid:label="@string/app_name"
-                \n\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
-                \n\t\tandroid:supportsRtl="true"
-                \n\t\tandroid:theme="@style/AppTheme">
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:theme=\"@style/AppTheme\">
 
-                \n\n\t\t<activity android:name=".MainActivity">
+                \n\n\t\t<activity android:name=\".MainActivity\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name="android.intent.action.MAIN" />
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
 
-                        \n\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
-                \n\n\t\t<activity android:name=".LogActivity"/>
+                \n\n\t\t<activity android:name=\".LogActivity\"/>
 
-                \n\n\t\t<receiver android:name=".icc.CallsBroadcastReceiver"
-                    \n\t\t\tandroid:enabled="true">
+                \n\n\t\t<receiver android:name=\".icc.CallsBroadcastReceiver\"
+                    \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=
-                        \n\t\t\t\t\t"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT"/>
+                        \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>

@@ -4,6 +4,7 @@
 
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     
     <permission android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_A"
         android:label="@string/readNewsAPermissionLabel"

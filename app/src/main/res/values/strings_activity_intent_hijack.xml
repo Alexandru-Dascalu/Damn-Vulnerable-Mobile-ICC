@@ -62,6 +62,8 @@
 
             \n\n\t<uses-permission android:name=
                 \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\"/>
+            \n\t\n\t<uses-permission android:name=
+                    \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
