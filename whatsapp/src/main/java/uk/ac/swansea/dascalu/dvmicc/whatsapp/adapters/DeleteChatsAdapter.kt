@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,38 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.ChatPreview
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.R
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
-import java.text.SimpleDateFormat
 
+import java.text.SimpleDateFormat
 import java.util.Date
+
 import kotlin.collections.ArrayList
 
-class ChatsAdapter(context: Context) : RecyclerView.Adapter<ChatsAdapter.ViewHolder>() {
+class DeleteChatsAdapter(private val context: Context) : RecyclerView.Adapter<DeleteChatsAdapter.ViewHolder>() {
     private val data : ArrayList<ChatPreview> = ArrayList<ChatPreview>()
     init {
-        loadData(context)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val rootView = LayoutInflater.from(parent.context).inflate(R.layout.chat_preview_layout,
-            parent, false)
-        return ViewHolder(rootView)
-    }
-
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
-    override fun onBindViewHolder(holder: ChatsAdapter.ViewHolder, position: Int) {
-        holder.userImageView.setImageResource(R.drawable.ic_user)
-
-        holder.nameTextView.text = data[position].name
-        holder.messageTextView.text = data[position].previewMessage
-
-        holder.timeTextView.text = getMessageDate(position)
-    }
-
-    fun loadData(context: Context) {
-        data.clear()
         val cursor = context.contentResolver.query(MessagesProvider.Contract.CHATS_URI,
                 null, null, null,null)
 
@@ -57,6 +35,25 @@ class ChatsAdapter(context: Context) : RecyclerView.Adapter<ChatsAdapter.ViewHol
 
             cursor.close()
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val rootView = LayoutInflater.from(parent.context).inflate(R.layout.delete_chat_preview_layout,
+                parent, false)
+        return ViewHolder(rootView)
+    }
+
+    override fun getItemCount(): Int {
+        return data.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.userImageView.setImageResource(R.drawable.ic_user)
+
+        holder.nameTextView.text = data[position].name
+        holder.messageTextView.text = data[position].previewMessage
+
+        holder.timeTextView.text = getMessageDate(position)
     }
 
     private fun getMessageDate(position: Int) : String {
@@ -76,9 +73,10 @@ class ChatsAdapter(context: Context) : RecyclerView.Adapter<ChatsAdapter.ViewHol
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val userImageView = itemView.findViewById<ImageView>(R.id.userImagePhoto)
-        val nameTextView = itemView.findViewById<TextView>(R.id.nameTextView)
-        val messageTextView = itemView.findViewById<TextView>(R.id.messagePreviewTextView)
-        val timeTextView = itemView.findViewById<TextView>(R.id.timeTextView)
+        val userImageView = itemView.findViewById<ImageView>(R.id.deleteUserImagePhoto)
+        val nameTextView = itemView.findViewById<TextView>(R.id.deleteNameTextView)
+        val messageTextView = itemView.findViewById<TextView>(R.id.deleteMessagePreviewTextView)
+        val timeTextView = itemView.findViewById<TextView>(R.id.deleteTimeTextView)
+        val chatCheckBox = itemView.findViewById<CheckBox>(R.id.deleteCheckBox)
     }
 }

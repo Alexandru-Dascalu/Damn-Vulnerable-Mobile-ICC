@@ -7,6 +7,11 @@
         android:icon="@drawable/ic_baseline_search"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/delete_activity_button"
+        android:title="@string/delete_chats"
+        android:icon="@drawable/ic_baseline_delete"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/settings_button"
         android:title="@string/settings"
         app:showAsAction="never"/>

@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DeleteActivity"/>
         
         <provider
             android:authorities="uk.ac.swansea.dascalu.dvmicc.whatsapp.provider"

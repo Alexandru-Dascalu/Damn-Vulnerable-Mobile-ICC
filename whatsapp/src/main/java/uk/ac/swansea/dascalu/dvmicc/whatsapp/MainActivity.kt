@@ -1,10 +1,13 @@
 package uk.ac.swansea.dascalu.dvmicc.whatsapp
 
 import android.Manifest
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -16,8 +19,14 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters.ChatsAdapter
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        val DELETE_REQUEST_CODE = 10
+    }
+
+    private lateinit var chatsAdapter : ChatsAdapter
     private val requestPermissionsLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
 
@@ -41,7 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         val chatsView = findViewById<RecyclerView>(R.id.chats_recycler_view)
         chatsView.layoutManager = LinearLayoutManager(this)
-        chatsView.adapter = ChatsAdapter(this)
+        chatsAdapter = ChatsAdapter(this)
+        chatsView.adapter = chatsAdapter
 
         val dividerItemDecoration = DividerItemDecoration(this,
                 (chatsView.layoutManager as LinearLayoutManager).orientation)
@@ -58,6 +68,32 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_appbar_layout, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.delete_activity_button -> {
+                val intent = Intent(this, DeleteActivity::class.java)
+                startActivityForResult(intent, DELETE_REQUEST_CODE)
+                return true
+            }
+            else -> {
+                return super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == DELETE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val chatNamesToDelete = data?.extras?.getSerializable("chatNamesToDelete")
+                    as HashSet<String>
+            contentResolver.delete(MessagesProvider.CHATS_URI, null,
+                    chatNamesToDelete.toTypedArray())
+
+            chatsAdapter.loadData(this)
+            chatsAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun checkPermissions() : Boolean {

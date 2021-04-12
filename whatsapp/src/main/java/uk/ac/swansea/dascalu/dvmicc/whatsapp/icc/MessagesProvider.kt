@@ -63,9 +63,9 @@ class MessagesProvider : ContentProvider() {
                  val cursor = MatrixCursor(arrayOf(Contract.CHAT_NAME, Contract.CHAT_PREVIEW_MSG,
                          Contract.CHAT_TIME))
 
-                 cursor.addRow(arrayOf("William", data[0].messages.last().contents, data[0].messages.last().time))
-                 cursor.addRow(arrayOf("Mom", data[1].messages.last().contents, data[1].messages.last().time))
-                 cursor.addRow(arrayOf("John", data[2].messages.last().contents, data[2].messages.last().time))
+                 for(chat in data) {
+                     cursor.addRow(arrayOf(chat.name, chat.messages.last().contents, chat.messages.last().time))
+                 }
 
                  return cursor
              }
@@ -123,10 +123,22 @@ class MessagesProvider : ContentProvider() {
         when(uriMatcher.match(uri)) {
             1 -> {
                 if(selectionArgs != null && selectionArgs.isNotEmpty()) {
-                    if(selectionArgs[0].toIntOrNull() != null) {
-                        data.removeAt(selectionArgs[0].toInt())
-                        return 1
+                    val namesToDeleteSet = selectionArgs.toHashSet()
+                    var i : Int = 0
+                    var noRemoved : Int = 0
+
+                    while (i < data.size) {
+                        if(data[i].name in namesToDeleteSet) {
+                            data.removeAt(i)
+                            noRemoved++
+                        } else {
+                            i++
+                        }
                     }
+
+                    return noRemoved
+                } else {
+                    return 0
                 }
             }
             2 -> {
@@ -139,10 +151,10 @@ class MessagesProvider : ContentProvider() {
                         return 1
                     }
                 }
+                return 0
             }
             else -> return 0
         }
-        return 0
     }
 
     override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?): Int {

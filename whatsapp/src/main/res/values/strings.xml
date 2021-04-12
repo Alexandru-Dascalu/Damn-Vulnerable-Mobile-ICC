@@ -8,4 +8,5 @@
         App needs file storage access to read security level!
     </string>
     <string name="storagePermissionAcquired">Storage permission acquired!</string>
+    <string name="delete_chats">Delete chats</string>
 </resources>
