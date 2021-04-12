@@ -38,6 +38,8 @@ class MessagesProvider : ContentProvider() {
         thirdMessages.add(Message("John", "Ok", "2021-04-05T04:16:49Z"))
         thirdMessages.add(Message("Me", "We should do it all in one go.", "2021-04-05T04:38:10Z"))
         data.add(Chat("John", thirdMessages))
+
+        return true
     }
 
     override fun query(uri: Uri, projection: Array<out String>?, selection: String?,
@@ -54,7 +56,7 @@ class MessagesProvider : ContentProvider() {
                  return cursor
              }
             2 -> {
-                val cursor = MatrixCursor(arrayOf("Name", "Message"))
+                val cursor = MatrixCursor(arrayOf("Sender", "Message", "Time"))
                 val path = uri.toString()
                 val chatIndex = path.substring(path.lastIndexOf('/') + 1).toInt()
 
@@ -64,6 +66,15 @@ class MessagesProvider : ContentProvider() {
 
                 return cursor
             }
+            else -> return null
+        }
+    }
+
+    override fun getType(uri: Uri): String? {
+        when(uriMatcher.match(uri)) {
+            1 -> return "vnd.android.cursor.dir/uk.ac.swansea.dascalu.dvmicc.whatsapp.provider.chats"
+            2 -> return "vnd.android.cursor.dir/uk.ac.swansea.dascalu.dvmicc.whatsapp.provider.chat"
+            else -> return null
         }
     }
 
@@ -89,6 +100,36 @@ class MessagesProvider : ContentProvider() {
                 return Uri.parse(
                     "content://uk.ac.swansea.dascalu.dvmicc.whatsapp.provider/chat/$chatIndex/${data[chatIndex].messages.last()}")
             }
+            else -> return null
         }
+    }
+
+    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
+        when(uriMatcher.match(uri)) {
+            1 -> {
+                if(selectionArgs != null && selectionArgs.isNotEmpty()) {
+                    if(selectionArgs[0].toIntOrNull() != null) {
+                        data.removeAt(selectionArgs[0].toInt())
+                        return 1
+                    }
+                }
+            }
+            2 -> {
+                val path = uri.toString()
+                val chatIndex = path.substring(path.lastIndexOf('/') + 1).toInt()
+
+                if(selectionArgs != null && selectionArgs.isNotEmpty()) {
+                    if(selectionArgs[0].toIntOrNull() != null) {
+                        data[chatIndex].messages.removeAt(selectionArgs[0].toInt())
+                        return 1
+                    }
+                }
+            }
+            else -> return 0
+        }
+    }
+
+    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?): Int {
+        return 0
     }
 }
