@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -20,7 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         val chatsView = findViewById<RecyclerView>(R.id.chats_recycler_view)
         chatsView.layoutManager = LinearLayoutManager(this)
-        chatsView.adapter = ChatsAdapter()
+        chatsView.adapter = ChatsAdapter(this)
+
+        val dividerItemDecoration = DividerItemDecoration(this,
+                (chatsView.layoutManager as LinearLayoutManager).orientation)
+        chatsView.addItemDecoration(dividerItemDecoration)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

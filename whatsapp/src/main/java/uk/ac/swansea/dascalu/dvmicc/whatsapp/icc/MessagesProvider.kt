@@ -17,6 +17,19 @@ class MessagesProvider : ContentProvider() {
         addURI("uk.ac.swansea.dascalu.dvmicc.whatsapp.provider", "chat/#", 2)
     }
 
+    companion object Contract {
+        val CHATS_URI = Uri.parse("content://uk.ac.swansea.dascalu.dvmicc.whatsapp.provider/chats")
+        val CHAT_URI = Uri.parse("content://uk.ac.swansea.dascalu.dvmicc.whatsapp.provider/chat/")
+
+        val CHAT_NAME = "Name"
+        val CHAT_PREVIEW_MSG = "previewMessage"
+        val CHAT_TIME = "Time"
+
+        val MESSAGE_SENDER = "Sender"
+        val MESSAGE = "Message"
+        val MESSAGE_TIME = "Time"
+    }
+
     override fun onCreate(): Boolean {
         val firstMessages = ArrayList<Message>()
         firstMessages.add(Message("William", "Wanna go to the beach?", "2021-03-23T13:46:19Z"))
@@ -47,16 +60,18 @@ class MessagesProvider : ContentProvider() {
 
         when(uriMatcher.match(uri)) {
              1 -> {
-                 val cursor = MatrixCursor(arrayOf("Name", "previewMessage", "Time"))
+                 val cursor = MatrixCursor(arrayOf(Contract.CHAT_NAME, Contract.CHAT_PREVIEW_MSG,
+                         Contract.CHAT_TIME))
 
-                 cursor.addRow(arrayOf("William", data[0].messages.last(), data[0].messages.last().time))
-                 cursor.addRow(arrayOf("Mom", data[1].messages.last(), data[1].messages.last().time))
-                 cursor.addRow(arrayOf("Me", data[2].messages.last(), data[2].messages.last().time))
+                 cursor.addRow(arrayOf("William", data[0].messages.last().contents, data[0].messages.last().time))
+                 cursor.addRow(arrayOf("Mom", data[1].messages.last().contents, data[1].messages.last().time))
+                 cursor.addRow(arrayOf("John", data[2].messages.last().contents, data[2].messages.last().time))
 
                  return cursor
              }
             2 -> {
-                val cursor = MatrixCursor(arrayOf("Sender", "Message", "Time"))
+                val cursor = MatrixCursor(arrayOf(Contract.MESSAGE_SENDER, Contract.MESSAGE,
+                        Contract.MESSAGE_TIME))
                 val path = uri.toString()
                 val chatIndex = path.substring(path.lastIndexOf('/') + 1).toInt()
 
@@ -104,7 +119,7 @@ class MessagesProvider : ContentProvider() {
         }
     }
 
-    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
+    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?) : Int {
         when(uriMatcher.match(uri)) {
             1 -> {
                 if(selectionArgs != null && selectionArgs.isNotEmpty()) {
@@ -127,6 +142,7 @@ class MessagesProvider : ContentProvider() {
             }
             else -> return 0
         }
+        return 0
     }
 
     override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?): Int {
