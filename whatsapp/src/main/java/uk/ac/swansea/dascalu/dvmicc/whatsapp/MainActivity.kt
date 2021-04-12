@@ -4,13 +4,15 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,11 +21,10 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters.ChatsAdapter
-import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        val DELETE_REQUEST_CODE = 10
+        const val DELETE_REQUEST_CODE = 10
     }
 
     private lateinit var chatsAdapter : ChatsAdapter
@@ -83,16 +84,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultIntent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultIntent)
         if(requestCode == DELETE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val chatNamesToDelete = data?.extras?.getSerializable("chatNamesToDelete")
-                    as HashSet<String>
-            contentResolver.delete(MessagesProvider.CHATS_URI, null,
-                    chatNamesToDelete.toTypedArray())
+            val chatNamesToDelete = resultIntent?.extras?.getSerializable("chatNamesToDelete")
+                    as HashSet<String>?
+            val chatsToDeleteURI : Uri? = resultIntent?.data
 
-            chatsAdapter.loadData(this)
-            chatsAdapter.notifyDataSetChanged()
+            if(chatNamesToDelete != null && chatsToDeleteURI != null) {
+                contentResolver.delete(chatsToDeleteURI, null,
+                        chatNamesToDelete.toTypedArray())
+
+                chatsAdapter.loadData(this)
+                chatsAdapter.notifyDataSetChanged()
+            }
         }
     }
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters.DeleteChatsAdapter
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
 
 class DeleteActivity : AppCompatActivity() {
     private lateinit var deleteAdapter : DeleteChatsAdapter
@@ -63,10 +64,12 @@ class DeleteActivity : AppCompatActivity() {
     }
 
     private fun finish(chatNamesToDelete: HashSet<String>) {
-        val data = Intent()
-        data.putExtra("chatNamesToDelete", chatNamesToDelete)
-        setResult(RESULT_OK, data)
+        val resultIntent = Intent()
+        resultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
+        resultIntent.data = MessagesProvider.CHATS_URI
+        resultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 
+        setResult(RESULT_OK, resultIntent)
         finish()
     }
 }

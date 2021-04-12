@@ -14,7 +14,7 @@ class MessagesProvider : ContentProvider() {
     private val data : ArrayList<Chat> = ArrayList<Chat>()
     private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH).apply {
         addURI("uk.ac.swansea.dascalu.dvmicc.whatsapp.provider", "chats", 1)
-        addURI("uk.ac.swansea.dascalu.dvmicc.whatsapp.provider", "chat/#", 2)
+        addURI("uk.ac.swansea.dascalu.dvmicc.whatsapp.provider", "chat/*", 2)
     }
 
     companion object Contract {
@@ -60,23 +60,34 @@ class MessagesProvider : ContentProvider() {
 
         when(uriMatcher.match(uri)) {
              1 -> {
-                 val cursor = MatrixCursor(arrayOf(Contract.CHAT_NAME, Contract.CHAT_PREVIEW_MSG,
-                         Contract.CHAT_TIME))
+                 val cursor = MatrixCursor(arrayOf(CHAT_NAME, CHAT_PREVIEW_MSG,
+                         CHAT_TIME))
+                 val nameSet : HashSet<String>? = selectionArgs?.toHashSet()
 
                  for(chat in data) {
-                     cursor.addRow(arrayOf(chat.name, chat.messages.last().contents, chat.messages.last().time))
+                    if (nameSet != null ) {
+                        if(chat.name in nameSet) {
+                            cursor.addRow(arrayOf(chat.name, chat.messages.last().contents, chat.messages.last().time))
+                        }
+                    } else {
+                        cursor.addRow(arrayOf(chat.name, chat.messages.last().contents, chat.messages.last().time))
+                    }
                  }
 
                  return cursor
              }
             2 -> {
-                val cursor = MatrixCursor(arrayOf(Contract.MESSAGE_SENDER, Contract.MESSAGE,
-                        Contract.MESSAGE_TIME))
+                val cursor = MatrixCursor(arrayOf(MESSAGE_SENDER, MESSAGE,
+                        MESSAGE_TIME))
                 val path = uri.toString()
-                val chatIndex = path.substring(path.lastIndexOf('/') + 1).toInt()
 
-                for(message in data[chatIndex].messages) {
-                    cursor.addRow(arrayOf(message.sender, message.contents, message.time))
+                val chatName: String = path.substring(path.lastIndexOf('/') + 1)
+                val chat : Chat? = data.find { it.name == chatName }
+
+                if(chat != null) {
+                    for(message in chat.messages) {
+                        cursor.addRow(arrayOf(message.sender, message.contents, message.time))
+                    }
                 }
 
                 return cursor
@@ -105,15 +116,19 @@ class MessagesProvider : ContentProvider() {
             }
             2 -> {
                 val path = uri.toString()
-                val chatIndex = path.substring(path.lastIndexOf('/') + 1).toInt()
+                val chatName: String = path.substring(path.lastIndexOf('/') + 1)
+                val chat : Chat? = data.find { it.name == chatName}
 
-                if(values != null) {
-                    val chat = data[chatIndex]
-                    chat.messages.add(Message(values.getAsString("sender"), values.getAsString("message"), values.getAsString("time")))
+                if (chat != null) {
+                    if(values != null) {
+                        chat.messages.add(Message(values.getAsString("sender"), values.getAsString(
+                                "message"), values.getAsString("time")))
+
+                        return Uri.parse(
+                                "content://uk.ac.swansea.dascalu.dvmicc.whatsapp.provider/chat/$chatName/${chat.messages.last()}")
+                    }
                 }
-
-                return Uri.parse(
-                    "content://uk.ac.swansea.dascalu.dvmicc.whatsapp.provider/chat/$chatIndex/${data[chatIndex].messages.last()}")
+                return null
             }
             else -> return null
         }
@@ -143,11 +158,12 @@ class MessagesProvider : ContentProvider() {
             }
             2 -> {
                 val path = uri.toString()
-                val chatIndex = path.substring(path.lastIndexOf('/') + 1).toInt()
+                val chatName = path.substring(path.lastIndexOf('/') + 1)
 
                 if(selectionArgs != null && selectionArgs.isNotEmpty()) {
-                    if(selectionArgs[0].toIntOrNull() != null) {
-                        data[chatIndex].messages.removeAt(selectionArgs[0].toInt())
+                    val chat = data.find { it.name == chatName }
+                    if(chat != null) {
+                        chat.messages.removeAt(selectionArgs[0].toInt())
                         return 1
                     }
                 }

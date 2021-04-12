@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.ChatPreview
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.R
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
-import java.text.SimpleDateFormat
 
+import java.text.SimpleDateFormat
 import java.util.Date
 import kotlin.collections.ArrayList
 
@@ -43,7 +43,7 @@ class ChatsAdapter(context: Context) : RecyclerView.Adapter<ChatsAdapter.ViewHol
 
     fun loadData(context: Context) {
         data.clear()
-        val cursor = context.contentResolver.query(MessagesProvider.Contract.CHATS_URI,
+        val cursor = context.contentResolver.query(MessagesProvider.CHATS_URI,
                 null, null, null,null)
 
         if(cursor != null) {
