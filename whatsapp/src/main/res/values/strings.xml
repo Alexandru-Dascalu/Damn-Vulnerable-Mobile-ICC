@@ -3,4 +3,9 @@
     <string name="search">Search</string>
     <string name="settings">Settings</string>
     <string name="chats_image_view_content_description">User Image</string>
+
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to read security level!
+    </string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
 </resources>
