@@ -25,6 +25,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".DeleteActivity"/>
+
+        <service android:name=".icc.DeleteMessagesService"
+            android:enabled="true"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_CONTACTS"/>
+                <data android:mimeType="text/plain"
+                    android:scheme="content"
+                    android:host="uk.ac.swansea.dascalu.dvmicc.whatsapp.provider"/>
+            </intent-filter>
+        </service>
         
         <provider
             android:authorities="uk.ac.swansea.dascalu.dvmicc.whatsapp.provider"

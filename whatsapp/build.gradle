@@ -10,7 +10,8 @@ android {
     defaultConfig {
         applicationId "uk.ac.swansea.dascalu.dvmicc.whatsapp"
         minSdkVersion 17
-        targetSdkVersion 30
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 20
         versionCode 1
         versionName "1.0"
 

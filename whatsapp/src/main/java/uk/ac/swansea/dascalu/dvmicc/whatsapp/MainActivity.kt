@@ -1,10 +1,8 @@
 package uk.ac.swansea.dascalu.dvmicc.whatsapp
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 
 import android.os.Bundle
 import android.view.Menu
@@ -23,9 +21,6 @@ import com.google.android.material.snackbar.Snackbar
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters.ChatsAdapter
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        const val DELETE_REQUEST_CODE = 10
-    }
 
     private lateinit var chatsAdapter : ChatsAdapter
     private val requestPermissionsLauncher = registerForActivityResult(
@@ -75,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.delete_activity_button -> {
                 val intent = Intent(this, DeleteActivity::class.java)
-                startActivityForResult(intent, DELETE_REQUEST_CODE)
+                startActivity(intent)
                 return true
             }
             else -> {
@@ -84,21 +79,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultIntent: Intent?) {
-        super.onActivityResult(requestCode, resultCode, resultIntent)
-        if(requestCode == DELETE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val chatNamesToDelete = resultIntent?.extras?.getSerializable("chatNamesToDelete")
-                    as HashSet<String>?
-            val chatsToDeleteURI : Uri? = resultIntent?.data
-
-            if(chatNamesToDelete != null && chatsToDeleteURI != null) {
-                contentResolver.delete(chatsToDeleteURI, null,
-                        chatNamesToDelete.toTypedArray())
-
-                chatsAdapter.loadData(this)
-                chatsAdapter.notifyDataSetChanged()
-            }
-        }
+    override fun onStart() {
+        super.onStart()
+        chatsAdapter.loadData(this)
+        chatsAdapter.notifyDataSetChanged()
     }
 
     private fun checkPermissions() : Boolean {
