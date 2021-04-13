@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc
+package uk.ac.swansea.dascalu.dvmicc.messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
