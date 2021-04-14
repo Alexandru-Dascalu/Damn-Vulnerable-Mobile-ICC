@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.swansea.dascalu.dvmicc.home.R
 import uk.ac.swansea.dascalu.dvmicc.home.adapters.recyclerviews.ChallengeButtonAdapter
 
-class ChallengesFragment : Fragment() {
+class ChallengeListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
