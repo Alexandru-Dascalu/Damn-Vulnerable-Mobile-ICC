@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import uk.ac.swansea.dascalu.dvmicc.home.fragments.ChallengesFragment
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.ChallengeListFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.InformationFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.IntroductionFragment
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.challengesButton -> {
-                replaceFragment(ChallengesFragment())
+                replaceFragment(ChallengeListFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }
