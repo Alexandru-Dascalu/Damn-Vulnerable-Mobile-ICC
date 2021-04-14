@@ -59,12 +59,18 @@
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
             \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.whatsapp\">
 
-            \n\n\t<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
-            \n\t<uses-permission android:name=\"android.permission.CAMERA\"/>
-            \n\t<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>
-            \n\t<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>
-            \n\t<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />
-            \n\t<uses-permission android:name=\"android.permission.INTERNET\" />
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.CAMERA\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.RECORD_AUDIO\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.WRITE_CONTACTS\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.ACCESS_FINE_LOCATION\" />
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.INTERNET\" />
 
             \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
@@ -87,7 +93,8 @@
                     \n\t\t\tandroid:exported=\"false\">
 
                     \n\n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
                         \n\t\t\t\t<data android:mimeType=\"text/plain\"
@@ -97,7 +104,8 @@
                 \n\t\t</service>
 
                 \n\n\t\t<provider
-                    \n\t\t\tandroid:authorities=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
+                    \n\t\t\tandroid:authorities=
+                        \n\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
                     \n\t\t\tandroid:name=\".icc.MessagesProvider\"
                     \n\t\t\tandroid:grantUriPermissions=\"true\"
                     \n\t\t\tandroid:enabled=\"true\"
@@ -111,12 +119,18 @@
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
             \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.whatsapp\">
 
-            \n\n\t<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
-            \n\t<uses-permission android:name=\"android.permission.CAMERA\"/>
-            \n\t<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>
-            \n\t<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>
-            \n\t<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />
-            \n\t<uses-permission android:name=\"android.permission.INTERNET\" />
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.CAMERA\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.RECORD_AUDIO\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.WRITE_CONTACTS\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.ACCESS_FINE_LOCATION\" />
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.INTERNET\" />
 
             \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
@@ -139,7 +153,8 @@
                     \n\t\t\tandroid:exported=\"false\">
 
                     \n\n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
                         \n\t\t\t\t<data android:mimeType=\"text/plain\"
@@ -149,13 +164,15 @@
                 \n\t\t</service>
 
                 \n\n\t\t<provider
-                    \n\t\t\tandroid:authorities=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
+                    \n\t\t\tandroid:authorities=
+                        \n\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
                     \n\t\t\tandroid:name=\".icc.MessagesProviderHigh\"
                     \n\t\t\tandroid:grantUriPermissions=\"false\"
                     \n\t\t\tandroid:enabled=\"true\"
                     \n\t\t\tandroid:exported=\"false\"
                     \n\t\t\tandroid:label=\"Whatsapp messages content provider\">
-                    \n\t\t\t<grant-uri-permission android:pathPrefix=\"/chats/\"/>
+
+                    \n\n\t\t\t<grant-uri-permission android:pathPrefix=\"/chats/\"/>
                 \n\t\t</provider>
             \n\t</application>
         \n</manifest>]]>
@@ -176,7 +193,8 @@
 
             \n\n\tprivate fun finish(chatNamesToDelete: HashSet<String>) {
                 \n\t\tval resultIntent = Intent()
-                \n\t\tresultIntent.action = \"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\"
+                \n\t\tresultIntent.action =
+                    \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\"
                 \n\t\tresultIntent.addCategory(Intent.CATEGORY_APP_CONTACTS)
 
                 \n\n\t\tresultIntent.putExtra(\"chatNamesToDelete\", chatNamesToDelete)
@@ -206,12 +224,12 @@
             \n\n\tprivate fun finish(chatNamesToDelete: HashSet<String>) {
                 \n\t\tval resultIntent = Intent(this, DeleteMessagesService::class.java)
 
-                \n\t\tresultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
+                \n\n\t\tresultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
                 \n\t\tresultIntent.setDataAndType(MessagesProvider.CHATS_URI, "text/plain")
                 \n\t\tresultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or
                     \n\t\t\tIntent.FLAG_GRANT_WRITE_URI_PERMISSION
 
-                \n\t\tstartService(resultIntent)
+                \n\n\t\tstartService(resultIntent)
                 \n\t\tfinish()
             \n\t}
         \n}]]>
