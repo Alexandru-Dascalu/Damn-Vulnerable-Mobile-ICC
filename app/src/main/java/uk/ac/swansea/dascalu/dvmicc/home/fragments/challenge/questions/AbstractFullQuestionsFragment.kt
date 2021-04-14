@@ -53,9 +53,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val questionsRootView = inflater.inflate(R.layout.full_questions_fragment, container, false)
-
-        return questionsRootView
+        return inflater.inflate(R.layout.full_questions_fragment, container, false)
     }
 
     /**
