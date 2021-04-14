@@ -33,3 +33,6 @@ out/
 
 # Log Files
 *.log
+
+Thumbs.db
+news_aggregator/src/main/res/values/apiKey.xml
