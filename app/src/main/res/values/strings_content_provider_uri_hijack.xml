@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
+    <string name="contentProviderHijackingExplanation">
+        We have discussed that intents can transmit data using a URI. These URIs can point to data
+        stored in a Content Provider. We have also explained that permissions can be set on a
+        per component basis. However, when declaring a Content Provider in the manifest file, the
+        developer can set the android:grantUriPermissions tag of the &lt;provider&gt; element to true. This
+        means that the content provider can allow temporary access to data linked to in a URI for a
+        component that does not otherwise have the permission required by the provider. Therefore,
+        external apps can access the content provider, even if the provider is not exported and is thus
+        not accessible by external apps in general.
+
+        \n\nIn order to do this, the intent that transmits the URI link must have the
+        FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION flags added to it. If this
+        intent is an implicit intent and is intercepted by a malicious component, then that component
+        can read the data and perhaps modify it. This attack can put private information, such as debit
+        card information or a phone number, in the hands of attackers.
+    </string>
+
+    <string name="whatsappAppName">Whatsapp</string>
+    <string name="smsMessagesAppName">Messages</string>
+
+    <string-array name="providerHijackFlags">
+        <item>This is where the fun begins</item>
+        <item>General Grievous, you are shorter than I expected</item>
+        <item>Can\'t touch this!</item>
+    </string-array>
+
+    <string name="providerHijackLowDescription">
+        Intents that contain URIs to data in a content provider that should remain private are sent
+        as implicit intents. The provider is not exported, however it has temporary permissions
+        enabled. Intents pointing to data in the provider have the FLAG_GRANT_READ_URI_PERMISSION
+        and FLAG_GRANT_WRITE_URI_PERMISSION added.
+    </string>
+    <string name="providerHijackHighDescription">
+        Intents that contain URIs to data in a content provider that should remain private are sent
+        as implicit intents. The provider is not exported and has not enabled temporary permissions
+        overall.
+
+        \n\nHowever, temporary permissions are enabled only for a specific path in the provider.
+        Although the rest of the data in the provider is now secure and can not be accessed by other
+        apps, intents pointing to data in this path can be accessed with a temporary permission,
+        and can be intercepted by malware.
+
+        \n\nNOTE: The intent sending code for this level is the same as for the Low level.
+    </string>
+    <string name="providerHijackImpossibleDescription">
+        Intents that contain URIs to data in a content provider that should remain private are sent
+        as explicit intents. Malicious apps can not intercept these intents.
+
+        \n\nConsequently,
+        temporary permissions to access the private content provider are not given to the malware,
+        as without an intent with a URI to the provider and temporary access flags, the malware
+        will be refused access.
+    </string>
+
+    <string name="whatsappLowManifest">
+        <![CDATA[
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.whatsapp\">
+
+            \n\n\t<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
+            \n\t<uses-permission android:name=\"android.permission.CAMERA\"/>
+            \n\t<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>
+            \n\t<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>
+            \n\t<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />
+            \n\t<uses-permission android:name=\"android.permission.INTERNET\" />
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                \n\n\t\t<activity android:name=\".MainActivity\">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+                \n\t\t<activity android:name=\".DeleteActivity\"/>
+
+                \n\n\t\t<service android:name=\".icc.DeleteMessagesService\"
+                    \n\t\t\tandroid:enabled=\"true\"
+                    \n\t\t\tandroid:exported=\"false\">
+
+                    \n\n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
+                        \n\t\t\t\t<data android:mimeType=\"text/plain\"
+                            \n\t\t\t\t\tandroid:scheme=\"content\"
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</service>
+
+                \n\n\t\t<provider
+                    \n\t\t\tandroid:authorities=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
+                    \n\t\t\tandroid:name=\".icc.MessagesProvider\"
+                    \n\t\t\tandroid:grantUriPermissions=\"true\"
+                    \n\t\t\tandroid:enabled=\"true\"
+                    \n\t\t\tandroid:exported=\"false\"
+                    \n\t\t\tandroid:label=\"Whatsapp messages content provider\"/>
+            \n\t</application>
+        \n</manifest>]]>
+    </string>
+    <string name="whatsappHighManifest">
+        <![CDATA[
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.whatsapp\">
+
+            \n\n\t<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
+            \n\t<uses-permission android:name=\"android.permission.CAMERA\"/>
+            \n\t<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>
+            \n\t<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>
+            \n\t<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />
+            \n\t<uses-permission android:name=\"android.permission.INTERNET\" />
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                \n\n\t\t<activity android:name=\".MainActivity\">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+                \n\t\t<activity android:name=\".DeleteActivity\"/>
+
+                \n\n\t\t<service android:name=\".icc.DeleteMessagesService\"
+                    \n\t\t\tandroid:enabled=\"true\"
+                    \n\t\t\tandroid:exported=\"false\">
+
+                    \n\n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
+                        \n\t\t\t\t<data android:mimeType=\"text/plain\"
+                            \n\t\t\t\t\tandroid:scheme=\"content\"
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</service>
+
+                \n\n\t\t<provider
+                    \n\t\t\tandroid:authorities=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
+                    \n\t\t\tandroid:name=\".icc.MessagesProviderHigh\"
+                    \n\t\t\tandroid:grantUriPermissions=\"false\"
+                    \n\t\t\tandroid:enabled=\"true\"
+                    \n\t\t\tandroid:exported=\"false\"
+                    \n\t\t\tandroid:label=\"Whatsapp messages content provider\">
+                    \n\t\t\t<grant-uri-permission android:pathPrefix=\"/chats/\"/>
+                \n\t\t</provider>
+            \n\t</application>
+        \n</manifest>]]>
+    </string>
+
+    <string name="whatsappLowIntentCode" >
+        <![CDATA[
+        class DeleteActivity : AppCompatActivity() {
+            \n\t...
+            \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
+                \n\t\twhen(item.itemId) {
+                    \n\t\t\tR.id.delete_chats_button -> {
+                        \n\t\t\t\t...
+                        \n\t\t\t\tfinish(chatNamesToDelete)
+                    \n\t\t\t}
+                \n\t\t}
+            \n\t}
+
+            \n\n\tprivate fun finish(chatNamesToDelete: HashSet<String>) {
+                \n\t\tval resultIntent = Intent()
+                \n\t\tresultIntent.action = \"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\"
+                \n\t\tresultIntent.addCategory(Intent.CATEGORY_APP_CONTACTS)
+
+                \n\n\t\tresultIntent.putExtra(\"chatNamesToDelete\", chatNamesToDelete)
+                \n\t\tresultIntent.setDataAndType(MessagesProvider.CHATS_URI, \"text/plain\")
+                \n\t\tresultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or
+                    \n\t\t\tIntent.FLAG_GRANT_WRITE_URI_PERMISSION
+
+                \n\n\t\tstartService(resultIntent)
+                \n\t\tfinish()
+            \n\t}
+        \n}]]>
+    </string>
+
+    <string name="whatsappImpossibleIntentCode">
+       <![CDATA[
+        class DeleteActivity : AppCompatActivity() {
+            \n\t...
+            \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
+                \n\t\twhen(item.itemId) {
+                    \n\t\t\tR.id.delete_chats_button -> {
+                        \n\t\t\t\t...
+                        \n\t\t\t\tfinish(chatNamesToDelete)
+                    \n\t\t\t}
+                \n\t\t}
+            \n\t}
+
+            \n\n\tprivate fun finish(chatNamesToDelete: HashSet<String>) {
+                \n\t\tval resultIntent = Intent(this, DeleteMessagesService::class.java)
+
+                \n\t\tresultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
+                \n\t\tresultIntent.setDataAndType(MessagesProvider.CHATS_URI, "text/plain")
+                \n\t\tresultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or
+                    \n\t\t\tIntent.FLAG_GRANT_WRITE_URI_PERMISSION
+
+                \n\t\tstartService(resultIntent)
+                \n\t\tfinish()
+            \n\t}
+        \n}]]>
+    </string>
+</resources>

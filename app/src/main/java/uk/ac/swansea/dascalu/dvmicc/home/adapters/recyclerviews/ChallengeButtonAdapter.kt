@@ -26,6 +26,7 @@ class ChallengeButtonAdapter(private val challengeList: Array<String>) : Recycle
             1 -> holder.challenge = Challenge.BROADCAST_THEFT_DOS
             2 -> holder.challenge = Challenge.BROADCAST_THEFT_MITM
             3 -> holder.challenge = Challenge.ACTIVITY_INTENT_HIJACK
+            4 -> holder.challenge = Challenge.CONTENT_PROVIDER_URI_HIJACK
         }
         holder.challengeButton.text = challengeList[position]
     }
