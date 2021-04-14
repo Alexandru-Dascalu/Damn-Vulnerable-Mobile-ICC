@@ -19,4 +19,10 @@
     <string name="clear_log">Clear Log</string>
     <string name="no_data">No data yet!</string>
     <string name="log_cleared">Log cleared!</string>
+
+    <string-array name="providerHijackFlags">
+        <item>This is where the fun begins</item>
+        <item>General Grievous, you are shorter than I expected</item>
+        <item>Can\'t touch this!</item>
+    </string-array>
 </resources>
