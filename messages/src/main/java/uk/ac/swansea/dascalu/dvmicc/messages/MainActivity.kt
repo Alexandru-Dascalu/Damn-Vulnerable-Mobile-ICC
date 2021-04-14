@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkPermissions() : Boolean {
         val hasStoragePermission : Boolean = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
         val hasReadSMSPermission : Boolean = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED
         val hasReceiveSMSPermission : Boolean = ContextCompat.checkSelfPermission(this,

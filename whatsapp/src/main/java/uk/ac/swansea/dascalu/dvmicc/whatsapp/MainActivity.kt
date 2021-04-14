@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val requestPermissionsLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
 
-        if(permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == true) {
+        if(permissions[Manifest.permission.WRITE_EXTERNAL_STORAGE] == true) {
             Snackbar.make(findViewById(R.id.mainActivityToolbar),
                     R.string.storagePermissionAcquired, Snackbar.LENGTH_LONG).show()
         } else if(permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == false) {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         chatsView.addItemDecoration(dividerItemDecoration)
 
         if(!checkPermissions()) {
-            val permissions : Array<String> = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
+            val permissions : Array<String> = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO,
                     Manifest.permission.WRITE_CONTACTS, Manifest.permission.ACCESS_FINE_LOCATION)
             requestPermissionsLauncher.launch(permissions)
