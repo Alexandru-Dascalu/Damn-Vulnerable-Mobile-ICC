@@ -28,7 +28,7 @@
 
         <service android:name=".icc.DeleteMessagesService"
             android:enabled="true"
-            android:exported="false">
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE" />
@@ -37,6 +37,9 @@
                 <data android:mimeType="text/plain"
                     android:scheme="content"
                     android:host="uk.ac.swansea.dascalu.dvmicc.whatsapp.provider"/>
+                <data android:mimeType="text/plain"
+                    android:scheme="content"
+                    android:host="uk.ac.swansea.dascalu.dvmicc.whatsapp.providerHigh"/>
             </intent-filter>
         </service>
         
@@ -47,6 +50,16 @@
             android:enabled="true"
             android:exported="false"
             android:label="Whatsapp messages content provider"/>
+
+        <provider
+            android:authorities="uk.ac.swansea.dascalu.dvmicc.whatsapp.providerHigh"
+            android:name=".icc.MessagesProviderHigh"
+            android:grantUriPermissions="false"
+            android:enabled="true"
+            android:exported="false"
+            android:label="Whatsapp messages content provider">
+            <grant-uri-permission android:pathPrefix="/chats"/>
+        </provider>
     </application>
 
 </manifest>

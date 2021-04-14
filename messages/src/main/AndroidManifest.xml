@@ -37,6 +37,9 @@
                 <data android:mimeType="text/plain"
                     android:scheme="content"
                     android:host="uk.ac.swansea.dascalu.dvmicc.whatsapp.provider"/>
+                <data android:mimeType="text/plain"
+                    android:scheme="content"
+                    android:host="uk.ac.swansea.dascalu.dvmicc.whatsapp.providerHigh"/>
             </intent-filter>
         </service>
     </application>

@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters.DeleteChatsAdapter
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.DeleteMessagesService
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProviderHigh
 
 class DeleteActivity : AppCompatActivity() {
     companion object {
@@ -67,15 +69,39 @@ class DeleteActivity : AppCompatActivity() {
     }
 
     private fun finish(chatNamesToDelete: HashSet<String>) {
-        val resultIntent = Intent()
-        resultIntent.action = DELETE_ACTION
-        resultIntent.addCategory(Intent.CATEGORY_APP_CONTACTS)
+        val securityLevel : String = loadSecuritySettingsFromFile(this)
 
-        resultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
-        resultIntent.setDataAndType(MessagesProvider.CHATS_URI, "text/plain")
-        resultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+        if (securityLevel == "low") {
+            val resultIntent = Intent()
+            resultIntent.action = DELETE_ACTION
+            resultIntent.addCategory(Intent.CATEGORY_APP_CONTACTS)
 
-        startService(resultIntent)
+            resultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
+            resultIntent.setDataAndType(MessagesProvider.CHATS_URI, "text/plain")
+            resultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+
+            startService(resultIntent)
+        } else if (securityLevel == "high") {
+            val resultIntent = Intent()
+            resultIntent.action = DELETE_ACTION
+            resultIntent.addCategory(Intent.CATEGORY_APP_CONTACTS)
+
+            resultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
+            resultIntent.setDataAndType(MessagesProviderHigh.CHATS_URI, "text/plain")
+            resultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+
+            startService(resultIntent)
+        } else if (securityLevel == "impossible") {
+            val resultIntent = Intent(this, DeleteMessagesService::class.java)
+
+            resultIntent.putExtra("chatNamesToDelete", chatNamesToDelete)
+            resultIntent.setDataAndType(MessagesProvider.CHATS_URI, "text/plain")
+            resultIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+
+            startService(resultIntent)
+        }
+
+        Thread.sleep(100)
         finish()
     }
 }

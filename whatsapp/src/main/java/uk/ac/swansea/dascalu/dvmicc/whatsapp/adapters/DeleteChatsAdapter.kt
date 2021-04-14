@@ -1,6 +1,7 @@
 package uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,29 +13,18 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.ChatPreview
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.R
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProviderHigh
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.loadSecuritySettingsFromFile
 
 import java.text.SimpleDateFormat
 import java.util.Date
 
 import kotlin.collections.ArrayList
 
-class DeleteChatsAdapter(private val context: Context) : RecyclerView.Adapter<DeleteChatsAdapter.ViewHolder>() {
+class DeleteChatsAdapter(context: Context) : RecyclerView.Adapter<DeleteChatsAdapter.ViewHolder>() {
     private val data : ArrayList<ChatPreview> = ArrayList<ChatPreview>()
     init {
-        val cursor = context.contentResolver.query(MessagesProvider.Contract.CHATS_URI,
-                null, null, null,null)
-
-        if(cursor != null) {
-            while(cursor.moveToNext()) {
-                val name = cursor.getString(0)
-                val previewMessage = cursor.getString(1)
-                val time = cursor.getString(2)
-
-                data.add(ChatPreview(name, previewMessage, time))
-            }
-
-            cursor.close()
-        }
+        loadData(context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -54,6 +44,32 @@ class DeleteChatsAdapter(private val context: Context) : RecyclerView.Adapter<De
         holder.messageTextView.text = data[position].previewMessage
 
         holder.timeTextView.text = getMessageDate(position)
+    }
+
+    private fun loadData(context: Context) {
+        data.clear()
+
+        val securityLevel: String = loadSecuritySettingsFromFile(context)
+        val uri : Uri = if (securityLevel == "high") {
+            MessagesProviderHigh.CHATS_URI
+        } else {
+            MessagesProvider.CHATS_URI
+        }
+
+        val cursor = context.contentResolver.query(uri,
+                null, null, null,null)
+
+        if(cursor != null) {
+            while(cursor.moveToNext()) {
+                val name = cursor.getString(0)
+                val previewMessage = cursor.getString(1)
+                val time = cursor.getString(2)
+
+                data.add(ChatPreview(name, previewMessage, time))
+            }
+
+            cursor.close()
+        }
     }
 
     private fun getMessageDate(position: Int) : String {

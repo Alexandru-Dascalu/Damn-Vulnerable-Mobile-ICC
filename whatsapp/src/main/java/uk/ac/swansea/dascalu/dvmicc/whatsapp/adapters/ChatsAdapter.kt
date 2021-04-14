@@ -1,6 +1,7 @@
 package uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.ChatPreview
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.R
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProvider
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.MessagesProviderHigh
+import uk.ac.swansea.dascalu.dvmicc.whatsapp.loadSecuritySettingsFromFile
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -43,7 +46,15 @@ class ChatsAdapter(context: Context) : RecyclerView.Adapter<ChatsAdapter.ViewHol
 
     fun loadData(context: Context) {
         data.clear()
-        val cursor = context.contentResolver.query(MessagesProvider.CHATS_URI,
+
+        val securityLevel: String = loadSecuritySettingsFromFile(context)
+        val uri : Uri = if (securityLevel == "high") {
+            MessagesProviderHigh.CHATS_URI
+        } else {
+            MessagesProvider.CHATS_URI
+        }
+
+        val cursor = context.contentResolver.query(uri,
                 null, null, null,null)
 
         if(cursor != null) {
