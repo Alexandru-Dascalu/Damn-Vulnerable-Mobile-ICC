@@ -6,6 +6,9 @@
     </string>
     <string name="storagePermissionAcquired">Storage permission acquired!</string>
 
+    <string name="smsPermissionAcquired">Read SMS permission acquired!</string>
+    <string name="smsPermissionWarning">App needs permission to read SMS messages!</string>
+
     <string name="settings">Settings</string>
     <string name="search">Search</string>
     <string name="help">Help</string>

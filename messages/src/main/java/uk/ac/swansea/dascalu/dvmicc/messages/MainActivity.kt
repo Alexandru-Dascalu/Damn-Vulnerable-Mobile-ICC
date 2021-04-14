@@ -38,11 +38,11 @@ class MainActivity : AppCompatActivity() {
 
         if (permissions[Manifest.permission.READ_SMS] == true) {
             Snackbar.make(findViewById<MaterialToolbar>(R.id.mainActivityToolbar),
-                    "Read SMS permission acquired!", Snackbar.LENGTH_LONG).show()
+                    R.string.smsPermissionAcquired, Snackbar.LENGTH_LONG).show()
             addAdapter()
         } else if (permissions[Manifest.permission.READ_SMS] == false) {
             Snackbar.make(findViewById<MaterialToolbar>(R.id.mainActivityToolbar),
-                    "App needs permission to read SMS messages!", Snackbar.LENGTH_LONG).show()
+                    R.string.smsPermissionWarning, Snackbar.LENGTH_LONG).show()
         /* the boolean can be null is the app has storage permission before this launcher was
             called.*/
         } else {
