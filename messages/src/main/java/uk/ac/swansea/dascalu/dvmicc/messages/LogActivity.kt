@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.moneymanager
+package uk.ac.swansea.dascalu.dvmicc.messages
 
 import android.os.Bundle
 import android.view.Menu
@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 
@@ -23,7 +24,7 @@ class LogActivity : AppCompatActivity() {
         title = resources.getString(R.string.log)
         setSupportActionBar(appBar)
 
-        readLog()
+        readStolenData()
         findViewById<TextView>(R.id.logTextView).setTextIsSelectable(true)
     }
 
@@ -33,10 +34,10 @@ class LogActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.clear_log_button -> {
                 deleteFile("data.txt")
-                readLog()
+                readStolenData()
 
                 val view = findViewById<ScrollView>(R.id.logScrollView)
                 Snackbar.make(view, getString(R.string.log_cleared), Snackbar.LENGTH_LONG).show()
@@ -46,7 +47,7 @@ class LogActivity : AppCompatActivity() {
         }
     }
 
-    private fun readLog() {
+    private fun readStolenData() {
         val dataTextView = findViewById<TextView>(R.id.logTextView)
 
         try {

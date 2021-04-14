@@ -1,10 +1,12 @@
 package uk.ac.swansea.dascalu.dvmicc.messages
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -75,6 +77,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_appbar_layout, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.log_button -> {
+                val intent = Intent(this, LogActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onStart() {

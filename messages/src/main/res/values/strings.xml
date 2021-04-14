@@ -11,4 +11,9 @@
     <string name="help">Help</string>
     <string name="spam_messages">Spam Messages</string>
     <string name="chats_image_content_description">Default Profile Image</string>
+
+    <string name="log">Messages Log</string>
+    <string name="clear_log">Clear Log</string>
+    <string name="no_data">No data yet!</string>
+    <string name="log_cleared">Log cleared!</string>
 </resources>

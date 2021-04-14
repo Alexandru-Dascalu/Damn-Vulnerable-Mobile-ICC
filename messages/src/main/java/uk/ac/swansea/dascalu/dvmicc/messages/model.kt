@@ -28,3 +28,5 @@ data class Chat(val name: String, val messages: ArrayList<SMS>) {
 
 data class SMS(var ID: String = "", var address: String = "", var message: String = "",
                var readState: String = "", var time : Long? = 0, var type: String = "")
+
+data class ChatPreview(val name: String, val previewMessage: String, val date: String)

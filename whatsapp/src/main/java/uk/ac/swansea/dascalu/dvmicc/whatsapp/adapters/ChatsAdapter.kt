@@ -62,7 +62,7 @@ class ChatsAdapter(context: Context) : RecyclerView.Adapter<ChatsAdapter.ViewHol
     private fun getMessageDate(position: Int) : String {
         val utcDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val calendaristicDateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val time : Long = (utcDateFormat.parse(data[position].time) as Date).time
+        val time : Long = (utcDateFormat.parse(data[position].date) as Date).time
 
         val messageDate : String = calendaristicDateFormat.format(time)
         val todayDate : String = calendaristicDateFormat.format(System.currentTimeMillis())

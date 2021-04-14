@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import uk.ac.swansea.dascalu.dvmicc.messages.Chat
 
+import androidx.recyclerview.widget.RecyclerView
+
+import uk.ac.swansea.dascalu.dvmicc.messages.Chat
 import uk.ac.swansea.dascalu.dvmicc.messages.R
 import uk.ac.swansea.dascalu.dvmicc.messages.SMS
 
