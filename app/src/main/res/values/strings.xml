@@ -4,6 +4,7 @@
     <!--Strings for the Introduction fragment-->
     <string name="welcome_msg">Welcome to DVM-ICC!</string>
     <string name="introductionHeading">Introduction</string>
+    <string name="challengeConclusion">Challenge Conclusion</string>
     <string name="introductionText">
         Damn Vulnerable Mobile -  Inter Component Communication is an intentionally insecure
         Android image, created to be an educational tool to teach people about cyberattacks and

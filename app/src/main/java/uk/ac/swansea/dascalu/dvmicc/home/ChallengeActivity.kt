@@ -105,8 +105,8 @@ class ChallengeActivity :  AppCompatActivity() {
 
             return true
         } else if (item.itemId == R.id.trophyButton) {
-            val intent = Intent(this, ChallengePrizeActivity::class.java)
-            intent.putExtra("explanationID", challengeModel.scenarioExplanation)
+            val intent = Intent(this, ChallengeConclusionActivity::class.java)
+            intent.putExtra("explanationID", challengeModel.scenarioConclusion)
             intent.putExtra("hasCompletedChallenge", hasCompletedChallenge)
 
             startActivity(intent)

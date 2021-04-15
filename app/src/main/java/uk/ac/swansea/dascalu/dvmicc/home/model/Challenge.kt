@@ -3,7 +3,7 @@ package uk.ac.swansea.dascalu.dvmicc.home.model
 import uk.ac.swansea.dascalu.dvmicc.home.R
 
 enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, val securityLevels: Map<String, SecurityLevel>,
-                     val instructions: Int, val scenarioExplanation: Int, val apiRequirements: Int) {
+                     val instructions: Int, val scenarioConclusion: Int, val apiRequirements: Int) {
 
     BROADCAST_THEFT(0,  R.string.broadcastTheftExplanation,
             mapOf("low" to SecurityLevel(R.string.broadcastTheftLowDescription, R.string.newsAggregatorLowManifest, R.string.newsAggregatorLowIntentCode),
@@ -34,7 +34,7 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
             mapOf("low" to SecurityLevel(R.string.providerHijackLowDescription, R.string.whatsappLowManifest, R.string.whatsappLowIntentCode),
                     "high" to SecurityLevel(R.string.providerHijackHighDescription, R.string.whatsappHighManifest),
                     "impossible" to SecurityLevel(R.string.providerHijackImpossibleDescription, intentCodeID = R.string.whatsappImpossibleIntentCode)),
-            R.string.contentProviderHijackInstructions, 0, 0)
+            R.string.contentProviderHijackInstructions, R.string.contentProviderHijackScenarioConclusion, 0)
 }
 
 data class SecurityLevel(val explanationID: Int, val manifestID: Int? = null, val intentCodeID: Int? = null)
