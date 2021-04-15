@@ -8,8 +8,8 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "uk.ac.swansea.dascalu.dvmicc.call_logger"
-        minSdkVersion 21
+        applicationId "uk.ac.swansea.dascalu.dvmicc.call_logger2"
+        minSdkVersion 17
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 25
         versionCode 1

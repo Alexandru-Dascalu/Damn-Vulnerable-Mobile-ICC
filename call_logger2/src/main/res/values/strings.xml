@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Call Logger 2</string>
+    <string name="unknown_number">Unknown number</string>
+    <string name="duration">Duration: %1$s</string>
+    <string name="clear_data">Clear Log</string>
+    <string name="no_data">No data yet!</string>
+    <string name="log_cleared">Log cleared!</string>
+    <string name="log_activity_title">Log</string>
+
+    <string name="lowSecurityLevel">Low</string>
+    <string name="mediumSecurityLevel">Medium</string>
+    <string name="highSecurityLevel">High</string>
+    <string name="veryHighSecurityLevel">Very High</string>
+    <string name="impossibleSecurityLevel">Impossible</string>
+
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to read security level!
+    </string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
+
+    <string name="callLogPermissionWarning">Call Logger needs permission to read call log!</string>
+    <string name="callLogPermissionsAcquired">Read Call Log permissions obtained!</string>
+</resources>

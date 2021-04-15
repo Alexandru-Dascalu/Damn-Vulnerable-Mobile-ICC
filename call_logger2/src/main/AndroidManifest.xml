@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="uk.ac.swansea.dascalu.dvmicc.call_logger">
+    package="uk.ac.swansea.dascalu.dvmicc.call_logger2">
 
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission
@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-permission
-        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B"/>
+        android:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_A"/>
 
     <application
         android:allowBackup="true"

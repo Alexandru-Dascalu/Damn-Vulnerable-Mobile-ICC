@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>\
+    <color name="green">#4CAF50</color>
+    <color name="greenDark">#087f23</color>
+    <color name="greenLight">#80e27e</color>
+
+    <color name="pink">#FF4081</color>
+    <color name="pinkDark">#c60055</color>
+    <color name="pinkLight">#ff79b0</color>
+
+    <color name="blackText">#212121</color>
+    <color name="greyText">#757575</color>
+    <color name="divider">#BDBDBD</color>
+</resources>
