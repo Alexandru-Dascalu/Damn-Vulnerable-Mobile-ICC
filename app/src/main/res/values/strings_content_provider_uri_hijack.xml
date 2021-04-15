@@ -234,4 +234,16 @@
             \n\t}
         \n}]]>
     </string>
+
+    <string name="contentProviderHijackInstructions">
+        Go to the Whatsapp app and look around. This app lets you view your chats, and you can also
+        delete an entire chat. Press on the bin icon to go the remove chats screen, and select what
+        chats to remove. To make the deleted chats appear again, close the app and restart it.
+
+        \n\nGo and take a look at the Messages app as well.
+
+        \n\nWhen the malware overcome mode is enabled, you should see that the selected chats in
+        Whatsapp are not deleted. Then you should look in the log of the Messages app and see
+        what you find. Repeat this for all security levels. Clear the log between security levels.
+    </string>
 </resources>

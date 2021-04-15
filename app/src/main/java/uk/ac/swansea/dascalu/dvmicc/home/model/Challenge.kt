@@ -34,7 +34,7 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
             mapOf("low" to SecurityLevel(R.string.providerHijackLowDescription, R.string.whatsappLowManifest, R.string.whatsappLowIntentCode),
                     "high" to SecurityLevel(R.string.providerHijackHighDescription, R.string.whatsappHighManifest),
                     "impossible" to SecurityLevel(R.string.providerHijackImpossibleDescription, intentCodeID = R.string.whatsappImpossibleIntentCode)),
-            0, 0, 0)
+            R.string.contentProviderHijackInstructions, 0, 0)
 }
 
 data class SecurityLevel(val explanationID: Int, val manifestID: Int? = null, val intentCodeID: Int? = null)
