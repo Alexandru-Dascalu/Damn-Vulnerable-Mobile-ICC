@@ -65,6 +65,12 @@ class ManifestsFragment : Fragment() {
         val callLoggerXML = view.findViewById<CodeView>(R.id.callLogManifest)
         setCodeViewOptions(context!!, callLoggerXML, "xml", R.string.callLoggerManifest)
 
+        val whatsappManifest = view.findViewById<CodeView>(R.id.whatsappManifest)
+        setCodeViewOptions(context!!, whatsappManifest, "xml", R.string.whatsappLowManifest)
+
+        val whatsappMainActivityIntentCode = view.findViewById<CodeView>(R.id.whatsappMainActivityIntentCode)
+        setCodeViewOptions(context!!, whatsappMainActivityIntentCode, "java", R.string.whatsappMainActivityIntentCode)
+
         val newsAggregatorXML = view.findViewById<CodeView>(R.id.newsAggregatorManifest)
         setCodeViewOptions(context!!, newsAggregatorXML, "xml", R.string.newsAggregatorLowManifest)
 
@@ -91,5 +97,11 @@ class ManifestsFragment : Fragment() {
 
         val moneyManagerLoginActivityIntentCode = view.findViewById<CodeView>(R.id.moneyManagerLoginActivityIntentCode)
         setCodeViewOptions(context!!, moneyManagerLoginActivityIntentCode, "java", R.string.moneyManagerLoginActivityIntentCode)
+
+        val messagesManifest = view.findViewById<CodeView>(R.id.messagesManifest)
+        setCodeViewOptions(context!!, messagesManifest, "xml", R.string.messagesManifest)
+
+        val messagesMainActivityIntentCode = view.findViewById<CodeView>(R.id.messagesMainActivityIntentCode)
+        setCodeViewOptions(context!!, messagesMainActivityIntentCode, "java", R.string.messagesMainActivityIntentCode)
     }
 }

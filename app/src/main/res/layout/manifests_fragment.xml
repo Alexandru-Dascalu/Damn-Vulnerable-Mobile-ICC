@@ -215,6 +215,38 @@
             android:paddingEnd="8dp"/>
 
         <TextView
+            android:id="@+id/whatsappHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="20dp"
+            android:paddingBottom="12dp"
+
+            android:text="@string/whatsappAppName"
+            android:textAppearance="@style/manifestFragmentAppNameStyle" />
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/whatsappManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/whatsappMainActivityIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <TextView
             android:id="@+id/newsAggregatorHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -320,6 +352,38 @@
 
         <io.github.kbiakov.codeview.CodeView
             android:id="@+id/moneyManagerLoginActivityIntentCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/messagesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+
+            android:paddingTop="20dp"
+            android:paddingBottom="12dp"
+
+            android:text="@string/smsMessagesAppName"
+            android:textAppearance="@style/manifestFragmentAppNameStyle" />
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/messagesManifest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <io.github.kbiakov.codeview.CodeView
+            android:id="@+id/messagesMainActivityIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 

@@ -21,7 +21,6 @@ import com.google.android.material.snackbar.Snackbar
 import uk.ac.swansea.dascalu.dvmicc.whatsapp.adapters.ChatsAdapter
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var chatsAdapter : ChatsAdapter
     private val requestPermissionsLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -73,9 +72,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
-            else -> {
-                return super.onOptionsItemSelected(item)
-            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 

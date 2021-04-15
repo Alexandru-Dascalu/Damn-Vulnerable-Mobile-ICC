@@ -241,6 +241,92 @@
         \n}]]>
     </string>
 
+    <string name="whatsappMainActivityIntentCode">
+        <![CDATA[
+        class MainActivity : AppCompatActivity() {
+            \n\t...
+            \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
+                \n\t\twhen(item.itemId) {
+                    \n\t\t\tR.id.delete_activity_button -> {
+                        \n\t\t\t\tval intent = Intent(this, DeleteActivity::class.java)
+                        \n\t\t\t\tstartActivity(intent)
+                        \n\t\t\t\treturn true
+                    \n\t\t\t}
+                    \n\t\t\t...
+                \n\t\t}
+            \n\t}
+        \n}]]>
+    </string>
+
+    <string name="messagesManifest">
+        <![CDATA[
+        <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.messages\">
+
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.INTERNET\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_SMS\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.SEND_SMS\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.RECEIVE_WAP_PUSH\"/>
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.RECEIVE_SMS\"/>
+
+            \n\n\t<application
+                \n\t\tandroid:allowBackup=\"true\"
+                \n\t\tandroid:icon=\"@mipmap/ic_launcher\"
+                \n\t\tandroid:label=\"@string/app_name\"
+                \n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"
+                \n\t\tandroid:supportsRtl=\"true\"
+                \n\t\tandroid:theme=\"@style/Theme.DamnVulnerableMobileICC\">
+
+                \n\n\t\t<activity android:name=\".MainActivity\">
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
+                    \n\t\t\t</intent-filter>
+                \n\t\t</activity>
+                \n\t\t<activity android:name=\".LogActivity\"/>
+
+                \n\n\t\t<service android:name=\".icc.MessagesService\"
+                    \n\t\t\tandroid:enabled=\"true\"
+                    \n\t\t\tandroid:exported=\"true\">
+
+                    \n\t\t\t<intent-filter>
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
+                        \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
+                        \n\t\t\t\t<data android:mimeType=\"text/plain\"
+                            \n\t\t\t\t\tandroid:scheme=\"content\"
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"/>
+                    \n\t\t\t</intent-filter>
+                \n\t\t</service>
+            \n\t</application>
+        \n</manifest>]]>
+    </string>
+
+    <string name="messagesMainActivityIntentCode">
+        <![CDATA[
+        class MainActivity : AppCompatActivity() {
+            \n\t...
+            \n\toverride fun onOptionsItemSelected(item: MenuItem): Boolean {
+                \n\t\twhen (item.itemId) {
+                    \n\t\t\tR.id.log_button -> {
+                        \n\t\t\t\tval intent = Intent(this, LogActivity::class.java)
+                        \n\t\t\t\tstartActivity(intent)
+                        \n\t\t\t\treturn true
+                    \n\t\t\t}
+                    \n\t\t\t...
+                \n\t\t}
+            \n\t}
+        \n}]]>
+    </string>
+
     <string name="contentProviderHijackInstructions">
         Go to the Whatsapp app and look around. This app lets you view your chats, and you can also
         delete an entire chat. Press on the bin icon to go the remove chats screen, and select what
