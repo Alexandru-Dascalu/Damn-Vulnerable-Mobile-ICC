@@ -112,9 +112,15 @@ class Database (private val authenticator: FirebaseAuth, private val callback : 
     }
 
     fun removeCustomNewsStream(deletedName: String) {
-        val hasChanged = user.customStreams.removeIf { stream -> stream.name.toLowerCase() == deletedName.toLowerCase() }
+        var streamToRemoveIndex : Int = -1
+        user.customStreams.forEachIndexed { index, stream ->
+            if(stream.name.toLowerCase() == deletedName.toLowerCase()) {
+                streamToRemoveIndex = index
+            }
+        }
 
-        if(hasChanged) {
+        if(streamToRemoveIndex != -1) {
+            user.customStreams.removeAt(streamToRemoveIndex)
             userReference.setValue(user)
         }
     }
@@ -156,10 +162,16 @@ class Database (private val authenticator: FirebaseAuth, private val callback : 
         }
     }
 
-    fun removeCustomKeyword(keyword: String) {
-        val hasChanged = user.customKeywords.removeIf { it.toLowerCase() == keyword.toLowerCase() }
+    fun removeCustomKeyword(keywordToRemove: String) {
+        var keywordToRemoveIndex : Int = -1
+        user.customKeywords.forEachIndexed { index, keyword ->
+            if(keyword.toLowerCase() == keywordToRemove.toLowerCase()) {
+                keywordToRemoveIndex = index
+            }
+        }
 
-        if(hasChanged) {
+        if(keywordToRemoveIndex != -1) {
+            user.customKeywords.removeAt(keywordToRemoveIndex)
             userReference.setValue(user)
         }
     }
@@ -237,8 +249,10 @@ class Database (private val authenticator: FirebaseAuth, private val callback : 
         val gson = Gson()
 
         for(jsonBookmark in user.bookmarks) {
-            val article : ArticleDto = gson.fromJson(jsonBookmark, ArticleDto::class.java)
-            bookmarks.add(article)
+            val article : ArticleDto? = gson.fromJson(jsonBookmark, ArticleDto::class.java)
+            if(article != null) {
+                bookmarks.add(article)
+            }
         }
 
         return bookmarks
