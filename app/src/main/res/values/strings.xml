@@ -539,10 +539,6 @@
         <item>@string/activityHijackName</item>
         <item>@string/providerHijackName</item>
         <item>@string/broadcastInjectionName</item>
-        <item>@string/activityLaunchName</item>
-        <item>@string/serviceLaunchName</item>
-        <item>@string/permissionAvoidanceName</item>
-        <item>@string/appCollusionName</item>
     </string-array>
 
     <!--security level names-->
