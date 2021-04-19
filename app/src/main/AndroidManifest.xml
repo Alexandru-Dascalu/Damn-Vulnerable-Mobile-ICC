@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChallengeActivity"/>
+        <activity android:name=".ChallengeActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ChallengeSettingsActivity"/>
         <activity android:name=".HelpActivity"/>
         <activity android:name=".AcknowledgementsActivity"/>
