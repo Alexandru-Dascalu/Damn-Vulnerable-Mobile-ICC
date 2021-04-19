@@ -66,7 +66,13 @@ class ChallengeActivity :  AppCompatActivity() {
 
         val bottomBar = findViewById<BottomNavigationView>(R.id.challengeNavigationBar)
         bottomBar.setOnNavigationItemSelectedListener(navigationBarListener)
-        bottomBar.selectedItemId = R.id.challengeInformationButton
+
+        if (savedInstanceState == null || savedInstanceState.getInt("bottomBarItemID") == 0) {
+            bottomBar.selectedItemId = R.id.challengeInformationButton
+        } else {
+            bottomBar.selectedItemId = savedInstanceState.getInt("bottomBarItemID")
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -106,6 +112,8 @@ class ChallengeActivity :  AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        outState.putInt("bottomBarItemID", findViewById<BottomNavigationView>(
+                R.id.challengeNavigationBar).selectedItemId)
     }
 
     private fun getQuestionsFragmentName() : String {
@@ -123,12 +131,24 @@ class ChallengeActivity :  AppCompatActivity() {
         val newFragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, newFragmentName)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
-        if(supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
+        /*Only manually save fragment the questions fragment is replaced by another fragment. If
+        you rotate screen while on questions fragment, the fragment state will have been already
+        saved when the activity was destroyed, and trying to save its state a second time results
+        in a crash.*/
+        if(tag != "questionsFragment" && supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
             ViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
                 supportFragmentManager.findFragmentByTag("questionsFragment")!!)
         }
 
         fragmentTransaction.replace(R.id.challengeContentFrame, newFragment, tag)
         fragmentTransaction.commit()
+    }
+
+    override fun onDestroy() {
+        if(supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
+            ViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
+                    supportFragmentManager.findFragmentByTag("questionsFragment")!!)
+        }
+        super.onDestroy()
     }
 }
