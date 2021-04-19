@@ -9,5 +9,5 @@ include ':cpu_booster'
 include ':call_redirect'
 include ':call_logger'
 include ':news_aggregator'
-include ':app'
+include ':home'
 rootProject.name = "Damn Vulnerable Mobile ICC"
