@@ -1,15 +1,19 @@
 package uk.ac.swansea.dascalu.dvmicc.newsaggregator
 
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 import uk.ac.swansea.dascalu.dvmicc.newsaggregator.fragments.BookmarksFragment
@@ -23,6 +27,17 @@ class MainActivity : AppCompatActivity() {
     private var receiverIntentFilter : IntentFilter? = null
     var newsBroadcastReceiver : NewsBroadcastReceiver? = null
         private set
+
+    private val readNewsPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+        if (isGranted) {
+            Snackbar.make(findViewById(R.id.main_content_frame),
+                R.string.readNewsPermissionAcquired, Snackbar.LENGTH_LONG).show()
+        } else {
+            Snackbar.make(findViewById(R.id.main_content_frame),
+                R.string.readNewsPermissionWarning, Snackbar.LENGTH_LONG).show()
+        }
+    }
 
     private val navigationBarItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -79,6 +94,11 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onStart() {
+        super.onStart()
+        acquirePermissionsForReceiver()
+    }
+
     override fun onResume() {
         super.onResume()
         registerReceiver(newsBroadcastReceiver, receiverIntentFilter)
@@ -87,6 +107,19 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         unregisterReceiver(newsBroadcastReceiver)
+    }
+    private fun acquirePermissionsForReceiver() {
+        val securityLevel = loadSecuritySettingsFromFile(this)
+
+        if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
+            if(ContextCompat.checkSelfPermission(this,
+                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
+                != PackageManager.PERMISSION_GRANTED) {
+
+                readNewsPermissionLauncher.launch(
+                    "uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS_B")
+            }
+        }
     }
 
     private fun replaceFragment(newFragment: Fragment) {

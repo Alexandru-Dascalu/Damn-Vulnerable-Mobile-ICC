@@ -56,8 +56,6 @@ class MainActivity : AppCompatActivity() {
         val mainAppBar = findViewById<MaterialToolbar>(R.id.mainActivityToolbar)
         setSupportActionBar(mainAppBar)
 
-        checkPermissions()
-
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         val viewPager = findViewById<ViewPager2>(R.id.view_pager)
 
@@ -84,6 +82,11 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        checkPermissions()
     }
 
     private fun checkPermissions() {

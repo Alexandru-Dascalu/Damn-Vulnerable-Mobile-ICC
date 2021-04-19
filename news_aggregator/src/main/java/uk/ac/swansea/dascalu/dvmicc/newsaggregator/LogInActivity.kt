@@ -47,7 +47,10 @@ class LogInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
 
         authenticator = FirebaseAuth.getInstance()
+    }
 
+    override fun onStart() {
+        super.onStart()
         checkPermissions()
     }
 
