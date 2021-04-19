@@ -27,9 +27,10 @@ import java.lang.IllegalStateException
 import java.util.Locale
 
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
+import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
 
 class ChallengeSettingsActivity :  AppCompatActivity() {
-    private var challenge: Challenge? = null
+    private var challenge: Challenge = ViewModel.instance.challenge
 
     private val writeRequestStoragePermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -60,52 +61,40 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
 
         title = resources.getString(R.string.challengeSettingsActivityTitle)
 
-        if(intent.extras != null) {
-            challenge = intent.extras!!.get("challenge") as Challenge?
-            disableNecessaryLevelRadioButtons()
-        }
+        disableNecessaryLevelRadioButtons()
         initialiseSecuritySettings()
     }
 
     private fun disableNecessaryLevelRadioButtons() {
-        if(challenge != null) {
-            if (!challenge!!.securityLevels.containsKey("low")) {
-                findViewById<RadioButton>(R.id.radio_button_vulnerable_low).isEnabled = false
-            }
+        if (!challenge.securityLevels.containsKey("low")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_low).isEnabled = false
+        }
 
-            if (!challenge!!.securityLevels.containsKey("medium")) {
-                findViewById<RadioButton>(R.id.radio_button_vulnerable_medium).isEnabled = false
-            }
+        if (!challenge.securityLevels.containsKey("medium")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_medium).isEnabled = false
+        }
 
-            if (!challenge!!.securityLevels.containsKey("high")) {
-                findViewById<RadioButton>(R.id.radio_button_vulnerable_high).isEnabled = false
-            }
+        if (!challenge.securityLevels.containsKey("high")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_high).isEnabled = false
+        }
 
-            if (!challenge!!.securityLevels.containsKey("very high")) {
-                findViewById<RadioButton>(R.id.radio_button_vulnerable_very_high).isEnabled = false
-            }
+        if (!challenge.securityLevels.containsKey("very high")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_very_high).isEnabled = false
+        }
 
-            if (!challenge!!.securityLevels.containsKey("impossible")) {
-                findViewById<RadioButton>(R.id.radio_button_vulnerable_impossible).isEnabled = false
-            }
+        if (!challenge.securityLevels.containsKey("impossible")) {
+            findViewById<RadioButton>(R.id.radio_button_vulnerable_impossible).isEnabled = false
         }
     }
 
     fun onApplySettings(view: View) {
         applySettings()
         if(intent.extras != null) {
-            val challenge = if(intent.extras!!.get("challenge") != null) {
-                intent.extras!!.get("challenge") as Challenge?
-            } else {
-                Challenge.BROADCAST_THEFT
-            }
-
             val launchedFromChallengeActivity : Boolean = intent.extras!!.get(
                     "launchedFromChallengeActivity") as Boolean
 
             if(!launchedFromChallengeActivity) {
                 val intent = Intent(this, ChallengeActivity::class.java)
-                intent.putExtra("challenge", challenge)
                 startActivity(intent)
             } else {
                 val intent = Intent()

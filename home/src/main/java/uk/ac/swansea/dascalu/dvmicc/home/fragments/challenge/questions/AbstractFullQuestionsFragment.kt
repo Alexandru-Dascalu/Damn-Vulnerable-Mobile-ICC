@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout
 import uk.ac.swansea.dascalu.dvmicc.home.ChallengeActivity
 import uk.ac.swansea.dascalu.dvmicc.home.R
 import uk.ac.swansea.dascalu.dvmicc.home.hideKeyboard
+import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
 import java.util.*
 
 /**
@@ -235,14 +236,13 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
 
             val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
             val malwareEditText = view.findViewById<EditText>(R.id.malwareAppEditText)
-            val challengeActivity = view.context as ChallengeActivity
 
             if(!malwareEditText.isFocusable && !vulnerableEditText.isFocusable) {
-                challengeActivity.hasGuessedApps = true
+                ViewModel.instance.hasGuessedApps = true
             }
 
             if(checkHasCompletedChallenge()) {
-                challengeActivity.hasCompletedChallenge = true
+                ViewModel.instance.hasCompletedChallenge = true
             }
         }
 

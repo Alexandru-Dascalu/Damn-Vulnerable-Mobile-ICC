@@ -6,20 +6,18 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInformationFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInstructionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ManifestsFragment
-import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.AbstractFullQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.ActivityIntentHijackFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftDOSQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftMITMQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftQuestionsFragment
-import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.ContentProviderUriHijackQuestionsFragment
-import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
+import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.ProviderUriHijackQuestionsFragment
+import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
 
 import java.lang.IllegalStateException
 
@@ -28,35 +26,29 @@ class ChallengeActivity :  AppCompatActivity() {
         private val SETTINGS_REQUEST_CODE = 5
     }
 
-    private lateinit var challengeModel : Challenge
-    var hasGuessedApps: Boolean = false
-    var hasCompletedChallenge : Boolean = false
-    var questionsFragmentState : Fragment.SavedState? = null
+    init {
+        supportFragmentManager.fragmentFactory = ChallengeFragmentFactory()
+    }
 
     private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.challengeInformationButton -> {
-                replaceFragment(ChallengeInformationFragment(challengeModel.challengeNameIndex,
-                        challengeModel.attackExplanation), "infoFragment")
+                replaceFragment(ChallengeInformationFragment::class.java.name, "infoFragment")
 
                 return@OnNavigationItemSelectedListener true
             }
             R.id.manifestsButton -> {
-                replaceFragment(ManifestsFragment(), "manifestFragment")
+                replaceFragment(ManifestsFragment::class.java.name, "manifestFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.questionsButton -> {
-                val fragment : AbstractFullQuestionsFragment = getQuestionsFragment()
-                if(questionsFragmentState != null) {
-                    fragment.setInitialSavedState(questionsFragmentState)
-                }
+                val fragmentName : String = getQuestionsFragmentName()
 
-                replaceFragment(fragment, "questionsFragment")
+                replaceFragment(fragmentName, "questionsFragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.instructionsButton -> {
-                replaceFragment(ChallengeInstructionsFragment(hasGuessedApps,
-                        challengeModel.instructions), "instructionsFragment")
+                replaceFragment(ChallengeInstructionsFragment::class.java.name, "instructionsFragment")
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -67,17 +59,10 @@ class ChallengeActivity :  AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge)
 
-        //get challenge enum that contains challenge specific data from intent
-        challengeModel = if(intent.extras != null && intent.extras!!.get("challenge") != null) {
-            intent.extras!!.get("challenge") as Challenge
-        } else {
-            Challenge.BROADCAST_THEFT
-        }
-
         val appBar : MaterialToolbar = findViewById<MaterialToolbar>(R.id.challengeActivityToolbar)
         setSupportActionBar(appBar)
         
-        title = resources.getStringArray(R.array.challenges)[challengeModel.challengeNameIndex]
+        title = resources.getStringArray(R.array.challenges)[ViewModel.instance.challenge.challengeNameIndex]
 
         val bottomBar = findViewById<BottomNavigationView>(R.id.challengeNavigationBar)
         bottomBar.setOnNavigationItemSelectedListener(navigationBarListener)
@@ -92,22 +77,17 @@ class ChallengeActivity :  AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.settingsButton) {
             val intent = Intent(this, ChallengeSettingsActivity::class.java)
-            intent.putExtra("challenge", challengeModel)
             intent.putExtra("launchedFromChallengeActivity", true)
 
             startActivityForResult(intent, SETTINGS_REQUEST_CODE)
             return true
         } else if(item.itemId == R.id.helpButton) {
             val intent = Intent(this, HelpActivity::class.java)
-            intent.putExtra("challenge", challengeModel)
-            intent.putExtra("hasGuessedApps", hasGuessedApps)
             startActivity(intent)
 
             return true
         } else if (item.itemId == R.id.trophyButton) {
             val intent = Intent(this, ChallengeConclusionActivity::class.java)
-            intent.putExtra("explanationID", challengeModel.scenarioConclusion)
-            intent.putExtra("hasCompletedChallenge", hasCompletedChallenge)
 
             startActivity(intent)
             return true
@@ -124,23 +104,28 @@ class ChallengeActivity :  AppCompatActivity() {
         }
     }
 
-    private fun getQuestionsFragment() : AbstractFullQuestionsFragment {
-        return when(challengeModel.challengeNameIndex) {
-            0 -> BroadcastTheftQuestionsFragment()
-            1 -> BroadcastTheftDOSQuestionsFragment()
-            2 -> BroadcastTheftMITMQuestionsFragment()
-            3 -> ActivityIntentHijackFragment()
-            4 -> ContentProviderUriHijackQuestionsFragment()
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun getQuestionsFragmentName() : String {
+        return when(ViewModel.instance.challenge.challengeNameIndex) {
+            0 -> BroadcastTheftQuestionsFragment::class.java.name
+            1 -> BroadcastTheftDOSQuestionsFragment::class.java.name
+            2 -> BroadcastTheftMITMQuestionsFragment::class.java.name
+            3 -> ActivityIntentHijackFragment::class.java.name
+            4 -> ProviderUriHijackQuestionsFragment::class.java.name
             else -> throw IllegalStateException("Questions fragment type unknown!")
         }
     }
 
-    private fun replaceFragment(newFragment: Fragment, tag: String) {
+    private fun replaceFragment(newFragmentName: String, tag: String) {
+        val newFragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, newFragmentName)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
         if(supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
-            questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
-                    supportFragmentManager.findFragmentByTag("questionsFragment")!!)
+            ViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
+                supportFragmentManager.findFragmentByTag("questionsFragment")!!)
         }
 
         fragmentTransaction.replace(R.id.challengeContentFrame, newFragment, tag)

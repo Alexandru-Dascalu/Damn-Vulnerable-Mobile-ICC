@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 import com.google.android.material.appbar.MaterialToolbar
+import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
 
 class ChallengeConclusionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,18 +17,16 @@ class ChallengeConclusionActivity : AppCompatActivity() {
         setSupportActionBar(appBar)
         findViewById<TextView>(R.id.challengeConclusionTextView).setTextIsSelectable(true)
 
-        if(intent.extras != null) {
-            val hasCompletedApps = intent.extras!!.getBoolean("hasCompletedChallenge")
-            val explanationTextView = findViewById<TextView>(R.id.challengeConclusionTextView)
+        val hasCompletedChallenge = ViewModel.instance.hasCompletedChallenge
+        val explanationTextView = findViewById<TextView>(R.id.challengeConclusionTextView)
 
-            if (hasCompletedApps) {
-                val challengeCommentID = intent.extras!!.getInt("explanationID")
-                if (challengeCommentID != 0) {
-                    explanationTextView.text = resources.getString(challengeCommentID)
-                }
-            } else {
-                explanationTextView.text = resources.getString(R.string.prizeHidden)
+        if (hasCompletedChallenge) {
+            val conclusionID = ViewModel.instance.challenge.scenarioConclusion
+            if (conclusionID != 0) {
+                explanationTextView.text = resources.getString(conclusionID)
             }
+        } else {
+            explanationTextView.text = resources.getString(R.string.prizeHidden)
         }
     }
 }

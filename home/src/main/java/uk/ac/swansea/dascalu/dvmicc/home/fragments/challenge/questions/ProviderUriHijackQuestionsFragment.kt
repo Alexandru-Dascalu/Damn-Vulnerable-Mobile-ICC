@@ -10,7 +10,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 import uk.ac.swansea.dascalu.dvmicc.home.R
 
-class ContentProviderUriHijackQuestionsFragment : AbstractFullQuestionsFragment() {
+class ProviderUriHijackQuestionsFragment : AbstractFullQuestionsFragment() {
     override var challengeName : String? = null
     override var vulnerableAppName: String? = null
     override var malwareName: String? = null

@@ -10,6 +10,7 @@ import io.github.kbiakov.codeview.CodeView
 
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
 import uk.ac.swansea.dascalu.dvmicc.home.model.SecurityLevel
+import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
 
 import java.lang.IllegalStateException
 
@@ -17,29 +18,24 @@ class HelpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(intent.extras != null) {
-            val hasGuessedApps: Boolean = intent.extras!!.getBoolean("hasGuessedApps")
+        val hasGuessedApps: Boolean = ViewModel.instance.hasGuessedApps
+        if(hasGuessedApps) {
+            val challenge: Challenge = ViewModel.instance.challenge
 
-            if(hasGuessedApps) {
-                val challenge: Challenge = intent.extras!!.getSerializable("challenge") as Challenge
+            setContentView(R.layout.activity_help)
+            setSupportActionBar(findViewById<MaterialToolbar>(R.id.helpActivityToolbar))
 
-                setContentView(R.layout.activity_help)
-                setSupportActionBar(findViewById<MaterialToolbar>(R.id.helpActivityToolbar))
-
-                setupLowLevel(challenge)
-                setupMediumLevel(challenge)
-                setupHighLevel(challenge)
-                setupVeryHighLevel(challenge)
-                setupImpossibleLevel(challenge)
-            } else {
-                setContentView(R.layout.activity_help_locked)
-                setSupportActionBar(findViewById<MaterialToolbar>(R.id.lockedHelpActivityToolbar))
-            }
-
-            title = getString(R.string.helpActivityTitle)
+            setupLowLevel(challenge)
+            setupMediumLevel(challenge)
+            setupHighLevel(challenge)
+            setupVeryHighLevel(challenge)
+            setupImpossibleLevel(challenge)
         } else {
-            throw IllegalStateException("No extras in intent that started help activity!")
+            setContentView(R.layout.activity_help_locked)
+            setSupportActionBar(findViewById<MaterialToolbar>(R.id.lockedHelpActivityToolbar))
         }
+
+        title = getString(R.string.helpActivityTitle)
     }
 
     private fun setupLowLevel(challenge: Challenge) {
