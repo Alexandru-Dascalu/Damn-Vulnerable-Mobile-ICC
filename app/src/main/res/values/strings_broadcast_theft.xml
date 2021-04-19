@@ -38,13 +38,23 @@
         the app bar and click on Log, where you can look for flags and the stolen data.
         Do this for all security levels to find the flags.
 
-        \n\nFor security Levels Medium and Very High, you will need to use a different malware app.
-        It will be the same app, but with a slightly different icon and it will the appropriate
-        permission for those security levels (it is done like this because normal and signature
+        \n\nFor security Levels Medium and Very High, you will need to use Call Logger 2 and Call
+        Logger 3, respectively.
+        It will be the same malware, but with a slightly different icon and it will have the appropriate
+        permission for those security levels (it is implemented like this because normal and signature
         level permissions are granted when app is installed and can not be changed after).
+
+        \n\n Call Logger 2 and 3 will also be able to read the news broadcasts when the security
+        level is low. You may want to clear their logs before switching to security level medium or
+        very high, respectively.
 
         \n\nWhen the malware is in security level High, you need to first start the Call Logger app
         before going into the News Aggregator to get news stories.
+
+        \n\nNOTE: When the attack succeeds, you may see multiple stolen JSON news streams in the
+        log besides the one you clicked on.
+        This is because the News Aggregator app may load multiple streams when you click on a
+        different news stream tab.
     </string>
 
     <string-array name="broadcastTheftFlags">
