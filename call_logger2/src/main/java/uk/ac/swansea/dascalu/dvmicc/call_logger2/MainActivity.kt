@@ -69,8 +69,6 @@ class MainActivity : AppCompatActivity() {
                     2 -> tab.text = "Unknown"
                 }
             }.attach()
-
-        Runtime.getRuntime().exec("logcat -f ${filesDir}/data.txt")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
