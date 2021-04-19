@@ -165,16 +165,7 @@
                             \n\t\t\t\tstartActivity(intent)
                             \n\t\t\t\treturn true
                         \n\t\t\t}
-                        \n\t\t\tR.id.clear_log_button -> {
-                            \n\t\t\t\tdeleteFile("data.txt")
-
-                            \n\n\t\t\t\tval view = findViewById<MaterialButton>(R.id.optimiseButton)
-                            \n\t\t\t\tSnackbar.make(view, getString(R.string.log_cleared),
-                                \n\t\t\t\t\tSnackbar.LENGTH_LONG).show()
-                            \n\t\t\t\treturn true
-                        \n\t\t\t}
                         \n\t\t\t...
-                        \n\t\t\telse -> return super.onOptionsItemSelected(item)
                     \n\t\t}
                 \n\t}
                 \n\t...

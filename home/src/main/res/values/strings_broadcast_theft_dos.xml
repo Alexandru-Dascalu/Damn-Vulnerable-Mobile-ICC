@@ -313,7 +313,6 @@
                             \n\t\t\t\treturn true
                         \n\t\t\t}
                         \n\t\t\t...
-                        \n\t\t\telse -> return super.onOptionsItemSelected(item)
                     \n\t\t}
                 \n\t}
                 \n\t...

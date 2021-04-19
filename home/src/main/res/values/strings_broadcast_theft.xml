@@ -339,7 +339,7 @@
                 \n\t\t\tval mainActivityIntent = Intent(this, LoadingActivity::class.java)
                 \n\t\t\tstartActivity(mainActivityIntent)
             \n\t\t} else {
-            \n\t\t\t…
+            \n\t\t\t...
             \n\t\t}
             \n\t}
             \n...
