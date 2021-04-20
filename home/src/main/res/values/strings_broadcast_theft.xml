@@ -97,10 +97,10 @@
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
             \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
-            \n\n\t<uses-permission
-                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\" />
             \n\t\n\t<uses-permission android:name=
-                    \n\t\t\"android.permission.INTERNET\"/>
+                \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
@@ -129,7 +129,8 @@
                 \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
                     \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -140,18 +141,18 @@
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
             \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
-            \n\n\t<uses-permission
-                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\" />
             \n\t\n\t<uses-permission android:name=
                     \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<permission
-                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
-                \n\t\tandroid:label="@string/readNewsPermissionLabel"
-                \n\t\tandroid:description="@string/readNewsPermissionDescription"/>
+                \n\t\tandroid:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS\"
+                \n\t\tandroid:label=\"@string/readNewsPermissionLabel\"
+                \n\t\tandroid:description=\"@string/readNewsPermissionDescription\"/>
 
-            \n\n\t<uses-permission
-                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS\"/>
 
             \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
@@ -165,7 +166,6 @@
                 \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
-
                         \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
@@ -180,7 +180,8 @@
                 \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
                     \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -192,19 +193,19 @@
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
             \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
-            \n\n\t<uses-permission
-                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\" />
             \n\t\n\t<uses-permission android:name=
-                    \n\t\t\"android.permission.INTERNET\"/>
+                \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<permission
-                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
-                \n\t\tandroid:label="@string/readNewsPermissionLabel"
-                \n\t\tandroid:description="@string/readNewsPermissionDescription"
-                \n\t\tandroid:protectionLevel="dangerous"/>
+                \n\t\tandroid:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS\"
+                \n\t\tandroid:label=\"@string/readNewsPermissionLabel\"
+                \n\t\tandroid:description=\"@string/readNewsPermissionDescription\"
+                \n\t\tandroid:protectionLevel=\"dangerous\"/>
 
-            \n\n\t<uses-permission
-                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS\"/>
 
             \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
@@ -218,7 +219,6 @@
                 \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />
-
                         \n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
@@ -233,7 +233,8 @@
                 \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
                     \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -244,19 +245,19 @@
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
             \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator\">
 
-            \n\n\t<uses-permission
-                \n\t\tandroid:name=\"android.permission.READ_EXTERNAL_STORAGE\" />
-            \n\t\n\t<uses-permission android:name=
-                    \n\t\t\"android.permission.INTERNET\"/>
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\" />
+            \n\t<uses-permission android:name=
+                \n\t\t\"android.permission.INTERNET\"/>
 
             \n\n\t<permission
-                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"
-                \n\t\tandroid:label="@string/readNewsPermissionLabel"
-                \n\t\tandroid:description="@string/readNewsPermissionDescription"
-                \n\t\tandroid:protectionLevel="signature"/>
+                \n\t\tandroid:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS\"
+                \n\t\tandroid:label=\"@string/readNewsPermissionLabel\"
+                \n\t\tandroid:description=\"@string/readNewsPermissionDescription\"
+                \n\t\tandroid:protectionLevel=\"signature\"/>
 
-            \n\n\t<uses-permission
-                \n\t\tandroid:name="uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS"/>
+            \n\n\t<uses-permission android:name=
+                \n\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.permissions.READ_NEWS\"/>
 
             \n\n\t<application
                 \n\t\tandroid:allowBackup=\"true\"
@@ -285,7 +286,8 @@
                 \n\n\t\t<receiver android:name=\".icc.NewsBroadcastReceiver\"
                     \n\t\t\tandroid:enabled=\"true\">
                     \n\t\t\t<intent-filter>
-                        \n\t\t\t\t<action android:name=\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
+                        \n\t\t\t\t<action android:name=
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.newsaggregator.broadcast.NEWS_RESULT\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</receiver>
             \n\n\t</application>
@@ -297,7 +299,7 @@
         class NewsService : Service() {
             \n\t...
             \n\tval broadcast = Intent(\"uk.ac.swansea.dascalu.\" +
-            \n\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
+            \n\t\t\"dvmicc.newsaggregator.broadcast.NEWS_RESULT\")
             \n\tbroadcast.putExtra(\"articles\", articles)
             \n\tbroadcast.putExtra(\"news_stream_name\", newsStreamName)
 
