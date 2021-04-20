@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/helpActivityToolbar"
+        android:id="@+id/securityLevelsActivityToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -14,11 +14,11 @@
         style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
 
     <ScrollView
-        android:id="@+id/broadcastTheftHelpScrollView"
+        android:id="@+id/securityLevelsScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:layout_below="@+id/helpActivityToolbar"
+        android:layout_below="@+id/securityLevelsActivityToolbar"
         android:paddingLeft="8dp"
         android:paddingRight="8dp">
 

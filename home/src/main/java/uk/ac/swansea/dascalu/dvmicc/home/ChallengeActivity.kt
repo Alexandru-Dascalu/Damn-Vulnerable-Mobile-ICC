@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInformationFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.ChallengeInstructionsFragment
@@ -88,9 +89,13 @@ class ChallengeActivity :  AppCompatActivity() {
             startActivityForResult(intent, SETTINGS_REQUEST_CODE)
             return true
         } else if(item.itemId == R.id.helpButton) {
-            val intent = Intent(this, HelpActivity::class.java)
-            startActivity(intent)
-
+            if (ViewModel.instance.hasGuessedApps) {
+                val intent = Intent(this, SecurityLevelsExplanationActivity::class.java)
+                startActivity(intent)
+            } else {
+                Snackbar.make(findViewById<BottomNavigationView>(R.id.challengeNavigationBar),
+                        R.string.securityLevelInfoHidden, 4000).show()
+            }
             return true
         } else if (item.itemId == R.id.trophyButton) {
             val intent = Intent(this, ChallengeConclusionActivity::class.java)

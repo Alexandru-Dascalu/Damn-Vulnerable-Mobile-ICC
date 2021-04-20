@@ -12,30 +12,22 @@ import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
 import uk.ac.swansea.dascalu.dvmicc.home.model.SecurityLevel
 import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
 
-import java.lang.IllegalStateException
-
-class HelpActivity : AppCompatActivity() {
+class SecurityLevelsExplanationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val hasGuessedApps: Boolean = ViewModel.instance.hasGuessedApps
-        if(hasGuessedApps) {
-            val challenge: Challenge = ViewModel.instance.challenge
+        val challenge: Challenge = ViewModel.instance.challenge
 
-            setContentView(R.layout.activity_help)
-            setSupportActionBar(findViewById<MaterialToolbar>(R.id.helpActivityToolbar))
+        setContentView(R.layout.activity_security_levels)
+        setSupportActionBar(findViewById<MaterialToolbar>(R.id.securityLevelsActivityToolbar))
 
-            setupLowLevel(challenge)
-            setupMediumLevel(challenge)
-            setupHighLevel(challenge)
-            setupVeryHighLevel(challenge)
-            setupImpossibleLevel(challenge)
-        } else {
-            setContentView(R.layout.activity_help_locked)
-            setSupportActionBar(findViewById<MaterialToolbar>(R.id.lockedHelpActivityToolbar))
-        }
+        setupLowLevel(challenge)
+        setupMediumLevel(challenge)
+        setupHighLevel(challenge)
+        setupVeryHighLevel(challenge)
+        setupImpossibleLevel(challenge)
 
-        title = getString(R.string.helpActivityTitle)
+        title = getString(R.string.securityLevelsActivityTitle)
     }
 
     private fun setupLowLevel(challenge: Challenge) {

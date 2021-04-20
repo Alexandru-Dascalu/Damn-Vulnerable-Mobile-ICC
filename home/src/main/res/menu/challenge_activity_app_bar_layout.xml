@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/settingsButton"
-        android:title="@string/settingsButtonDescription"
+        android:title="@string/securityLevelsActivityTitle"
         android:icon="@drawable/ic_baseline_settings"
         app:showAsAction="ifRoom"/>
     <item

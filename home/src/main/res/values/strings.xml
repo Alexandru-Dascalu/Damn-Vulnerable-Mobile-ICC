@@ -488,7 +488,7 @@
     <string name="submitButtonText">Submit</string>
     <string name="wrongAnswer">Wrong answer!</string>
     <string name="completed">Completed</string>
-    <string name="helpActivityTitle">Security levels info</string>
+    <string name="securityLevelsActivityTitle">Security levels info</string>
     <string name="malware_overcome_switch_msg">Malware overcome</string>
     <string name="malwareOvercomeModeTitle">Malware Overcome Mode</string>
     <string name="malware_overcome_explanation">
@@ -551,7 +551,7 @@
         You need to find the malware and the vulnerable app first in order to see further instructions.
     </string>
     <string name="securityLevelInfoHidden">
-        You need to find the malware and the vulnerable app first in order to see descriptions of the security levels.
+        Find the malware and the vulnerable app first in order to see descriptions of the security levels.
     </string>
     <string name="prizeHidden">
         You need to complete the challenge and correctly answer all questions in order to unlock
