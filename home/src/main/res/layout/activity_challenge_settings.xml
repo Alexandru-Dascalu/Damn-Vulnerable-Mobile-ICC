@@ -76,12 +76,6 @@
                     android:layout_height="match_parent"
                     android:text="@string/makeOwnMalwareMode" />
 
-                <RadioButton
-                    android:id="@+id/radio_button_fix_vulnerable_app"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/fixVulnerableAppMode" />
-
             </RadioGroup>
 
             <TextView

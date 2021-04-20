@@ -68,7 +68,7 @@
         may target different types of components, or that have a different effect. Click on the
         button of each challenge to start it.
 
-        \n\nThere are four different modes in which you can complete a challenge.
+        \n\nThere are three different modes in which you can complete a challenge.
 
         \n\nFor each challenge, there are various security levels, which change how vulnerable the
         target app is and how hard it is for the malware to perform the attack. You can change the level
@@ -125,15 +125,7 @@
         the victim app. This mode is meant to be completed using a computer and Android Studio. You
         will need to clone the repository of this project.
 
-        \n\nThe Fix Vulnerable App mode allows you to fix a vulnerable app yourself. For each
-        challenge, there is a second vulnerable application. Since in the Beginner or Expert mode,
-        you are shown code for fixing the first vulnerable app, in this mode you can fix the second
-        vulnerable app without being shown the code. The malware may be able to detect if it has
-        been defeated and let you know. This mode gives you access to the full
-        explanation of the attack and of the various security levels. You will need a computer and
-        Android Studio for this mode, and you need to clone the repository of this project.
-
-        \n\nThe Make your own Malware and Fix Vulnerable App modes are only accessible once you have
+        \n\nThe Make your own Malware is only accessible once you have
         completed the Beginner or Expert modes.
     </string>
 
@@ -593,7 +585,6 @@
     <string name="beginnerMode">Beginner Mode</string>
     <string name="expertMode">Expert Mode</string>
     <string name="makeOwnMalwareMode">Make your own Malware Mode</string>
-    <string name="fixVulnerableAppMode">Fix Vulnerable App Mode</string>
 
     <string name="callLoggerAppName">Call Logger</string>
     <string name="newsAggregatorAppName">News Aggregator</string>
