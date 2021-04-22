@@ -37,7 +37,7 @@
         App Chooser dialog, and a careless user could select it.
     </string>
     <string name="activityHijackImpossibleDescription">
-        When sending intents to start an activity, service or content provider, you cannot protect
+        When sending intents to start an activity or service, you cannot protect
         them with a permission like you can when you send a broadcast.
 
         \n\nTherefore, the solution to fix this vulnerability is to not send the intent as implicit,
@@ -266,7 +266,7 @@
 
         \n\nAn attacker can decompile and reverse engineer the Santander app to see the code for
         the Login activity and its intent filter. The attacker can create an activity in the malware
-        that looks identical to the one in the genuine app, and add an intent filter to it,
+        that looks identical to the one in the genuine app, and add an intent filter to i
         identical to the one in the login activity of the Santander app. The attacker can make the
         name and icon of the malware to be similar to that of the targeted app, in order to make
         the user more confused.
