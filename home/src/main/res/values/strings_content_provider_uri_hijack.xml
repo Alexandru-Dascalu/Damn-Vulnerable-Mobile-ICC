@@ -24,7 +24,7 @@
     </string>
 
     <string name="whatsappAppName">Whatsapp</string>
-    <string name="smsMessagesAppName">Messages</string>
+    <string name="smsMessagesAppName">SMS Messages</string>
 
     <string-array name="providerHijackFlags">
         <item>This is where the fun begins</item>
@@ -332,7 +332,7 @@
         delete an entire chat. Press on the bin icon to go the remove chats screen, and select what
         chats to remove. To make the deleted chats appear again, close the app and restart it.
 
-        \n\nGo and take a look at the Messages app as well.
+        \n\nGo and take a look at the SMS Messages app as well.
 
         \n\nWhen the malware overcome mode is enabled, you should see that the selected chats in
         Whatsapp are not deleted. Then you should look in the log of the Messages app and see

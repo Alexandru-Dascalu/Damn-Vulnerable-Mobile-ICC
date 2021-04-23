@@ -1,6 +1,6 @@
 include ':call_logger3'
 include ':call_logger2'
-include ':messages'
+include ':sms_messages'
 include ':whatsapp'
 include ':money_manager'
 include ':santander'

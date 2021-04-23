@@ -18,10 +18,10 @@
             <option value="$PROJECT_DIR$/call_redirect" />
             <option value="$PROJECT_DIR$/cpu_booster" />
             <option value="$PROJECT_DIR$/home" />
-            <option value="$PROJECT_DIR$/messages" />
             <option value="$PROJECT_DIR$/money_manager" />
             <option value="$PROJECT_DIR$/news_aggregator" />
             <option value="$PROJECT_DIR$/santander" />
+            <option value="$PROJECT_DIR$/sms_messages" />
             <option value="$PROJECT_DIR$/whatsapp" />
           </set>
         </option>
