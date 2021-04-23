@@ -46,7 +46,7 @@ class AppActivityReceiver : BroadcastReceiver() {
         Thread.sleep(500)
 
         if(flag != null) {
-            writer.write("\nFlag: $flag Phone Number: $previousNumber\n")
+            writer.write("\n\nFlag: $flag \n\nPhone Number: $previousNumber\n\n")
         }
 
         writer.close()
