@@ -130,6 +130,7 @@
 
     <string-array name="broadcastTheftDOSFlags">
         <item>Woe is me! I think I\'m turning into a god!</item>
+        <item>What an artist dies in me!</item>
     </string-array>
 
     <string name="callRedirectLowManifest">

@@ -25,7 +25,7 @@
     <string name="log_cleared">Log cleared!</string>
 
     <string-array name="broadcastTheftDOSFlags">
-        <item>Do not go gentle into that good night!</item>
-        <item>And death shall have no dominion</item>
+        <item>Woe is me! I think I\'m turning into a god!</item>
+        <item>What an artist dies in me!</item>
     </string-array>
 </resources>
