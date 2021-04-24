@@ -336,7 +336,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/vulnerabilitiesQuestionButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vulnerabilityQuestionTitle">
 
@@ -346,6 +346,18 @@
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/vulnerabilitiesQuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/vulnerabilitySpinner"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/malwareGiveawayQuestionTitle"
@@ -375,7 +387,7 @@
             android:layout_marginEnd="16dp"
             android:paddingBottom="28dp"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/malwareGiveawayQuestionButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/malwareGiveawayQuestionTitle">
 
@@ -385,6 +397,18 @@
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/malwareGiveawayQuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/submitButtonText"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/malwareGiveawaySpinner"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

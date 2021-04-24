@@ -448,19 +448,22 @@
         \n}]]>
     </string>
 
+    <string name="broadcastTheftVulnerabilityCorrectAnswer">NewsService, line 8</string>
     <string-array name="broadcastTheftVulnerabilityQuestionOptions">
         <item>LoginActivity, line 11</item>
-        <item>NewsService, line 8</item>
+        <item>@string/broadcastTheftVulnerabilityCorrectAnswer</item>
         <item>Manifest, line 21</item>
         <item>ViewHolder, line 6</item>
         <item>Manifest, line 38</item>
+        <item>NewsService, line 3</item>
         <item>Manifest, line 36</item>
     </string-array>
 
+    <string name="broadcastTheftMalwareGiveawayCorrectAnswer">Manifest, line 31</string>
     <string-array name="broadcastTheftMalwareGiveawayOptions">
-        <item>Manifest, line 31</item>
         <item>MainActivity, line 6</item>
         <item>Manifest, line 8</item>
+        <item>@string/broadcastTheftMalwareGiveawayCorrectAnswer</item>
         <item>Manifest, line 21</item>
         <item>MainActivity, line 7</item>
     </string-array>
