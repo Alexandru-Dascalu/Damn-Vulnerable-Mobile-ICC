@@ -86,16 +86,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
 
         setButtonClickListeners(view)
         restoreAnswers(view)
-
-        val vulnerabilityInput = view.findViewById<TextInputLayout>(R.id.vulnerabilitySpinner)
-        val items = listOf("Option 1", "Option 2", "Option 3", "Option 4")
-        val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, items)
-        (vulnerabilityInput.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-
-        val malwareGiveawayInput = view.findViewById<TextInputLayout>(R.id.malwareGiveawaySpinner)
-        val items2 = listOf("Option 1", "Option 2", "Option 3", "Option 4")
-        val adapter2 = ArrayAdapter(requireContext(), R.layout.spinner_item, items2)
-        (malwareGiveawayInput.editText as? AutoCompleteTextView)?.setAdapter(adapter2)
+        setupDropDowns(view)
     }
 
     private fun setButtonClickListeners(view: View) {
@@ -197,6 +188,24 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
             val editText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
             editText.isFocusable = false
         }
+    }
+
+    private fun setupDropDowns(view: View) {
+        val vulnerabilityEditText = view.findViewById<TextInputLayout>(R.id.vulnerabilitySpinner)
+                .editText as AutoCompleteTextView
+        val vulnerabilityOptions = view.context.resources.getStringArray(ChallengeViewModel
+                .instance.challenge.vulnerabilityOptions)
+        val vulnerabilityOptionsAdapter = ArrayAdapter(view.context, R.layout.spinner_item,
+                vulnerabilityOptions)
+        vulnerabilityEditText.setAdapter(vulnerabilityOptionsAdapter)
+
+        val malwareGiveawayEditText = view.findViewById<TextInputLayout>(R.id.malwareGiveawaySpinner)
+                .editText as AutoCompleteTextView
+        val malwareGiveawayOptions = view.context.resources.getStringArray(ChallengeViewModel
+                .instance.challenge.malwareGiveawayOptions)
+        val malwareGiveawayOptionsAdapter = ArrayAdapter(requireContext(), R.layout.spinner_item,
+                malwareGiveawayOptions)
+        malwareGiveawayEditText.setAdapter(malwareGiveawayOptionsAdapter)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

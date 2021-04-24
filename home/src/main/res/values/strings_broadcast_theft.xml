@@ -448,7 +448,24 @@
         \n}]]>
     </string>
 
-    <string name="broadcastTheftScenarioExplanation">
+    <string-array name="broadcastTheftVulnerabilityQuestionOptions">
+        <item>LoginActivity, line 11</item>
+        <item>NewsService, line 8</item>
+        <item>Manifest, line 21</item>
+        <item>ViewHolder, line 6</item>
+        <item>Manifest, line 38</item>
+        <item>Manifest, line 36</item>
+    </string-array>
+
+    <string-array name="broadcastTheftMalwareGiveawayOptions">
+        <item>Manifest, line 31</item>
+        <item>MainActivity, line 6</item>
+        <item>Manifest, line 8</item>
+        <item>Manifest, line 21</item>
+        <item>MainActivity, line 7</item>
+    </string-array>
+
+    <string name="broadcastTheftScenarioConclusion">
         The News Aggregator app uses a broadcast to signal that it has downloaded the news data.
         In a real world application, one might want to do this using an implicit broadcast in order
         to make the application more loosely coupled, and thus make it more modular and flexible.
