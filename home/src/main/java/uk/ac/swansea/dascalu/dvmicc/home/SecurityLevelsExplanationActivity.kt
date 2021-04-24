@@ -75,10 +75,15 @@ class SecurityLevelsExplanationActivity : AppCompatActivity() {
                     securityLevel.intentCodeID)
 
         } else {
-            findViewById<TextView>(headerTextViewID).visibility = View.GONE
-            findViewById<TextView>(textViewID).visibility = View.GONE
-            findViewById<CodeView>(manifestID).visibility = View.GONE
-            findViewById<CodeView>(intentCodeID).visibility = View.GONE
+            hideSecurityLevel(textViewID, manifestID, intentCodeID, headerTextViewID)
         }
+    }
+
+    private fun hideSecurityLevel(textViewID: Int, manifestID: Int, intentCodeID: Int,
+                                  headerTextViewID: Int) {
+        findViewById<TextView>(headerTextViewID).visibility = View.GONE
+        findViewById<TextView>(textViewID).visibility = View.GONE
+        findViewById<CodeView>(manifestID).visibility = View.GONE
+        findViewById<CodeView>(intentCodeID).visibility = View.GONE
     }
 }
