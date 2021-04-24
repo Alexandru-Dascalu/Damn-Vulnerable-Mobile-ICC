@@ -34,6 +34,9 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
     protected abstract var securityHighFlag: String?
     protected abstract var securityVeryHighFlag: String?
 
+    protected lateinit var vulnerabilityCorrectCodeLine: String
+    protected lateinit var malwareGiveawayCorrectCodeLine: String
+
     private var answeredVulnerable: Boolean = false
     private var answeredMalware: Boolean = false
     private var answeredLow: Boolean = false
@@ -64,6 +67,8 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
      * super class method before returning.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setCorrectAnswers(view)
+
         val securityLowTextView = view.findViewById<TextView>(R.id.securityLowQuestionTitle)
         securityLowTextView.text = requireContext().resources.getString(R.string.securityLowQuestion)
 
@@ -87,6 +92,13 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         setButtonClickListeners(view)
         restoreAnswers(view)
         setupDropDowns(view)
+    }
+
+    private fun setCorrectAnswers(view: View) {
+        vulnerabilityCorrectCodeLine = view.context.getString(ChallengeViewModel.instance.challenge
+                .vulnerabilityCorrectCodeLine)
+        malwareGiveawayCorrectCodeLine = view.context.getString(ChallengeViewModel.instance.challenge
+                .malwareGiveawayCorrectCodeLine)
     }
 
     private fun setButtonClickListeners(view: View) {
@@ -124,6 +136,18 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         editText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
         textInputLayout = view.findViewById<TextInputLayout>(R.id.securityVeryHighInput)
         securityVeryHighButton.setOnClickListener(QuestionButtonClickListener(securityVeryHighFlag,
+                view, editText, textInputLayout))
+
+        val vulnerabilitiesButton = view.findViewById<MaterialButton>(R.id.vulnerabilitiesQuestionButton)
+        editText = view.findViewById<EditText>(R.id.vulnerabilityEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.vulnerabilitySpinner)
+        vulnerabilitiesButton.setOnClickListener(QuestionButtonClickListener(vulnerabilityCorrectCodeLine,
+                view, editText, textInputLayout))
+
+        val malwareGiveawayButton = view.findViewById<MaterialButton>(R.id.malwareGiveawayQuestionButton)
+        editText = view.findViewById<EditText>(R.id.malwareGiveawayEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.malwareGiveawaySpinner)
+        malwareGiveawayButton.setOnClickListener(QuestionButtonClickListener(malwareGiveawayCorrectCodeLine,
                 view, editText, textInputLayout))
     }
 
