@@ -135,6 +135,7 @@ class ChallengeActivity :  AppCompatActivity() {
         } else if(item.itemId == R.id.helpButton) {
             if (ChallengeViewModel.instance.hasGuessedApps) {
                 val intent = Intent(this, SecurityLevelsExplanationActivity::class.java)
+                intent.putExtra("mode", operationMode)
                 startActivity(intent)
             } else {
                 Snackbar.make(findViewById<BottomNavigationView>(R.id.challengeNavigationBar),
