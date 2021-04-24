@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -62,28 +64,38 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
      * super class method before returning.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val securityLowTextView = view.findViewById<TextView>(R.id.securityLowQuestionTextView)
+        val securityLowTextView = view.findViewById<TextView>(R.id.securityLowQuestionTitle)
         securityLowTextView.text = requireContext().resources.getString(R.string.securityLowQuestion)
 
-        val securityMediumTextView = view.findViewById<TextView>(R.id.securityMediumQuestionTextView)
+        val securityMediumTextView = view.findViewById<TextView>(R.id.securityMediumQuestionTitle)
         securityMediumTextView.text = requireContext().resources.getString(R.string.securityMediumQuestion)
 
-        val securityHighTextView = view.findViewById<TextView>(R.id.securityHighQuestionTextView)
+        val securityHighTextView = view.findViewById<TextView>(R.id.securityHighQuestionTitle)
         securityHighTextView.text = requireContext().resources.getString(R.string.securityHighQuestion)
 
-        val securityVeryHighTextView = view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView)
+        val securityVeryHighTextView = view.findViewById<TextView>(R.id.securityVeryHighQuestionTitle)
         securityVeryHighTextView.text = requireContext().resources.getString(R.string.securityVeryHighQuestion)
 
-        val vulnerableAppTextView = view.findViewById<TextView>(R.id.vulnerableAppQuestionTextView)
+        val vulnerableAppTextView = view.findViewById<TextView>(R.id.vulnerableAppQuestionTitle)
         vulnerableAppTextView.text = requireContext().resources.getString(
                 R.string.vulnerableAppQuestion, challengeName)
 
-        val malwareTextView = view.findViewById<TextView>(R.id.malwareQuestionTextView)
+        val malwareTextView = view.findViewById<TextView>(R.id.malwareQuestionTitle)
         malwareTextView.text = requireContext().resources.getString(
                 R.string.malwareQuestion, challengeName)
 
         setButtonClickListeners(view)
         restoreAnswers(view)
+
+        val vulnerabilityInput = view.findViewById<TextInputLayout>(R.id.vulnerabilitySpinner)
+        val items = listOf("Option 1", "Option 2", "Option 3", "Option 4")
+        val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, items)
+        (vulnerabilityInput.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+
+        val malwareGiveawayInput = view.findViewById<TextInputLayout>(R.id.malwareGiveawaySpinner)
+        val items2 = listOf("Option 1", "Option 2", "Option 3", "Option 4")
+        val adapter2 = ArrayAdapter(requireContext(), R.layout.spinner_item, items2)
+        (malwareGiveawayInput.editText as? AutoCompleteTextView)?.setAdapter(adapter2)
     }
 
     private fun setButtonClickListeners(view: View) {

@@ -488,6 +488,8 @@
     <string name="submitButtonText">Submit</string>
     <string name="wrongAnswer">Wrong answer!</string>
     <string name="completed">Completed</string>
+    <string name="vulnerabilityQuestionHint">Vulnerability</string>
+    <string name="malwareGiveawayQuestionHint">Malware giveaway</string>
     <string name="securityLevelsActivityTitle">Security levels info</string>
     <string name="malware_enabled_switch_msg">Enable malware</string>
     <string name="malwareEnableTitle">Enable Malware</string>
@@ -583,14 +585,18 @@
     <string name="securityVeryHighQuestion">
         What is the flag when vulnerable app is in security level very high ?
     </string>
+    <string name="vulnerabilityQuestion">
+        In what line of code is the vulnerability introduced in the vulnerable app?
+    </string>
+    <string name="attackQuestion">
+        What line of code gives the malware away?
+    </string>
 
     <!--names for challenge operation modes-->
     <string name="beginnerMode">Beginner</string>
     <string name="expertMode">Expert</string>
     <string name="makeOwnMalwareMode">Make your own Malware</string>
 
-    <string name="callLoggerAppName">Call Logger</string>
-    <string name="newsAggregatorAppName">News Aggregator</string>
     <string name="acknowledgementsTitle">Acknowledgements</string>
 
     <string name="acknowledgements">

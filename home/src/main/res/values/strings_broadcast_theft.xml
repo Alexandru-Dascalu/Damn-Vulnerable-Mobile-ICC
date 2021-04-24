@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
+
+    <string name="newsAggregatorAppName">News Aggregator</string>
+    <string name="callLoggerAppName">Call Logger</string>
     <!--attack explanations-->
     <string name="broadcastTheftExplanation">
         When a broadcast is sent, the sender does not receive any indication of what components have

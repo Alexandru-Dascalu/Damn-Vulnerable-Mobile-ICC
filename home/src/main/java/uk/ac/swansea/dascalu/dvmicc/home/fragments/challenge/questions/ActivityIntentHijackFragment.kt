@@ -31,17 +31,17 @@ class ActivityIntentHijackFragment : AbstractFullQuestionsFragment() {
     }
 
     private fun hideElementsForUnusedSecurityLevels(view: View) {
-        view.findViewById<TextView>(R.id.securityMediumQuestionTextView).visibility = View.GONE
+        view.findViewById<TextView>(R.id.securityMediumQuestionTitle).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityMediumInput).visibility = View.GONE
         view.findViewById<EditText>(R.id.securityMediumEditText).isFocusable = false
         view.findViewById<MaterialButton>(R.id.securityMediumButton).visibility = View.GONE
 
-        view.findViewById<TextView>(R.id.securityHighQuestionTextView).visibility = View.GONE
+        view.findViewById<TextView>(R.id.securityHighQuestionTitle).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityHighInput).visibility = View.GONE
         view.findViewById<EditText>(R.id.securityHighEditText).isFocusable = false
         view.findViewById<MaterialButton>(R.id.securityHighButton).visibility = View.GONE
 
-        view.findViewById<TextView>(R.id.securityVeryHighQuestionTextView).visibility = View.GONE
+        view.findViewById<TextView>(R.id.securityVeryHighQuestionTitle).visibility = View.GONE
         view.findViewById<TextInputLayout>(R.id.securityVeryHighInput).visibility = View.GONE
         view.findViewById<EditText>(R.id.securityVeryHighEditText).isFocusable = false
         view.findViewById<MaterialButton>(R.id.securityVeryHighButton).visibility = View.GONE

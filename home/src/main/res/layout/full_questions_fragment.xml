@@ -11,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/vulnerableAppQuestionTextView"
+            android:id="@+id/vulnerableAppQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -36,7 +36,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/vulnerableAppQuestionButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vulnerableAppQuestionTextView">
+            app:layout_constraintTop_toBottomOf="@+id/vulnerableAppQuestionTitle">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/vulnerableAppEditText"
@@ -60,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/malwareQuestionTextView"
+            android:id="@+id/malwareQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -85,7 +85,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/malwareQuestionButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/malwareQuestionTextView">
+            app:layout_constraintTop_toBottomOf="@+id/malwareQuestionTitle">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/malwareAppEditText"
@@ -109,7 +109,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/securityLowQuestionTextView"
+            android:id="@+id/securityLowQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -136,7 +136,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/securityLowButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/securityLowQuestionTextView">
+            app:layout_constraintTop_toBottomOf="@+id/securityLowQuestionTitle">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/securityLowEditText"
@@ -160,7 +160,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/securityMediumQuestionTextView"
+            android:id="@+id/securityMediumQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -186,7 +186,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/securityMediumButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/securityMediumQuestionTextView">
+            app:layout_constraintTop_toBottomOf="@+id/securityMediumQuestionTitle">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/securityMediumEditText"
@@ -210,7 +210,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/securityHighQuestionTextView"
+            android:id="@+id/securityHighQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -235,7 +235,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/securityHighButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/securityHighQuestionTextView">
+            app:layout_constraintTop_toBottomOf="@+id/securityHighQuestionTitle">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/securityHighEditText"
@@ -259,7 +259,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/securityVeryHighQuestionTextView"
+            android:id="@+id/securityVeryHighQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -284,7 +284,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/securityVeryHighButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/securityVeryHighQuestionTextView">
+            app:layout_constraintTop_toBottomOf="@+id/securityVeryHighQuestionTitle">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/securityVeryHighEditText"
@@ -308,18 +308,80 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/securityImpossibleQuestionTextView"
+            android:id="@+id/vulnerabilityQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
 
+            android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="16dp"
+
+            android:text="@string/vulnerabilityQuestion"
             android:textAppearance="@style/questionStyle"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/securityVeryHighInput" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/vulnerabilitySpinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/vulnerabilityQuestionHint"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vulnerabilityQuestionTitle">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/malwareGiveawayQuestionTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="@string/attackQuestion"
+            android:textAppearance="@style/questionStyle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vulnerabilitySpinner" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/malwareGiveawaySpinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/malwareGiveawayQuestionHint"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/malwareGiveawayQuestionTitle">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
