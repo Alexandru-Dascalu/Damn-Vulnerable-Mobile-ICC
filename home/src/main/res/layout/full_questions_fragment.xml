@@ -327,7 +327,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/vulnerabilitySpinner"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/spinnerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/vulnerabilityQuestionHint"
@@ -378,7 +378,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/malwareGiveawaySpinner"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/spinnerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/malwareGiveawayQuestionHint"
