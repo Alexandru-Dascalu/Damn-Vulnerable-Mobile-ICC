@@ -2,9 +2,9 @@ package uk.ac.swansea.dascalu.dvmicc.home.model
 
 import androidx.fragment.app.Fragment
 
-class ViewModel(val challenge: Challenge) {
+class ChallengeViewModel(val challenge: Challenge) {
     companion object {
-        lateinit var instance: ViewModel
+        lateinit var instance: ChallengeViewModel
     }
 
     var hasGuessedApps : Boolean = false

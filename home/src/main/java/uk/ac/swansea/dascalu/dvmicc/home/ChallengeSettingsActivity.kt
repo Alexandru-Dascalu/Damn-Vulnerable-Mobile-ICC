@@ -27,11 +27,10 @@ import java.lang.IllegalStateException
 import java.util.Locale
 
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
-import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
+import uk.ac.swansea.dascalu.dvmicc.home.model.ChallengeViewModel
+import uk.ac.swansea.dascalu.dvmicc.home.model.OperationMode
 
 class ChallengeSettingsActivity :  AppCompatActivity() {
-    private var challenge: Challenge = ViewModel.instance.challenge
-
     private val writeRequestStoragePermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
@@ -61,11 +60,26 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
 
         title = resources.getString(R.string.challengeSettingsActivityTitle)
 
-        disableNecessaryLevelRadioButtons()
+        setOperationModeSelection(intent)
+        disableUnnecessarySecurityRadioButtons()
         initialiseSecuritySettings()
     }
 
-    private fun disableNecessaryLevelRadioButtons() {
+    private fun setOperationModeSelection(intent: Intent) {
+        if(intent.extras != null && intent.getSerializableExtra("mode") != null) {
+            val operationModeRadioGroup = findViewById<RadioGroup>(R.id.operationModeRadioGroup)
+
+            when(intent.getSerializableExtra("mode") as OperationMode) {
+                OperationMode.BEGINNER -> operationModeRadioGroup.check(R.id.radio_button_beginner)
+                OperationMode.EXPERIENCED -> operationModeRadioGroup.check(R.id.radio_button_experienced)
+                OperationMode.MAKE_OWN_MALWARE -> operationModeRadioGroup.check(R.id.radio_button_make_own_malware)
+            }
+        }
+    }
+
+    private fun disableUnnecessarySecurityRadioButtons() {
+        val challenge : Challenge = ChallengeViewModel.instance.challenge
+
         if (!challenge.securityLevels.containsKey("low")) {
             findViewById<RadioButton>(R.id.radio_button_vulnerable_low).isEnabled = false
         }
@@ -87,6 +101,17 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         }
     }
 
+    private fun getMode() : OperationMode {
+        val operationModeID : Int = findViewById<RadioGroup>(R.id.operationModeRadioGroup).checkedRadioButtonId
+
+        return when(operationModeID) {
+            R.id.radio_button_beginner -> OperationMode.BEGINNER
+            R.id.radio_button_experienced -> OperationMode.EXPERIENCED
+            R.id.radio_button_make_own_malware -> OperationMode.MAKE_OWN_MALWARE
+            else -> throw IllegalStateException("invalid operation mode selection!")
+        }
+    }
+
     fun onApplySettings(view: View) {
         applySettings()
         if(intent.extras != null) {
@@ -95,9 +120,11 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
 
             if(!launchedFromChallengeActivity) {
                 val intent = Intent(this, ChallengeActivity::class.java)
+                intent.putExtra("mode", getMode())
                 startActivity(intent)
             } else {
                 val intent = Intent()
+                intent.putExtra("mode", getMode())
                 setResult(Activity.RESULT_OK, intent)
             }
         }
@@ -133,11 +160,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
             val writer = OutputStreamWriter(FileOutputStream(settingsFile))
 
-            val challengeIndex : Int = if (challenge != null) {
-                challenge!!.challengeNameIndex
-            } else {
-                -1
-            }
+            val challengeIndex : Int = ChallengeViewModel.instance.challenge.challengeNameIndex
 
             val settings : String = "%d\n%s\n%b".format(challengeIndex, vulnerableAppSecurityLevel,
                     malwareSecurityOvercome)

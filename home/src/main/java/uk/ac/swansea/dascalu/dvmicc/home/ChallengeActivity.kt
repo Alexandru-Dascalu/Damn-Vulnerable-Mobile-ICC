@@ -18,7 +18,8 @@ import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.Broadcast
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftMITMQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.BroadcastTheftQuestionsFragment
 import uk.ac.swansea.dascalu.dvmicc.home.fragments.challenge.questions.ProviderUriHijackQuestionsFragment
-import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
+import uk.ac.swansea.dascalu.dvmicc.home.model.ChallengeViewModel
+import uk.ac.swansea.dascalu.dvmicc.home.model.OperationMode
 
 import java.lang.IllegalStateException
 
@@ -26,6 +27,8 @@ class ChallengeActivity :  AppCompatActivity() {
     companion object {
         private val SETTINGS_REQUEST_CODE = 5
     }
+
+    private var operationMode : OperationMode = OperationMode.BEGINNER
 
     init {
         supportFragmentManager.fragmentFactory = ChallengeFragmentFactory()
@@ -63,17 +66,57 @@ class ChallengeActivity :  AppCompatActivity() {
         val appBar : MaterialToolbar = findViewById<MaterialToolbar>(R.id.challengeActivityToolbar)
         setSupportActionBar(appBar)
         
-        title = resources.getStringArray(R.array.challenges)[ViewModel.instance.challenge.challengeNameIndex]
+        title = resources.getStringArray(R.array.challenges)[
+                ChallengeViewModel.instance.challenge.challengeNameIndex]
 
+        setOperationMode(savedInstanceState, intent)
+        setupBottomBar(savedInstanceState)
+    }
+
+    private fun setOperationMode(savedInstanceState: Bundle?, intent: Intent) {
+        if(savedInstanceState != null) {
+            if(savedInstanceState.getSerializable("mode") != null) {
+                operationMode = savedInstanceState.getSerializable("mode") as OperationMode
+            }
+        } else {
+            if(intent.extras!= null && intent.getSerializableExtra("mode") != null) {
+                operationMode = intent.getSerializableExtra("mode") as OperationMode
+            }
+        }
+    }
+
+    private fun setupBottomBar(savedInstanceState: Bundle?) {
         val bottomBar = findViewById<BottomNavigationView>(R.id.challengeNavigationBar)
+        setBottomBarLayout(bottomBar)
         bottomBar.setOnNavigationItemSelectedListener(navigationBarListener)
 
-        if (savedInstanceState == null || savedInstanceState.getInt("bottomBarItemID") == 0) {
-            bottomBar.selectedItemId = R.id.challengeInformationButton
+        if(savedInstanceState != null) {
+            if(savedInstanceState.getInt("bottomBarItemID") != 0) {
+                bottomBar.selectedItemId = savedInstanceState.getInt("bottomBarItemID")
+            } else {
+                setBottomBarSelectedItemToFirst(bottomBar)
+            }
         } else {
-            bottomBar.selectedItemId = savedInstanceState.getInt("bottomBarItemID")
+            setBottomBarSelectedItemToFirst(bottomBar)
         }
+    }
 
+    private fun setBottomBarLayout(bottomBar: BottomNavigationView) {
+        bottomBar.menu.clear()
+
+        if(operationMode == OperationMode.BEGINNER) {
+            bottomBar.inflateMenu(R.menu.challenge_beginner_navigation_bar_layout)
+        } else if(operationMode == OperationMode.EXPERIENCED) {
+            bottomBar.inflateMenu(R.menu.challenge_expert_navigation_bar_layout)
+        }
+    }
+
+    private fun setBottomBarSelectedItemToFirst(bottomBar: BottomNavigationView) {
+        if(operationMode == OperationMode.BEGINNER) {
+            bottomBar.selectedItemId = R.id.challengeInformationButton
+        } else if (operationMode == OperationMode.EXPERIENCED) {
+            bottomBar.selectedItemId = R.id.manifestsButton
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -85,11 +128,12 @@ class ChallengeActivity :  AppCompatActivity() {
         if(item.itemId == R.id.settingsButton) {
             val intent = Intent(this, ChallengeSettingsActivity::class.java)
             intent.putExtra("launchedFromChallengeActivity", true)
+            intent.putExtra("mode", operationMode)
 
             startActivityForResult(intent, SETTINGS_REQUEST_CODE)
             return true
         } else if(item.itemId == R.id.helpButton) {
-            if (ViewModel.instance.hasGuessedApps) {
+            if (ChallengeViewModel.instance.hasGuessedApps) {
                 val intent = Intent(this, SecurityLevelsExplanationActivity::class.java)
                 startActivity(intent)
             } else {
@@ -111,7 +155,15 @@ class ChallengeActivity :  AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(resultCode == Activity.RESULT_OK && requestCode == SETTINGS_REQUEST_CODE) {
+            val newOperationMode : OperationMode? = data?.getSerializableExtra("mode") as OperationMode?
 
+            if (newOperationMode != null && newOperationMode != operationMode) {
+                operationMode = newOperationMode
+
+                val bottomBar = findViewById<BottomNavigationView>(R.id.challengeNavigationBar)
+                setBottomBarLayout(bottomBar)
+                setBottomBarSelectedItemToFirst(bottomBar)
+            }
         }
     }
 
@@ -119,10 +171,19 @@ class ChallengeActivity :  AppCompatActivity() {
         super.onSaveInstanceState(outState)
         outState.putInt("bottomBarItemID", findViewById<BottomNavigationView>(
                 R.id.challengeNavigationBar).selectedItemId)
+        outState.putSerializable("mode", operationMode)
+    }
+
+    override fun onDestroy() {
+        if(supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
+            ChallengeViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
+                    supportFragmentManager.findFragmentByTag("questionsFragment")!!)
+        }
+        super.onDestroy()
     }
 
     private fun getQuestionsFragmentName() : String {
-        return when(ViewModel.instance.challenge.challengeNameIndex) {
+        return when(ChallengeViewModel.instance.challenge.challengeNameIndex) {
             0 -> BroadcastTheftQuestionsFragment::class.java.name
             1 -> BroadcastTheftDOSQuestionsFragment::class.java.name
             2 -> BroadcastTheftMITMQuestionsFragment::class.java.name
@@ -141,19 +202,11 @@ class ChallengeActivity :  AppCompatActivity() {
         saved when the activity was destroyed, and trying to save its state a second time results
         in a crash.*/
         if(tag != "questionsFragment" && supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
-            ViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
+            ChallengeViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
                 supportFragmentManager.findFragmentByTag("questionsFragment")!!)
         }
 
         fragmentTransaction.replace(R.id.challengeContentFrame, newFragment, tag)
         fragmentTransaction.commit()
-    }
-
-    override fun onDestroy() {
-        if(supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
-            ViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
-                    supportFragmentManager.findFragmentByTag("questionsFragment")!!)
-        }
-        super.onDestroy()
     }
 }

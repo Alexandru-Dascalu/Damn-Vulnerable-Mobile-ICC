@@ -10,13 +10,13 @@ import io.github.kbiakov.codeview.CodeView
 
 import uk.ac.swansea.dascalu.dvmicc.home.model.Challenge
 import uk.ac.swansea.dascalu.dvmicc.home.model.SecurityLevel
-import uk.ac.swansea.dascalu.dvmicc.home.model.ViewModel
+import uk.ac.swansea.dascalu.dvmicc.home.model.ChallengeViewModel
 
 class SecurityLevelsExplanationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val challenge: Challenge = ViewModel.instance.challenge
+        val challenge: Challenge = ChallengeViewModel.instance.challenge
 
         setContentView(R.layout.activity_security_levels)
         setSupportActionBar(findViewById<MaterialToolbar>(R.id.securityLevelsActivityToolbar))

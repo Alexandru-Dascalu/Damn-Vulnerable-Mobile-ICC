@@ -582,9 +582,9 @@
     </string>
 
     <!--names for challenge operation modes-->
-    <string name="beginnerMode">Beginner Mode</string>
-    <string name="expertMode">Expert Mode</string>
-    <string name="makeOwnMalwareMode">Make your own Malware Mode</string>
+    <string name="beginnerMode">Beginner</string>
+    <string name="expertMode">Expert</string>
+    <string name="makeOwnMalwareMode">Make your own Malware</string>
 
     <string name="callLoggerAppName">Call Logger</string>
     <string name="newsAggregatorAppName">News Aggregator</string>

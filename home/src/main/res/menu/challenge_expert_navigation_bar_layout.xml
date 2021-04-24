@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/manifestsButton"
+        android:title="@string/manifestsButtonText"
+        android:icon="@drawable/ic_baseline_code"/>
+    <item
+        android:id="@+id/questionsButton"
+        android:title="@string/questionsButtonText"
+        android:icon="@drawable/ic_question_mark"/>
+    <item
+        android:id="@+id/instructionsButton"
+        android:title="@string/instructions_button"
+        android:icon="@drawable/ic_instructions" />
+</menu>
