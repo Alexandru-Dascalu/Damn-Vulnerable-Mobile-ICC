@@ -272,6 +272,15 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
                 textInputLayout.error = null
                 editText.isFocusable = false
 
+                /*the button can be for a question either with text input or a drop down. For the
+                drop down, we do not want the user to change selection after the they answer
+                correctly. So we need to disbale text layout. But for the text input questions, I
+                want to allow the user look at their answers after they have answered correctly. If
+                text input is disabled, they can not slide left or right.*/
+                if (editText is AutoCompleteTextView) {
+                    textInputLayout.isEnabled = false
+                }
+
                 button.text = rootview.context.resources.getString(R.string.completed)
                 changeButtonColors(button)
                 button.isEnabled = false
