@@ -19,7 +19,7 @@ import com.google.android.material.textfield.TextInputLayout
 import uk.ac.swansea.dascalu.dvmicc.home.R
 import uk.ac.swansea.dascalu.dvmicc.home.hideKeyboard
 import uk.ac.swansea.dascalu.dvmicc.home.model.ChallengeViewModel
-import java.util.*
+import java.util.Locale
 
 /**
  * Abstract super class for all questions fragments for challenges with all five security levels.
@@ -34,8 +34,8 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
     protected abstract var securityHighFlag: String?
     protected abstract var securityVeryHighFlag: String?
 
-    protected lateinit var vulnerabilityCorrectCodeLine: String
-    protected lateinit var malwareGiveawayCorrectCodeLine: String
+    private lateinit var vulnerabilityCorrectCodeLine: String
+    private lateinit var malwareGiveawayCorrectCodeLine: String
 
     private var answeredVulnerable: Boolean = false
     private var answeredMalware: Boolean = false
@@ -259,27 +259,27 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
     }
 
     inner class QuestionButtonClickListener(private val correctAnswer: String?,
-                                      private val view: View, private val editText: EditText,
-                                      private val textInputLayout: TextInputLayout) : View.OnClickListener {
+                                            private val rootview: View, private val editText: EditText,
+                                            private val textInputLayout: TextInputLayout) : View.OnClickListener {
 
         override fun onClick(buttonView: View?) {
             val button: MaterialButton = buttonView as MaterialButton
 
             if(editText.text.toString().toLowerCase(Locale.ROOT) !=
                     correctAnswer!!.toLowerCase(Locale.ROOT)) {
-                textInputLayout.error = view.context.resources.getString(R.string.wrongAnswer)
+                textInputLayout.error = rootview.context.resources.getString(R.string.wrongAnswer)
             } else {
                 textInputLayout.error = null
                 editText.isFocusable = false
 
-                button.text = view.context.resources.getString(R.string.completed)
+                button.text = rootview.context.resources.getString(R.string.completed)
                 changeButtonColors(button)
                 button.isEnabled = false
                 hideKeyboard(buttonView, context!!)
             }
 
-            val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
-            val malwareEditText = view.findViewById<EditText>(R.id.malwareAppEditText)
+            val vulnerableEditText = rootview.findViewById<EditText>(R.id.vulnerableAppEditText)
+            val malwareEditText = rootview.findViewById<EditText>(R.id.malwareAppEditText)
 
             if(!malwareEditText.isFocusable && !vulnerableEditText.isFocusable) {
                 ChallengeViewModel.instance.hasGuessedApps = true
@@ -291,16 +291,20 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         }
 
         private fun checkHasCompletedChallenge() : Boolean {
-            val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
-            val malwareEditText = view.findViewById<EditText>(R.id.malwareAppEditText)
-            val lowEditText = view.findViewById<EditText>(R.id.securityLowEditText)
-            val mediumEditText = view.findViewById<EditText>(R.id.securityMediumEditText)
-            val highEditText = view.findViewById<EditText>(R.id.securityHighEditText)
-            val veryHighEditText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
+            val vulnerableEditText = rootview.findViewById<EditText>(R.id.vulnerableAppEditText)
+            val malwareEditText = rootview.findViewById<EditText>(R.id.malwareAppEditText)
+            val lowEditText = rootview.findViewById<EditText>(R.id.securityLowEditText)
+            val mediumEditText = rootview.findViewById<EditText>(R.id.securityMediumEditText)
+            val highEditText = rootview.findViewById<EditText>(R.id.securityHighEditText)
+            val veryHighEditText = rootview.findViewById<EditText>(R.id.securityVeryHighEditText)
+
+            val vulnerabilityCodeLineEditText = rootview.findViewById<EditText>(R.id.vulnerabilityEditText)
+            val malwareGiveawayCodeLineEditText = rootview.findViewById<EditText>(R.id.malwareGiveawayEditText)
 
             return !vulnerableEditText.isFocusable && !malwareEditText.isFocusable &&
                     !lowEditText.isFocusable && !mediumEditText.isFocusable &&
-                    !highEditText.isFocusable && !veryHighEditText.isFocusable
+                    !highEditText.isFocusable && !veryHighEditText.isFocusable &&
+                    !vulnerabilityCodeLineEditText.isFocusable && !malwareGiveawayCodeLineEditText.isFocusable
         }
     }
 }
