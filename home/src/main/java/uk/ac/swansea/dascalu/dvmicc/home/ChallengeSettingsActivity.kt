@@ -9,6 +9,7 @@ import android.os.Environment
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
+
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
@@ -16,6 +17,7 @@ import androidx.core.content.ContextCompat
 
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 import java.io.File
 import java.io.FileInputStream
@@ -34,7 +36,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
     private val writeRequestStoragePermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
-            applySettings()
+            applySecuritySettings()
         } else {
             Snackbar.make(findViewById(R.id.vulnerableAppSecurityLevelRadioGroup),
                     R.string.fileStoragePermissionWarning, Snackbar.LENGTH_LONG).show()
@@ -51,12 +53,25 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         }
     }
 
+    private val operationModeChangeListener = RadioGroup.OnCheckedChangeListener { _: RadioGroup?, checkedId: Int ->
+        val malwareEnabledSwitch = findViewById<SwitchMaterial>(R.id.malwareSecuritySwitch)
+        if (checkedId == R.id.radio_button_make_own_malware) {
+            malwareEnabledSwitch.isChecked = true
+            malwareEnabledSwitch.isEnabled = false
+        } else {
+            malwareEnabledSwitch.isEnabled = true
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_challenge_settings)
 
         val materialToolbar = findViewById<MaterialToolbar>(R.id.settingsActivityToolbar)
         setSupportActionBar(materialToolbar)
+
+        val operationModeRadioGroup = findViewById<RadioGroup>(R.id.operationModeRadioGroup)
+        operationModeRadioGroup.setOnCheckedChangeListener(operationModeChangeListener)
 
         title = resources.getString(R.string.challengeSettingsActivityTitle)
 
@@ -113,7 +128,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
     }
 
     fun onApplySettings(view: View) {
-        applySettings()
+        applySecuritySettings()
         if(intent.extras != null) {
             val launchedFromChallengeActivity : Boolean = intent.extras!!.get(
                     "launchedFromChallengeActivity") as Boolean
@@ -139,30 +154,30 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         finish()
     }
 
-    private fun applySettings() {
+    private fun applySecuritySettings() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.
                 WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             val storageState = Environment.getExternalStorageState()
 
             if((storageState == Environment.MEDIA_MOUNTED)) {
-                saveSecurityLevelsToFile()
+                saveSecuritySettingsToFile()
             }
         } else {
             writeRequestStoragePermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
     }
 
-    private fun saveSecurityLevelsToFile() {
+    private fun saveSecuritySettingsToFile() {
         val storageState = Environment.getExternalStorageState()
 
         if((storageState == Environment.MEDIA_MOUNTED)) {
             val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
                     .vulnerableAppSecurityLevelRadioGroup)
-            val malwareSecuritySwitch = findViewById<SwitchCompat>(R.id.malwareSecuritySwitch)
 
             val vulnerableAppSecurityLevel: String = findViewById<RadioButton>(
                     vulnerableSecurityLevelButtonGroup.checkedRadioButtonId).text.toString().toLowerCase(Locale.ROOT)
-            val malwareSecurityOvercome: Boolean = malwareSecuritySwitch.isChecked
+            val malwareSecurityOvercome: Boolean = findViewById<SwitchMaterial>(
+                    R.id.malwareSecuritySwitch).isChecked
 
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
             val writer = OutputStreamWriter(FileOutputStream(settingsFile))
