@@ -489,14 +489,17 @@
     <string name="wrongAnswer">Wrong answer!</string>
     <string name="completed">Completed</string>
     <string name="securityLevelsActivityTitle">Security levels info</string>
-    <string name="malware_overcome_switch_msg">Malware overcome</string>
-    <string name="malwareOvercomeModeTitle">Malware Overcome Mode</string>
-    <string name="malware_overcome_explanation">
-        Sets whether the malware overcomes the current security level of the vulnerable app. It will
-        have no effect for the Impossible mode, as the malware can not overcome its defences.
+    <string name="malware_enabled_switch_msg">Enable malware</string>
+    <string name="malwareEnableTitle">Enable Malware</string>
+    <string name="malware_enabled_explanation">
+        Sets whether the malware is enabled. If disabled, the malware will not perform the attack.
+        It will have no effect for the Impossible mode, as the
+        malware can not overcome its defences.
 
         \n\nThis may or may not actually have an effect. For example, for some challenges the medium and
         very high levels can only be overcome by a different malware APK.
+
+        \n\nIf operation mode is set to Make Own Malware, the malware is always enabled.
     </string>
 
     <string name="operationModes">Operation mode for the challenge:</string>

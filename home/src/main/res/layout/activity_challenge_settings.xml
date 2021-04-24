@@ -160,7 +160,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
 
-                android:text="@string/malwareOvercomeModeTitle"
+                android:text="@string/malwareEnableTitle"
                 android:textSize="18sp"
                 android:textStyle="bold"
 
@@ -169,14 +169,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/vulnerableAppSecurityLevelRadioGroup" />
 
             <TextView
-                android:id="@+id/malwareSecuritySettingsTextView"
+                android:id="@+id/malwareEnabledTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
 
-                android:text="@string/malware_overcome_explanation"
+                android:text="@string/malware_enabled_explanation"
                 android:textAppearance="@style/textStyle"
 
                 app:layout_constraintEnd_toEndOf="parent"
@@ -184,15 +184,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/malwareSecuritySettingsHeading" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/malwareSecuritySwitch"
+                android:id="@+id/malwareEnabledSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:layout_marginStart="8dp"
 
-                android:text="@string/malware_overcome_switch_msg"
+                android:text="@string/malware_enabled_switch_msg"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/malwareSecuritySettingsTextView" />
+                app:layout_constraintTop_toBottomOf="@id/malwareEnabledTextView" />
 
             <Button
                 android:id="@+id/settingsApplyButton"
@@ -210,7 +210,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/malwareSecuritySwitch" />
+                app:layout_constraintTop_toBottomOf="@id/malwareEnabledSwitch" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

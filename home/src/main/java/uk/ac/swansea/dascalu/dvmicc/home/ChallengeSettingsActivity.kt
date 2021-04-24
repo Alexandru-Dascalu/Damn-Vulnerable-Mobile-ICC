@@ -54,7 +54,7 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
     }
 
     private val operationModeChangeListener = RadioGroup.OnCheckedChangeListener { _: RadioGroup?, checkedId: Int ->
-        val malwareEnabledSwitch = findViewById<SwitchMaterial>(R.id.malwareSecuritySwitch)
+        val malwareEnabledSwitch = findViewById<SwitchMaterial>(R.id.malwareEnabledSwitch)
         if (checkedId == R.id.radio_button_make_own_malware) {
             malwareEnabledSwitch.isChecked = true
             malwareEnabledSwitch.isEnabled = false
@@ -171,25 +171,29 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         val storageState = Environment.getExternalStorageState()
 
         if((storageState == Environment.MEDIA_MOUNTED)) {
-            val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
-                    .vulnerableAppSecurityLevelRadioGroup)
-
-            val vulnerableAppSecurityLevel: String = findViewById<RadioButton>(
-                    vulnerableSecurityLevelButtonGroup.checkedRadioButtonId).text.toString().toLowerCase(Locale.ROOT)
-            val malwareSecurityOvercome: Boolean = findViewById<SwitchMaterial>(
-                    R.id.malwareSecuritySwitch).isChecked
-
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
             val writer = OutputStreamWriter(FileOutputStream(settingsFile))
 
             val challengeIndex : Int = ChallengeViewModel.instance.challenge.challengeNameIndex
 
-            val settings : String = "%d\n%s\n%b".format(challengeIndex, vulnerableAppSecurityLevel,
-                    malwareSecurityOvercome)
+            val settings : String = "%d\n%s\n%b".format(challengeIndex, getSecurityLevelSelection(),
+                    getMalwareEnabledSelection())
             writer.write(settings)
 
             writer.close()
         }
+    }
+
+    private fun getSecurityLevelSelection() : String {
+        val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(R.id
+                .vulnerableAppSecurityLevelRadioGroup)
+
+        return findViewById<RadioButton>(vulnerableSecurityLevelButtonGroup.checkedRadioButtonId)
+                .text.toString().toLowerCase(Locale.ROOT)
+    }
+
+    private fun getMalwareEnabledSelection() : Boolean {
+        return findViewById<SwitchMaterial>(R.id.malwareEnabledSwitch).isChecked
     }
 
     private fun initialiseSecuritySettings() {
@@ -210,10 +214,6 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         val storageState = Environment.getExternalStorageState()
 
         if((storageState == Environment.MEDIA_MOUNTED)) {
-            val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(
-                    R.id.vulnerableAppSecurityLevelRadioGroup)
-            val malwareSecuritySwitch = findViewById<SwitchCompat>(R.id.malwareSecuritySwitch)
-
             val settingsFile = File(this.getExternalFilesDir(null), "dvmicc.txt")
 
             if (settingsFile.exists()) {
@@ -221,8 +221,11 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
 
                 reader.readLine()
                 val vulnerableAppSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
-                val malwareSecurityLevel = reader.readLine().toLowerCase(Locale.ROOT)
+                val malwareEnabled = reader.readLine().toLowerCase(Locale.ROOT)
                 reader.close()
+
+                val vulnerableSecurityLevelButtonGroup = findViewById<RadioGroup>(
+                        R.id.vulnerableAppSecurityLevelRadioGroup)
 
                 when(vulnerableAppSecurityLevel) {
                     "low" -> {
@@ -244,7 +247,8 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
                     }
                 }
 
-                malwareSecuritySwitch.isChecked = malwareSecurityLevel.toBoolean()
+                val malwareEnabledSwitch = findViewById<SwitchCompat>(R.id.malwareEnabledSwitch)
+                malwareEnabledSwitch.isChecked = malwareEnabled.toBoolean()
             }
         } else {
             Snackbar.make(findViewById(R.id.vulnerableAppSecurityLevelRadioGroup), "External storage is not present!",

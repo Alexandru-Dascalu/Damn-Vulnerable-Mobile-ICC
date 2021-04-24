@@ -67,11 +67,10 @@
     <string name="impossibleSecurityLevel">Impossible</string>
 
     <!--flags to be found by the user-->
-    <string-array name="flags">
+    <string-array name="broadcastTheftFlags">
         <item>Alea iacta est</item>
         <item>Veni, vidi, vici</item>
         <item>Et tu, Brute?</item>
         <item>Galia est omnis divisa in partes tres</item>
-        <item>Can\'t touch this!</item>
     </string-array>
 </resources>

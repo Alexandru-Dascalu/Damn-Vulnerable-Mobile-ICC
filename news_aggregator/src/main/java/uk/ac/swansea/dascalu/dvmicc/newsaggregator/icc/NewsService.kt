@@ -108,15 +108,15 @@ class NewsService : Service() {
 
         var flag : String = ""
         if(securityLevel == getString(R.string.lowSecurityLevel).toLowerCase()) {
-            flag = resources.getStringArray(R.array.flags)[0]
+            flag = resources.getStringArray(R.array.broadcastTheftFlags)[0]
         } else if(securityLevel == getString(R.string.mediumSecurityLevel).toLowerCase()) {
-            flag = resources.getStringArray(R.array.flags)[1]
+            flag = resources.getStringArray(R.array.broadcastTheftFlags)[1]
         } else if(securityLevel == getString(R.string.highSecurityLevel).toLowerCase()) {
-            flag = resources.getStringArray(R.array.flags)[2]
+            flag = resources.getStringArray(R.array.broadcastTheftFlags)[2]
         } else if(securityLevel == getString(R.string.veryHighSecurityLevel).toLowerCase()) {
-            flag = resources.getStringArray(R.array.flags)[3]
+            flag = resources.getStringArray(R.array.broadcastTheftFlags)[3]
         } else if(securityLevel == getString(R.string.impossibleSecurityLevel).toLowerCase()) {
-            flag = resources.getStringArray(R.array.flags)[4]
+            flag = resources.getStringArray(R.array.broadcastTheftFlags)[4]
         } else {
             throw IllegalStateException("Security level has an invalid value!")
         }
