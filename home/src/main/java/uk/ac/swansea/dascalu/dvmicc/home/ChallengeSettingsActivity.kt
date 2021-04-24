@@ -117,14 +117,21 @@ class ChallengeSettingsActivity :  AppCompatActivity() {
         if(intent.extras != null) {
             val launchedFromChallengeActivity : Boolean = intent.extras!!.get(
                     "launchedFromChallengeActivity") as Boolean
+            val operationMode : OperationMode = getMode()
 
             if(!launchedFromChallengeActivity) {
-                val intent = Intent(this, ChallengeActivity::class.java)
-                intent.putExtra("mode", getMode())
-                startActivity(intent)
+                if(operationMode == OperationMode.MAKE_OWN_MALWARE) {
+                    val intent = Intent(this, MakeOwnMalwareChallengeActivity::class.java)
+                    intent.putExtra("mode", operationMode)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this, ChallengeActivity::class.java)
+                    intent.putExtra("mode", operationMode)
+                    startActivity(intent)
+                }
             } else {
                 val intent = Intent()
-                intent.putExtra("mode", getMode())
+                intent.putExtra("mode", operationMode)
                 setResult(Activity.RESULT_OK, intent)
             }
         }

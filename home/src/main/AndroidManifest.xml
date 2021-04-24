@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChallengeActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".MakeOwnMalwareChallengeActivity"/>
         <activity android:name=".ChallengeSettingsActivity"/>
         <activity android:name=".SecurityLevelsExplanationActivity"/>
         <activity android:name=".AcknowledgementsActivity"/>

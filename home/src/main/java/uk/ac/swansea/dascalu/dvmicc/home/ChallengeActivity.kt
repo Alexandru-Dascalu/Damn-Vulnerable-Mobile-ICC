@@ -37,22 +37,22 @@ class ChallengeActivity :  AppCompatActivity() {
     private val navigationBarListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.challengeInformationButton -> {
-                replaceFragment(ChallengeInformationFragment::class.java.name, "infoFragment")
+                replaceFragment(ChallengeInformationFragment::class.java.name, "info")
 
                 return@OnNavigationItemSelectedListener true
             }
             R.id.manifestsButton -> {
-                replaceFragment(ManifestsFragment::class.java.name, "manifestFragment")
+                replaceFragment(ManifestsFragment::class.java.name, "manifest")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.questionsButton -> {
                 val fragmentName : String = getQuestionsFragmentName()
 
-                replaceFragment(fragmentName, "questionsFragment")
+                replaceFragment(fragmentName, "questions")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.instructionsButton -> {
-                replaceFragment(ChallengeInstructionsFragment::class.java.name, "instructionsFragment")
+                replaceFragment(ChallengeInstructionsFragment::class.java.name, "instructions")
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -159,11 +159,18 @@ class ChallengeActivity :  AppCompatActivity() {
             val newOperationMode : OperationMode? = data?.getSerializableExtra("mode") as OperationMode?
 
             if (newOperationMode != null && newOperationMode != operationMode) {
-                operationMode = newOperationMode
+                if(newOperationMode == OperationMode.MAKE_OWN_MALWARE) {
+                    val intent = Intent(this, MakeOwnMalwareChallengeActivity::class.java)
+                    intent.putExtra("mode", newOperationMode)
 
-                val bottomBar = findViewById<BottomNavigationView>(R.id.challengeNavigationBar)
-                setBottomBarLayout(bottomBar)
-                setBottomBarSelectedItemToFirst(bottomBar)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    operationMode = newOperationMode
+                    val bottomBar = findViewById<BottomNavigationView>(R.id.challengeNavigationBar)
+                    setBottomBarLayout(bottomBar)
+                    setBottomBarSelectedItemToFirst(bottomBar)
+                }
             }
         }
     }
@@ -202,9 +209,9 @@ class ChallengeActivity :  AppCompatActivity() {
         you rotate screen while on questions fragment, the fragment state will have been already
         saved when the activity was destroyed, and trying to save its state a second time results
         in a crash.*/
-        if(tag != "questionsFragment" && supportFragmentManager.findFragmentByTag("questionsFragment") != null) {
+        if(tag != "questionsFragment" && supportFragmentManager.findFragmentByTag("questions") != null) {
             ChallengeViewModel.instance.questionsFragmentState = supportFragmentManager.saveFragmentInstanceState(
-                supportFragmentManager.findFragmentByTag("questionsFragment")!!)
+                supportFragmentManager.findFragmentByTag("questions")!!)
         }
 
         fragmentTransaction.replace(R.id.challengeContentFrame, newFragment, tag)
