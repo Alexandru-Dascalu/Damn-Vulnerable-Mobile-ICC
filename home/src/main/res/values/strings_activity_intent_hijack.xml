@@ -286,4 +286,24 @@
         <item>If you must break the law, do it to seize power: in all other cases observe it.</item>
         <item>Can\'t touch this!</item>
     </string-array>
+
+    <string name="activityHijackVulnerabilityCorrectAnswer">LoadingActivity, line 12</string>
+    <string-array name="activityHijackVulnerabilityOptions">
+        <item>Manifest, line 8</item>
+        <item>Manifest, line 34</item>
+        <item>@string/activityHijackVulnerabilityCorrectAnswer</item>
+        <item>LogInActivity, line 14</item>
+        <item>Manifest, line 15</item>
+        <item>LoadingActivity, line 5</item>
+        <item>Manifest, line 29</item>
+    </string-array>
+
+    <string name="activityHijackMalwareGiveawayCorrectAnswer">Manifest, line 26</string>
+    <string-array name="activityHijackMalwareGiveawayOptions">
+        <item>Manifest, line 28</item>
+        <item>MainActivity, line 13</item>
+        <item>Manifest, line 17</item>
+        <item>@string/activityHijackMalwareGiveawayCorrectAnswer</item>
+        <item>LogInActivity, line 8</item>
+    </string-array>
 </resources>

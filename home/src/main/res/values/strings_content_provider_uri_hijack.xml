@@ -32,6 +32,26 @@
         <item>Can\'t touch this!</item>
     </string-array>
 
+    <string name="providerHijackVulnerabilityCorrectAnswer">Manifest, line 52</string>
+    <string-array name="providerHijackVulnerabilityOptions">
+        <item>@string/providerHijackVulnerabilityCorrectAnswer</item>
+        <item>Manifest, line 44</item>
+        <item>MainActivity, line 7</item>
+        <item>Manifest, line 11</item>
+        <item>MainActivity, line 4</item>
+        <item>Manifest, line 50</item>
+    </string-array>
+
+    <string name="providerHijackMalwareGiveawayCorrectAnswer">Manifest, line 37</string>
+    <string-array name="providerHijackMalwareGiveawayOptions">
+        <item>Manifest, line 4</item>
+        <item>Manifest, line 41</item>
+        <item>Manifest, line 34</item>
+        <item>MainActivity, line 7</item>
+        <item>@string/providerHijackMalwareGiveawayCorrectAnswer</item>
+        <item>Manifest, line 22</item>
+    </string-array>
+
     <string name="providerHijackLowDescription">
         Intents that contain URIs to data in a content provider that should remain private are sent
         as implicit intents. The provider is not exported, however it has temporary permissions

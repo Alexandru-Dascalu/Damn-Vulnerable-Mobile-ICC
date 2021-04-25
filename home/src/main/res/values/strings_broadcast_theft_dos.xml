@@ -133,6 +133,27 @@
         <item>What an artist dies in me!</item>
     </string-array>
 
+    <string name="broadcastTheftDOSVulnerabilityCorrectAnswer">Manifest, line 31</string>
+    <string-array name="broadcastTheftDOSVulnerabilityOptions">
+        <item>Manifest, line 5</item>
+        <item>CallRedirectionReceiver, line 7</item>
+        <item>Manifest, line 10</item>
+        <item>CallRedirectionReceiver, line 11</item>
+        <item>@string/broadcastTheftDOSVulnerabilityCorrectAnswer</item>
+        <item>Manifest, line 27</item>
+    </string-array>
+
+    <string name="broadcastTheftDOSMalwareGiveawayCorrectAnswer">Manifest, line 39</string>
+    <string-array name="broadcastTheftDOSMalwareGiveawayOptions">
+        <item>Manifest, line 11</item>
+        <item>AdvancedActivity, line 16</item>
+        <item>AdvancedActivity, line 4</item>
+        <item>Manifest, line 27</item>
+        <item>MainActivity, line 6</item>
+        <item>ManiActivity, line 16</item>
+        <item>@string/broadcastTheftDOSMalwareGiveawayCorrectAnswer</item>
+    </string-array>
+
     <string name="callRedirectLowManifest">
         <![CDATA[
             <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"

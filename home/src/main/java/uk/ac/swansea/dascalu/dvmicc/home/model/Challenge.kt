@@ -20,24 +20,32 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
             mapOf("low" to SecurityLevel(R.string.broadcastTheftDOSLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
                     "high" to SecurityLevel(R.string.broadcastTheftDOSHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftDOSImpossibleDescription)),
-            R.string.broadcastTheftDOSInstructions, R.string.broadcastTheftDOSScenarioExplanation, 0, 0, 0, 0),
+            R.string.broadcastTheftDOSInstructions, R.string.broadcastTheftDOSScenarioExplanation,
+            R.array.broadcastTheftDOSVulnerabilityOptions, R.string.broadcastTheftDOSVulnerabilityCorrectAnswer,
+            R.array.broadcastTheftDOSMalwareGiveawayOptions, R.string.broadcastTheftDOSMalwareGiveawayCorrectAnswer),
 
     BROADCAST_THEFT_MITM(2, R.string.broadcastTheftMITMExplanation,
             mapOf("low" to SecurityLevel(R.string.broadcastTheftMITMLowDescription, R.string.callRedirectLowManifest, R.string.callRedirectLowIntentCode),
                     "high" to SecurityLevel(R.string.broadcastTheftMITMHighDescription, R.string.callRedirectHighManifest, R.string.callRedirectHighIntentCode),
                     "impossible" to SecurityLevel(R.string.broadcastTheftMITMImpossibleDescription)),
-            R.string.broadcastTheftMITMInstructions, R.string.broadcastTheftMITMScenarioExplanation, 0, 0, 0, 0),
+            R.string.broadcastTheftMITMInstructions, R.string.broadcastTheftMITMScenarioExplanation,
+            R.array.broadcastTheftDOSVulnerabilityOptions, R.string.broadcastTheftDOSVulnerabilityCorrectAnswer,
+            R.array.broadcastTheftMITMMalwareGiveawayOptions, R.string.broadcastTheftMITMMalwareGiveawayCorrectAnswer),
 
     ACTIVITY_INTENT_HIJACK(3, R.string.activityHijackExplanation,
             mapOf("low" to SecurityLevel(R.string.activityHijackLowDescription, R.string.santanderManifest, R.string.santanderLowIntentCode),
                     "impossible" to SecurityLevel(R.string.activityHijackImpossibleDescription, R.string.santanderImpossibleIntentCode)),
-            R.string.activityHijackInstructions, R.string.activityHijackScenarioExplanation, 0, 0, 0, 0),
+            R.string.activityHijackInstructions, R.string.activityHijackScenarioExplanation,
+            R.array.activityHijackVulnerabilityOptions, R.string.activityHijackVulnerabilityCorrectAnswer,
+            R.array.activityHijackMalwareGiveawayOptions, R.string.activityHijackMalwareGiveawayCorrectAnswer),
 
     CONTENT_PROVIDER_URI_HIJACK(4, R.string.contentProviderHijackingExplanation,
             mapOf("low" to SecurityLevel(R.string.providerHijackLowDescription, R.string.whatsappLowManifest, R.string.whatsappLowIntentCode),
                     "high" to SecurityLevel(R.string.providerHijackHighDescription, R.string.whatsappHighManifest),
                     "impossible" to SecurityLevel(R.string.providerHijackImpossibleDescription, intentCodeID = R.string.whatsappImpossibleIntentCode)),
-            R.string.contentProviderHijackInstructions, R.string.contentProviderHijackScenarioConclusion, 0, 0, 0,0 )
+            R.string.contentProviderHijackInstructions, R.string.contentProviderHijackScenarioConclusion,
+            R.array.providerHijackVulnerabilityOptions, R.string.providerHijackVulnerabilityCorrectAnswer,
+            R.array.providerHijackMalwareGiveawayOptions,R.string.providerHijackMalwareGiveawayCorrectAnswer)
 }
 
 data class SecurityLevel(val explanationID: Int, val manifestID: Int? = null, val intentCodeID: Int? = null)

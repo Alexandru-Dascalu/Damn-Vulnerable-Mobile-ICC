@@ -67,6 +67,17 @@
             could save others from death, but not himself.</item>
     </string-array>
 
+    <string name="broadcastTheftMITMMalwareGiveawayCorrectAnswer">Manifest, line 35</string>
+    <string-array name="broadcastTheftMITMMalwareGiveawayOptions">
+        <item>Manifest, line 9</item>
+        <item>MainActivity, line 6</item>
+        <item>@string/broadcastTheftMITMMalwareGiveawayCorrectAnswer</item>
+        <item>AdvancedActivity, line 8</item>
+        <item>AdvancedActivity, line 16</item>
+        <item>HomeFragment, line 11</item>
+        <item>Manifest, line 5</item>
+    </string-array>
+
     <!--security level descriptions-->
     <string name="broadcastTheftMITMLowDescription">
         The app listens for public broadcasts sent by the system. Since this app re-writes phone
