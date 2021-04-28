@@ -87,8 +87,8 @@ class MessagesService : Service() {
 
     private fun sendIntentToCorrectService(originalIntent: Intent) {
         val intent = Intent()
-        intent.component = ComponentName("uk.ac.swansea.dascalu.dvmicc.whatsapp",
-                "uk.ac.swansea.dascalu.dvmicc.whatsapp.icc.DeleteMessagesService")
+        intent.component = ComponentName("uk.ac.swansea.dascalu.dvmicc.fast_chat",
+                "uk.ac.swansea.dascalu.dvmicc.fast_chat.icc.DeleteMessagesService")
         intent.setDataAndType(originalIntent.data, originalIntent.type)
         intent.putExtra("chatNamesToDelete", originalIntent.getSerializableExtra(
                 "chatNamesToDelete"))

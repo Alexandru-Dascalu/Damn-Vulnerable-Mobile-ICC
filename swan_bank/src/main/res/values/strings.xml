@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
+    <string name="app_name">SwanBank</string>
+    <string name="securingPhone">Securing your phone...</string>
+    <string name="welcome">Welcome back!</string>
+    <string name="customerIDHint">Customer ID</string>
+    <string name="securityNumberHint">Security Number</string>
+    <string name="forgottenDetails"><u>Forgotten details?</u></string>
+    <string name="home">Home</string>
+    <string name="pay">Pay</string>
+    <string name="transfer">Transfer</string>
+    <string name="more">More</string>
+    <string name="sortCodeHint">Sort Code</string>
+    <string name="accountNumberHint">Account Number</string>
+    <string name="amountHint">Amount</string>
+
+    <string name="fileStoragePermissionWarning">
+        App needs file storage access to read security level!
+    </string>
+    <string name="storagePermissionAcquired">Storage permission acquired!</string>
+
+    <string name="paymentMade">Payment made succesfully!</string>
+    <string name="noPaymentDetails">You must provide details for the receiver of the payment!</string>
+
+    <string name="everydayAccountName">Everyday current account</string>
+    <string name="everydaryAccountDetails">26-14-89 31892495</string>
+    <string name="poundSign">£</string>
+    <string name="sacingsAccountName">Savings account</string>
+    <string name="savingsAccountDetails">26-14-89 94236241</string>
+    <string name="savingsAccountBalance">£89246</string>
+    <string name="businessAccountName">Business account</string>
+    <string name="businessAccountDetails">65-30-24 65083145</string>
+    <string name="businessAccountBalance">£1056</string>
+
+</resources>
