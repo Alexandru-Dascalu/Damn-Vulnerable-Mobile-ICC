@@ -535,7 +535,6 @@
         <item>@string/broadcastTheftMITMName</item>
         <item>@string/activityHijackName</item>
         <item>@string/providerHijackName</item>
-        <item>@string/broadcastInjectionName</item>
     </string-array>
 
     <!--security level names-->
