@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.moneymanager
+package uk.ac.swansea.dascalu.dvmicc.money_manager
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-import uk.ac.swansea.dascalu.dvmicc.moneymanager.adapters.CategoriesTapAdapter
+import uk.ac.swansea.dascalu.dvmicc.money_manager.adapters.CategoriesTapAdapter
 
 class CategoriesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

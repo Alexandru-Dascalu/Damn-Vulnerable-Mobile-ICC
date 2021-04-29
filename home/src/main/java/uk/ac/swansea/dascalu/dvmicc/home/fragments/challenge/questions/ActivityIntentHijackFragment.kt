@@ -21,7 +21,7 @@ class ActivityIntentHijackFragment : AbstractFullQuestionsFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         challengeName = view.context.resources.getString(R.string.activityHijackName)
-        vulnerableAppName = view.context.resources.getString(R.string.santanderAppName)
+        vulnerableAppName = view.context.resources.getString(R.string.swanBankAppName)
         malwareName = view.context.resources.getString(R.string.moneyManagerAppName)
 
         securityLowFlag = view.context.resources.getStringArray(R.array.activityHijackflags)[0]

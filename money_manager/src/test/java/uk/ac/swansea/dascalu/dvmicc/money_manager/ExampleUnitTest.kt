@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.moneymanager
+package uk.ac.swansea.dascalu.dvmicc.money_manager
 
 import org.junit.Test
 

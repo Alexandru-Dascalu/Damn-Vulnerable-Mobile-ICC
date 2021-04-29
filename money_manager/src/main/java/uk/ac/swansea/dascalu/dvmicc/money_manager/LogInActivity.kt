@@ -1,4 +1,4 @@
-package uk.ac.swansea.dascalu.dvmicc.moneymanager
+package uk.ac.swansea.dascalu.dvmicc.money_manager
 
 import android.content.ComponentName
 import android.content.Context

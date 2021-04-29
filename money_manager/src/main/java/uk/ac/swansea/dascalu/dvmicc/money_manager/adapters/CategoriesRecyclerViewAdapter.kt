@@ -1,11 +1,11 @@
-package uk.ac.swansea.dascalu.dvmicc.moneymanager.adapters
+package uk.ac.swansea.dascalu.dvmicc.money_manager.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import uk.ac.swansea.dascalu.dvmicc.moneymanager.R
+import uk.ac.swansea.dascalu.dvmicc.money_manager.R
 
 class CategoriesRecyclerViewAdapter(private val tabPosition: Int) :
     RecyclerView.Adapter<CategoriesRecyclerViewAdapter.ViewHolder>() {
