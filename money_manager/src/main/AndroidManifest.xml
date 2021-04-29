@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="uk.ac.swansea.dascalu.dvmicc.moneymanager">
+    package="uk.ac.swansea.dascalu.dvmicc.money_manager">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
@@ -12,24 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DamnVulnerableMobileICC">
 
-        <activity android:name=".MainActivity">
+        <activity android:name="uk.ac.swansea.dascalu.dvmicc.money_manager.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CategoriesActivity"/>
-        <activity android:name=".LogActivity"/>
+        <activity android:name="uk.ac.swansea.dascalu.dvmicc.money_manager.CategoriesActivity"/>
+        <activity android:name="uk.ac.swansea.dascalu.dvmicc.money_manager.LogActivity"/>
 
-        <activity android:name=".LogInActivity">
+        <activity android:name="uk.ac.swansea.dascalu.dvmicc.money_manager.LogInActivity">
             <intent-filter>
-                <action android:name="uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN" />
+                <action android:name="uk.ac.swansea.dascalu.dvmicc.swan_bank.intent.action.LOGIN" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.HOME"/>
                 <data android:mimeType="text/plain"
-                    android:scheme="santander_pay"
-                    android:host="uk.ac.swansea.dascalu.dvmicc.santander"/>
+                    android:scheme="swan_bank_pay"
+                    android:host="uk.ac.swansea.dascalu.dvmicc.swan_bank"/>
             </intent-filter>
         </activity>
 

@@ -33,8 +33,8 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
             R.array.broadcastTheftMITMMalwareGiveawayOptions, R.string.broadcastTheftMITMMalwareGiveawayCorrectAnswer),
 
     ACTIVITY_INTENT_HIJACK(3, R.string.activityHijackExplanation,
-            mapOf("low" to SecurityLevel(R.string.activityHijackLowDescription, R.string.santanderManifest, R.string.santanderLowIntentCode),
-                    "impossible" to SecurityLevel(R.string.activityHijackImpossibleDescription, R.string.santanderImpossibleIntentCode)),
+            mapOf("low" to SecurityLevel(R.string.activityHijackLowDescription, R.string.swanBankManifest, R.string.swanBankLowIntentCode),
+                    "impossible" to SecurityLevel(R.string.activityHijackImpossibleDescription, R.string.swanBankImpossibleIntentCode)),
             R.string.activityHijackInstructions, R.string.activityHijackScenarioExplanation,
             R.array.activityHijackVulnerabilityOptions, R.string.activityHijackVulnerabilityCorrectAnswer,
             R.array.activityHijackMalwareGiveawayOptions, R.string.activityHijackMalwareGiveawayCorrectAnswer),

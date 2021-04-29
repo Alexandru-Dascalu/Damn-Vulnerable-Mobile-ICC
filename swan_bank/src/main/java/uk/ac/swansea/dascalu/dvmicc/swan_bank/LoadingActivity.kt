@@ -72,7 +72,7 @@ class LoadingActivity : AppCompatActivity() {
         val securityLevel = loadSecuritySettingsFromFile(this)
 
         if(securityLevel == "low") {
-            val noPaymentUri : Uri = Uri.parse("santander_pay://uk.ac.swansea.dascalu.dvmicc.santander/pay")
+            val noPaymentUri : Uri = Uri.parse("swan_bank_pay://uk.ac.swansea.dascalu.dvmicc.swan_bank/pay")
 
             val intent = Intent(LOGIN_ACTION)
             intent.addCategory(Intent.CATEGORY_HOME)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyEllipsis">
-    <string name="santanderAppName">Santander</string>
+    <string name="swanBankAppName">SwanBank</string>
     <string name="moneyManagerAppName">Money Manager</string>
 
     <string name="activityHijackExplanation">
@@ -44,7 +44,7 @@
         and use an explicit intent. Explicit intents should be used for communication between
         components of the same app.
 
-        \n\nNOTE: manifest of the Santander app for this level is identical as the one for the low
+        \n\nNOTE: manifest of the SwanBank app for this level is identical as the one for the low
         security level.
 
         \n\nIf you still need to use an implicit intent for ICC within the same app, another
@@ -55,10 +55,10 @@
         \n\nhttps://developer.android.com/training/app-links#app-links-vs-deep-links
     </string>
 
-    <string name="santanderManifest">
+    <string name="swanBankManifest">
         <![CDATA[
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
-            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.santander\">
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.swan_bank\">
 
             \n\n\t<uses-permission android:name=
                 \n\t\t\"android.permission.READ_EXTERNAL_STORAGE\"/>
@@ -84,28 +84,28 @@
                 \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=
-                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN\" />
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.swan_bank.intent.action.LOGIN\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.HOME\"/>
                         \n\t\t\t\t<data android:mimeType=\"text/plain\"
-                            \n\t\t\t\t\tandroid:scheme=\"santander_pay\"
-                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.santander\"/>
+                            \n\t\t\t\t\tandroid:scheme=\"swan_bank_pay\"
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.swan_bank\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
             \n\t</application>
         \n</manifest>]]>
     </string>
 
-    <string name="santanderLowIntentCode" >
+    <string name="swanBankLowIntentCode" >
         <![CDATA[
         class LoadingActivity : AppCompatActivity() {
             \n\t...
             \n\tprivate fun sendLogInIntent() : Intent {
                 \n\t\tval noPaymentUri : Uri = Uri.parse(
-                    \n\t\t\t\"santander_pay://uk.ac.swansea.dascalu.dvmicc.santander/pay\")
+                    \n\t\t\t\"swan_bank_pay://uk.ac.swansea.dascalu.dvmicc.swan_bank/pay\")
 
                 \n\n\t\tval intent = Intent(
-                    \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN\")
+                    \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.swan_bank.intent.action.LOGIN\")
                 \n\t\tintent.addCategory(Intent.CATEGORY_HOME)
                 \n\t\tintent.setDataAndType(noPaymentUri, \"text/plain\")
 
@@ -114,7 +114,7 @@
         \n}]]>
     </string>
 
-    <string name="santanderLogInIntentCode">
+    <string name="swanBankLogInIntentCode">
         <![CDATA[
         class LogInActivity : AppCompatActivity() {
             \n\t...
@@ -140,7 +140,7 @@
         \n}]]>
     </string>
 
-    <string name="santanderImpossibleIntentCode">
+    <string name="swanBankImpossibleIntentCode">
         <![CDATA[
         class LoadingActivity : AppCompatActivity() {
             \n\t...
@@ -178,12 +178,12 @@
                 \n\n\t\t<activity android:name=\".LogInActivity\">
                     \n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=
-                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN\" />
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.swan_bank.intent.action.LOGIN\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.HOME\"/>
                         \n\t\t\t\t<data android:mimeType=\"text/plain\"
-                            \n\t\t\t\t\tandroid:scheme=\"santander_pay\"
-                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.santander\"/>
+                            \n\t\t\t\t\tandroid:scheme=\"swan_bank_pay\"
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.swan_bank\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</activity>
 
@@ -223,8 +223,8 @@
             \n\n\tfun sendIntent() {
                 \n\t\tval intent = Intent()
                 \n\t\tintent.component = ComponentName(
-                        \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander\",
-                        \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.santander.LogInActivity\")
+                        \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.swan_bank\",
+                        \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.swan_bank.LogInActivity\")
 
                 \n\n\t\tintent.setDataAndType(paymentURI, \"text/plain\")
                 \n\t\tstartActivity(intent)
@@ -235,25 +235,25 @@
     </string>
 
     <string name="activityHijackInstructions">
-        Go to the Santander app and log in. The customer ID is 4621989436 and the security code is
-        98421. If the malware app is already installed at this point, when the Santander app is on
-        the loading screen, you will see an app chooser dialog. Choose Santander and not Money Manager.
+        Go to the SwanBank app and log in. The customer ID is 4621989436 and the security code is
+        98421. If the malware app is already installed at this point, when the SwanBank app is on
+        the loading screen, you will see an app chooser dialog. Choose SwanBank and not Money Manager.
 
-        \n\nHave a look around at Santander\'s functionality. One feature of this app is that you
-        can press on special links on say a web page that will launch the santander app with the
+        \n\nHave a look around at SwanBank\'s functionality. One feature of this app is that you
+        can press on special links on say a web page that will launch the SwanBank app with the
         details for a payment already filled in. Of course, the app first brings up the log in
         activity first.
 
         \n\nStart the Money Manager and look around a bit. After that, make sure the Malware
-        Overcome mode is enabled, then close and start the Santander app again. This time, choose
+        Overcome mode is enabled, then close and start the SwanBank app again. This time, choose
         Money Manager when the app chooser appears. Then try to log in.
 
         \n\nOnce you manage to log in, go to the malware and look in its log. You should be able to
-        see the log in credentials you thought you were typing into the Santander app in there.
+        see the log in credentials you thought you were typing into the SwanBank app in there.
     </string>
 
     <string name="activityHijackScenarioExplanation">
-        The Santander app has its login screen exported so that the user can click on a special
+        The SwanBank app has its login screen exported so that the user can click on a special
         link that starts the bank app to make a payment. The link contains details of the recipient
         of the payment, such that these details are already filled in when the app launches and
         therefore making the payment easier. It starts the log in activity first to authenticate
@@ -264,14 +264,14 @@
         the same app instead of explicit intents, as recommended by the Android documentation, is
         to make the application more loosely coupled, and therefore more modular.
 
-        \n\nAn attacker can decompile and reverse engineer the Santander app to see the code for
+        \n\nAn attacker can decompile and reverse engineer the SwanBank app to see the code for
         the Login activity and its intent filter. The attacker can create an activity in the malware
         that looks identical to the one in the genuine app, and add an intent filter to i
-        identical to the one in the login activity of the Santander app. The attacker can make the
+        identical to the one in the login activity of the SwanBank app. The attacker can make the
         name and icon of the malware to be similar to that of the targeted app, in order to make
         the user more confused.
 
-        \n\nTherefore, the implicit intent sent by the Loading activity of the Santander app will
+        \n\nTherefore, the implicit intent sent by the Loading activity of the SwanBank app will
         match both the Login activity in the vulnerable app and the one in the malware. A careless
         user might click on the malware activity. Since it looks identical to the genuine activity,
         the user types in their credentials, which the activity records and can send to the attacker.

@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 import io.github.kbiakov.codeview.CodeView
 
 import uk.ac.swansea.dascalu.dvmicc.home.R
-import uk.ac.swansea.dascalu.dvmicc.home.model.SecurityLevel
 import uk.ac.swansea.dascalu.dvmicc.home.setCodeViewOptions
 
 @SuppressLint("UseRequireInsteadOfGet")
@@ -50,14 +48,14 @@ class ManifestsFragment : Fragment() {
         val batteryBoosterAdvancedActivityIntentCode = view.findViewById<CodeView>(R.id.batteryBoosterAdvancedActivityIntentCode)
         setCodeViewOptions(context!!, batteryBoosterAdvancedActivityIntentCode, "java", R.string.batteryBoosterAdvancedActivityIntentCode)
 
-        val santanderManifest = view.findViewById<CodeView>(R.id.santanderManifest)
-        setCodeViewOptions(context!!, santanderManifest, "xml", R.string.santanderManifest)
+        val swanBankManifest = view.findViewById<CodeView>(R.id.swanBankManifest)
+        setCodeViewOptions(context!!, swanBankManifest, "xml", R.string.swanBankManifest)
 
-        val santanderLoadingActivityIntentCode = view.findViewById<CodeView>(R.id.santanderLoadingActivityIntentCode)
-        setCodeViewOptions(context!!, santanderLoadingActivityIntentCode, "java", R.string.santanderLowIntentCode)
+        val swanBankLoadingActivityIntentCode = view.findViewById<CodeView>(R.id.swanBankLoadingActivityIntentCode)
+        setCodeViewOptions(context!!, swanBankLoadingActivityIntentCode, "java", R.string.swanBankLowIntentCode)
 
-        val santanderLoginActivityIntentCode = view.findViewById<CodeView>(R.id.santanderLoginActivityIntentCode)
-        setCodeViewOptions(context!!, santanderLoginActivityIntentCode, "java", R.string.santanderLogInIntentCode)
+        val swanBankLoginActivityIntentCode = view.findViewById<CodeView>(R.id.swanBankLoginActivityIntentCode)
+        setCodeViewOptions(context!!, swanBankLoginActivityIntentCode, "java", R.string.swanBankLogInIntentCode)
 
         val callLoggerIntentCode = view.findViewById<CodeView>(R.id.callLoggerIntentCode)
         setCodeViewOptions(context!!, callLoggerIntentCode, "java", R.string.callLoggerIntentCode)

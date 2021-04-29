@@ -62,4 +62,5 @@
     <string name="balance">Balance</string>
     <string name="log">Log</string>
     <string name="clear_log">Clear Log</string>
+    <string name="swanBankAppName">SwanBank</string>
 </resources>

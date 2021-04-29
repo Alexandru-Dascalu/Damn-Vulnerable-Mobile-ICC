@@ -22,13 +22,13 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/santander_red"
+            android:background="@color/swan_bank_red"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
 
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Santander"
+            app:title="@string/swanBankAppName"
             app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -41,8 +41,8 @@
         android:layout_marginTop="32dp"
         android:fontFamily="cursive"
 
-        android:text="Santander"
-        android:textColor="@color/santander_dark_red"
+        android:text="@string/swanBankAppName"
+        android:textColor="@color/swan_bank_dark_red"
         android:textSize="32sp"
 
         app:layout_constraintEnd_toEndOf="parent"

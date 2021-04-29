@@ -99,7 +99,7 @@
             android:paddingEnd="8dp"/>
 
         <TextView
-            android:id="@+id/santanderHeader"
+            android:id="@+id/SwanBankHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
@@ -107,11 +107,11 @@
             android:paddingTop="20dp"
             android:paddingBottom="12dp"
 
-            android:text="@string/santanderAppName"
+            android:text="@string/swanBankAppName"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
 
         <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/santanderManifest"
+            android:id="@+id/swanBankManifest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -121,7 +121,7 @@
             android:paddingEnd="8dp"/>
 
         <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/santanderLoadingActivityIntentCode"
+            android:id="@+id/swanBankLoadingActivityIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -131,7 +131,7 @@
             android:paddingEnd="8dp"/>
 
         <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/santanderLoginActivityIntentCode"
+            android:id="@+id/swanBankLoginActivityIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
