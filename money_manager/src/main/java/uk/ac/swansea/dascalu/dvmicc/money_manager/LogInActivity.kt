@@ -75,8 +75,8 @@ class LogInActivity : AppCompatActivity() {
 
     private fun sendIntent() {
         val intent = Intent()
-        intent.component = ComponentName("uk.ac.swansea.dascalu.dvmicc.santander",
-                "uk.ac.swansea.dascalu.dvmicc.santander.LogInActivity")
+        intent.component = ComponentName("uk.ac.swansea.dascalu.dvmicc.swan_bank",
+                "uk.ac.swansea.dascalu.dvmicc.swan_bank.LogInActivity")
         intent.setDataAndType(paymentURI, "text/plain")
         startActivity(intent)
 

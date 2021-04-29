@@ -34,7 +34,7 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
 
     ACTIVITY_INTENT_HIJACK(3, R.string.activityHijackExplanation,
             mapOf("low" to SecurityLevel(R.string.activityHijackLowDescription, R.string.swanBankManifest, R.string.swanBankLowIntentCode),
-                    "impossible" to SecurityLevel(R.string.activityHijackImpossibleDescription, R.string.swanBankImpossibleIntentCode)),
+                    "impossible" to SecurityLevel(R.string.activityHijackImpossibleDescription, intentCodeID=R.string.swanBankImpossibleIntentCode)),
             R.string.activityHijackInstructions, R.string.activityHijackScenarioExplanation,
             R.array.activityHijackVulnerabilityOptions, R.string.activityHijackVulnerabilityCorrectAnswer,
             R.array.activityHijackMalwareGiveawayOptions, R.string.activityHijackMalwareGiveawayCorrectAnswer),

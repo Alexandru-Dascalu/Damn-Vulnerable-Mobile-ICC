@@ -12,7 +12,7 @@ import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.util.Locale
 
-const val LOGIN_ACTION = "uk.ac.swansea.dascalu.dvmicc.santander.intent.action.LOGIN"
+const val LOGIN_ACTION = "uk.ac.swansea.dascalu.dvmicc.swan_bank.intent.action.LOGIN"
 var EVERYDAY_ACCOUNT_BALANCE : Int = 4628
 
 const val ACTIVITY_INTENT_HIJACK : Int = 3
