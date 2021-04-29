@@ -44,7 +44,7 @@
         and use an explicit intent. Explicit intents should be used for communication between
         components of the same app.
 
-        \n\nNOTE: manifest of the SwanBank app for this level is identical as the one for the low
+        \n\nNOTE: manifest of the SwanBank app for this level is identical to the one for the low
         security level.
 
         \n\nIf you still need to use an implicit intent for ICC within the same app, another
@@ -266,7 +266,7 @@
 
         \n\nAn attacker can decompile and reverse engineer the SwanBank app to see the code for
         the Login activity and its intent filter. The attacker can create an activity in the malware
-        that looks identical to the one in the genuine app, and add an intent filter to i
+        that looks identical to the one in the genuine app, and add an intent filter to it
         identical to the one in the login activity of the SwanBank app. The attacker can make the
         name and icon of the malware to be similar to that of the targeted app, in order to make
         the user more confused.

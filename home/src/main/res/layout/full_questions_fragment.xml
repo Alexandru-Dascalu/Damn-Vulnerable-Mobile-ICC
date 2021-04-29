@@ -310,7 +310,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/vulnerabilityQuestionTitle"
+            android:id="@+id/vulnerabilityCodeLineQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -326,7 +326,7 @@
             app:layout_constraintTop_toBottomOf="@+id/securityVeryHighInput" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/vulnerabilitySpinner"
+            android:id="@+id/vulnerabilityCodeLineSpinner"
             style="@style/spinnerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -336,12 +336,12 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
 
-            app:layout_constraintEnd_toStartOf="@+id/vulnerabilitiesQuestionButton"
+            app:layout_constraintEnd_toStartOf="@+id/vulnerabilityCodeLineQuestionButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vulnerabilityQuestionTitle">
+            app:layout_constraintTop_toBottomOf="@+id/vulnerabilityCodeLineQuestionTitle">
 
             <AutoCompleteTextView
-                android:id="@+id/vulnerabilityEditText"
+                android:id="@+id/vulnerabilityCodeLineEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -349,7 +349,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/vulnerabilitiesQuestionButton"
+            android:id="@+id/vulnerabilityCodeLineQuestionButton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
 
@@ -357,11 +357,11 @@
 
             android:text="@string/submitButtonText"
 
-            app:layout_constraintBaseline_toBaselineOf="@+id/vulnerabilitySpinner"
+            app:layout_constraintBaseline_toBaselineOf="@+id/vulnerabilityCodeLineSpinner"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/malwareGiveawayQuestionTitle"
+            android:id="@+id/malwareCodeLineQuestionTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -374,10 +374,10 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vulnerabilitySpinner" />
+            app:layout_constraintTop_toBottomOf="@+id/vulnerabilityCodeLineSpinner" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/malwareGiveawaySpinner"
+            android:id="@+id/malwareCodeLineSpinner"
             style="@style/spinnerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -388,12 +388,12 @@
             android:layout_marginEnd="16dp"
             android:paddingBottom="28dp"
 
-            app:layout_constraintEnd_toStartOf="@id/malwareGiveawayQuestionButton"
+            app:layout_constraintEnd_toStartOf="@id/malwareCodeLineQuestionButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/malwareGiveawayQuestionTitle">
+            app:layout_constraintTop_toBottomOf="@+id/malwareCodeLineQuestionTitle">
 
             <AutoCompleteTextView
-                android:id="@+id/malwareGiveawayEditText"
+                android:id="@+id/malwareCodeLineEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none" />
@@ -401,7 +401,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/malwareGiveawayQuestionButton"
+            android:id="@+id/malwareCodeLineQuestionButton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
 
@@ -409,7 +409,7 @@
 
             android:text="@string/submitButtonText"
 
-            app:layout_constraintBaseline_toBaselineOf="@+id/malwareGiveawaySpinner"
+            app:layout_constraintBaseline_toBaselineOf="@+id/malwareCodeLineSpinner"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
