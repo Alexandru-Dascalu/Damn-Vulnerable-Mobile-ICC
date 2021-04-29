@@ -215,7 +215,7 @@
             android:paddingEnd="8dp"/>
 
         <TextView
-            android:id="@+id/whatsappHeader"
+            android:id="@+id/fastChatHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
@@ -223,11 +223,11 @@
             android:paddingTop="20dp"
             android:paddingBottom="12dp"
 
-            android:text="@string/whatsappAppName"
+            android:text="@string/fastChatAppName"
             android:textAppearance="@style/manifestFragmentAppNameStyle" />
 
         <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/whatsappManifest"
+            android:id="@+id/fastChatManifest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -237,7 +237,7 @@
             android:paddingEnd="8dp"/>
 
         <io.github.kbiakov.codeview.CodeView
-            android:id="@+id/whatsappMainActivityIntentCode"
+            android:id="@+id/fastChatMainActivityIntentCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 

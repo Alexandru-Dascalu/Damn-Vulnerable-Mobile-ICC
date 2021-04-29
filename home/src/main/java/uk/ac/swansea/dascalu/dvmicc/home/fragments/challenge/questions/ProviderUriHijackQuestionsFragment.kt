@@ -21,7 +21,7 @@ class ProviderUriHijackQuestionsFragment : AbstractFullQuestionsFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         challengeName = view.context.resources.getString(R.string.providerHijackName)
-        vulnerableAppName = view.context.resources.getString(R.string.whatsappAppName)
+        vulnerableAppName = view.context.resources.getString(R.string.fastChatAppName)
         malwareName = view.context.resources.getString(R.string.smsMessagesAppName)
 
         val flags = view.context.resources.getStringArray(R.array.providerHijackFlags)

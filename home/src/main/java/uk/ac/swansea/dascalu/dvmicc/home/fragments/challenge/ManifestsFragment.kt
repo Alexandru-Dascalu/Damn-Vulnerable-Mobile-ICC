@@ -63,11 +63,11 @@ class ManifestsFragment : Fragment() {
         val callLoggerXML = view.findViewById<CodeView>(R.id.callLogManifest)
         setCodeViewOptions(context!!, callLoggerXML, "xml", R.string.callLoggerManifest)
 
-        val whatsappManifest = view.findViewById<CodeView>(R.id.whatsappManifest)
-        setCodeViewOptions(context!!, whatsappManifest, "xml", R.string.whatsappLowManifest)
+        val fastChatManifest = view.findViewById<CodeView>(R.id.fastChatManifest)
+        setCodeViewOptions(context!!, fastChatManifest, "xml", R.string.fastChatLowManifest)
 
-        val whatsappMainActivityIntentCode = view.findViewById<CodeView>(R.id.whatsappMainActivityIntentCode)
-        setCodeViewOptions(context!!, whatsappMainActivityIntentCode, "java", R.string.whatsappMainActivityIntentCode)
+        val fastChatMainActivityIntentCode = view.findViewById<CodeView>(R.id.fastChatMainActivityIntentCode)
+        setCodeViewOptions(context!!, fastChatMainActivityIntentCode, "java", R.string.fastChatMainActivityIntentCode)
 
         val newsAggregatorXML = view.findViewById<CodeView>(R.id.newsAggregatorManifest)
         setCodeViewOptions(context!!, newsAggregatorXML, "xml", R.string.newsAggregatorLowManifest)

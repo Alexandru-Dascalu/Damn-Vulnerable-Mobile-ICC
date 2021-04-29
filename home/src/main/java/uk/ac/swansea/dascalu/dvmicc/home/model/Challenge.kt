@@ -40,9 +40,9 @@ enum class Challenge(val challengeNameIndex: Int, val attackExplanation: Int, va
             R.array.activityHijackMalwareGiveawayOptions, R.string.activityHijackMalwareGiveawayCorrectAnswer),
 
     CONTENT_PROVIDER_URI_HIJACK(4, R.string.contentProviderHijackingExplanation,
-            mapOf("low" to SecurityLevel(R.string.providerHijackLowDescription, R.string.whatsappLowManifest, R.string.whatsappLowIntentCode),
-                    "high" to SecurityLevel(R.string.providerHijackHighDescription, R.string.whatsappHighManifest),
-                    "impossible" to SecurityLevel(R.string.providerHijackImpossibleDescription, intentCodeID = R.string.whatsappImpossibleIntentCode)),
+            mapOf("low" to SecurityLevel(R.string.providerHijackLowDescription, R.string.fastChatLowManifest, R.string.fastChatLowIntentCode),
+                    "high" to SecurityLevel(R.string.providerHijackHighDescription, R.string.fastChatHighManifest),
+                    "impossible" to SecurityLevel(R.string.providerHijackImpossibleDescription, intentCodeID = R.string.fastChatImpossibleIntentCode)),
             R.string.contentProviderHijackInstructions, R.string.contentProviderHijackScenarioConclusion,
             R.array.providerHijackVulnerabilityOptions, R.string.providerHijackVulnerabilityCorrectAnswer,
             R.array.providerHijackMalwareGiveawayOptions,R.string.providerHijackMalwareGiveawayCorrectAnswer)

@@ -18,7 +18,7 @@ import uk.ac.swansea.dascalu.dvmicc.fast_chat.icc.MessagesProviderHigh
 
 class DeleteActivity : AppCompatActivity() {
     companion object {
-        val DELETE_ACTION = "uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE"
+        val DELETE_ACTION = "uk.ac.swansea.dascalu.dvmicc.fast_chat.intent.action.DELETE"
     }
     private lateinit var deleteAdapter : DeleteChatsAdapter
 

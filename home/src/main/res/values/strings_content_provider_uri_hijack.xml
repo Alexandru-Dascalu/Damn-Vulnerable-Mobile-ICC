@@ -23,7 +23,7 @@
         https://developer.android.com/guide/topics/providers/content-provider-creating#implementing-permissions .
     </string>
 
-    <string name="whatsappAppName">Whatsapp</string>
+    <string name="fastChatAppName">FastChat</string>
     <string name="smsMessagesAppName">SMS Messages</string>
 
     <string-array name="providerHijackFlags">
@@ -80,10 +80,10 @@
         will be refused access.
     </string>
 
-    <string name="whatsappLowManifest">
+    <string name="fastChatLowManifest">
         <![CDATA[
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
-            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.whatsapp\">
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.fast_chat\">
 
             \n\n\t<uses-permission android:name=
                 \n\t\t\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
@@ -120,18 +120,18 @@
 
                     \n\n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=
-                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.fast_chat.intent.action.DELETE\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
                         \n\t\t\t\t<data android:mimeType=\"text/plain\"
                             \n\t\t\t\t\tandroid:scheme=\"content\"
-                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"/>
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.fast_chat.provider\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</service>
 
                 \n\n\t\t<provider
                     \n\t\t\tandroid:authorities=
-                        \n\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
+                        \n\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.fast_chat.provider\"
                     \n\t\t\tandroid:name=\".icc.MessagesProvider\"
                     \n\t\t\tandroid:grantUriPermissions=\"true\"
                     \n\t\t\tandroid:enabled=\"true\"
@@ -140,10 +140,10 @@
             \n\t</application>
         \n</manifest>]]>
     </string>
-    <string name="whatsappHighManifest">
+    <string name="fastChatHighManifest">
         <![CDATA[
         <manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"
-            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.whatsapp\">
+            \n\tpackage=\"uk.ac.swansea.dascalu.dvmicc.fast_chat\">
 
             \n\n\t<uses-permission android:name=
                 \n\t\t\"android.permission.WRITE_EXTERNAL_STORAGE\"/>
@@ -180,18 +180,18 @@
 
                     \n\n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=
-                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.fast_chat.intent.action.DELETE\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
                         \n\t\t\t\t<data android:mimeType=\"text/plain\"
                             \n\t\t\t\t\tandroid:scheme=\"content\"
-                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"/>
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.fast_chat.provider\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</service>
 
                 \n\n\t\t<provider
                     \n\t\t\tandroid:authorities=
-                        \n\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"
+                        \n\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.fast_chat.provider\"
                     \n\t\t\tandroid:name=\".icc.MessagesProviderHigh\"
                     \n\t\t\tandroid:grantUriPermissions=\"false\"
                     \n\t\t\tandroid:enabled=\"true\"
@@ -204,7 +204,7 @@
         \n</manifest>]]>
     </string>
 
-    <string name="whatsappLowIntentCode" >
+    <string name="fastChatLowIntentCode" >
         <![CDATA[
         class DeleteActivity : AppCompatActivity() {
             \n\t...
@@ -220,7 +220,7 @@
             \n\n\tprivate fun finish(chatNamesToDelete: HashSet<String>) {
                 \n\t\tval resultIntent = Intent()
                 \n\t\tresultIntent.action =
-                    \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\"
+                    \n\t\t\t\"uk.ac.swansea.dascalu.dvmicc.fast_chat.intent.action.DELETE\"
                 \n\t\tresultIntent.addCategory(Intent.CATEGORY_APP_CONTACTS)
 
                 \n\n\t\tresultIntent.putExtra(\"chatNamesToDelete\", chatNamesToDelete)
@@ -234,7 +234,7 @@
         \n}]]>
     </string>
 
-    <string name="whatsappImpossibleIntentCode">
+    <string name="fastChatImpossibleIntentCode">
        <![CDATA[
         class DeleteActivity : AppCompatActivity() {
             \n\t...
@@ -261,7 +261,7 @@
         \n}]]>
     </string>
 
-    <string name="whatsappMainActivityIntentCode">
+    <string name="fastChatMainActivityIntentCode">
         <![CDATA[
         class MainActivity : AppCompatActivity() {
             \n\t...
@@ -318,12 +318,12 @@
 
                     \n\t\t\t<intent-filter>
                         \n\t\t\t\t<action android:name=
-                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.whatsapp.intent.action.DELETE\" />
+                            \n\t\t\t\t\t\"uk.ac.swansea.dascalu.dvmicc.fast_chat.intent.action.DELETE\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.DEFAULT\" />
                         \n\t\t\t\t<category android:name=\"android.intent.category.APP_CONTACTS\"/>
                         \n\t\t\t\t<data android:mimeType=\"text/plain\"
                             \n\t\t\t\t\tandroid:scheme=\"content\"
-                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.whatsapp.provider\"/>
+                            \n\t\t\t\t\tandroid:host=\"uk.ac.swansea.dascalu.dvmicc.fast_chat.provider\"/>
                     \n\t\t\t</intent-filter>
                 \n\t\t</service>
             \n\t</application>
