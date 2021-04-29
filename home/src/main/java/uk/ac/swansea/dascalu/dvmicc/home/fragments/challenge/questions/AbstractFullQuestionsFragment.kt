@@ -43,6 +43,8 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
     private var answeredMedium: Boolean = false
     private var answeredHigh: Boolean = false
     private var answeredVeryHigh: Boolean = false
+    private var answeredVulnerability: Boolean = false
+    private var answeredMalwareGiveaway: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +56,8 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
             answeredMedium = savedInstanceState.getBoolean("answeredMedium")
             answeredHigh = savedInstanceState.getBoolean("answeredHigh")
             answeredVeryHigh = savedInstanceState.getBoolean("answeredVeryHigh")
+            answeredVulnerability = savedInstanceState.getBoolean("answeredVulnerability")
+            answeredMalwareGiveaway = savedInstanceState.getBoolean("answeredMalwareGiveaway")
         }
     }
 
@@ -138,15 +142,15 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         securityVeryHighButton.setOnClickListener(QuestionButtonClickListener(securityVeryHighFlag,
                 view, editText, textInputLayout))
 
-        val vulnerabilitiesButton = view.findViewById<MaterialButton>(R.id.vulnerabilitiesQuestionButton)
-        editText = view.findViewById<EditText>(R.id.vulnerabilityEditText)
-        textInputLayout = view.findViewById<TextInputLayout>(R.id.vulnerabilitySpinner)
+        val vulnerabilitiesButton = view.findViewById<MaterialButton>(R.id.vulnerabilityCodeLineQuestionButton)
+        editText = view.findViewById<EditText>(R.id.vulnerabilityCodeLineEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.vulnerabilityCodeLineSpinner)
         vulnerabilitiesButton.setOnClickListener(QuestionButtonClickListener(vulnerabilityCorrectCodeLine,
                 view, editText, textInputLayout))
 
-        val malwareGiveawayButton = view.findViewById<MaterialButton>(R.id.malwareGiveawayQuestionButton)
-        editText = view.findViewById<EditText>(R.id.malwareGiveawayEditText)
-        textInputLayout = view.findViewById<TextInputLayout>(R.id.malwareGiveawaySpinner)
+        val malwareGiveawayButton = view.findViewById<MaterialButton>(R.id.malwareCodeLineQuestionButton)
+        editText = view.findViewById<EditText>(R.id.malwareCodeLineEditText)
+        textInputLayout = view.findViewById<TextInputLayout>(R.id.malwareCodeLineSpinner)
         malwareGiveawayButton.setOnClickListener(QuestionButtonClickListener(malwareGiveawayCorrectCodeLine,
                 view, editText, textInputLayout))
     }
@@ -156,7 +160,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         if(answeredVulnerable) {
             val vulnerableAppQuestionButton = view.findViewById<MaterialButton>(R.id.vulnerableAppQuestionButton)
             vulnerableAppQuestionButton.text = completedString
-            changeButtonColors(vulnerableAppQuestionButton)
+            setDisabledButtonColors(vulnerableAppQuestionButton)
             vulnerableAppQuestionButton.isEnabled = false
 
             val vulnerableEditText = view.findViewById<EditText>(R.id.vulnerableAppEditText)
@@ -166,7 +170,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         if(answeredMalware) {
             val malwareQuestionButton = view.findViewById<MaterialButton>(R.id.malwareQuestionButton)
             malwareQuestionButton.text = completedString
-            changeButtonColors(malwareQuestionButton)
+            setDisabledButtonColors(malwareQuestionButton)
             malwareQuestionButton.isEnabled = false
 
             val editText = view.findViewById<EditText>(R.id.malwareAppEditText)
@@ -176,7 +180,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         if(answeredLow) {
             val securityLowButton = view.findViewById<MaterialButton>(R.id.securityLowButton)
             securityLowButton.text = completedString
-            changeButtonColors(securityLowButton)
+            setDisabledButtonColors(securityLowButton)
             securityLowButton.isEnabled = false
 
             val editText = view.findViewById<EditText>(R.id.securityLowEditText)
@@ -186,7 +190,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         if(answeredMedium) {
             val securityMediumButton = view.findViewById<MaterialButton>(R.id.securityMediumButton)
             securityMediumButton.text = completedString
-            changeButtonColors(securityMediumButton)
+            setDisabledButtonColors(securityMediumButton)
             securityMediumButton.isEnabled = false
 
             val editText = view.findViewById<EditText>(R.id.securityMediumEditText)
@@ -196,7 +200,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         if(answeredHigh) {
             val securityHighButton = view.findViewById<MaterialButton>(R.id.securityHighButton)
             securityHighButton.text = completedString
-            changeButtonColors(securityHighButton)
+            setDisabledButtonColors(securityHighButton)
             securityHighButton.isEnabled = false
 
             val editText = view.findViewById<EditText>(R.id.securityHighEditText)
@@ -206,16 +210,42 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
         if(answeredVeryHigh) {
             val securityVeryHighButton = view.findViewById<MaterialButton>(R.id.securityVeryHighButton)
             securityVeryHighButton.text = completedString
-            changeButtonColors(securityVeryHighButton)
+            setDisabledButtonColors(securityVeryHighButton)
             securityVeryHighButton.isEnabled = false
 
             val editText = view.findViewById<EditText>(R.id.securityVeryHighEditText)
             editText.isFocusable = false
         }
+
+        if (answeredVulnerability) {
+            val vulnerabilityCodeLineButton = view.findViewById<MaterialButton>(R.id.vulnerabilityCodeLineQuestionButton)
+            vulnerabilityCodeLineButton.text = completedString
+            setDisabledButtonColors(vulnerabilityCodeLineButton)
+            vulnerabilityCodeLineButton.isEnabled = false
+
+            val vulnerabilityCodeLineEditText = view.findViewById<AutoCompleteTextView>(R.id.vulnerabilityCodeLineEditText)
+            vulnerabilityCodeLineEditText.isFocusable = false
+
+            val vulnerabilityCodeLineInput = view.findViewById<TextInputLayout>(R.id.vulnerabilityCodeLineSpinner)
+            vulnerabilityCodeLineInput.isEnabled = false
+        }
+
+        if (answeredMalwareGiveaway) {
+            val malwareCodeLineButton = view.findViewById<MaterialButton>(R.id.malwareCodeLineQuestionButton)
+            malwareCodeLineButton.text = completedString
+            setDisabledButtonColors(malwareCodeLineButton)
+            malwareCodeLineButton.isEnabled = false
+
+            val malwareCodeLineEditText = view.findViewById<AutoCompleteTextView>(R.id.malwareCodeLineEditText)
+            malwareCodeLineEditText.isFocusable = false
+
+            val malwareCodeLineInput = view.findViewById<TextInputLayout>(R.id.malwareCodeLineSpinner)
+            malwareCodeLineInput.isEnabled = false
+        }
     }
 
     private fun setupDropDowns(view: View) {
-        val vulnerabilityEditText = view.findViewById<TextInputLayout>(R.id.vulnerabilitySpinner)
+        val vulnerabilityEditText = view.findViewById<TextInputLayout>(R.id.vulnerabilityCodeLineSpinner)
                 .editText as AutoCompleteTextView
         val vulnerabilityOptions = view.context.resources.getStringArray(ChallengeViewModel
                 .instance.challenge.vulnerabilityOptions)
@@ -223,7 +253,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
                 vulnerabilityOptions)
         vulnerabilityEditText.setAdapter(vulnerabilityOptionsAdapter)
 
-        val malwareGiveawayEditText = view.findViewById<TextInputLayout>(R.id.malwareGiveawaySpinner)
+        val malwareGiveawayEditText = view.findViewById<TextInputLayout>(R.id.malwareCodeLineSpinner)
                 .editText as AutoCompleteTextView
         val malwareGiveawayOptions = view.context.resources.getStringArray(ChallengeViewModel
                 .instance.challenge.malwareGiveawayOptions)
@@ -247,9 +277,15 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
                 R.id.securityHighButton).isEnabled))
         outState.putBoolean("answeredVeryHigh", !(view!!.findViewById<MaterialButton>(
                 R.id.securityVeryHighButton).isEnabled))
+
+        outState.putBoolean("answeredVulnerability", !(view!!.findViewById<MaterialButton>(
+                R.id.vulnerabilityCodeLineQuestionButton).isEnabled))
+
+        outState.putBoolean("answeredMalwareGiveaway", !(view!!.findViewById<MaterialButton>(
+                R.id.malwareCodeLineQuestionButton).isEnabled))
     }
 
-    private fun changeButtonColors(button: MaterialButton) {
+    private fun setDisabledButtonColors(button: MaterialButton) {
         button.setBackgroundColor(MaterialColors.getColor(button.context, R.attr.colorBackgroundFloating,
                 Color.BLACK))
         button.setTextColor(MaterialColors.getColor(button.context, R.attr.colorSecondary,
@@ -282,7 +318,7 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
                 }
 
                 button.text = rootview.context.resources.getString(R.string.completed)
-                changeButtonColors(button)
+                setDisabledButtonColors(button)
                 button.isEnabled = false
                 hideKeyboard(buttonView, context!!)
             }
@@ -307,8 +343,8 @@ abstract class AbstractFullQuestionsFragment : Fragment() {
             val highEditText = rootview.findViewById<EditText>(R.id.securityHighEditText)
             val veryHighEditText = rootview.findViewById<EditText>(R.id.securityVeryHighEditText)
 
-            val vulnerabilityCodeLineEditText = rootview.findViewById<EditText>(R.id.vulnerabilityEditText)
-            val malwareGiveawayCodeLineEditText = rootview.findViewById<EditText>(R.id.malwareGiveawayEditText)
+            val vulnerabilityCodeLineEditText = rootview.findViewById<EditText>(R.id.vulnerabilityCodeLineEditText)
+            val malwareGiveawayCodeLineEditText = rootview.findViewById<EditText>(R.id.malwareCodeLineEditText)
 
             return !vulnerableEditText.isFocusable && !malwareEditText.isFocusable &&
                     !lowEditText.isFocusable && !mediumEditText.isFocusable &&
