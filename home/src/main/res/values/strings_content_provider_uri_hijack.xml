@@ -136,7 +136,7 @@
                     \n\t\t\tandroid:grantUriPermissions=\"true\"
                     \n\t\t\tandroid:enabled=\"true\"
                     \n\t\t\tandroid:exported=\"false\"
-                    \n\t\t\tandroid:label=\"Whatsapp messages content provider\"/>
+                    \n\t\t\tandroid:label=\"FastChat messages content provider\"/>
             \n\t</application>
         \n</manifest>]]>
     </string>
@@ -196,7 +196,7 @@
                     \n\t\t\tandroid:grantUriPermissions=\"false\"
                     \n\t\t\tandroid:enabled=\"true\"
                     \n\t\t\tandroid:exported=\"false\"
-                    \n\t\t\tandroid:label=\"Whatsapp messages content provider\">
+                    \n\t\t\tandroid:label=\"FastChat messages content provider\">
 
                     \n\n\t\t\t<grant-uri-permission android:pathPrefix=\"/chats/\"/>
                 \n\t\t</provider>
@@ -348,14 +348,14 @@
     </string>
 
     <string name="contentProviderHijackInstructions">
-        Go to the Whatsapp app and look around. This app lets you view your chats, and you can also
+        Go to the FastChat app and look around. This app lets you view your chats, and you can also
         delete an entire chat. Press on the bin icon to go the remove chats screen, and select what
         chats to remove. To make the deleted chats appear again, close the app and restart it.
 
         \n\nGo and take a look at the SMS Messages app as well.
 
         \n\nWhen the malware overcome mode is enabled, you should see that the selected chats in
-        Whatsapp are not deleted. Then you should look in the log of the Messages app and see
+        FastChat are not deleted. Then you should look in the log of the Messages app and see
         what you find. Repeat this for all security levels. Clear the log between security levels.
     </string>
 
@@ -365,29 +365,29 @@
         the malware can bypass permission requirements set by the content provider in its manifest,
         or can even access an un-exported provider.
 
-        \n\nIn this scenario, the Whatsapp app uses a content provider as an interface for storing the
+        \n\nIn this scenario, the FastChat app uses a content provider as an interface for storing the
         messages. After you select some chats to delete and press the delete icon, the Delete Chats
-        activty sends an intent to a service in the Whatsapp app and then closes. This service is
+        activty sends an intent to a service in the FastChat app and then closes. This service is
         responsible for deleting the messages from the database in the background. The intent
         contains the selection of chats to delete, a uri to where the chats are stored in the
         content provider, and temporary access flags.
 
         \n\nBecause this intent is sent implicitly, it can be intercepted by malicious components. The
         malware app contains a service with an intent filter identical to that of the service from
-        the Whatsapp app. The malicious service will get the intent, and because the intent has
-        temporary access flags, the malicious service can query the Whatsapp content provider and
+        the FastChat app. The malicious service will get the intent, and because the intent has
+        temporary access flags, the malicious service can query the FastChat content provider and
         get data out of it.
 
         \n\nAdmittedly, this scenario is not very authentic. There is no good reason the Delete
         activity would not delete the selected chats itself and need to hand that responsibility
         over to the a service. This challenge was implemented like this due to time constraints.
         A more authentic use case for temporary content provider permissions
-        would be for storing images or file attachments in a messaging app like Whatsapp. When viewing an
-        image or a document, Whatsapp would want to enable other apps to access the content, perhaps
-        because Whatspp itself can not open those documents. An activity in Whatspp would make an
+        would be for storing images or file attachments in a messaging app like FastChat. When viewing an
+        image or a document, FastChat would want to enable other apps to access the content, perhaps
+        because FastChat itself can not open those documents. An activity in FastChat would make an
         implicit intent that contains a URI to that document and has temporary read or write flags,
         and would sent this intent. The user can then choose which app should handle this intent,
-        which would be able to read that document from Whatsapp\'s provider. This example is given
+        which would be able to read that document from FastChat\'s provider. This example is given
         by the Android documentation: https://developer.android.com/guide/topics/providers/content-provider-creating#implementing-permissions .
 
         \n\nThe way this challenge has been implemented makes this attack a Service Intent Hijack
@@ -395,7 +395,7 @@
         malicious service receives the intent instead. However, this attack is very unlikely. Since
         API 21 (Android 5.0), implicit intents can not be used to start a service. If you call
         startService with an implicit intent, it will throw an exception. This only applies if your
-        app targets API 21 or newer, which is the reason why the Whatsapp app targets API 21 and
+        app targets API 21 or newer, which is the reason why the FastChat app targets API 21 and
         not 25 like the other apps in this project. Since Google Play forces new apps or app updates
         to target API level 28 or more, it is impossible for a new malware exploiting the Service
         Intent Hijack vulnerability to be published. Therefore, the threat of this type of attack is
