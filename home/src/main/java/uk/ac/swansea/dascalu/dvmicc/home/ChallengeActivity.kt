@@ -25,7 +25,7 @@ import java.lang.IllegalStateException
 
 class ChallengeActivity :  AppCompatActivity() {
     companion object {
-        private val SETTINGS_REQUEST_CODE = 5
+        private const val SETTINGS_REQUEST_CODE = 5
     }
 
     private var operationMode : OperationMode = OperationMode.BEGINNER
@@ -125,14 +125,14 @@ class ChallengeActivity :  AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.settingsButton) {
+        if (item.itemId == R.id.settingsButton) {
             val intent = Intent(this, ChallengeSettingsActivity::class.java)
             intent.putExtra("launchedFromChallengeActivity", true)
             intent.putExtra("mode", operationMode)
 
             startActivityForResult(intent, SETTINGS_REQUEST_CODE)
             return true
-        } else if(item.itemId == R.id.helpButton) {
+        } else if (item.itemId == R.id.helpButton) {
             if (ChallengeViewModel.instance.hasGuessedApps) {
                 val intent = Intent(this, SecurityLevelsExplanationActivity::class.java)
                 intent.putExtra("mode", operationMode)
