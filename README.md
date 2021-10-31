@@ -1,2 +1,2 @@
 # Damn-Vulnerable-Mobile-ICC
-Third Year project
+Third Year Software Engineering project for my degree.
