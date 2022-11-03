@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "32"
 
     defaultConfig {
         applicationId "uk.ac.swansea.dascalu.dvmicc.moneymanager"
@@ -36,6 +36,7 @@ android {
 
 dependencies {
 
+<<<<<<< HEAD
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.10"
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -46,6 +47,18 @@ dependencies {
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+=======
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.31"
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.activity:activity-ktx:1.4.0'
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+
+    implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+>>>>>>> 785f10667c9f87768be3b024cf6cbbdd09c0ee59
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation "androidx.cardview:cardview:1.0.0"
 

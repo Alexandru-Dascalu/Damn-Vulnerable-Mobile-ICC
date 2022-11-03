@@ -39,7 +39,7 @@ class DeleteActivity : AppCompatActivity() {
         chatsView.addItemDecoration(dividerItemDecoration)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.delete_activity_appbar_layout, menu)
         return super.onCreateOptionsMenu(menu)
     }
